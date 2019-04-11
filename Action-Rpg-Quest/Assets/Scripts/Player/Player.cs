@@ -13,7 +13,9 @@ namespace Advent.Player
         private float movementSpeed = 10f;
         private bool isMoving = true;
         private Rigidbody2D rb2d;
+        private Animator anim;
         private PlayerController playerControls = null;
+        private Vector3 playerDir = Vector3.zero;
         private void Awake()
         {
             if(instance == null)
@@ -31,11 +33,14 @@ namespace Advent.Player
         {
             playerControls = PlayerController.instance;
             rb2d = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
         }
         // Update is called once per frame
         void Update()
         {
-
+            playerDir.x = playerControls.GetXMovement();
+            playerDir.y = playerControls.GetYMovement();
+            SetDirectionAnimations();
         }
         private void FixedUpdate()
         {
@@ -43,9 +48,7 @@ namespace Advent.Player
         }
         private void Movement()
         {
-            int xDir = playerControls.GetXMovement();
-            int yDir = playerControls.GetYMovement();
-            if (xDir != 0 || yDir != 0)
+            if (playerDir.x != 0 || playerDir.y != 0)
             {
                 isMoving = true;
             }
@@ -53,8 +56,29 @@ namespace Advent.Player
             {
                 isMoving = false;
             }
-            rb2d.velocity = new Vector2(Mathf.Lerp(0, xDir * movementSpeed, 0.8f), //Change MovementSpeed to something from stats
-                                               Mathf.Lerp(0, yDir * movementSpeed, 0.8f));
+            rb2d.velocity = new Vector2(Mathf.Lerp(0, playerDir.x * movementSpeed, 0.8f), //Change MovementSpeed to something from stats
+                                               Mathf.Lerp(0, playerDir.y * movementSpeed, 0.8f));
+        }
+        private void SetDirectionAnimations()
+        {
+            if(playerDir != Vector3.zero)
+            {
+                if((playerDir.x > 0 || playerDir.x < 0) && playerDir.y == 0)
+                {
+                    anim.SetFloat("xMove", playerDir.x);
+                    anim.SetFloat("yMove", 0);
+                }
+                if ((playerDir.y > 0 || playerDir.y < 0) && playerDir.x == 0)
+                {
+                    anim.SetFloat("yMove", playerDir.y);
+                    anim.SetFloat("xMove", 0);
+                }
+                anim.SetBool("isMoving", true);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
+            }
         }
     }
 }
