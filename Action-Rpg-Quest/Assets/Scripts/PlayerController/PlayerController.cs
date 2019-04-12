@@ -9,6 +9,7 @@ namespace Advent.Controller
         public static PlayerController instance;
         private int xMove;
         private int yMove;
+        private bool attackKey;
         //private readonly bool acceptKey;
         //private readonly bool cancelKey;
         //private readonly bool action1;
@@ -20,16 +21,17 @@ namespace Advent.Controller
         }
         private void Start()
         {
-            Movement();
+            Keys();
         }
         void Update()
         {
-            Movement();
+            Keys();
         }
-        private void Movement()
+        private void Keys()
         {
             xMove = (int)Input.GetAxisRaw("Horizontal");
             yMove = (int)Input.GetAxisRaw("Vertical");
+            attackKey = Input.GetButtonDown("Fire1");
         }
 
         public int GetXMovement()
@@ -39,6 +41,10 @@ namespace Advent.Controller
         public int GetYMovement()
         {
             return yMove;
+        }
+        public bool GetAttackKey()
+        {
+            return attackKey;
         }
         //public bool GetAcceptKey()
         //{
