@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Controller;
 using Advent.Interfaces;
+using Advent.Utilities;
 
-namespace Advent.Player
+namespace Advent.Entities
 {
     public enum PlayerStates
     {
@@ -13,14 +14,10 @@ namespace Advent.Player
         ATTACKING,
         ROLLING
     }
-    public class Player : MonoBehaviour, IDamageable
+    public class Player : Entity, IDamageable
     {
         public static Player instance;
 
-        [SerializeField]
-        private float movementSpeed = 10f;
-        private Rigidbody2D rb2d;
-        private Animator anim;
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
         private PlayerStates states;
@@ -36,12 +33,12 @@ namespace Advent.Player
             }
             DontDestroyOnLoad(gameObject);
         }
+
         // Start is called before the first frame update
-        void Start()
+        public override void Start()
         {
+            base.Start();
             playerControls = PlayerController.instance;
-            rb2d = GetComponent<Rigidbody2D>();
-            anim = GetComponent<Animator>();
             states = PlayerStates.IDLE;
         }
         // Update is called once per frame
@@ -112,7 +109,10 @@ namespace Advent.Player
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
         }
-
+        public Stats GetStats()
+        {
+            return statList;
+        }
         public void TakeDamage(int damage)
         {
             // Give damage to player;
