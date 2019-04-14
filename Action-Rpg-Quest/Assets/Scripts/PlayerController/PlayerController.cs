@@ -10,6 +10,7 @@ namespace Advent.Controller
         private int xMove;
         private int yMove;
         private bool attackKey;
+        private bool dodgeKey;
         //private readonly bool acceptKey;
         //private readonly bool cancelKey;
         //private readonly bool action1;
@@ -32,6 +33,7 @@ namespace Advent.Controller
             xMove = (int)Input.GetAxisRaw("Horizontal");
             yMove = (int)Input.GetAxisRaw("Vertical");
             attackKey = Input.GetButtonDown("Fire1");
+            dodgeKey = Input.GetButtonDown("Fire2");
         }
 
         public int GetXMovement()
@@ -45,6 +47,10 @@ namespace Advent.Controller
         public bool GetAttackKey()
         {
             return attackKey;
+        }
+        public bool GetDodgeKey()
+        {
+            return dodgeKey;
         }
         //public bool GetAcceptKey()
         //{

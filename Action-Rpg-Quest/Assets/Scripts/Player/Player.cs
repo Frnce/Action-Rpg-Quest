@@ -14,12 +14,18 @@ namespace Advent.Entities
         ATTACKING,
         ROLLING
     }
-    public class Player : Entity, IDamageable
+    public class Player : Entity
     {
         public static Player instance;
 
+        [SerializeField]
+        private float rollSpeed = 5.0f;
+        [SerializeField]
+        private float rollDistance = 0.1f;
+
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
+        private Vector3 playerLastDir = Vector3.zero;
         private PlayerStates states;
         private void Awake()
         {
@@ -46,15 +52,37 @@ namespace Advent.Entities
         {
             playerDir.x = playerControls.GetXMovement();
             playerDir.y = playerControls.GetYMovement();
-            if (playerControls.GetAttackKey())
+            if (states != PlayerStates.ROLLING)
             {
-                states = PlayerStates.ATTACKING;
-                StartCoroutine(AttackCoroutine());
+                if (playerControls.GetAttackKey())
+                {
+                    states = PlayerStates.ATTACKING;
+                    StartCoroutine(AttackCoroutine());
+                }
+                if (playerControls.GetDodgeKey())
+                {
+                    if (playerDir != Vector3.zero)
+                    {
+                        states = PlayerStates.ROLLING;
+                        StartCoroutine(DodgeRoll(rollSpeed, rollDistance));
+                    }
+                }
             }
         }
         private void FixedUpdate()
         {
-            Movement();
+            if(states != PlayerStates.ROLLING)
+            {
+                Movement();
+            }
+        }
+        private IEnumerator DodgeRoll(float rollSpeed, float rollTime)
+        {
+            Physics2D.IgnoreLayerCollision(0, 8,true); //0 layer = DEFAULT / 8 layer = Enemies
+            rb2d.velocity = new Vector2(playerDir.x * rollSpeed, playerDir.y * rollSpeed);
+            yield return new WaitForSeconds(rollTime);
+            Physics2D.IgnoreLayerCollision(0, 8, false);
+            states = PlayerStates.IDLE;
         }
         private void Movement()
         {
@@ -112,10 +140,6 @@ namespace Advent.Entities
         public Stats GetStats()
         {
             return statList;
-        }
-        public void TakeDamage(int damage)
-        {
-            // Give damage to player;
         }
     }
 }

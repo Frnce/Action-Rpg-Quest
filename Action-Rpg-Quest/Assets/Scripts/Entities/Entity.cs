@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Utilities;
+using Advent.Interfaces;
 
 namespace Advent.Entities
 {
@@ -13,7 +14,7 @@ namespace Advent.Entities
         public Stat vitality;
         public Stat intelligence;
     }
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviour , IDamageable
     {
         [SerializeField]
         protected EntityStats entityStats = null;
@@ -25,12 +26,21 @@ namespace Advent.Entities
         [SerializeField]
         protected Stats statList;
 
+        protected int health;
+
         private void InitStats()
         {
             statList.strength.AddStat(entityStats.strength);
             statList.agility.AddStat(entityStats.agility);
             statList.vitality.AddStat(entityStats.vitality);
             statList.intelligence.AddStat(entityStats.intelligence);
+
+            SetHP();
+            Debug.Log(name + " HP : " + health);
+        }
+        private void SetHP()
+        {
+            health = (statList.vitality.GetValue() * 2 * 100);
         }
         public virtual void Start()
         {
@@ -41,6 +51,13 @@ namespace Advent.Entities
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
+        }
+
+        public void TakeDamage(int damage)
+        {
+            Debug.Log(gameObject.name + " has taken damage for " + damage);
+            health -= damage;
+            Debug.Log(name + " HP : " + health);
         }
     }
 }
