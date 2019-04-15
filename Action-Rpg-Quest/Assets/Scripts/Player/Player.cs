@@ -97,8 +97,9 @@ namespace Advent.Entities
                 {
                     states = PlayerStates.IDLE;
                 }
-                rb2d.velocity = new Vector2(Mathf.Lerp(0, playerDir.x * movementSpeed, 0.8f), //Change MovementSpeed to something from stats
-                                                   Mathf.Lerp(0, playerDir.y * movementSpeed, 0.8f));
+                //rb2d.velocity = new Vector2(Mathf.Lerp(0, playerDir.x * movementSpeed, 0.8f), //Change MovementSpeed to something from stats
+                //                                   Mathf.Lerp(0, playerDir.y * movementSpeed, 0.8f));
+                rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
             }
             else
             {
