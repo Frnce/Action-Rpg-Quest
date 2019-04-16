@@ -10,25 +10,65 @@ namespace Advent.Entities
     public class EnemyController : Entity
     {
         public float radius = 5f;
+        public float maxIdleTime = 1f;
+        private float idleTime;
         private Vector2 startingPosition;
+        private Vector3 randomPosition;
         // Start is called before the first frame update
         public override void Start()
         {
             base.Start();
             startingPosition = transform.position;
-            Debug.Log(transform.position += (Vector3)(Random.insideUnitCircle * radius));
-            transform.position += (Vector3)(Random.insideUnitCircle * radius);
+            GetRandomPosition();
+            idleTime = maxIdleTime;
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if(transform.position == randomPosition)
+            {
+                if (idleTime <= 0)
+                {
+                    GetRandomPosition();
+                    Vector2 newDirection = randomPosition - transform.position;
+                    anim.SetBool("isMoving", true);
+                    SetMovementAnimation(newDirection);
+                    
+                    idleTime = maxIdleTime;
+                }
+                else
+                {
+                    anim.SetBool("isMoving", false);
+                    idleTime -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                Vector2 direction = Vector2.MoveTowards(transform.position, randomPosition, movementSpeed * Time.deltaTime);
+                rb2d.MovePosition(direction);
+            }
+        }
+        private void SetMovementAnimation(Vector2 newDirection)
+        {
+            anim.SetFloat("xMove", newDirection.x);
+            anim.SetFloat("yMove", newDirection.y);
         }
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(startingPosition, radius);
+        }
+        private void GetRandomPosition()
+        {
+            randomPosition = (Random.insideUnitCircle * radius) + startingPosition;
+        }
+        private Vector2 ToGridDirection(Vector2 vector)
+        {
+            float x = vector.x == 0 ? 0 : vector.x / (Mathf.Abs(vector.x));
+            float y = vector.y == 0 ? 0 : vector.y / (Mathf.Abs(vector.y));
+
+            return new Vector2(x, y);
         }
     }
 
