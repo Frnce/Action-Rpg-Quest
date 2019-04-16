@@ -11437,7 +11437,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563515285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.96, y: 0, z: 0}
+  m_LocalPosition: {x: 5.99, y: 4.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1489966830}
@@ -11468,6 +11468,7 @@ MonoBehaviour:
       baseValue: 0
     intelligence:
       baseValue: 0
+  radius: 5
 --- !u!95 &563515290
 Animator:
   serializedVersion: 3
@@ -14896,6 +14897,23 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301118455, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898445596, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404108535713925722, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 1927233614, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
+      propertyPath: hitLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}

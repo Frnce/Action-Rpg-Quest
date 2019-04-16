@@ -7,7 +7,7 @@ namespace Advent.AI
     public class EnemyStateController : MonoBehaviour
     {
         public EnemyState currentState;
-        private bool isAiActive;
+        private bool isAiActive = true;
         // Start is called before the first frame update
         void Start()
         {
