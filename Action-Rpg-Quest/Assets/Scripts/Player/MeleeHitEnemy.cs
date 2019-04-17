@@ -15,7 +15,7 @@ namespace Advent.Entities
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //TODO Make layermask modular . using a variable
-            if (collision.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Hitbox"))
+            if (collision.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
             {
                 collision.GetComponentInParent<IDamageable>().TakeDamage(stats.strength.GetValue());
             }

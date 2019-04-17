@@ -9,13 +9,21 @@ namespace Advent.Entities
     [RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
     public class EnemyController : Entity
     {
+        // Move
         public float radius = 5f;
         public float maxIdleTime = 1f;
         private float idleTime;
         private Vector2 startingPosition;
         private Vector3 randomPosition;
-        private bool onPatrol = false;
 
+        // Attack
+        public float maxAttackCooldown = 3f;
+        public float maxPrepareAttackTime = 1f;
+        private float prepareAttackTime;
+        private float attackCooldown;
+        private Transform target;
+
+        private bool onPatrol = false;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -23,14 +31,19 @@ namespace Advent.Entities
             startingPosition = transform.position;
             GetRandomPosition();
             idleTime = maxIdleTime;
+            attackCooldown = maxAttackCooldown;
+            prepareAttackTime = maxPrepareAttackTime;
+            target = Player.instance.gameObject.transform;
             onPatrol = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            Move();
+            //Move();
+            //Attack();
         }
+        #region Move Functions
         private void Move()
         {
             if (onPatrol)
@@ -80,6 +93,30 @@ namespace Advent.Entities
 
             return new Vector2(x, y);
         }
+        #endregion
+        #region Attack Functions
+        private void Attack()
+        {
+            if(Vector2.Distance(transform.position,target.position) <= 1.5f)
+            {
+                Debug.Log("Attacking");
+                if(prepareAttackTime <= 0)
+                {
+                    SetMovementAnimation(target.position - transform.position);
+                    anim.SetTrigger("attack");
+                    prepareAttackTime = maxPrepareAttackTime;
+                }
+                else
+                {
+                    prepareAttackTime -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                prepareAttackTime = maxPrepareAttackTime;
+            }
+        }
+        #endregion
         private void OnCollisionStay2D(Collision2D collision)
         {
             onPatrol = false;
