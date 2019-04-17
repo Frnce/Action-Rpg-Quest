@@ -44,6 +44,7 @@ namespace Advent.Entities
         public override void Start()
         {
             base.Start();
+            rb2d = GetComponent<Rigidbody2D>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
         }

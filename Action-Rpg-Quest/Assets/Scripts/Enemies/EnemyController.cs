@@ -14,6 +14,8 @@ namespace Advent.Entities
         private float idleTime;
         private Vector2 startingPosition;
         private Vector3 randomPosition;
+        private bool onPatrol = false;
+
         // Start is called before the first frame update
         public override void Start()
         {
@@ -21,32 +23,40 @@ namespace Advent.Entities
             startingPosition = transform.position;
             GetRandomPosition();
             idleTime = maxIdleTime;
+            onPatrol = true;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if(transform.position == randomPosition)
+            Move();
+        }
+        private void Move()
+        {
+            if (onPatrol)
             {
-                if (idleTime <= 0)
+                if (transform.position == randomPosition)
                 {
-                    GetRandomPosition();
-                    Vector2 newDirection = randomPosition - transform.position;
-                    anim.SetBool("isMoving", true);
-                    SetMovementAnimation(newDirection);
-                    
-                    idleTime = maxIdleTime;
+                    if (idleTime <= 0)
+                    {
+                        GetRandomPosition();
+                        Vector2 newDirection = randomPosition - transform.position;
+                        anim.SetBool("isMoving", true);
+                        SetMovementAnimation(newDirection);
+
+                        idleTime = maxIdleTime;
+                    }
+                    else
+                    {
+                        anim.SetBool("isMoving", false);
+                        idleTime -= Time.deltaTime;
+                    }
                 }
                 else
                 {
-                    anim.SetBool("isMoving", false);
-                    idleTime -= Time.deltaTime;
+                    Vector2 direction = Vector2.MoveTowards(transform.position, randomPosition, movementSpeed * Time.deltaTime);
+                    rb2d.MovePosition(direction);
                 }
-            }
-            else
-            {
-                Vector2 direction = Vector2.MoveTowards(transform.position, randomPosition, movementSpeed * Time.deltaTime);
-                rb2d.MovePosition(direction);
             }
         }
         private void SetMovementAnimation(Vector2 newDirection)
@@ -69,6 +79,25 @@ namespace Advent.Entities
             float y = vector.y == 0 ? 0 : vector.y / (Mathf.Abs(vector.y));
 
             return new Vector2(x, y);
+        }
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            onPatrol = false;
+            Debug.Log(collision.collider.name);
+            if (collision.collider.CompareTag("Player"))
+            {
+                rb2d.velocity = Vector3.zero;
+                rb2d.isKinematic = true;
+            }
+            else if (collision.collider.CompareTag("Walls"))
+            {
+                GetRandomPosition();
+            }
+        }
+        private void OnCollisionExit2D(Collision2D collision)
+        {
+            onPatrol = true;
+            rb2d.isKinematic = false;
         }
     }
 
