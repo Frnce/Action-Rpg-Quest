@@ -11381,9 +11381,10 @@ GameObject:
   m_Component:
   - component: {fileID: 563515288}
   - component: {fileID: 563515286}
+  - component: {fileID: 563515287}
   - component: {fileID: 563515290}
   - component: {fileID: 563515289}
-  - component: {fileID: 563515287}
+  - component: {fileID: 563515291}
   m_Layer: 8
   m_Name: BoneThug
   m_TagString: Enemy
@@ -11469,8 +11470,6 @@ MonoBehaviour:
     intelligence:
       baseValue: 0
   radius: 5
-  maxIdleTime: 1
-  maxAttackCooldown: 3
   maxPrepareAttackTime: 1
 --- !u!95 &563515290
 Animator:
@@ -11491,6 +11490,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &563515291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563515285}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47319a6b105dc04089da8c0c7ff5968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: {fileID: 11400000, guid: 53131e9ce513ada4d86bb0009936d795, type: 2}
+  remainState: {fileID: 11400000, guid: 5f8f148b0452f86449579760c5900880, type: 2}
+  stateTimeElapsed: 0
 --- !u!1 &583076737
 GameObject:
   m_ObjectHideFlags: 0

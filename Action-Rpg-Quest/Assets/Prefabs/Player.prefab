@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 8444309749630793534}
   - component: {fileID: 8444309749630793533}
   - component: {fileID: 957912311}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -428,7 +428,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!58 &7663500728349073482
 CircleCollider2D:
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityStats: {fileID: 11400000, guid: 85df9664eec890a42bef73ce3ac05933, type: 2}
-  movementSpeed: 5.3
+  movementSpeed: 3.5
   statList:
     strength:
       baseValue: 0

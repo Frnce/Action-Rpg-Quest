@@ -11,68 +11,23 @@ namespace Advent.Entities
     {
         // Move
         public float radius = 5f;
-        public float maxIdleTime = 1f;
-        private float idleTime;
         private Vector2 startingPosition;
-        private Vector3 randomPosition;
 
         // Attack
-        public float maxAttackCooldown = 3f;
         public float maxPrepareAttackTime = 1f;
         private float prepareAttackTime;
-        private float attackCooldown;
-        private Transform target;
-
-        private bool onPatrol = false;
+        private GameObject target;
+        private Vector3 randomPosition;
         // Start is called before the first frame update
         public override void Start()
         {
             base.Start();
             startingPosition = transform.position;
-            GetRandomPosition();
-            idleTime = maxIdleTime;
-            attackCooldown = maxAttackCooldown;
+            SetRandomPosition();
             prepareAttackTime = maxPrepareAttackTime;
-            target = Player.instance.gameObject.transform;
-            onPatrol = true;
+            target = Player.instance.gameObject;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-            //Move();
-            //Attack();
-        }
-        #region Move Functions
-        private void Move()
-        {
-            if (onPatrol)
-            {
-                if (transform.position == randomPosition)
-                {
-                    if (idleTime <= 0)
-                    {
-                        GetRandomPosition();
-                        Vector2 newDirection = randomPosition - transform.position;
-                        anim.SetBool("isMoving", true);
-                        SetMovementAnimation(newDirection);
-
-                        idleTime = maxIdleTime;
-                    }
-                    else
-                    {
-                        anim.SetBool("isMoving", false);
-                        idleTime -= Time.deltaTime;
-                    }
-                }
-                else
-                {
-                    Vector2 direction = Vector2.MoveTowards(transform.position, randomPosition, movementSpeed * Time.deltaTime);
-                    rb2d.MovePosition(direction);
-                }
-            }
-        }
-        private void SetMovementAnimation(Vector2 newDirection)
+        public void SetMovementAnimation(Vector2 newDirection)
         {
             anim.SetFloat("xMove", newDirection.x);
             anim.SetFloat("yMove", newDirection.y);
@@ -82,59 +37,42 @@ namespace Advent.Entities
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(startingPosition, radius);
         }
-        private void GetRandomPosition()
+        public void SetRandomPosition()
         {
             randomPosition = (Random.insideUnitCircle * radius) + startingPosition;
         }
-        private Vector2 ToGridDirection(Vector2 vector)
+        public Vector3 GetRandomPosition()
         {
-            float x = vector.x == 0 ? 0 : vector.x / (Mathf.Abs(vector.x));
-            float y = vector.y == 0 ? 0 : vector.y / (Mathf.Abs(vector.y));
-
-            return new Vector2(x, y);
+            return randomPosition;
         }
-        #endregion
-        #region Attack Functions
-        private void Attack()
+        public GameObject GetTarget()
         {
-            if(Vector2.Distance(transform.position,target.position) <= 1.5f)
-            {
-                Debug.Log("Attacking");
-                if(prepareAttackTime <= 0)
-                {
-                    SetMovementAnimation(target.position - transform.position);
-                    anim.SetTrigger("attack");
-                    prepareAttackTime = maxPrepareAttackTime;
-                }
-                else
-                {
-                    prepareAttackTime -= Time.deltaTime;
-                }
-            }
-            else
-            {
-                prepareAttackTime = maxPrepareAttackTime;
-            }
+            return target;
         }
-        #endregion
         private void OnCollisionStay2D(Collision2D collision)
         {
-            onPatrol = false;
-            Debug.Log(collision.collider.name);
             if (collision.collider.CompareTag("Player"))
             {
+                Debug.Log("asd");
                 rb2d.velocity = Vector3.zero;
                 rb2d.isKinematic = true;
-            }
-            else if (collision.collider.CompareTag("Walls"))
-            {
-                GetRandomPosition();
             }
         }
         private void OnCollisionExit2D(Collision2D collision)
         {
-            onPatrol = true;
             rb2d.isKinematic = false;
+        }
+        public void Movement(Vector3 direction)
+        {
+            rb2d.MovePosition(direction);
+        }
+        public float GetMovement()
+        {
+            return movementSpeed;
+        }
+        public Animator GetAnimator()
+        {
+            return anim;
         }
     }
 
