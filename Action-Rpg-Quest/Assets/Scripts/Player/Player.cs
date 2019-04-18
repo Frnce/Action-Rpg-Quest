@@ -22,10 +22,13 @@ namespace Advent.Entities
         private float rollSpeed = 5.0f;
         [SerializeField]
         private float rollDistance = 0.1f;
+        [SerializeField]
+        private LayerMask blockingLayer;
 
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
         private Vector3 playerLastDir = Vector3.zero;
+        private CircleCollider2D myCollider = null;
         private PlayerStates states;
         private void Awake()
         {
@@ -47,6 +50,7 @@ namespace Advent.Entities
             rb2d = GetComponent<Rigidbody2D>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
+            myCollider = GetComponent<CircleCollider2D>();
         }
         // Update is called once per frame
         void Update()
@@ -98,14 +102,10 @@ namespace Advent.Entities
                 {
                     states = PlayerStates.IDLE;
                 }
-                RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(GetComponent<CircleCollider2D>().offset), GetComponent<CircleCollider2D>().radius, playerDir, playerDir.magnitude);
+                RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
                 if(hit.collider == null)
                 {
                     rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
-                }
-                else
-                {
-                    Debug.Log(hit.collider.name);
                 }
             }
             else

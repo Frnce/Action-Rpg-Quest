@@ -18,6 +18,10 @@ namespace Advent.Entities
         private float prepareAttackTime;
         private GameObject target;
         private Vector3 randomPosition;
+
+        [SerializeField]
+        private LayerMask blockingLayer;
+        private CircleCollider2D myCollider;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -26,6 +30,7 @@ namespace Advent.Entities
             SetRandomPosition();
             prepareAttackTime = maxPrepareAttackTime;
             target = Player.instance.gameObject;
+            myCollider = GetComponent<CircleCollider2D>();
         }
         public void SetMovementAnimation(Vector2 newDirection)
         {
@@ -49,22 +54,13 @@ namespace Advent.Entities
         {
             return target;
         }
-        private void OnCollisionStay2D(Collision2D collision)
-        {
-            if (collision.collider.CompareTag("Player"))
-            {
-                Debug.Log("asd");
-                rb2d.velocity = Vector3.zero;
-                rb2d.isKinematic = true;
-            }
-        }
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            rb2d.isKinematic = false;
-        }
         public void Movement(Vector3 direction)
         {
-            rb2d.MovePosition(direction);
+            RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, direction, myCollider.radius, blockingLayer);
+            if (hit.collider == null)
+            {
+                rb2d.MovePosition(direction);
+            }
         }
         public float GetMovement()
         {

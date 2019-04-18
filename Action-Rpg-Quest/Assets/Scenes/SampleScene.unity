@@ -11400,7 +11400,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563515285}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -11423,7 +11423,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.25}
@@ -11471,6 +11471,9 @@ MonoBehaviour:
       baseValue: 0
   radius: 5
   maxPrepareAttackTime: 1
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 5120
 --- !u!95 &563515290
 Animator:
   serializedVersion: 3
@@ -11497,7 +11500,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563515285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c47319a6b105dc04089da8c0c7ff5968, type: 3}
   m_Name: 
@@ -15182,6 +15185,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444309749630793532, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663500728349073482, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: blockingLayer.m_Bits
+      value: 1280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
