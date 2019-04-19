@@ -37,11 +37,6 @@ namespace Advent.Entities
             anim.SetFloat("xMove", newDirection.x);
             anim.SetFloat("yMove", newDirection.y);
         }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(startingPosition, radius);
-        }
         public void SetRandomPosition()
         {
             randomPosition = (Random.insideUnitCircle * radius) + startingPosition;
@@ -56,7 +51,8 @@ namespace Advent.Entities
         }
         public void Movement(Vector3 direction)
         {
-            RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, direction, myCollider.radius, blockingLayer);
+            Vector2 targetDirection = target.transform.position - transform.position;
+            RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, targetDirection, myCollider.radius, blockingLayer);
             if (hit.collider == null)
             {
                 rb2d.MovePosition(direction);
@@ -69,6 +65,12 @@ namespace Advent.Entities
         public Animator GetAnimator()
         {
             return anim;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(startingPosition, radius); // Patrol area
         }
     }
 
