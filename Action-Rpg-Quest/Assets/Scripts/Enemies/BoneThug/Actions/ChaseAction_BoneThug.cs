@@ -20,8 +20,9 @@ namespace Advent.AI.Enemy
 
             Vector2 newDirection = target.transform.position - controller.transform.position;
             enemy.GetAnimator().SetBool("isMoving", true);
-            enemy.SetMovementAnimation(newDirection);
-            Vector2 direction = Vector2.MoveTowards(controller.transform.position, target.transform.position, enemy.GetMovement() * Time.deltaTime);
+            enemy.GetAnimator().SetFloat("xMove", newDirection.x);
+            enemy.GetAnimator().SetFloat("yMove", newDirection.y);
+            Vector2 direction = Vector2.MoveTowards(controller.transform.position, target.transform.position, enemy.GetMovementSpeed() * Time.deltaTime);
             enemy.Movement(direction);
         }
     }

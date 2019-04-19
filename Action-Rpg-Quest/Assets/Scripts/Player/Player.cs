@@ -14,7 +14,7 @@ namespace Advent.Entities
         ATTACKING,
         ROLLING
     }
-    public class Player : Entity
+    public class Player : Entity, IDamageable
     {
         public static Player instance;
 
@@ -23,7 +23,7 @@ namespace Advent.Entities
         [SerializeField]
         private float rollDistance = 0.1f;
         [SerializeField]
-        private LayerMask blockingLayer;
+        private LayerMask blockingLayer = 0;
 
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
@@ -149,6 +149,13 @@ namespace Advent.Entities
         public Stats GetStats()
         {
             return statList;
+        }
+
+        public void TakeDamage(int damage)
+        {
+            //take damage
+            // Invincible for 0.5f
+            //animate damage
         }
     }
 }

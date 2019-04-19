@@ -26,7 +26,8 @@ namespace Advent.AI.Enemy
                     enemy.SetRandomPosition();
                     Vector2 newDirection = enemy.GetRandomPosition() - controller.transform.position;
                     enemy.GetAnimator().SetBool("isMoving", true);
-                    enemy.SetMovementAnimation(newDirection);
+                    enemy.GetAnimator().SetFloat("xMove", newDirection.x);
+                    enemy.GetAnimator().SetFloat("yMove", newDirection.y);
 
                     idleTime = maxIdleTime;
                 }
@@ -38,7 +39,7 @@ namespace Advent.AI.Enemy
             }
             else
             {
-                Vector2 direction = Vector2.MoveTowards(controller.transform.position, enemy.GetRandomPosition(), enemy.GetMovement() * Time.deltaTime);
+                Vector2 direction = Vector2.MoveTowards(controller.transform.position, enemy.GetRandomPosition(), enemy.GetMovementSpeed() * Time.deltaTime);
                 enemy.Movement(direction);
             }
         }

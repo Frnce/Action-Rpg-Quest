@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Advent.AI.Enemy
 {
     [CreateAssetMenu(menuName = "Enemies/Enemy/BoneThug/Decision/TargetDeadDecision")]
-    public class TargetDeadDecision_BoneThug : Decision
+    public class TargetIsAliveDecision_BoneThug : Decision
     {
         public override bool Decide(StateController controller)
         {

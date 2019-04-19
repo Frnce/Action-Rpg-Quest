@@ -14,7 +14,7 @@ namespace Advent.Entities
         public Stat vitality;
         public Stat intelligence;
     }
-    public class Entity : MonoBehaviour , IDamageable
+    public class Entity : MonoBehaviour
     {
         [SerializeField]
         protected EntityStats entityStats = null;
@@ -51,13 +51,6 @@ namespace Advent.Entities
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
-        }
-
-        public void TakeDamage(int damage)
-        {
-            Debug.Log(gameObject.name + " has taken damage for " + damage);
-            health -= damage;
-            Debug.Log(name + " HP : " + health);
         }
     }
 }

@@ -3,24 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Utilities;
 using Advent.Interfaces;
+using Advent.AI;
 
 namespace Advent.Entities
 {
     [RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
-    public class EnemyController : Entity
+    public class EnemyController : Entity , IDamageable
     {
-        // Move
         public float radius = 5f;
-        private Vector2 startingPosition;
+        private Vector2 startingPosition; //Change to Spawn Position
 
-        // Attack
-        public float maxPrepareAttackTime = 1f;
-        private float prepareAttackTime;
         private GameObject target;
         private Vector3 randomPosition;
 
         [SerializeField]
-        private LayerMask blockingLayer;
+        private LayerMask blockingLayer = 0;
         private CircleCollider2D myCollider;
         // Start is called before the first frame update
         public override void Start()
@@ -28,14 +25,22 @@ namespace Advent.Entities
             base.Start();
             startingPosition = transform.position;
             SetRandomPosition();
-            prepareAttackTime = maxPrepareAttackTime;
+
+            anim.SetBool("isMoving", true);
+            anim.SetFloat("xMove", (randomPosition - transform.position).x);
+            anim.SetFloat("yMove", (randomPosition - transform.position).y);
+
             target = Player.instance.gameObject;
             myCollider = GetComponent<CircleCollider2D>();
         }
-        public void SetMovementAnimation(Vector2 newDirection)
+        public void Movement(Vector3 direction)
         {
-            anim.SetFloat("xMove", newDirection.x);
-            anim.SetFloat("yMove", newDirection.y);
+            Vector2 targetDirection = target.transform.position - transform.position;
+            RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, targetDirection, myCollider.radius, blockingLayer);
+            if (hit.collider == null)
+            {
+                rb2d.MovePosition(direction);
+            }
         }
         public void SetRandomPosition()
         {
@@ -49,28 +54,27 @@ namespace Advent.Entities
         {
             return target;
         }
-        public void Movement(Vector3 direction)
-        {
-            Vector2 targetDirection = target.transform.position - transform.position;
-            RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, targetDirection, myCollider.radius, blockingLayer);
-            if (hit.collider == null)
-            {
-                rb2d.MovePosition(direction);
-            }
-        }
-        public float GetMovement()
-        {
-            return movementSpeed;
-        }
         public Animator GetAnimator()
         {
             return anim;
         }
-
-        private void OnDrawGizmos()
+        public float GetMovementSpeed()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(startingPosition, radius); // Patrol area
+            return movementSpeed;
+        }
+        public void TakeDamage(int damage)
+        {
+            //take damage
+            //small knockback or stagger . not moving for 0.3f
+            StartCoroutine(TakeDamageCour());
+        }
+        IEnumerator TakeDamageCour()
+        {
+            GetComponent<StateController>().isAiActive = false;
+            //staggerHere
+            //knockback
+            yield return new WaitForSeconds(0.3f);
+            GetComponent<StateController>().isAiActive = true;
         }
     }
 

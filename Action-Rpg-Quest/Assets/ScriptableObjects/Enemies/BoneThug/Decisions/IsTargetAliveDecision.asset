@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61ce9a118faee0c4d9a0e30b1feaddb0, type: 3}
-  m_Name: IsTargetDeadDecision
+  m_Name: IsTargetAliveDecision
   m_EditorClassIdentifier: 

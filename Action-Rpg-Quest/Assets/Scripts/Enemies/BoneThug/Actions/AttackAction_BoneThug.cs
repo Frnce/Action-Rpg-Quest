@@ -20,7 +20,9 @@ namespace Advent.AI.Enemy
 
             if (Vector2.Distance(controller.transform.position, target.transform.position) <= 1.5f && controller.CheckIfCountdownElapsed(attackTime))
             {
-                enemy.SetMovementAnimation(target.transform.position - controller.transform.position);
+                Vector3 direction = target.transform.position - controller.transform.position;
+                enemy.GetAnimator().SetFloat("xMove", direction.x);
+                enemy.GetAnimator().SetFloat("yMove", direction.y);
                 enemy.GetAnimator().SetTrigger("attack");
                 controller.stateTimeElapsed = 0;
             }

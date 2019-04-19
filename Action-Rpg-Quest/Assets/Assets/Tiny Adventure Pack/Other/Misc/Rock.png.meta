@@ -4,7 +4,7 @@ TextureImporter:
   fileIDToRecycleName:
     21300000: Rock_0
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 9
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -104,10 +104,16 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -2.8828826, y: -6.940275}
+        - {x: -7.0203524, y: -2.9496198}
+        - {x: -6.9669676, y: 1.0944271}
+        - {x: 6.940275, y: 1.0410404}
+        - {x: 6.9669685, y: -2.9239326}
+        - {x: 2.962964, y: -6.940275}
       tessellationDetail: 0
       bones: []
       spriteID: 020c589e7a531774d8cfb0ac6be6b198

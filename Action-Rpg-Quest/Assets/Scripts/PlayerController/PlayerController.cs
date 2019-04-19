@@ -11,11 +11,6 @@ namespace Advent.Controller
         private int yMove;
         private bool attackKey;
         private bool dodgeKey;
-        //private readonly bool acceptKey;
-        //private readonly bool cancelKey;
-        //private readonly bool action1;
-        //private readonly bool action2;
-        //private readonly bool action3;
         private void Awake()
         {
             instance = this;
@@ -52,13 +47,5 @@ namespace Advent.Controller
         {
             return dodgeKey;
         }
-        //public bool GetAcceptKey()
-        //{
-        //    return acceptKey;
-        //}
-        //public bool GetCancelKey()
-        //{
-        //    return cancelKey;
-        //}
     }
 }

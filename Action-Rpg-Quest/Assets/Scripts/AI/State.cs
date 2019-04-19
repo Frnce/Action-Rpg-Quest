@@ -7,8 +7,11 @@ namespace Advent.AI
     [CreateAssetMenu(menuName ="AI/State")]
     public class State : ScriptableObject
     {
-        public Action[] action;
-        public Transition[] transitions;
+        [SerializeField]
+        private Action[] action = null;
+        [SerializeField]
+        private Transition[] transitions = null;
+
         public void UpdateState(StateController controller)
         {
             DoActions(controller);
@@ -28,9 +31,9 @@ namespace Advent.AI
             {
                 if (transitions[i].decision == null)
                 {
+                    Debug.LogError("Decision is empty");
                     return;
                 }
-
                 bool decisionSucceeded = transitions[i].decision.Decide(controller);
                 if (decisionSucceeded)
                 {

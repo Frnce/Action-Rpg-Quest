@@ -7,10 +7,12 @@ namespace Advent.AI
 {
     public class StateController : MonoBehaviour
     {
-        public State currentState;
-        public State remainState;
+        public bool isAiActive = true;
+        [SerializeField]
+        private State currentState = null;
+        [SerializeField]
+        private State remainState = null;
         private EnemyController enemyController;
-        private bool isAiActive = true;
 
         [HideInInspector] public float stateTimeElapsed;
 

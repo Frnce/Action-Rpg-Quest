@@ -11470,7 +11470,6 @@ MonoBehaviour:
     intelligence:
       baseValue: 0
   radius: 5
-  maxPrepareAttackTime: 1
   blockingLayer:
     serializedVersion: 2
     m_Bits: 5120
@@ -11505,6 +11504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47319a6b105dc04089da8c0c7ff5968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAiActive: 1
   currentState: {fileID: 11400000, guid: 53131e9ce513ada4d86bb0009936d795, type: 2}
   remainState: {fileID: 11400000, guid: 5f8f148b0452f86449579760c5900880, type: 2}
   stateTimeElapsed: 0
@@ -15185,26 +15185,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444309749630793532, guid: 763c882a4a9238a42a70b81901666b4b,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7663500728349073482, guid: 763c882a4a9238a42a70b81901666b4b,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
-        type: 3}
-      propertyPath: wallLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
-    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
-        type: 3}
-      propertyPath: blockingLayer.m_Bits
-      value: 1280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
