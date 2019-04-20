@@ -68,11 +68,22 @@ namespace Advent.Entities
         {
             return movementSpeed;
         }
+        public override void Die()
+        {
+            if (health <= 0)
+            {
+                base.Die();
+                gameObject.SetActive(false);
+            }
+        }
         public void TakeDamage(int damage)
         {
             //take damage
             //small knockback or stagger . not moving for 0.3f
+            health -= damage;
+            Debug.Log("HP : " + health + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());
+            Die();
         }
         IEnumerator TakeDamageCour()
         {

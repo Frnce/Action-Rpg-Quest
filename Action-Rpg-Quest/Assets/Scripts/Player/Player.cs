@@ -151,6 +151,8 @@ namespace Advent.Entities
             //take damage
             // Invincible for 0.5f
             //animate damage
+            health -= damage;
+            Debug.Log(gameObject.name + "| HP : " + health + " | DAmage : " + damage);
         }
     }
 }
