@@ -30,14 +30,9 @@ namespace Advent.Controller
             attackKey = Input.GetButtonDown("Fire1");
             dodgeKey = Input.GetButtonDown("Fire2");
         }
-
-        public int GetXMovement()
+        public Vector2 GetMovement()
         {
-            return xMove;
-        }
-        public int GetYMovement()
-        {
-            return yMove;
+            return new Vector2(xMove, yMove);
         }
         public bool GetAttackKey()
         {

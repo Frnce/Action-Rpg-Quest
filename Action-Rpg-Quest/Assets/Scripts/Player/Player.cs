@@ -55,14 +55,13 @@ namespace Advent.Entities
         // Update is called once per frame
         void Update()
         {
-            playerDir.x = playerControls.GetXMovement();
-            playerDir.y = playerControls.GetYMovement();
+            playerDir = playerControls.GetMovement();
             if (states != PlayerStates.ROLLING)
             {
                 if (playerControls.GetAttackKey())
                 {
                     states = PlayerStates.ATTACKING;
-                    StartCoroutine(AttackCoroutine());
+                    StartCoroutine(AttackCoroutine(playerLastDir));
                 }
                 if (playerControls.GetDodgeKey())
                 {
@@ -83,10 +82,9 @@ namespace Advent.Entities
         }
         private IEnumerator DodgeRoll(float rollSpeed, float rollTime)
         {
-            Physics2D.IgnoreLayerCollision(0, 8,true); //0 layer = DEFAULT / 8 layer = Enemies
+            //add RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
             rb2d.velocity = new Vector2(playerDir.x * rollSpeed, playerDir.y * rollSpeed);
             yield return new WaitForSeconds(rollTime);
-            Physics2D.IgnoreLayerCollision(0, 8, false);
             states = PlayerStates.IDLE;
         }
         private void Movement()
@@ -107,10 +105,6 @@ namespace Advent.Entities
                 {
                     rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
                 }
-            }
-            else
-            {
-                rb2d.velocity = Vector2.zero;
             }
         }
         private void SetAttackAnimations()
@@ -138,9 +132,10 @@ namespace Advent.Entities
                 anim.SetBool("isMoving", false);
             }
         }
-        private IEnumerator AttackCoroutine()
+        private IEnumerator AttackCoroutine(Vector3 direction)
         {
             SetAttackAnimations();
+            rb2d.velocity = Vector3.zero;
             yield return new WaitForSeconds(0.5f);
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");

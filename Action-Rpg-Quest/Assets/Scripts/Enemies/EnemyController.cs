@@ -10,11 +10,13 @@ namespace Advent.Entities
     [RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
     public class EnemyController : Entity , IDamageable
     {
+        public float knockbackDistance;
         public float radius = 5f;
         private Vector2 startingPosition; //Change to Spawn Position
 
         private GameObject target;
         private Vector3 randomPosition;
+        private Vector2 targetDirection;
 
         [SerializeField]
         private LayerMask blockingLayer = 0;
@@ -35,11 +37,15 @@ namespace Advent.Entities
         }
         public void Movement(Vector3 direction)
         {
-            Vector2 targetDirection = target.transform.position - transform.position;
+            targetDirection = target.transform.position - transform.position;
             RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, targetDirection, myCollider.radius, blockingLayer);
             if (hit.collider == null)
             {
                 rb2d.MovePosition(direction);
+            }
+            else
+            {
+                anim.SetBool("isMoving", false);
             }
         }
         public void SetRandomPosition()
@@ -71,8 +77,9 @@ namespace Advent.Entities
         IEnumerator TakeDamageCour()
         {
             GetComponent<StateController>().isAiActive = false;
-            //staggerHere
-            //knockback
+            rb2d.velocity = new Vector2(targetDirection.x * -knockbackDistance, targetDirection.y * -knockbackDistance); //knockback
+            yield return new WaitForSeconds(0.05f);
+            rb2d.velocity = Vector2.zero;
             yield return new WaitForSeconds(0.3f);
             GetComponent<StateController>().isAiActive = true;
         }
