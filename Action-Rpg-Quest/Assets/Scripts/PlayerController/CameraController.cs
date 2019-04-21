@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Advent.Entities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,12 @@ namespace Advent.Controller
 {
     public class CameraController : MonoBehaviour
     {
-        public Transform target;
         public float smoothTime = 0.3f;
-
+        private Transform target;
+        private void Start()
+        {
+            target = Player.instance.transform;
+        }
         void LateUpdate()
         {
             if(transform.position != target.position)
