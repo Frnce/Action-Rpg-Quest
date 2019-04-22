@@ -12,6 +12,7 @@ namespace Advent.Items
         public Sprite icon = null;
         public bool isDefaultItem = false;
         public GameObject gameobject;
+        public int stackSize;
 
         public virtual void Use()
         {

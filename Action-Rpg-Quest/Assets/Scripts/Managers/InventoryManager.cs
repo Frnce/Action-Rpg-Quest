@@ -37,7 +37,6 @@ namespace Advent.Manager
                     return false;
                 }
                 items.Add(item);
-
                 if (onItemChangedCallback != null)
                 {
                     onItemChangedCallback.Invoke();
