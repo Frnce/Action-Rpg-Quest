@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Walls
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Walls
   - Hitbox
   - Player
-  - 
+  - NPC
   - 
   - 
   - 
