@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 7dcc664a083aa8d4e82395abeeeb603f
+guid: 66bc67d1d3a360148b282386b28ad8a1
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Green_orb_0
+    21300000: Sword_1
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -96,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Green_orb_0
+      name: Sword_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 7
-        height: 7
+        y: 128
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,7 +110,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: feac63b93867a664a83b1b10c8c247f7
+      spriteID: 1daa4e57dbe487e43b4d84ffca769f97
       vertices: []
       indices: 
       edges: []
@@ -118,7 +118,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3352302f91b75784fb24cf2fc25f0040
+    spriteID: 1a1c7d4e98500244b916b246d97c7148
     vertices: []
     indices: 
     edges: []

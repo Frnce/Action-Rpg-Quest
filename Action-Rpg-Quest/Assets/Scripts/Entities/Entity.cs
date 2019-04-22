@@ -13,6 +13,8 @@ namespace Advent.Entities
         public Stat agility;
         public Stat vitality;
         public Stat intelligence;
+        public StatRange attack;
+        public StatRange defense;
     }
     public class Entity : MonoBehaviour
     {
@@ -35,8 +37,10 @@ namespace Advent.Entities
             statList.vitality.AddStat(entityStats.vitality);
             statList.intelligence.AddStat(entityStats.intelligence);
 
+            statList.attack = new StatRange();
+            statList.defense = new StatRange();
+
             SetHP();
-            Debug.Log(name + " HP : " + health);
         }
         private void SetHP()
         {
