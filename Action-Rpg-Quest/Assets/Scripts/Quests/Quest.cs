@@ -40,7 +40,7 @@ namespace Advent.Quests
             return null;
         }
         public void PrintPath()
-        {
+        {   
             foreach (QuestEvent quest in questEvents)
             {
                 Debug.Log(quest.name);

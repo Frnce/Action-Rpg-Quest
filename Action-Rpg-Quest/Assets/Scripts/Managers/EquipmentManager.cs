@@ -41,28 +41,18 @@ namespace Advent.Manager
         {
             if (newItem != null)
             {
-                //player.defense.AddModifier(newItem.defenseModifier);
-                //player.attack.AddModifier(newItem.pAttackModifier);
-
-                //if(newItem.weaponType == WeaponType.RANGE && newItem.equipSlot == EquipSlot.WEAPON)
-                //{
-                //    player.canRangeSingleAttack = true;
-                //    player.rangeOfWeapon = newItem.weaponRange;
-                //}
-                //else
-                //{
-                //    player.canRangeSingleAttack = false;
-                //}
+                player.GetStats.defense.AddModifier(newItem.defense.GetRealValue());
+                player.GetStats.attack.AddModifier(newItem.attack.GetRealValue());
             }
             if (oldItem != null)
             {
-                //player.defense.RemoveModifier(oldItem.defenseModifier);
-                //player.attack.RemoveModifier(oldItem.pAttackModifier);
+                player.GetStats.defense.RemoveModifier(oldItem.defense.GetRealValue());
+                player.GetStats.attack.RemoveModifier(oldItem.attack.GetRealValue());
             }
         }
         public void Equip(Equipment newItem)
         {
-            int slotIndex = (int)newItem.GetSlots();
+            int slotIndex = (int)newItem.GetSlots;
             Equipment oldItem = null;
             if (currentEquipment[slotIndex] != null)
             {

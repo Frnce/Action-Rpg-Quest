@@ -5,6 +5,25 @@ using UnityEngine;
 
 namespace Advent.Manager
 {
+    [System.Serializable]
+    public class ItemsSpace
+    {
+        public int id;
+        public int stack;
+        public Item item;
+
+        public ItemsSpace(int _id,int _stack,Item _item)
+        {
+            id = _id;
+            stack = _stack;
+            item = _item;
+        }
+
+        public ItemsSpace(int _stack)
+        {
+            stack = _stack;
+        }
+    }
     public class InventoryManager : MonoBehaviour
     {
         public static InventoryManager instance;
@@ -21,8 +40,14 @@ namespace Advent.Manager
             DontDestroyOnLoad(gameObject);
         }
 
-        public int maxSpace = 20;
-        public List<Item> items = new List<Item>();
+        [SerializeField]
+        private int maxSpace = 20;
+        [SerializeField]
+        private int maxStack = 9;
+        [SerializeField]
+        private List<ItemsSpace> items = new List<ItemsSpace>();
+        [SerializeField]
+        private GameObject inventorySlot = null;
 
         public delegate void OnItemChanged();
         public OnItemChanged onItemChangedCallback;
@@ -36,7 +61,18 @@ namespace Advent.Manager
                     Debug.Log("Not Enough Room");
                     return false;
                 }
-                items.Add(item);
+
+                int itemIndex = GetSameItemIndex(item);
+
+                if (itemIndex != -1 && items[itemIndex].stack != -1 && items[itemIndex].stack < maxStack)
+                {
+                    items[itemIndex].stack++;
+                }
+                else
+                {
+                    items.Add(new ItemsSpace(item.id, item.stackSize, item));
+                }
+
                 if (onItemChangedCallback != null)
                 {
                     onItemChangedCallback.Invoke();
@@ -46,11 +82,51 @@ namespace Advent.Manager
         }
         public void RemoveItem(Item item)
         {
-            items.Remove(item);
+            int itemIndex = GetSameItemIndex(item);
+            items.Remove(items[itemIndex]);
             if (onItemChangedCallback != null)
             {
                 onItemChangedCallback.Invoke();
             }
+        }
+
+        public List<ItemsSpace> GetItems
+        {
+            get
+            {
+                return items;
+            }
+            set
+            {
+                items = value;
+            }
+        }
+
+        public int GetMaxItemSpace
+        {
+            get
+            {
+                return maxSpace;
+            }
+        }
+        public GameObject GetInventorySlotObject
+        {
+            get
+            {
+                return inventorySlot;
+            }
+        }
+
+        private int GetSameItemIndex(Item item)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if(items[i].id == item.id)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
     }
 }

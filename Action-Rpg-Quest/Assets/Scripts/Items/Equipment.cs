@@ -16,15 +16,17 @@ namespace Advent.Items
         {
             base.Use();
             EquipmentManager.instance.Equip(this);
-            RemoveFromInventory();
         }
         public void Unequip(int index)
         {
             EquipmentManager.instance.SwapEquip(index);
         }
-        public EquipSlots GetSlots()
+        public EquipSlots GetSlots
         {
-            return slots;
+            get
+            {
+                return slots;
+            }
         }
     }
     public enum EquipSlots

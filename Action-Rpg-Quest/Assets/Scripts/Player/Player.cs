@@ -30,6 +30,7 @@ namespace Advent.Entities
         private Vector3 playerLastDir = Vector3.zero;
         private CircleCollider2D myCollider = null;
         private PlayerStates states;
+        private RaycastHit2D hit;
         private void Awake()
         {
             if(instance == null)
@@ -55,15 +56,16 @@ namespace Advent.Entities
         // Update is called once per frame
         void Update()
         {
-            playerDir = playerControls.GetMovement();
+            playerDir = playerControls.GetMovement;
+            hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
             if (states != PlayerStates.ROLLING)
             {
-                if (playerControls.GetAttackKey())
+                if (playerControls.GetAttackKey)
                 {
                     states = PlayerStates.ATTACKING;
                     StartCoroutine(AttackCoroutine(playerLastDir));
                 }
-                if (playerControls.GetDodgeKey())
+                if (playerControls.GetDodgeKey)
                 {
                     if (playerDir != Vector3.zero)
                     {
@@ -72,6 +74,11 @@ namespace Advent.Entities
                     }
                 }
             }
+
+            //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
+            //{
+            //    ScreenCapture.CaptureScreenshot("SomeLevel");
+            //}
         }
         private void FixedUpdate()
         {
@@ -82,10 +89,10 @@ namespace Advent.Entities
         }
         private IEnumerator DodgeRoll(float rollSpeed, float rollTime)
         {
-            //add RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
             rb2d.velocity = new Vector2(playerDir.x * rollSpeed, playerDir.y * rollSpeed);
             yield return new WaitForSeconds(rollTime);
             states = PlayerStates.IDLE;
+            rb2d.velocity = Vector3.zero;
         }
         private void Movement()
         {
@@ -100,7 +107,6 @@ namespace Advent.Entities
                 {
                     states = PlayerStates.IDLE;
                 }
-                RaycastHit2D hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
                 if(hit.collider == null)
                 {
                     rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
@@ -141,9 +147,16 @@ namespace Advent.Entities
             anim.ResetTrigger("attack1");
         }
 
-        public Stats GetStats()
+        public Stats GetStats
         {
-            return statList;
+            get
+            {
+                return statList;
+            }
+            set
+            {
+                statList = value;
+            }
         }
 
         public void TakeDamage(int damage)

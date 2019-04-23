@@ -7,14 +7,15 @@ namespace Advent.Controller
     public class PlayerController : MonoBehaviour
     {
         public static PlayerController instance;
-        private int xMove;
-        private int yMove;
-        private bool attackKey;
-        private bool dodgeKey;
         private void Awake()
         {
             instance = this;
         }
+        private int xMove;
+        private int yMove;
+        private bool attackKey;
+        private bool dodgeKey;
+        private bool openMenuKey;
         private void Start()
         {
             Keys();
@@ -29,18 +30,35 @@ namespace Advent.Controller
             yMove = (int)Input.GetAxisRaw("Vertical");
             attackKey = Input.GetButtonDown("Fire1");
             dodgeKey = Input.GetButtonDown("Fire2");
+            openMenuKey = Input.GetButtonDown("OpenMenu");
         }
-        public Vector2 GetMovement()
+        public Vector2 GetMovement
         {
-            return new Vector2(xMove, yMove);
+            get
+            {
+                return new Vector2(xMove, yMove);
+            }
         }
-        public bool GetAttackKey()
+        public bool GetAttackKey
         {
-            return attackKey;
+            get
+            {
+                return attackKey;
+            }
         }
-        public bool GetDodgeKey()
+        public bool GetDodgeKey
         {
-            return dodgeKey;
+            get
+            {
+                return dodgeKey;
+            }
+        }
+        public bool GetOpenMenuKey
+        {
+            get
+            {
+                return openMenuKey;
+            }
         }
     }
 }

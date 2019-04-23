@@ -10,7 +10,7 @@ namespace Advent.Entities
         private Stats stats;
         private void Start()
         {
-            stats = Player.instance.GetStats();
+            stats = Player.instance.GetStats;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

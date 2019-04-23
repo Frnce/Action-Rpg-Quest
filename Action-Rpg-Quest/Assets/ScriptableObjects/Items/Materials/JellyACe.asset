@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce82a2bc8240a54caa5d8e2b5f7d381, type: 3}
   m_Name: JellyACe
   m_EditorClassIdentifier: 
+  id: 0
   name: JellyAce
   icon: {fileID: 21300000, guid: 7dcc664a083aa8d4e82395abeeeb603f, type: 3}
   isDefaultItem: 0
   gameobject: {fileID: 3992217928603168820, guid: af432a52a25eb174a965e3f92f2d8a3c,
     type: 3}
+  stackSize: 1
