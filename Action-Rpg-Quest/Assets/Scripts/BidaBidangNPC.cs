@@ -1,36 +1,15 @@
-﻿using System.Collections;
+﻿using Advent.Interfaces;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Advent.NPC
 {
-    public class BidaBidangNPC : MonoBehaviour
+    public class BidaBidangNPC : MonoBehaviour , IInteractable
     {
-        bool isTalkable = false;
-        private void Update()
+        public void Interact()
         {
-            if (isTalkable)
-            {
-                Debug.Log("talkable");
-            }
-            if (isTalkable && Input.GetButtonDown("Fire1"))
-            {
-                Debug.Log("TALKING....");
-            }
-        }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                isTalkable = true;
-            }
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                isTalkable = false;
-            }
+            Debug.Log("Interactive NPC");
         }
     }
 }

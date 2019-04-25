@@ -22,15 +22,19 @@ namespace Advent.Entities
         private float rollSpeed = 5.0f;
         [SerializeField]
         private float rollDistance = 0.1f;
+        [Space]
+        [SerializeField]
+        private CircleCollider2D myCollider = null;
         [SerializeField]
         private LayerMask blockingLayer = 0;
 
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
         private Vector3 playerLastDir = Vector3.zero;
-        private CircleCollider2D myCollider = null;
         private PlayerStates states;
         private RaycastHit2D hit;
+        private bool isNearInteractable = false;
+        private GameObject collidedObject; //saves the data for the collided object;
         private void Awake()
         {
             if(instance == null)
@@ -51,7 +55,6 @@ namespace Advent.Entities
             rb2d = GetComponent<Rigidbody2D>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
-            myCollider = GetComponent<CircleCollider2D>();
         }
         // Update is called once per frame
         void Update()
@@ -74,11 +77,19 @@ namespace Advent.Entities
                     }
                 }
             }
-
+            InteractObject();
             //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
             //{
             //    ScreenCapture.CaptureScreenshot("SomeLevel");
             //}
+        }
+        private void InteractObject()
+        {
+            if(isNearInteractable && collidedObject != null && playerControls.GetInteractKey)
+            {
+                Debug.Log(collidedObject.name);
+                collidedObject.GetComponent<IInteractable>().Interact();
+            }
         }
         private void FixedUpdate()
         {
@@ -145,6 +156,22 @@ namespace Advent.Entities
             yield return new WaitForSeconds(0.5f);
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if(collision != null)
+            {
+                Debug.Log(collision.name);
+                isNearInteractable = true;
+                collidedObject = collision.gameObject;
+                //collision.GetComponent<IInteractable>().Interact();
+            }
+        }
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            isNearInteractable = false;
+            collidedObject = null;
         }
 
         public Stats GetStats

@@ -13,6 +13,7 @@ namespace Advent.Controller
         }
         private int xMove;
         private int yMove;
+        private bool interactKey;
         private bool attackKey;
         private bool dodgeKey;
         private bool openMenuKey;
@@ -31,6 +32,7 @@ namespace Advent.Controller
             attackKey = Input.GetButtonDown("Fire1");
             dodgeKey = Input.GetButtonDown("Fire2");
             openMenuKey = Input.GetButtonDown("OpenMenu");
+            interactKey = Input.GetButtonDown("Interact");
         }
         public Vector2 GetMovement
         {
@@ -58,6 +60,13 @@ namespace Advent.Controller
             get
             {
                 return openMenuKey;
+            }
+        }
+        public bool GetInteractKey
+        {
+            get
+            {
+                return interactKey;
             }
         }
     }

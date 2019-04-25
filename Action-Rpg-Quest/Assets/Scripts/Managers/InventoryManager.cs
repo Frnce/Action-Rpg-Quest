@@ -46,6 +46,10 @@ namespace Advent.Manager
         private int maxStack = 9;
         [SerializeField]
         private List<ItemsSpace> items = new List<ItemsSpace>();
+        [Space]
+        [SerializeField]
+        private int moneyAcquired = 0;
+        [Space]
         [SerializeField]
         private GameObject inventorySlot = null;
 
@@ -117,6 +121,33 @@ namespace Advent.Manager
             }
         }
 
+        public int GetMoneyAcquired
+        {
+            get
+            {
+                return moneyAcquired;
+            }
+            set
+            {
+                moneyAcquired = value;
+            }
+        }
+        public bool UseMoney(int charge, bool isSpending)
+        {
+            if (isSpending)
+            {
+                if(moneyAcquired <= charge)
+                {
+                    return false;
+                }
+                moneyAcquired -= charge;
+            }
+            else
+            {
+                moneyAcquired += charge;
+            }
+            return true;
+        }
         private int GetSameItemIndex(Item item)
         {
             for (int i = 0; i < items.Count; i++)

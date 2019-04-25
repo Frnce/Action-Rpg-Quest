@@ -11,7 +11,7 @@ namespace Advent
         {
             if (collision.CompareTag("Player"))
             {
-                SceneManager.LoadScene("SampleScene");
+                SceneManager.LoadScene("Forest_1-1");
             }
         }
     }
