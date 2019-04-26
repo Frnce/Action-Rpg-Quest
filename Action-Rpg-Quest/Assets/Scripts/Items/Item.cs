@@ -14,6 +14,7 @@ namespace Advent.Items
         public bool isDefaultItem = false;
         public GameObject gameobject;
         public int stackSize;         //stacksize -1 = not stackable
+        public int dropRate;
 
         public virtual void Use()
         {

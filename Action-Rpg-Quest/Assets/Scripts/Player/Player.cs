@@ -85,6 +85,7 @@ namespace Advent.Entities
         }
         private void InteractObject()
         {
+            Debug.Log(isNearInteractable);
             if(isNearInteractable && collidedObject != null && playerControls.GetInteractKey)
             {
                 Debug.Log(collidedObject.name);
@@ -165,7 +166,6 @@ namespace Advent.Entities
                 Debug.Log(collision.name);
                 isNearInteractable = true;
                 collidedObject = collision.gameObject;
-                //collision.GetComponent<IInteractable>().Interact();
             }
         }
         private void OnTriggerExit2D(Collider2D collision)

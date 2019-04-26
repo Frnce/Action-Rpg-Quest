@@ -1,5 +1,6 @@
 ﻿using Advent.Controller;
 using Advent.Interfaces;
+using Advent.Items;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,29 +18,24 @@ namespace Advent.GameObjects
         [SerializeField]
         protected bool isLocked = false;
         [SerializeField]
-        protected GameObject[] items;
-        [SerializeField]
         protected ChestType chestType;
         [Space]
         [SerializeField]
         private Sprite openSprite = null;
-
+        private LootScript loot;
         private void Start()
         {
             isOpen = false;
+            loot = GetComponent<LootScript>();
         }
         public void OpenChest()
         {
             if (!isOpen)
             {
-                foreach (GameObject item in items)
-                {
-                    Vector2 itemPosition = (Random.insideUnitCircle*2) + (Vector2)transform.position;
-                    Debug.Log(itemPosition);
-                    Instantiate(item, itemPosition, Quaternion.identity);
-                }
+                loot.DropLoot();
                 isOpen = true;
                 GetComponentInChildren<SpriteRenderer>().sprite = openSprite;
+                GetComponent<BoxCollider2D>().enabled = false;
             }
             else
             {

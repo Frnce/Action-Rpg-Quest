@@ -2913,7 +2913,7 @@ GameObject:
   m_Layer: 0
   m_Name: TravelTo
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3123,8 +3123,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1778556719}
   - component: {fileID: 1778556720}
-  - component: {fileID: 1778556717}
   - component: {fileID: 1778556718}
+  - component: {fileID: 1778556717}
+  - component: {fileID: 1778556721}
   m_Layer: 14
   m_Name: Basic Chest
   m_TagString: Interactable
@@ -3145,13 +3146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 0
-  items:
-  - {fileID: 8685415760671146099, guid: dffd022e683c34f4e80ff83b10875030, type: 3}
-  - {fileID: 5437731887373519427, guid: 9d386ff7764a2314da1dd772c9ec7150, type: 3}
-  - {fileID: 3992217928603168820, guid: af432a52a25eb174a965e3f92f2d8a3c, type: 3}
   chestType: 0
   openSprite: {fileID: 21300010, guid: d7058ebe7beb3ed4786f5f167f897aa4, type: 3}
-  closedSprite: {fileID: 21300000, guid: d7058ebe7beb3ed4786f5f167f897aa4, type: 3}
 --- !u!61 &1778556718
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3215,6 +3211,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1778556721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778556716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78024ea260181334896b4b12c43939bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: 6d444faf5dd81b44b885278d1ef2f29f, type: 2}
+  dropChance: 100
 --- !u!1 &1830553467
 GameObject:
   m_ObjectHideFlags: 0
