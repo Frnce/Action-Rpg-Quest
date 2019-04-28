@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Advent.Manager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,8 @@ namespace Advent
             if (collision.CompareTag("Player"))
             {
                 SceneManager.LoadScene("Forest_1-1");
+                //test
+                QuestManager.instance.AddQuestItem("Leave Town", 1);
             }
         }
     }

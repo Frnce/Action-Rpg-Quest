@@ -4,47 +4,33 @@ using UnityEngine;
 
 namespace Advent.Quests
 {
+    [System.Serializable]
     public class Quest
     {
-        public List<QuestEvent> questEvents = new List<QuestEvent>();
-        private List<QuestEvent> pathList = new List<QuestEvent>();
+        public enum QuestProgress
+        {
+            NOT_AVAILABLE,
+            AVAILABLE,
+            ACCEPTED,
+            COMPLETE,
+            DONE
+        }
 
-        public Quest() { }
-        
-        public QuestEvent AddQuestEvent(string name, string desc)
-        {
-            QuestEvent questEvent = new QuestEvent(name, desc);
-            questEvents.Add(questEvent);
-            return questEvent;
-        }
-        public void AddPath(string fromQuestEvent,string toQuestEvent)
-        {
-            QuestEvent from = FindQuestEvent(fromQuestEvent);
-            QuestEvent to = FindQuestEvent(toQuestEvent);
+        public string title; //title for the quest
+        public int id; //ID number of the quest
+        public QuestProgress progress; //state of the current quest
+        public string description; //string from our quest giver/reciever
+        public string hint;//string from our quest giver/reciever
+        public string congratulations;//string from our quest giver/reciever
+        public string summary;//string from our quest giver/reciever
+        public int nextQuest; //the next quest, if there is any quest chain
 
-            if(from != null && to != null)
-            {
-                QuestPath path = new QuestPath(from, to);
-                from.pathList.Add(path);
-            }
-        }
-        private QuestEvent FindQuestEvent(string id)
-        {
-            foreach (QuestEvent quest in questEvents)
-            {
-                if(quest.GetId() == id)
-                {
-                    return quest;
-                }
-            }
-            return null;
-        }
-        public void PrintPath()
-        {   
-            foreach (QuestEvent quest in questEvents)
-            {
-                Debug.Log(quest.name);
-            }
-        }
+        public string questObjective; //name of the quest objective
+        public int questObjectiveCount; //current number of quest objective
+        public int questObjectiveRequirement; //required amount of quest objective objects
+
+        public int expReward;
+        public int goldReward;
+        public string itemReward;
     }
 }

@@ -8,6 +8,9 @@ TagManager:
   - Walls
   - NPC
   - Interactable
+  - AcceptQuestButton
+  - GiveUpQuestButton
+  - CompleteQuestButton
   layers:
   - Default
   - TransparentFX
