@@ -13,32 +13,32 @@ namespace Advent.UI
         public int questID;
         public TMP_Text questTitle;
 
-        private GameObject acceptButton;
-        private GameObject giveupButton;
-        private GameObject completeButton;
+        //private GameObject acceptButton;
+        //private GameObject giveupButton;
+        //private GameObject completeButton;
 
-        private QButtonScript acceptButtonScript;
-        private QButtonScript giveupButtonScript;
-        private QButtonScript completeButtonScript;
+        //private QButtonScript acceptButtonScript;
+        //private QButtonScript giveupButtonScript;
+        //private QButtonScript completeButtonScript;
 
-        private void Start()
-        {
-            //acceptButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Accept Button").gameObject;
-            acceptButton = GameObject.FindWithTag("AcceptQuestButton");
-            acceptButtonScript = acceptButton.GetComponent<QButtonScript>();
+        //private void Start()
+        //{
+        //    //acceptButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Accept Button").gameObject;
+        //    acceptButton = GameObject.FindWithTag("AcceptQuestButton");
+        //    //acceptButtonScript = acceptButton.GetComponent<QButtonScript>();
+        //    Debug.Log(acceptButton);
+        //    //giveupButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Giveup Button").gameObject;
+        //    giveupButton = GameObject.FindWithTag("GiveUpQuestButton");
+        //    //giveupButtonScript = acceptButton.GetComponent<QButtonScript>();
 
-            //giveupButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Giveup Button").gameObject;
-            giveupButton = GameObject.FindWithTag("GiveUpQuestButton");
-            giveupButtonScript = acceptButton.GetComponent<QButtonScript>();
+        //    //completeButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Complete Button").gameObject;
+        //    completeButton = GameObject.FindWithTag("CompleteQuestButton");
+        //    //completeButtonScript = acceptButton.GetComponent<QButtonScript>();
 
-            //completeButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Complete Button").gameObject;
-            completeButton = GameObject.FindWithTag("CompleteQuestButton");
-            completeButtonScript = acceptButton.GetComponent<QButtonScript>();
-
-            acceptButton.SetActive(false);
-            giveupButton.SetActive(false);
-            completeButton.SetActive(false);
-        }
+        //    acceptButton.SetActive(false);
+        //    giveupButton.SetActive(false);
+        //    completeButton.SetActive(false);
+        //}
 
         public void ShowAllInfos()
         {
@@ -47,32 +47,32 @@ namespace Advent.UI
             //ACcept button
             if (QuestManager.instance.RequestAvailableQuest(questID))
             {
-                acceptButton.SetActive(true);
-                acceptButtonScript.questID = questID;
+                QuestUIManager.instance.acceptButton.SetActive(true);
+                QuestUIManager.instance.acceptButtonScript.GetComponent<QButtonScript>().questID = questID;
             }
             else
             {
-                acceptButton.SetActive(false);
+                QuestUIManager.instance.acceptButton.SetActive(false);
             }
             //giveup button
             if (QuestManager.instance.RequestAcceptedQuest(questID))
             {
-                giveupButton.SetActive(true);
-                giveupButtonScript.questID = questID;
+                QuestUIManager.instance.giveupButton.SetActive(true);
+                QuestUIManager.instance.giveupButtonScript.GetComponent<QButtonScript>().questID = questID;
             }
             else
             {
-                giveupButton.SetActive(false);
+                QuestUIManager.instance.giveupButton.SetActive(false);
             }
             //complete Button
             if (QuestManager.instance.RequestCompleteQuest(questID))
             {
-                completeButton.SetActive(true);
-                completeButtonScript.questID = questID;
+                QuestUIManager.instance.completeButton.SetActive(true);
+                QuestUIManager.instance.completeButtonScript.GetComponent<QButtonScript>().questID = questID;
             }
             else
             {
-                completeButton.SetActive(false);
+                QuestUIManager.instance.completeButton.SetActive(false);
             }
         }
 
@@ -85,7 +85,7 @@ namespace Advent.UI
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-
+                item.SetQuestMaker();
             }
         }
 
@@ -98,7 +98,7 @@ namespace Advent.UI
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-
+                item.SetQuestMaker();
             }
         }
 
@@ -111,12 +111,15 @@ namespace Advent.UI
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-
+                item.SetQuestMaker();
             }
         }
         public void ClosePanel()
         {
             QuestUIManager.instance.HideQuestPanel();
+            QuestUIManager.instance.acceptButton.SetActive(false);
+            QuestUIManager.instance.giveupButton.SetActive(false);
+            QuestUIManager.instance.completeButton.SetActive(false);
         }
     }
 }

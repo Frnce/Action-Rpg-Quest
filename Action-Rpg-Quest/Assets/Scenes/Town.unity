@@ -211,6 +211,24 @@ Canvas:
   m_SortingLayerID: 1885101685
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &108033906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4932814058172141531, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &108033908 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4932814058172141532, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108033906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f051a33213a6a4f9f09b37aa04200c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &219410819
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +468,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &787682686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1727561831081880501, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &787682688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1727561831081880502, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787682686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f051a33213a6a4f9f09b37aa04200c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &825128364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,6 +2848,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1640812493 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 950342320817962012, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640812495 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 950342320817962013, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2532095955455261720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640812493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f051a33213a6a4f9f09b37aa04200c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1778556716
 GameObject:
   m_ObjectHideFlags: 0
@@ -9156,6 +9210,132 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: AcceptQuestButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4215898199525435419, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.549988
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: completeButtonScript
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: giveupButtonScript
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: acceptButton
+      value: 
+      objectReference: {fileID: 108033906}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: giveupButton
+      value: 
+      objectReference: {fileID: 1640812493}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: completeButton
+      value: 
+      objectReference: {fileID: 787682686}
+    - target: {fileID: 3477741187999044372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: qLogButton
+      value: 
+      objectReference: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0,
+        type: 3}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1640812495}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GiveUpQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 62652056545158372, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 787682688}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CompleteQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569169459521116504, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108033908}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AcceptQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 796095925483814921, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}

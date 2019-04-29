@@ -220,5 +220,15 @@ namespace Advent.Manager
             }
             return false;
         }
+        public void ShowQuestLog(int questID)
+        {
+            for (int i = 0; i < currentQuestList.Count; i++)
+            {
+                if(currentQuestList[i].id == questID)
+                {
+                    QuestUIManager.instance.ShowQuestLog(currentQuestList[i]);
+                }
+            }
+        }
     }
 }

@@ -39,9 +39,9 @@ namespace Advent.UI
         public GameObject qLogButton;
         private List<GameObject> qButtons = new List<GameObject>();
 
-        private GameObject acceptButton;
-        private GameObject giveupButton;
-        private GameObject completeButton;
+        public GameObject acceptButton;
+        public GameObject giveupButton;
+        public GameObject completeButton;
 
         public Transform qButtonSpace1;
         public Transform qButtonSpacer2;
@@ -56,9 +56,28 @@ namespace Advent.UI
         public TMP_Text questLogSummary;
 
         private QuestObject currentQuestObject;
-        // Update is called once per frame
+
+        public QButtonScript acceptButtonScript;
+        public QButtonScript giveupButtonScript;
+        public QButtonScript completeButtonScript;
+
         private void Start()
         {
+            //acceptButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Accept Button").gameObject;
+            //acceptButton = GameObject.FindWithTag("AcceptQuestButton");
+            acceptButtonScript = acceptButton.GetComponent<QButtonScript>();
+            //giveupButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Giveup Button").gameObject;
+            //giveupButton = GameObject.FindWithTag("GiveUpQuestButton");
+            giveupButtonScript = acceptButton.GetComponent<QButtonScript>();
+
+            //completeButton = GameObject.Find("Canvas").gameObject.transform.Find("QuestPanel").gameObject.transform.Find("QuestDescription").gameObject.transform.Find("GameObject").gameObject.transform.Find("Complete Button").gameObject;
+            //completeButton = GameObject.FindWithTag("CompleteQuestButton");
+            completeButtonScript = acceptButton.GetComponent<QButtonScript>();
+
+            acceptButton.SetActive(false);
+            giveupButton.SetActive(false);
+            completeButton.SetActive(false);
+
             HideQuestPanel();
         }
         void Update()
@@ -90,6 +109,43 @@ namespace Advent.UI
 
             FillQuestButtons();
         }
+        public void ShowQuestLogPanel()
+        {
+            questLogPanel.SetActive(questLogPanelActive);
+            if(questLogPanelActive && !questPanelActive)
+            {
+                foreach (Quest currentQuest in QuestManager.instance.currentQuestList)
+                {
+                    GameObject questButton = Instantiate(qLogButton);
+                    QLogButtonScript qButton = questButton.GetComponent<QLogButtonScript>();
+
+                    qButton.questID = currentQuest.id;
+                    qButton.questTitle.text = currentQuest.title;
+
+                    qButton.transform.SetParent(qLogButtonSpacer,false);
+                    qButtons.Add(questButton);
+                }
+            }
+            else if(!questLogPanelActive && !questPanelActive)
+            {
+                HideQuestLogPanel();
+            }
+        }
+        public void ShowQuestLog(Quest activeQuest)
+        {
+            questLogTitle.text = activeQuest.title;
+            if(activeQuest.progress == Quest.QuestProgress.ACCEPTED)
+            {
+                questLogDescription.text = activeQuest.hint;
+                questLogSummary.text = activeQuest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.questObjectiveRequirement;
+            }
+            else if(activeQuest.progress == Quest.QuestProgress.COMPLETE)
+            {
+                questLogDescription.text = activeQuest.congratulations;
+                questLogSummary.text = activeQuest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.questObjectiveRequirement;
+            }
+        }
+
         public void HideQuestPanel()
         {
             questPanelActive = false;
@@ -109,6 +165,21 @@ namespace Advent.UI
             }
             qButtons.Clear();
             questPanel.SetActive(questPanelActive);
+        }
+        public void HideQuestLogPanel()
+        {
+            questLogPanelActive = false;
+
+            questLogTitle.text = "";
+            questLogDescription.text = "";
+            questLogSummary.text = "";
+
+            for (int i = 0; i < qButtons.Count; i++)
+            {
+                Destroy(qButtons[i]);
+            }
+            qButtons.Clear();
+            questLogPanel.SetActive(questLogPanelActive);
         }
 
         void FillQuestButtons()

@@ -27,7 +27,7 @@ namespace Advent.Quests
             SetQuestMaker();
         }
 
-        private void SetQuestMaker()
+        public void SetQuestMaker()
         {
             if (QuestManager.instance.CheckCompletedQuest(this))
             {
@@ -58,9 +58,12 @@ namespace Advent.Quests
         {
             if(inTrigger && PlayerController.instance.GetInteractKey)
             {
-                //quest ui manager 
-                QuestUIManager.instance.CheckQuests(this);
-                //QuestManager.instance.RequestQuest(this);
+                if (!QuestUIManager.instance.questPanelActive)
+                {
+                    //quest ui manager 
+                    QuestUIManager.instance.CheckQuests(this);
+                    //QuestManager.instance.RequestQuest(this);
+                }
             }
         }
 

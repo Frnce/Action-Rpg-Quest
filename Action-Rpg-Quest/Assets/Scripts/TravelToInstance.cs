@@ -12,9 +12,9 @@ namespace Advent
         {
             if (collision.CompareTag("Player"))
             {
+                QuestManager.instance.AddQuestItem("Leave Town", 1);
                 SceneManager.LoadScene("Forest_1-1");
                 //test
-                QuestManager.instance.AddQuestItem("Leave Town", 1);
             }
         }
     }
