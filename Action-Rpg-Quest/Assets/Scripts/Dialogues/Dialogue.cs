@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialogue : MonoBehaviour
+namespace Advent.Dialogues
 {
-    // Start is called before the first frame update
-    void Start()
+    [System.Serializable]
+    public class Dialogue
     {
-        
-    }
+        public string name;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [TextArea(3,10)]
+        public string[] sentences;
     }
 }

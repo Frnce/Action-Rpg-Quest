@@ -1,18 +1,17 @@
-﻿using System.Collections;
+﻿using Advent.Manager;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTrigger : MonoBehaviour
+namespace Advent.Dialogues
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DialogueTrigger : MonoBehaviour
     {
-        
-    }
+        public Dialogue dialogue;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void TriggerDialogue()
+        {
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        }
     }
 }
