@@ -6,6 +6,21 @@ using Advent.UI;
 
 namespace Advent.Manager
 {
+    public enum QuestProgress
+    {
+        NOT_AVAILABLE,
+        AVAILABLE,
+        ACCEPTED,
+        COMPLETE,
+        DONE
+    }
+    [System.Serializable]
+    public class QuestData
+    {
+        public Quest quest;
+        public QuestProgress progress; //state of the current quest
+        public int questObjectiveCount; //current number of quest objective
+    }
     public class QuestManager : MonoBehaviour
     {
         #region singleton
@@ -24,8 +39,8 @@ namespace Advent.Manager
         }
         #endregion
 
-        public List<Quest> questList = new List<Quest>();
-        public List<Quest> currentQuestList = new List<Quest>();
+        public List<QuestData> questList = new List<QuestData>();
+        public List<QuestData> currentQuestList = new List<QuestData>();
 
         public void RequestQuest(QuestObject npcQuestObject)
         {
@@ -35,7 +50,7 @@ namespace Advent.Manager
                 {
                     for (int k = 0; k < npcQuestObject.availableQuestIDs.Count; k++)
                     {
-                        if(questList[i].id == npcQuestObject.availableQuestIDs[k] && questList[i].progress == Quest.QuestProgress.AVAILABLE)
+                        if(questList[i].quest.id == npcQuestObject.availableQuestIDs[k] && questList[i].progress == QuestProgress.AVAILABLE)
                         {
                             Debug.Log("QuestID : " + npcQuestObject.availableQuestIDs[k] + " " + questList[i].progress);
                             //test
@@ -52,7 +67,7 @@ namespace Advent.Manager
             {
                 for (int j = 0; j < npcQuestObject.receivableQuestIDs.Count; j++)
                 {
-                    if(currentQuestList[i].id == npcQuestObject.receivableQuestIDs[j] && currentQuestList[i].progress == Quest.QuestProgress.AVAILABLE || currentQuestList[i].progress == Quest.QuestProgress.COMPLETE)
+                    if(currentQuestList[i].quest.id == npcQuestObject.receivableQuestIDs[j] && currentQuestList[i].progress == QuestProgress.AVAILABLE || currentQuestList[i].progress == QuestProgress.COMPLETE)
                     {
                         Debug.Log("Quest ID: " + npcQuestObject.receivableQuestIDs[j] + " is " + currentQuestList[i].progress);
 
@@ -68,10 +83,10 @@ namespace Advent.Manager
         {
             for (int i = 0; i < questList.Count; i++)
             {
-                if(questList[i].id == questID && questList[i].progress == Quest.QuestProgress.AVAILABLE)
+                if(questList[i].quest.id == questID && questList[i].progress == QuestProgress.AVAILABLE)
                 {
                     currentQuestList.Add(questList[i]);
-                    questList[i].progress = Quest.QuestProgress.ACCEPTED;
+                    questList[i].progress = QuestProgress.ACCEPTED;
                 }
             }
         }
@@ -80,9 +95,9 @@ namespace Advent.Manager
         {
             for (int i = 0; i < currentQuestList.Count; i++)
             {
-                if(currentQuestList[i].id == questID && currentQuestList[i].progress == Quest.QuestProgress.ACCEPTED)
+                if(currentQuestList[i].quest.id == questID && currentQuestList[i].progress == QuestProgress.ACCEPTED)
                 {
-                    currentQuestList[i].progress = Quest.QuestProgress.AVAILABLE;
+                    currentQuestList[i].progress = QuestProgress.AVAILABLE;
                     currentQuestList[i].questObjectiveCount = 0;
                     currentQuestList.Remove(currentQuestList[i]);
                 }
@@ -93,13 +108,12 @@ namespace Advent.Manager
         {
             for (int i = 0; i < currentQuestList.Count; i++)
             {
-                if(currentQuestList[i].id == questID && currentQuestList[i].progress == Quest.QuestProgress.COMPLETE)
+                if(currentQuestList[i].quest.id == questID && currentQuestList[i].progress == QuestProgress.COMPLETE)
                 {
-                    currentQuestList[i].progress = Quest.QuestProgress.DONE;
+                    currentQuestList[i].progress = QuestProgress.DONE;
                     currentQuestList.Remove(currentQuestList[i]);
 
                     //reward
-
                 }
             }
             //check for chain quest
@@ -111,9 +125,9 @@ namespace Advent.Manager
             int tempID = 0;
             for (int i = 0; i < questList.Count; i++)
             {
-                if (questList[i].id == questID && questList[i].nextQuest > 0)
+                if (questList[i].quest.id == questID && questList[i].quest.nextQuest > 0)
                 {
-                    tempID = questList[i].nextQuest;
+                    tempID = questList[i].quest.nextQuest;
                 }
             }
 
@@ -121,9 +135,9 @@ namespace Advent.Manager
             {
                 for (int i = 0; i < questList.Count; i++)
                 {
-                    if (questList[i].id == tempID && questList[i].progress == Quest.QuestProgress.NOT_AVAILABLE)
+                    if (questList[i].quest.id == tempID && questList[i].progress == QuestProgress.NOT_AVAILABLE)
                     {
-                        questList[i].progress = Quest.QuestProgress.AVAILABLE;
+                        questList[i].progress = QuestProgress.AVAILABLE;
                     }
                 }
             }
@@ -132,14 +146,14 @@ namespace Advent.Manager
         {
             for (int i = 0; i < currentQuestList.Count; i++)
             {
-                if(currentQuestList[i].questObjective == questObjective && currentQuestList[i].progress == Quest.QuestProgress.ACCEPTED)
+                if(currentQuestList[i].quest.questObjective == questObjective && currentQuestList[i].progress == QuestProgress.ACCEPTED)
                 {
                     currentQuestList[i].questObjectiveCount += itemAmount;
                 }
 
-                if(currentQuestList[i].questObjectiveCount >= currentQuestList[i].questObjectiveRequirement && currentQuestList[i].progress == Quest.QuestProgress.ACCEPTED)
+                if(currentQuestList[i].questObjectiveCount >= currentQuestList[i].quest.questObjectiveRequirement && currentQuestList[i].progress == QuestProgress.ACCEPTED)
                 {
-                    currentQuestList[i].progress = Quest.QuestProgress.COMPLETE;
+                    currentQuestList[i].progress = QuestProgress.COMPLETE;
                 }
             }
         }
@@ -148,7 +162,7 @@ namespace Advent.Manager
         {
             for (int i = 0; i < questList.Count; i++)
             {
-                if (questList[i].id == questID && questList[i].progress == Quest.QuestProgress.AVAILABLE)
+                if (questList[i].quest.id == questID && questList[i].progress == QuestProgress.AVAILABLE)
                 {
                     return true;
                 }
@@ -159,7 +173,7 @@ namespace Advent.Manager
         {
             for (int i = 0; i < questList.Count; i++)
             {
-                if (questList[i].id == questID && questList[i].progress == Quest.QuestProgress.ACCEPTED)
+                if (questList[i].quest.id == questID && questList[i].progress == QuestProgress.ACCEPTED)
                 {
                     return true;
                 }
@@ -170,7 +184,7 @@ namespace Advent.Manager
         {
             for (int i = 0; i < questList.Count; i++)
             {
-                if (questList[i].id == questID && questList[i].progress == Quest.QuestProgress.COMPLETE)
+                if (questList[i].quest.id == questID && questList[i].progress == QuestProgress.COMPLETE)
                 {
                     return true;
                 }
@@ -184,7 +198,7 @@ namespace Advent.Manager
             {
                 for (int j = 0; j < npcQuestObject.availableQuestIDs.Count; j++)
                 {
-                    if(questList[i].id  == npcQuestObject.availableQuestIDs[j] && questList[i].progress == Quest.QuestProgress.AVAILABLE)
+                    if(questList[i].quest.id  == npcQuestObject.availableQuestIDs[j] && questList[i].progress == QuestProgress.AVAILABLE)
                     {
                         return true;
                     }
@@ -198,7 +212,7 @@ namespace Advent.Manager
             {
                 for (int j = 0; j < npcQuestObject.receivableQuestIDs.Count; j++)
                 {
-                    if (questList[i].id == npcQuestObject.receivableQuestIDs[j] && questList[i].progress == Quest.QuestProgress.ACCEPTED)
+                    if (questList[i].quest.id == npcQuestObject.receivableQuestIDs[j] && questList[i].progress == QuestProgress.ACCEPTED)
                     {
                         return true;
                     }
@@ -212,7 +226,7 @@ namespace Advent.Manager
             {
                 for (int j = 0; j < npcQuestObject.receivableQuestIDs.Count; j++)
                 {
-                    if (questList[i].id == npcQuestObject.receivableQuestIDs[j] && questList[i].progress == Quest.QuestProgress.COMPLETE)
+                    if (questList[i].quest.id == npcQuestObject.receivableQuestIDs[j] && questList[i].progress == QuestProgress.COMPLETE)
                     {
                         return true;
                     }
@@ -224,7 +238,7 @@ namespace Advent.Manager
         {
             for (int i = 0; i < currentQuestList.Count; i++)
             {
-                if(currentQuestList[i].id == questID)
+                if(currentQuestList[i].quest.id == questID)
                 {
                     QuestUIManager.instance.ShowQuestLog(currentQuestList[i]);
                 }

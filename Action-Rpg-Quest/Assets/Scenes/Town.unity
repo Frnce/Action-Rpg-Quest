@@ -543,8 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a26c2d9d871fc44aad64e0dffeb3579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableQuestIDs: 01000000
-  receivableQuestIDs: 01000000
+  availableQuestIDs: 00000000
+  receivableQuestIDs: 00000000
   questMarker: {fileID: 32845996}
   theImage: {fileID: 1144552685}
   questAvailableSprite: {fileID: 21300000, guid: 4347de15d496d854ba7d568b935d7ea4,

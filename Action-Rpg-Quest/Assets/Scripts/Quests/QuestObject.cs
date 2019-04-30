@@ -10,8 +10,6 @@ namespace Advent.Quests
 {
     public class QuestObject : MonoBehaviour
     {
-        private bool inTrigger = false;
-
         public List<int> availableQuestIDs = new List<int>();
         public List<int> receivableQuestIDs = new List<int>();
 
@@ -50,35 +48,6 @@ namespace Advent.Quests
             else
             {
                 questMarker.SetActive(false);
-            }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if(inTrigger && PlayerController.instance.GetInteractKey)
-            {
-                if (!QuestUIManager.instance.questPanelActive)
-                {
-                    //quest ui manager 
-                    QuestUIManager.instance.CheckQuests(this);
-                    //QuestManager.instance.RequestQuest(this);
-                }
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                inTrigger = true;
-            }
-        }
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                inTrigger = false;
             }
         }
     }

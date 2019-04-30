@@ -32,8 +32,8 @@ namespace Advent.UI
         public GameObject questPanel;
         public GameObject questLogPanel;
 
-        public List<Quest> availableQuests = new List<Quest>();
-        public List<Quest> activeQuests = new List<Quest>();
+        public List<QuestData> availableQuests = new List<QuestData>();
+        public List<QuestData> activeQuests = new List<QuestData>();
 
         public GameObject qButton;
         public GameObject qLogButton;
@@ -114,13 +114,13 @@ namespace Advent.UI
             questLogPanel.SetActive(questLogPanelActive);
             if(questLogPanelActive && !questPanelActive)
             {
-                foreach (Quest currentQuest in QuestManager.instance.currentQuestList)
+                foreach (QuestData currentQuest in QuestManager.instance.currentQuestList)
                 {
                     GameObject questButton = Instantiate(qLogButton);
                     QLogButtonScript qButton = questButton.GetComponent<QLogButtonScript>();
 
-                    qButton.questID = currentQuest.id;
-                    qButton.questTitle.text = currentQuest.title;
+                    qButton.questID = currentQuest.quest.id;
+                    qButton.questTitle.text = currentQuest.quest.title;
 
                     qButton.transform.SetParent(qLogButtonSpacer,false);
                     qButtons.Add(questButton);
@@ -131,18 +131,18 @@ namespace Advent.UI
                 HideQuestLogPanel();
             }
         }
-        public void ShowQuestLog(Quest activeQuest)
+        public void ShowQuestLog(QuestData activeQuest)
         {
-            questLogTitle.text = activeQuest.title;
-            if(activeQuest.progress == Quest.QuestProgress.ACCEPTED)
+            questLogTitle.text = activeQuest.quest.title;
+            if(activeQuest.progress == QuestProgress.ACCEPTED)
             {
-                questLogDescription.text = activeQuest.hint;
-                questLogSummary.text = activeQuest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.questObjectiveRequirement;
+                questLogDescription.text = activeQuest.quest.hint;
+                questLogSummary.text = activeQuest.quest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.quest.questObjectiveRequirement;
             }
-            else if(activeQuest.progress == Quest.QuestProgress.COMPLETE)
+            else if(activeQuest.progress == QuestProgress.COMPLETE)
             {
-                questLogDescription.text = activeQuest.congratulations;
-                questLogSummary.text = activeQuest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.questObjectiveRequirement;
+                questLogDescription.text = activeQuest.quest.congratulations;
+                questLogSummary.text = activeQuest.quest.questObjective + " : " + activeQuest.questObjectiveCount + " / " + activeQuest.quest.questObjectiveRequirement;
             }
         }
 
@@ -184,25 +184,25 @@ namespace Advent.UI
 
         void FillQuestButtons()
         {
-            foreach (Quest availableQuest in availableQuests)
+            foreach (QuestData availableQuest in availableQuests)
             {
                 GameObject questButton = Instantiate(qButton);
                 QButtonScript qButtonScript = questButton.GetComponent<QButtonScript>();
 
-                qButtonScript.questID = availableQuest.id;
-                qButtonScript.questTitle.text = availableQuest.title;
+                qButtonScript.questID = availableQuest.quest.id;
+                qButtonScript.questTitle.text = availableQuest.quest.title;
 
                 questButton.transform.SetParent(qButtonSpace1, false);
                 qButtons.Add(questButton);
             }
 
-            foreach (Quest activeQuest in activeQuests)
+            foreach (QuestData activeQuest in activeQuests)
             {
                 GameObject questButton = Instantiate(qButton);
                 QButtonScript qButtonScript = questButton.GetComponent<QButtonScript>();
 
-                qButtonScript.questID = activeQuest.id;
-                qButtonScript.questTitle.text = activeQuest.title;
+                qButtonScript.questID = activeQuest.quest.id;
+                qButtonScript.questTitle.text = activeQuest.quest.title;
 
                 questButton.transform.SetParent(qButtonSpacer2, false);
                 qButtons.Add(questButton);
@@ -213,30 +213,30 @@ namespace Advent.UI
         {
             for (int i = 0; i < availableQuests.Count; i++)
             {
-                if(availableQuests[i].id == questID)
+                if(availableQuests[i].quest.id == questID)
                 {
-                    questTitle.text = availableQuests[i].title;
-                    if(availableQuests[i].progress == Quest.QuestProgress.AVAILABLE)
+                    questTitle.text = availableQuests[i].quest.title;
+                    if(availableQuests[i].progress == QuestProgress.AVAILABLE)
                     {
-                        questDescription.text = availableQuests[i].description;
-                        questSummary.text = availableQuests[i].questObjective + " : " + availableQuests[i].questObjectiveCount + " / " + availableQuests[i].questObjectiveRequirement;
+                        questDescription.text = availableQuests[i].quest.description;
+                        questSummary.text = availableQuests[i].quest.questObjective + " : " + availableQuests[i].questObjectiveCount + " / " + availableQuests[i].quest.questObjectiveRequirement;
                     }
                 }
             }
 
             for (int i = 0; i < activeQuests.Count; i++)
             {
-                if(activeQuests[i].id == questID)
+                if(activeQuests[i].quest.id == questID)
                 {
-                    questTitle.text = activeQuests[i].title;
-                    if(activeQuests[i].progress == Quest.QuestProgress.ACCEPTED)
+                    questTitle.text = activeQuests[i].quest.title;
+                    if(activeQuests[i].progress == QuestProgress.ACCEPTED)
                     {
-                        questDescription.text = activeQuests[i].hint;
-                        questSummary.text = activeQuests[i].questObjective + " : " + activeQuests[i].questObjectiveCount + " / " + activeQuests[i].questObjectiveRequirement;
+                        questDescription.text = activeQuests[i].quest.hint;
+                        questSummary.text = activeQuests[i].quest.questObjective + " : " + activeQuests[i].questObjectiveCount + " / " + activeQuests[i].quest.questObjectiveRequirement;
                     }
-                    else if(activeQuests[i].progress == Quest.QuestProgress.COMPLETE)
+                    else if(activeQuests[i].progress == QuestProgress.COMPLETE)
                     {
-                        questDescription.text = activeQuests[i].congratulations;
+                        questDescription.text = activeQuests[i].quest.congratulations;
                     }
                 }
             }

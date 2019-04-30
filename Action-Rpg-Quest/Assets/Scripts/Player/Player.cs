@@ -85,7 +85,6 @@ namespace Advent.Entities
         }
         private void InteractObject()
         {
-            Debug.Log(isNearInteractable);
             if(isNearInteractable && collidedObject != null && playerControls.GetInteractKey)
             {
                 Debug.Log(collidedObject.name);
