@@ -7,6 +7,19 @@ namespace Advent.Manager
 {
     public class DialogueManager : MonoBehaviour
     {
+        public static DialogueManager instance;
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(gameObject);
+        }
         private Queue<string> sentences;
 
         private void Start()
