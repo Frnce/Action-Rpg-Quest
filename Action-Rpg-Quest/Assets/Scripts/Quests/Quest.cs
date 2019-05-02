@@ -11,11 +11,18 @@ namespace Advent.Quests
         public Item item;
         public int count;
     }
+    public enum QuestType
+    {
+        MAIN,
+        SIDE,
+        MISSION
+    }
     [CreateAssetMenu(menuName ="Quest/Quests",fileName = "New Quest")]
     public class Quest : ScriptableObject
     {
         public string title; //title for the quest
         public int id; //ID number of the quest
+        public QuestType questType;
         [TextArea(3,10)]
         public string description; //string from our quest giver/reciever
         [TextArea(3, 10)]

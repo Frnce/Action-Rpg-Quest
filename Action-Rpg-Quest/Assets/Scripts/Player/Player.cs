@@ -77,7 +77,7 @@ namespace Advent.Entities
                     }
                 }
             }
-            if (states != PlayerStates.MOVING)
+            if (states != PlayerStates.MOVING && states != PlayerStates.ATTACKING)
             {
                 PlayerLookAtMouse();
             }
