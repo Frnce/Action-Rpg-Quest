@@ -77,19 +77,15 @@ namespace Advent.Entities
                     }
                 }
             }
+            if (states != PlayerStates.MOVING)
+            {
+                PlayerLookAtMouse();
+            }
             InteractObject();
             //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
             //{
             //    ScreenCapture.CaptureScreenshot("SomeLevel");
             //}
-        }
-        private void InteractObject()
-        {
-            if(isNearInteractable && collidedObject != null && playerControls.GetInteractKey)
-            {
-                Debug.Log(collidedObject.name);
-                collidedObject.GetComponent<IInteractable>().Interact();
-            }
         }
         private void FixedUpdate()
         {
@@ -104,6 +100,17 @@ namespace Advent.Entities
             yield return new WaitForSeconds(rollTime);
             states = PlayerStates.IDLE;
             rb2d.velocity = Vector3.zero;
+        }
+        private void PlayerLookAtMouse()
+        {
+            Vector3 mouse = playerControls.GetMousePosition;
+            Vector2 lookAt = (mouse - transform.position).normalized;
+            ;
+            if(playerDir.x == 0 && playerDir.y == 0)
+            {
+                anim.SetFloat("yMove", lookAt.y);
+                anim.SetFloat("xMove", lookAt.x);
+            }
         }
         private void Movement()
         {
@@ -122,6 +129,14 @@ namespace Advent.Entities
                 {
                     rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
                 }
+            }
+        }
+        private void InteractObject()
+        {
+            if (isNearInteractable && collidedObject != null && playerControls.GetInteractKey)
+            {
+                Debug.Log(collidedObject.name);
+                collidedObject.GetComponent<IInteractable>().Interact();
             }
         }
         private void SetAttackAnimations()
@@ -147,6 +162,8 @@ namespace Advent.Entities
             else
             {
                 anim.SetBool("isMoving", false);
+                anim.SetFloat("yMove", 0);
+                anim.SetFloat("xMove", 0);
             }
         }
         private IEnumerator AttackCoroutine(Vector3 direction)
