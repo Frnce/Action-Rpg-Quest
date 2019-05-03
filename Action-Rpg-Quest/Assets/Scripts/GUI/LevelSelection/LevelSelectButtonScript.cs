@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Advent.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButtonScript : MonoBehaviour
@@ -8,6 +9,7 @@ public class LevelSelectButtonScript : MonoBehaviour
         if (SceneTitle != "???")
         {
             SceneManager.LoadScene(SceneTitle);
+            LevelSelectUIManager.instance.CloseLevelSelect();
         }
         else
         {
