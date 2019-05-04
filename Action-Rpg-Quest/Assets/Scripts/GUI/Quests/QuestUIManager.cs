@@ -21,7 +21,6 @@ namespace Advent.UI
             {
                 Destroy(gameObject);
             }
-            DontDestroyOnLoad(gameObject);
         }
 
         public bool questAvailable = false;
@@ -109,28 +108,28 @@ namespace Advent.UI
 
             FillQuestButtons();
         }
-        public void ShowQuestLogPanel()
-        {
-            questLogPanel.SetActive(questLogPanelActive);
-            if(questLogPanelActive && !questPanelActive)
-            {
-                foreach (QuestData currentQuest in QuestManager.instance.currentQuestList)
-                {
-                    GameObject questButton = Instantiate(qLogButton);
-                    QLogButtonScript qButton = questButton.GetComponent<QLogButtonScript>();
+        //public void ShowQuestLogPanel()
+        //{
+        //    questLogPanel.SetActive(questLogPanelActive);
+        //    if(questLogPanelActive && !questPanelActive)
+        //    {
+        //        foreach (QuestData currentQuest in QuestManager.instance.currentQuestList)
+        //        {
+        //            GameObject questButton = Instantiate(qLogButton);
+        //            QLogButtonScript qButton = questButton.GetComponent<QLogButtonScript>();
 
-                    qButton.questID = currentQuest.quest.id;
-                    qButton.questTitle.text = currentQuest.quest.title;
+        //            qButton.questID = currentQuest.quest.id;
+        //            qButton.questTitle.text = currentQuest.quest.title;
 
-                    qButton.transform.SetParent(qLogButtonSpacer,false);
-                    qButtons.Add(questButton);
-                }
-            }
-            else if(!questLogPanelActive && !questPanelActive)
-            {
-                HideQuestLogPanel();
-            }
-        }
+        //            qButton.transform.SetParent(qLogButtonSpacer,false);
+        //            qButtons.Add(questButton);
+        //        }
+        //    }
+        //    else if(!questLogPanelActive && !questPanelActive)
+        //    {
+        //        HideQuestLogPanel();
+        //    }
+        //}
         public void ShowQuestLog(QuestData activeQuest)
         {
             questLogTitle.text = activeQuest.quest.title;
@@ -191,6 +190,7 @@ namespace Advent.UI
 
                 qButtonScript.questID = availableQuest.quest.id;
                 qButtonScript.questTitle.text = availableQuest.quest.title;
+                qButtonScript.questType = availableQuest.quest.questType;
 
                 questButton.transform.SetParent(qButtonSpace1, false);
                 qButtons.Add(questButton);
@@ -203,6 +203,7 @@ namespace Advent.UI
 
                 qButtonScript.questID = activeQuest.quest.id;
                 qButtonScript.questTitle.text = activeQuest.quest.title;
+                qButtonScript.questType = activeQuest.quest.questType;
 
                 questButton.transform.SetParent(qButtonSpacer2, false);
                 qButtons.Add(questButton);

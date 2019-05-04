@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Advent.Manager
 {
-    public class StatsManager : MonoBehaviour
+    public class UIManager : MonoBehaviour
     {
-        public static StatsManager instance;
+        public static UIManager instance;
         private void Awake()
         {
             if(instance != null)
@@ -17,18 +17,8 @@ namespace Advent.Manager
             {
                 instance = this;
             }
+
             DontDestroyOnLoad(gameObject);
-        }
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Advent.UI
     public class QButtonScript : MonoBehaviour
     {
         public int questID;
+        public QuestType questType;
         public TMP_Text questTitle;
 
         //private GameObject acceptButton;
@@ -78,40 +79,40 @@ namespace Advent.UI
 
         public void AcceptQuest()
         {
-            QuestManager.instance.AcceptQuest(questID);
+            QuestManager.instance.AcceptQuest(questID, questType);
             QuestUIManager.instance.HideQuestPanel();
 
             //Update all Quest Giver NPC
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-                item.SetQuestMaker();
+                //item.SetQuestMaker();
             }
         }
 
         public void GiveUpQuest()
         {
-            QuestManager.instance.SurrenderQuest(questID);
+            QuestManager.instance.SurrenderQuest(questID,questType);
             QuestUIManager.instance.HideQuestPanel();
 
             //Update all Quest Giver NPC
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-                item.SetQuestMaker();
+                //item.SetQuestMaker();
             }
         }
 
         public void CompleteQuest()
         {
-            QuestManager.instance.CompleteQuest(questID);
+            QuestManager.instance.CompleteQuest(questID, questType);
             QuestUIManager.instance.HideQuestPanel();
 
             //Update all Quest Giver NPC
             QuestObject[] currentQuestGivers = FindObjectsOfType<QuestObject>() as QuestObject[];
             foreach (QuestObject item in currentQuestGivers)
             {
-                item.SetQuestMaker();
+                //item.SetQuestMaker();
             }
         }
         public void ClosePanel()

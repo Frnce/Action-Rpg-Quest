@@ -10,8 +10,9 @@ namespace Advent.Quests
 {
     public class QuestObject : MonoBehaviour
     {
-        public List<int> availableQuestIDs = new List<int>();
-        public List<int> receivableQuestIDs = new List<int>();
+        public List<QuestData> availableQuests = new List<QuestData>();
+        public QuestType availableQuestType;
+        public QuestType receivableType;
 
         public GameObject questMarker;
         public Image theImage;
@@ -22,7 +23,21 @@ namespace Advent.Quests
         // Start is called before the first frame update
         void Start()
         {
-            SetQuestMaker();
+            SetQuests();
+            if (receivableType == QuestType.MAIN || receivableType == QuestType.SIDE)
+            {
+                SetQuestMaker();
+            }
+        }
+        private void SetQuests()
+        {
+            for (int i = 0; i < QuestManager.instance.questList.Count; i++)
+            {
+                if(QuestManager.instance.questList[i].quest.questType == availableQuestType)
+                {
+                    availableQuests.Add(QuestManager.instance.questList[i]);
+                }
+            }
         }
 
         public void SetQuestMaker()

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &723812165
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1306,7 +1306,7 @@ GameObject:
   - component: {fileID: 2532095955904520248}
   - component: {fileID: 2532095955904520199}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: MainCanvass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1542,6 +1542,7 @@ GameObject:
   - component: {fileID: 950068646888136092}
   - component: {fileID: 2954028916103637437}
   - component: {fileID: 2296038301299505393}
+  - component: {fileID: 737305526054737444}
   m_Layer: 5
   m_Name: QuestPanel
   m_TagString: Untagged
@@ -1608,6 +1609,44 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &737305526054737444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3806037166522373378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ea736989181fb4abadd2bf5686f2b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questAvailable: 0
+  questRunning: 0
+  questPanelActive: 0
+  questLogPanelActive: 0
+  questPanel: {fileID: 3806037166522373378}
+  questLogPanel: {fileID: 2546948700921454413}
+  availableQuests: []
+  activeQuests: []
+  qButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0, type: 3}
+  qLogButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0,
+    type: 3}
+  acceptButton: {fileID: 4932814058172141531}
+  giveupButton: {fileID: 950342320817962012}
+  completeButton: {fileID: 1727561831081880501}
+  qButtonSpace1: {fileID: 5762088623593176742}
+  qButtonSpacer2: {fileID: 7363997346272644423}
+  qLogButtonSpacer: {fileID: 5459982707330665435}
+  questTitle: {fileID: 3149549415772532680}
+  questDescription: {fileID: 780110447758150123}
+  questSummary: {fileID: 509190703640204935}
+  questLogTitle: {fileID: 8236619317200181609}
+  questLogDescription: {fileID: 4403488120650386035}
+  questLogSummary: {fileID: 8794586270151047240}
+  acceptButtonScript: {fileID: 0}
+  giveupButtonScript: {fileID: 0}
+  completeButtonScript: {fileID: 0}
 --- !u!1 &4012100841153894896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,7 +1815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 741094309755299569}
-  - component: {fileID: 3477741187999044372}
+  - component: {fileID: 998737392}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -1800,7 +1839,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3477741187999044372
+--- !u!114 &998737392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1809,35 +1848,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4243820449387486303}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ea736989181fb4abadd2bf5686f2b3, type: 3}
+  m_Script: {fileID: 11500000, guid: e49792f3d2eb5b641a893efbd4d92d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questAvailable: 0
-  questRunning: 0
-  questPanelActive: 0
-  questLogPanelActive: 0
-  questPanel: {fileID: 3806037166522373378}
-  questLogPanel: {fileID: 2546948700921454413}
-  availableQuests: []
-  activeQuests: []
-  qButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0, type: 3}
-  qLogButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0,
-    type: 3}
-  acceptButton: {fileID: 4932814058172141531}
-  giveupButton: {fileID: 950342320817962012}
-  completeButton: {fileID: 1727561831081880501}
-  qButtonSpace1: {fileID: 5762088623593176742}
-  qButtonSpacer2: {fileID: 7363997346272644423}
-  qLogButtonSpacer: {fileID: 5459982707330665435}
-  questTitle: {fileID: 3149549415772532680}
-  questDescription: {fileID: 780110447758150123}
-  questSummary: {fileID: 509190703640204935}
-  questLogTitle: {fileID: 8236619317200181609}
-  questLogDescription: {fileID: 4403488120650386035}
-  questLogSummary: {fileID: 8794586270151047240}
-  acceptButtonScript: {fileID: 0}
-  giveupButtonScript: {fileID: 0}
-  completeButtonScript: {fileID: 0}
 --- !u!1 &4932814058172141531
 GameObject:
   m_ObjectHideFlags: 0

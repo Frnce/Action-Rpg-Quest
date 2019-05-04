@@ -12,7 +12,8 @@ namespace Advent.Entities
         IDLE,
         MOVING,
         ATTACKING,
-        ROLLING
+        ROLLING,
+        INMENU
     }
     public class Player : Entity, IDamageable
     {
@@ -59,37 +60,40 @@ namespace Advent.Entities
         // Update is called once per frame
         void Update()
         {
-            playerDir = playerControls.GetMovement;
-            hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
-            if (states != PlayerStates.ROLLING)
+            if(states != PlayerStates.INMENU)
             {
-                if (playerControls.GetAttackKey)
+                playerDir = playerControls.GetMovement;
+                hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
+                if (states != PlayerStates.ROLLING)
                 {
-                    states = PlayerStates.ATTACKING;
-                    StartCoroutine(AttackCoroutine(playerLastDir));
-                }
-                if (playerControls.GetDodgeKey)
-                {
-                    if (playerDir != Vector3.zero)
+                    if (playerControls.GetAttackKey)
                     {
-                        states = PlayerStates.ROLLING;
-                        StartCoroutine(DodgeRoll(rollSpeed, rollDistance));
+                        states = PlayerStates.ATTACKING;
+                        StartCoroutine(AttackCoroutine(playerLastDir));
+                    }
+                    if (playerControls.GetDodgeKey)
+                    {
+                        if (playerDir != Vector3.zero)
+                        {
+                            states = PlayerStates.ROLLING;
+                            StartCoroutine(DodgeRoll(rollSpeed, rollDistance));
+                        }
                     }
                 }
+                if (states != PlayerStates.MOVING && states != PlayerStates.ATTACKING)
+                {
+                    PlayerLookAtMouse();
+                }
+                InteractObject();
             }
-            if (states != PlayerStates.MOVING && states != PlayerStates.ATTACKING)
-            {
-                PlayerLookAtMouse();
-            }
-            InteractObject();
             //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
             //{
-            //    ScreenCapture.CaptureScreenshot("SomeLevel");
+            //    ScreenCapture.CaptureScreenshot("SomeLevel.png");
             //}
         }
         private void FixedUpdate()
         {
-            if(states != PlayerStates.ROLLING)
+            if(states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
             {
                 Movement();
             }
@@ -201,7 +205,10 @@ namespace Advent.Entities
                 statList = value;
             }
         }
-
+        public void SetPlayerStates(PlayerStates states)
+        {
+            this.states = states;
+        }
         public void TakeDamage(int damage)
         {
             //take damage
