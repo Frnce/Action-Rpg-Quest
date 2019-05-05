@@ -17,7 +17,6 @@ namespace Advent.Controller
         public bool GetDodgeKey { get; private set; }
         public bool GetOpenMenuKey { get; private set; }
         public bool GetInteractKey { get; private set; }
-        public Vector2 GetMousePosition { get; private set; }
 
         private void Start()
         {
@@ -35,8 +34,6 @@ namespace Advent.Controller
             GetDodgeKey = Input.GetButtonDown("Fire2");
             GetOpenMenuKey = Input.GetButtonDown("OpenMenu");
             GetInteractKey = Input.GetButtonDown("Interact");
-
-            GetMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         public Vector2 GetMovement
         {

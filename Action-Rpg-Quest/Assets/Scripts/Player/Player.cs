@@ -80,10 +80,6 @@ namespace Advent.Entities
                         }
                     }
                 }
-                if (states != PlayerStates.MOVING && states != PlayerStates.ATTACKING)
-                {
-                    PlayerLookAtMouse();
-                }
                 InteractObject();
             }
             //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
@@ -104,17 +100,6 @@ namespace Advent.Entities
             yield return new WaitForSeconds(rollTime);
             states = PlayerStates.IDLE;
             rb2d.velocity = Vector3.zero;
-        }
-        private void PlayerLookAtMouse()
-        {
-            Vector3 mouse = playerControls.GetMousePosition;
-            Vector2 lookAt = (mouse - transform.position).normalized;
-            ;
-            if(playerDir.x == 0 && playerDir.y == 0)
-            {
-                anim.SetFloat("yMove", lookAt.y);
-                anim.SetFloat("xMove", lookAt.x);
-            }
         }
         private void Movement()
         {
