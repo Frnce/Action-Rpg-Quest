@@ -22,7 +22,8 @@ namespace Advent.UI
             inventory = InventoryManager.instance;
             inventory.onItemChangedCallback += UpdateInventoryUI;
 
-            SetInventorySpace(inventory.GetMaxItemSpace);
+            SetInventorySpace(inventory.GetMaxBagSpace);
+            SetPocketSpace(inventory.GetPocketItemSpace);
             itemSlot = inventoryParent.GetComponentsInChildren<InventorySlot>();
 
             inventoryParent.gameObject.SetActive(false);
@@ -56,6 +57,13 @@ namespace Advent.UI
             for (int i = 0; i < maxSpace; i++)
             {
                 Instantiate(inventory.GetInventorySlotObject, inventoryParent);
+            }
+        }
+        public void SetPocketSpace(int maxSpace)
+        {
+            for (int i = 0; i < maxSpace; i++)
+            {
+                //TODO Fix This
             }
         }
     }

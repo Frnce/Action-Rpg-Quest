@@ -39,9 +39,10 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
-
         [SerializeField]
-        private int maxSpace = 20;
+        private int maxPocketSpace = 5;
+        [SerializeField]
+        private int maxBagSpace = 20;
         [SerializeField]
         private int maxStack = 9;
         [SerializeField]
@@ -60,7 +61,7 @@ namespace Advent.Manager
         {
             if (!item.isDefaultItem)
             {
-                if (items.Count >= maxSpace)
+                if (items.Count >= maxPocketSpace && items.Count >= maxBagSpace)
                 {
                     Debug.Log("Not Enough Room");
                     return false;
@@ -106,11 +107,18 @@ namespace Advent.Manager
             }
         }
 
-        public int GetMaxItemSpace
+        public int GetMaxBagSpace
         {
             get
             {
-                return maxSpace;
+                return maxBagSpace;
+            }
+        }
+        public int GetPocketItemSpace
+        {
+            get
+            {
+                return maxPocketSpace;
             }
         }
         public GameObject GetInventorySlotObject

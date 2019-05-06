@@ -43,8 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff98c26a7b07c5747bfa71ba7aa07cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpace: 20
-  maxStack: 9
+  maxPocketSpace: 4
+  maxBagSpace: 20
+  maxStack: 99
   items: []
   moneyAcquired: 0
   inventorySlot: {fileID: 8692304542107963453, guid: a5e713868e92e5841ba03994cdd8fef9,

@@ -150,9 +150,7 @@ namespace Advent.Entities
             }
             else
             {
-                anim.SetBool("isMoving", false);
-                anim.SetFloat("yMove", 0);
-                anim.SetFloat("xMove", 0);
+                anim.SetBool("isMoving", false);    
             }
         }
         private IEnumerator AttackCoroutine(Vector3 direction)

@@ -13,6 +13,9 @@ namespace Advent.Controller
         }
         private int xMove;
         private int yMove;
+
+        public bool canPlayerMove = true;
+
         public bool GetAttackKey { get; private set; }
         public bool GetDodgeKey { get; private set; }
         public bool GetOpenMenuKey { get; private set; }
@@ -24,7 +27,10 @@ namespace Advent.Controller
         }
         void Update()
         {
-            Keys();
+            if (canPlayerMove)
+            {
+                Keys();
+            }
         }
         private void Keys()
         {
