@@ -1,4 +1,5 @@
 ﻿using Advent.Controller;
+using Advent.Entities;
 using Advent.Items;
 using Advent.Manager;
 using System;
@@ -22,8 +23,6 @@ namespace Advent.UI
             equipmentManager.onEquipmentChangedCallback += UpdateEquipmentUI;
 
             equipmentSlot = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
-
-            equipmentParent.gameObject.SetActive(false);
         }
         private void Update()
         {
@@ -33,6 +32,11 @@ namespace Advent.UI
             }
 
             equipmentParent.gameObject.SetActive(equipmentPanelActive);
+
+            if (equipmentParent.gameObject.activeSelf)
+            {
+                Player.instance.SetPlayerStates(PlayerStates.INMENU);
+            }
         }
 
         private void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)

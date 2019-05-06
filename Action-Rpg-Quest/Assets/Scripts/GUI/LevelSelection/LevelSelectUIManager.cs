@@ -29,8 +29,6 @@ namespace Advent.UI
             gameManager = GameManager.instance;
             InstantiateLevelSelectButtons();
             onLevelUnlocked += GetAllLevels;
-
-            levelSelectPanel.SetActive(false);
         }
         private void InstantiateLevelSelectButtons()
         {

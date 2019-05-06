@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Advent.Entities;
 
 namespace Advent.UI
 {
@@ -79,14 +80,6 @@ namespace Advent.UI
 
             HideQuestPanel();
         }
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                questPanelActive = !questPanelActive;
-            }
-        }
-
         public void CheckQuests(QuestObject questObject)
         {
             currentQuestObject = questObject;
@@ -98,6 +91,13 @@ namespace Advent.UI
             else
             {
                 Debug.Log("No Quest Available");
+            }
+        }
+        private void Update()
+        {
+            if (questPanelActive)
+            {
+                Player.instance.SetPlayerStates(PlayerStates.INMENU);
             }
         }
 
