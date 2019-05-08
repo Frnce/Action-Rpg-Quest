@@ -28,7 +28,6 @@ namespace Advent.Entities
         private CircleCollider2D myCollider = null;
         [SerializeField]
         private LayerMask blockingLayer = 0;
-
         private PlayerController playerControls = null;
         private Vector3 playerDir = Vector3.zero;
         private Vector3 playerLastDir = Vector3.zero;
@@ -36,6 +35,11 @@ namespace Advent.Entities
         private RaycastHit2D hit;
         private bool isNearInteractable = false;
         private GameObject collidedObject; //saves the data for the collided object;
+        private bool isFacingRight;
+        private bool isDownSwing = true; //Determins the current Swing if the Weapon is a long sword or similar
+        private bool swinged = false;
+
+        public GameObject weapon;
         private void Awake()
         {
             if(instance == null)
@@ -82,6 +86,8 @@ namespace Advent.Entities
                 }
                 InteractObject();
             }
+            FlipCharacter();
+            Aim();
             //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
             //{
             //    ScreenCapture.CaptureScreenshot("SomeLevel.png");
@@ -94,6 +100,43 @@ namespace Advent.Entities
                 Movement();
             }
         }
+        private void LateUpdate()
+        {
+            if (swinged)
+            {
+                if (isDownSwing)
+                {
+                    Debug.Log("Down Swing");
+                    weapon.transform.GetChild(0).transform.eulerAngles = new Vector3(0, 0, -120);
+                }
+                else
+                {
+                    Debug.Log("Up Swing Ready");
+                    weapon.transform.GetChild(0).transform.eulerAngles = new Vector3(0, 0, 120);
+                }
+                swinged = false;
+            }
+        }
+        private void FlipCharacter()
+        {
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (mouse.x > transform.position.x && isFacingRight)
+            {
+                Flip();
+            }
+            else if (mouse.x < transform.position.x && !isFacingRight)
+            {
+                Flip();
+            }
+        }
+        private void Flip()
+        {
+            isFacingRight = !isFacingRight;
+
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+        }
         private IEnumerator DodgeRoll(float rollSpeed, float rollTime)
         {
             rb2d.velocity = new Vector2(playerDir.x * rollSpeed, playerDir.y * rollSpeed);
@@ -105,14 +148,16 @@ namespace Advent.Entities
         {
             if (states != PlayerStates.ATTACKING)
             {
-                SetDirectionAnimations();
+                //SetDirectionAnimations();
                 if (playerDir.x != 0 || playerDir.y != 0)
                 {
                     states = PlayerStates.MOVING;
+                    anim.SetBool("isMoving", true);
                 }
                 else
                 {
                     states = PlayerStates.IDLE;
+                    anim.SetBool("isMoving", false);
                 }
                 if(hit.collider == null)
                 {
@@ -130,28 +175,44 @@ namespace Advent.Entities
         }
         private void SetAttackAnimations()
         {
+            isDownSwing = !isDownSwing;
+            anim.SetBool("isDownSwing", isDownSwing);
             anim.SetTrigger("attack1");
         }
-        private void SetDirectionAnimations()
+        //private void SetDirectionAnimations()
+        //{
+        //    if(playerDir != Vector3.zero)
+        //    {
+        //        if((playerDir.x > 0 || playerDir.x < 0) && playerDir.y == 0)
+        //        {
+        //            anim.SetFloat("xMove", playerDir.x);
+        //            anim.SetFloat("yMove", 0);
+        //        }
+        //        if ((playerDir.y > 0 || playerDir.y < 0) && playerDir.x == 0)
+        //        {
+        //            anim.SetFloat("yMove", playerDir.y);
+        //            anim.SetFloat("xMove", 0);
+        //        }
+        //        anim.SetBool("isMoving", true);
+        //    }
+        //    else
+        //    {
+        //        anim.SetBool("isMoving", false);    
+        //    }
+        //}
+        private void Aim()
         {
-            if(playerDir != Vector3.zero)
-            {
-                if((playerDir.x > 0 || playerDir.x < 0) && playerDir.y == 0)
-                {
-                    anim.SetFloat("xMove", playerDir.x);
-                    anim.SetFloat("yMove", 0);
-                }
-                if ((playerDir.y > 0 || playerDir.y < 0) && playerDir.x == 0)
-                {
-                    anim.SetFloat("yMove", playerDir.y);
-                    anim.SetFloat("xMove", 0);
-                }
-                anim.SetBool("isMoving", true);
-            }
-            else
-            {
-                anim.SetBool("isMoving", false);    
-            }
+            //The Weapon should be facing up or vector2.up for it to work properly
+            Vector2 mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
+            Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.transform.position);        //Object position on screen
+            Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
+            Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
+            float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
+            if (relmousepos.x > 0)
+                angle = 360 - angle;
+            Quaternion quat = Quaternion.identity;
+            quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
+            weapon.transform.rotation = quat;
         }
         private IEnumerator AttackCoroutine(Vector3 direction)
         {
@@ -199,6 +260,10 @@ namespace Advent.Entities
             //animate damage
             health -= damage;
             Debug.Log(gameObject.name + "| HP : " + health + " | DAmage : " + damage);
+        }
+        public void AnimationStop()
+        {
+            swinged = true;
         }
     }
 }

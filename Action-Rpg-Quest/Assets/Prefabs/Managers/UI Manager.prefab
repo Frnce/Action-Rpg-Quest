@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 29064970}
   - component: {fileID: 29064969}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Description Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 136683416}
   - component: {fileID: 136683415}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Hint Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1461,7 +1461,7 @@ GameObject:
   - component: {fileID: 1343825831}
   - component: {fileID: 1343825830}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3610,28 +3610,24 @@ MonoBehaviour:
   questRunning: 0
   questPanelActive: 0
   questLogPanelActive: 0
-  questPanel: {fileID: 474449337}
+  questConfirmationPanelActive: 0
+  questPanel: {fileID: 2912837351525222180}
   questLogPanel: {fileID: 2546948700921454413}
+  questConfirmationPanel: {fileID: 4791989670484549398}
   availableQuests: []
   activeQuests: []
   qButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0, type: 3}
   qLogButton: {fileID: 5022414801667424956, guid: 70e85a1d472d6a14eb046dab75db82d0,
     type: 3}
-  acceptButton: {fileID: 4932814058172141531}
-  giveupButton: {fileID: 950342320817962012}
-  completeButton: {fileID: 1727561831081880501}
-  qButtonSpace1: {fileID: 5762088623593176742}
+  qButtonSpace1: {fileID: 1982920298}
   qButtonSpacer2: {fileID: 7363997346272644423}
   qLogButtonSpacer: {fileID: 5459982707330665435}
-  questTitle: {fileID: 3149549415772532680}
-  questDescription: {fileID: 780110447758150123}
-  questSummary: {fileID: 509190703640204935}
-  questLogTitle: {fileID: 8236619317200181609}
-  questLogDescription: {fileID: 4403488120650386035}
-  questLogSummary: {fileID: 8794586270151047240}
-  acceptButtonScript: {fileID: 0}
-  giveupButtonScript: {fileID: 0}
-  completeButtonScript: {fileID: 0}
+  questTitle: {fileID: 1343825830}
+  questDescription: {fileID: 29064969}
+  questSummary: {fileID: 136683415}
+  questLogTitle: {fileID: 0}
+  questLogDescription: {fileID: 0}
+  questLogSummary: {fileID: 0}
 --- !u!114 &1295639166754574427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3739,7 +3735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3488680128624337981
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3879,7 +3875,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4300726632741299386}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4791989670484549399}
+        m_MethodName: OnAccept
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &3303075532277573291
@@ -4214,13 +4221,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 593208881383822958}
+  - component: {fileID: 4791989670484549399}
   m_Layer: 5
   m_Name: QuestConfirmation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &593208881383822958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4241,6 +4249,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4791989670484549399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4791989670484549398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17476141254e9e340b915fc4f2680564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4932814058172141531
 GameObject:
   m_ObjectHideFlags: 0
@@ -6766,7 +6786,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3659818605145085993}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4791989670484549399}
+        m_MethodName: OnCancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &8557876662147706240
@@ -7551,18 +7582,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5e713868e92e5841ba03994cdd8fef9, type: 3}
---- !u!114 &8252402899038349962 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8576123372702489369, guid: a5e713868e92e5841ba03994cdd8fef9,
-    type: 3}
-  m_PrefabInstance: {fileID: 397141891752063379}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9017238479214666158 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8692304542107963453, guid: a5e713868e92e5841ba03994cdd8fef9,
@@ -7585,6 +7604,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 647b4eee38e339e4ebec176c6969e2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8252402899038349962 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8576123372702489369, guid: a5e713868e92e5841ba03994cdd8fef9,
+    type: 3}
+  m_PrefabInstance: {fileID: 397141891752063379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2532095955100903675

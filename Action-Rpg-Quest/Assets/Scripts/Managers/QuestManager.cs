@@ -210,6 +210,42 @@ namespace Advent.Manager
             }
         }
 
+        //Check If a quest is complete upon talking to an NPC
+        public bool CheckIfComplete() // return false if It hhas an existing quest on current . return true when nothing is on current. for this to not open the UI
+        {
+            //Check All Quests if Not null
+            if (currentQuests.mainQuest.quest != null)
+            {
+                Quest quest = currentQuests.mainQuest.quest;
+                if(currentQuests.mainQuest.progress == QuestProgress.COMPLETE)
+                {
+                    CompleteQuest(quest.id, quest.questType);
+                    return false;
+                }
+            }
+            //side quest
+            if (currentQuests.sideQuest.quest != null)
+            {
+                Quest quest = currentQuests.sideQuest.quest;
+                if(currentQuests.sideQuest.progress == QuestProgress.COMPLETE)
+                {
+                    CompleteQuest(quest.id, quest.questType);
+                    return false;
+                }
+            }
+            //Mission Quest
+            if (currentQuests.missionQuest.quest != null)
+            {
+                Quest quest = currentQuests.missionQuest.quest;
+                if(currentQuests.missionQuest.progress == QuestProgress.COMPLETE)
+                {
+                    CompleteQuest(quest.id, quest.questType);
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void CompleteQuest(int questID, QuestType questType)
         {
             Quest quest = null;

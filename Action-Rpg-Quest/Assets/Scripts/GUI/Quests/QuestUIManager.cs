@@ -77,15 +77,18 @@ namespace Advent.UI
         }
         public void CheckQuests(QuestObject questObject)
         {
-            currentQuestObject = questObject;
-            QuestManager.instance.RequestQuest(questObject);
-            if((questRunning || questAvailable )&& !questPanelActive)
+            if (QuestManager.instance.CheckIfComplete())
             {
-                ShowQuestPanel();
-            }
-            else
-            {
-                Debug.Log("No Quest Available");
+                currentQuestObject = questObject;
+                QuestManager.instance.RequestQuest(questObject);
+                if ((questRunning || questAvailable) && !questPanelActive)
+                {
+                    ShowQuestPanel();
+                }
+                else
+                {
+                    Debug.Log("No Quest Available");
+                }
             }
         }
         private void Update()
@@ -196,7 +199,7 @@ namespace Advent.UI
                 questButton.transform.SetParent(qButtonSpace1, false);
                 qButtons.Add(questButton);
             }
-
+            //For receivable Quests AKA Active Quests //Should I removed it or place it somewhere else?
             foreach (QuestData activeQuest in activeQuests)
             {
                 GameObject questButton = Instantiate(qButton);
