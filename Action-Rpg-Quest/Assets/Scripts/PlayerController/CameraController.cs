@@ -7,19 +7,65 @@ namespace Advent.Controller
 {
     public class CameraController : MonoBehaviour
     {
-        public float smoothTime = 0.3f;
-        private Transform target;
-        private void Start()
+        private Player player;
+        private Vector3 target, mousePos, refvel, shakeOffset;
+        [SerializeField]
+        private float cameraDis = 3.5f;
+        [SerializeField]
+        private float smoothTime = 0.2f;
+        private float zstart;
+
+        //To be used Later for screenshake
+        float shakeMag, shakeTimeEnd;
+        Vector3 shakeVector;
+
+        bool shaking;
+        // Start is called before the first frame update
+        void Start()
         {
-            target = Player.instance.transform;
+            player = Player.instance;
+            target = player.transform.position;
+            zstart = transform.position.z;
         }
-        void LateUpdate()
+
+        // Update is called once per frame
+        void Update()
         {
-            if(transform.position != target.position)
+            mousePos = CaptureMousePos();
+            target = UpdateTargetPos();
+        }
+
+        private void LateUpdate()
+        {
+            UpdateCameraPosition();
+        }
+
+        private void UpdateCameraPosition()
+        {
+            Vector3 tempPos;
+            tempPos = Vector3.SmoothDamp(transform.position, target, ref refvel, smoothTime);
+            transform.position = tempPos;
+        }
+
+        private Vector3 UpdateTargetPos()
+        {
+            Vector3 mouseOffset = mousePos * cameraDis;
+            Vector3 ret = player.transform.position + mouseOffset;
+            ret.z = zstart;
+            return ret;
+        }
+
+        private Vector3 CaptureMousePos()
+        {
+            Vector2 ret = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            ret *= 2;
+            ret -= Vector2.one;
+            float max = 0.9f;
+            if (Mathf.Abs(ret.x) > max || Mathf.Abs(ret.y) > max)
             {
-                Vector3 targetPosition = new Vector3(target.position.x, target.position.y, -10);
-                transform.position = Vector3.Lerp(transform.position, targetPosition, smoothTime);
+                ret = ret.normalized;
             }
+            return ret;
         }
     }
 }

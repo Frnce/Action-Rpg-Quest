@@ -12,6 +12,14 @@ TextureImporter:
     21300014: Dungeon-Knight-Run-3
     21300016: Dungeon-Knight-Run-4
     21300018: Sword
+    21300020: Dungeon-BabyOrc-Idle-1
+    21300022: Dungeon-BabyOrc-Idle-2
+    21300024: Dungeon-BabyOrc-Idle-3
+    21300026: Dungeon-BabyOrc-Idle-4
+    21300028: Dungeon-BabyOrc-Walk-1
+    21300030: Dungeon-BabyOrc-Walk-2
+    21300032: Dungeon-BabyOrc-Walk-3
+    21300034: Dungeon-BabyOrc-Walk-4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -300,6 +308,166 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 84a3d64003236db4988d4551da4db74b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Idle-1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb97e438d2b063c4e9f95d8f33651a4e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Idle-2
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5593a019367a664cb9e0513ef811e5c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Idle-3
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0a18947defff64382614184b236948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Idle-4
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978eb0f368f77774ba15d3d2269f18df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Walk-1
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9386819051e16e46bd11162dc92164f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Walk-2
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0708add3e954324f95916bcd3813f3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Walk-3
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a615ebbecbfc1354fb5222bbc303964c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dungeon-BabyOrc-Walk-4
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 462
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ff762ef7c819b46b0ddeb09d7a498e
       vertices: []
       indices: 
       edges: []

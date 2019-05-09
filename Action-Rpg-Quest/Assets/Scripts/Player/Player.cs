@@ -36,10 +36,11 @@ namespace Advent.Entities
         private bool isNearInteractable = false;
         private GameObject collidedObject; //saves the data for the collided object;
         private bool isFacingRight;
-        private bool isDownSwing = true; //Determins the current Swing if the Weapon is a long sword or similar
-        private bool swinged = false;
+        private float timeBetweenAttack;
 
         public GameObject weapon;
+        public TrailRenderer weaponTrail;
+        public float startTimeBetweenAttack;
         private void Awake()
         {
             if(instance == null)
@@ -60,6 +61,10 @@ namespace Advent.Entities
             rb2d = GetComponent<Rigidbody2D>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
+
+            weaponTrail.emitting = false;
+
+            timeBetweenAttack = startTimeBetweenAttack;
         }
         // Update is called once per frame
         void Update()
@@ -70,51 +75,22 @@ namespace Advent.Entities
                 hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
                 if (states != PlayerStates.ROLLING)
                 {
-                    if (playerControls.GetAttackKey)
-                    {
-                        states = PlayerStates.ATTACKING;
-                        StartCoroutine(AttackCoroutine(playerLastDir));
-                    }
-                    if (playerControls.GetDodgeKey)
-                    {
-                        if (playerDir != Vector3.zero)
-                        {
-                            states = PlayerStates.ROLLING;
-                            StartCoroutine(DodgeRoll(rollSpeed, rollDistance));
-                        }
-                    }
+                    PlayerAttack();
+                    PlayerDodge();
                 }
                 InteractObject();
             }
+            if (states != PlayerStates.ATTACKING)
+            {
+                Aim();
+            }
             FlipCharacter();
-            Aim();
-            //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
-            //{
-            //    ScreenCapture.CaptureScreenshot("SomeLevel.png");
-            //}
         }
         private void FixedUpdate()
         {
             if(states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
             {
                 Movement();
-            }
-        }
-        private void LateUpdate()
-        {
-            if (swinged)
-            {
-                if (isDownSwing)
-                {
-                    Debug.Log("Down Swing");
-                    weapon.transform.GetChild(0).transform.eulerAngles = new Vector3(0, 0, -120);
-                }
-                else
-                {
-                    Debug.Log("Up Swing Ready");
-                    weapon.transform.GetChild(0).transform.eulerAngles = new Vector3(0, 0, 120);
-                }
-                swinged = false;
             }
         }
         private void FlipCharacter()
@@ -136,6 +112,17 @@ namespace Advent.Entities
             Vector3 theScale = transform.localScale;
             theScale.x *= -1;
             transform.localScale = theScale;
+        }
+        private void PlayerDodge()
+        {
+            if (playerControls.GetDodgeKey)
+            {
+                if (playerDir != Vector3.zero)
+                {
+                    states = PlayerStates.ROLLING;
+                    StartCoroutine(DodgeRoll(rollSpeed, rollDistance));
+                }
+            }
         }
         private IEnumerator DodgeRoll(float rollSpeed, float rollTime)
         {
@@ -175,8 +162,6 @@ namespace Advent.Entities
         }
         private void SetAttackAnimations()
         {
-            isDownSwing = !isDownSwing;
-            anim.SetBool("isDownSwing", isDownSwing);
             anim.SetTrigger("attack1");
         }
         //private void SetDirectionAnimations()
@@ -214,13 +199,32 @@ namespace Advent.Entities
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             weapon.transform.rotation = quat;
         }
+        private void PlayerAttack()
+        {
+            if (timeBetweenAttack <= 0)
+            {
+                if (playerControls.GetAttackKey)
+                {
+                    states = PlayerStates.ATTACKING;
+                    StartCoroutine(AttackCoroutine(playerLastDir));
+                    timeBetweenAttack = startTimeBetweenAttack;
+                }
+            }
+            else
+            {
+                timeBetweenAttack -= Time.deltaTime;
+            }
+
+        }
         private IEnumerator AttackCoroutine(Vector3 direction)
         {
             SetAttackAnimations();
+            weaponTrail.emitting = true;
             rb2d.velocity = Vector3.zero;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
+            weaponTrail.emitting = false;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -260,10 +264,6 @@ namespace Advent.Entities
             //animate damage
             health -= damage;
             Debug.Log(gameObject.name + "| HP : " + health + " | DAmage : " + damage);
-        }
-        public void AnimationStop()
-        {
-            swinged = true;
         }
     }
 }

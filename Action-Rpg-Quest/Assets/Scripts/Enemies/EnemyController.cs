@@ -13,6 +13,7 @@ namespace Advent.Entities
         public float knockbackDistance;
         public float radius = 5f;
         private Vector2 startingPosition; //Change to Spawn Position
+        public SpriteRenderer sprite;
 
         private GameObject target;
         private Vector3 randomPosition;
@@ -87,10 +88,12 @@ namespace Advent.Entities
         }
         IEnumerator TakeDamageCour()
         {
+            sprite.color = Color.red;
             GetComponent<StateController>().isAiActive = false;
             rb2d.velocity = new Vector2(targetDirection.x * -knockbackDistance, targetDirection.y * -knockbackDistance); //knockback
             yield return new WaitForSeconds(0.05f);
             rb2d.velocity = Vector2.zero;
+            sprite.color = Color.white;
             yield return new WaitForSeconds(0.3f);
             GetComponent<StateController>().isAiActive = true;
         }

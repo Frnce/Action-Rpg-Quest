@@ -43,8 +43,12 @@ namespace Advent.Manager
         }
         private void Update()
         {
-            
+            //if (Input.GetKeyDown(KeyCode.Alpha9)) // For Screenshoting stuff
+            //{
+            //    ScreenCapture.CaptureScreenshot("SomeLevel.png");
+            //}
         }
+
         private void GetAllLevels()
         {
 
