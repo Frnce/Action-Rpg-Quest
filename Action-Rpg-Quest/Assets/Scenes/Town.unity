@@ -258,12 +258,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Radius: 0.15
---- !u!212 &228870516 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 8918469609337143460, guid: 311b569e90c91a949aa6a61417db44be,
-    type: 3}
-  m_PrefabInstance: {fileID: 2870363940852057737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265801490
 GameObject:
   m_ObjectHideFlags: 0
@@ -10054,31 +10048,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8918469611103574492, guid: 311b569e90c91a949aa6a61417db44be,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918469611103574482, guid: 311b569e90c91a949aa6a61417db44be,
-        type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 228870516}
-    - target: {fileID: 8918469609337143460, guid: 311b569e90c91a949aa6a61417db44be,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918469609337143460, guid: 311b569e90c91a949aa6a61417db44be,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918469609337143460, guid: 311b569e90c91a949aa6a61417db44be,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 311b569e90c91a949aa6a61417db44be, type: 3}
 --- !u!1001 &3661197183358325604
@@ -10231,6 +10200,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BabyOrc
       objectReference: {fileID: 0}
+    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4340669228093786851, guid: 104697fbed85e9e449df96d2be03b37a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10297,21 +10281,6 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 1433181355}
-    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4340669227281479843, guid: 104697fbed85e9e449df96d2be03b37a,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 104697fbed85e9e449df96d2be03b37a, type: 3}
 --- !u!1001 &6046819381239109919

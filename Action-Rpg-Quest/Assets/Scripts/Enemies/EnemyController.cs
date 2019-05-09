@@ -4,6 +4,7 @@ using UnityEngine;
 using Advent.Utilities;
 using Advent.Interfaces;
 using Advent.AI;
+using Advent.Items;
 
 namespace Advent.Entities
 {
@@ -73,6 +74,7 @@ namespace Advent.Entities
         {
             if (health <= 0)
             {
+                GetComponent<LootScript>().DropLoot();
                 base.Die();
                 gameObject.SetActive(false);
             }
