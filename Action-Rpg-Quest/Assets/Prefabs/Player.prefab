@@ -407,7 +407,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007053113706704204}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -617,6 +617,7 @@ MonoBehaviour:
     m_Bits: 32768
   weapon: {fileID: 1903015725}
   weaponTrail: {fileID: 31600237}
+  startTimeBetweenAttack: 0.3
 --- !u!95 &374985367
 Animator:
   serializedVersion: 3
