@@ -31,8 +31,8 @@ namespace Advent.Entities
             SetRandomPosition();
 
             anim.SetBool("isMoving", true);
-            anim.SetFloat("xMove", (randomPosition - transform.position).x);
-            anim.SetFloat("yMove", (randomPosition - transform.position).y);
+            //anim.SetFloat("xMove", (randomPosition - transform.position).x);
+            //anim.SetFloat("yMove", (randomPosition - transform.position).y);
 
             target = Player.instance.gameObject;
             myCollider = GetComponent<CircleCollider2D>();
@@ -74,7 +74,10 @@ namespace Advent.Entities
         {
             if (health <= 0)
             {
-                GetComponent<LootScript>().DropLoot();
+                if(GetComponent<LootScript>() != null)
+                {
+                    GetComponent<LootScript>().DropLoot();
+                }
                 base.Die();
                 gameObject.SetActive(false);
             }
