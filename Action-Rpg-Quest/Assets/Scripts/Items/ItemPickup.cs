@@ -13,7 +13,7 @@ namespace Advent.Items
 
         private void Pickup()
         {
-            QuestManager.instance.AddQuestItem("TakeSword", 1);
+            //QuestManager.instance.AddQuestItem("TakeSword", 1);
             bool isPickedUp = InventoryManager.instance.AddItem(item);
 
             if (isPickedUp)

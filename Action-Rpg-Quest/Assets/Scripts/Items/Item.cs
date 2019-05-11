@@ -8,9 +8,11 @@ namespace Advent.Items
 {
     public class Item : ScriptableObject
     {
-        public int id = 0;
+        public int itemId = 0;
         new public string name = "New Item";
+        [Space]
         public Sprite icon = null;
+        [Space]
         public bool isDefaultItem = false;
         public GameObject gameobject;
         public int stackSize;         //stacksize -1 = not stackable
@@ -22,7 +24,7 @@ namespace Advent.Items
             InventoryManager inventory = InventoryManager.instance;
             for (int i = 0; i < inventory.GetItems.Count; i++)
             {
-                if(inventory.GetItems[i].id == id)
+                if(inventory.GetItems[i].id == itemId)
                 {
                     if(inventory.GetItems[i].stack <= 1)
                     {

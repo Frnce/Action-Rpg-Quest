@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78d0bfe01c5e9a14e9a6fe90e59cf97d, type: 3}
-  m_Name: sword of starting alley
+  m_Name: PlainSword
   m_EditorClassIdentifier: 
-  itemId: 1
-  name: Sword of startingAlley
-  icon: {fileID: 21300000, guid: 66bc67d1d3a360148b282386b28ad8a1, type: 3}
+  itemId: 2
+  name: Plain Sword
+  icon: {fileID: 21300018, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
   isDefaultItem: 0
-  gameobject: {fileID: 8685415760671146099, guid: dffd022e683c34f4e80ff83b10875030,
+  gameobject: {fileID: 1283956878563010378, guid: 2f37ed8561adae24c8809462819932bb,
     type: 3}
   stackSize: -1
   dropRate: 0
   slots: 0
   attack:
     baseValue:
-      m_Min: 5
-      m_Max: 10
+      m_Min: 0
+      m_Max: 0
   defense:
     baseValue:
       m_Min: 0

@@ -8,7 +8,7 @@ namespace Advent.Controller
     public class CameraController : MonoBehaviour
     {
         private Player player;
-        private Vector3 target, mousePos, refvel, shakeOffset;
+        private Vector3 target, mousePos, refvel;
         [SerializeField]
         private float cameraDis = 3.5f;
         [SerializeField]
@@ -16,8 +16,8 @@ namespace Advent.Controller
         private float zstart;
 
         //To be used Later for screenshake
-        float shakeMag, shakeTimeEnd;
-        Vector3 shakeVector;
+        public float shakeTimer;
+        public float shakeAmount;
 
         bool shaking;
         // Start is called before the first frame update
@@ -33,13 +33,17 @@ namespace Advent.Controller
         {
             mousePos = CaptureMousePos();
             target = UpdateTargetPos();
-        }
-
-        private void LateUpdate()
-        {
             UpdateCameraPosition();
-        }
 
+            if(shakeTimer >= 0)
+            {
+                Vector2 shakePos = Random.insideUnitCircle * shakeAmount;
+
+                transform.position = new Vector3(transform.position.x + shakePos.x, transform.position.y + shakePos.y, transform.position.z);
+
+                shakeTimer -= Time.deltaTime;
+            }
+        }
         private void UpdateCameraPosition()
         {
             Vector3 tempPos;
@@ -66,6 +70,12 @@ namespace Advent.Controller
                 ret = ret.normalized;
             }
             return ret;
+        }
+
+        public void ShakeCamera(float shakePower, float shakeDuration)
+        {
+            shakeAmount = shakePower;
+            shakeTimer = shakeDuration;
         }
     }
 }

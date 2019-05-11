@@ -75,7 +75,7 @@ namespace Advent.Manager
                 }
                 else
                 {
-                    items.Add(new ItemsSpace(item.id, item.stackSize, item));
+                    items.Add(new ItemsSpace(item.itemId, item.stackSize, item));
                 }
 
                 if (onItemChangedCallback != null)
@@ -160,7 +160,7 @@ namespace Advent.Manager
         {
             for (int i = 0; i < items.Count; i++)
             {
-                if(items[i].id == item.id)
+                if(items[i].id == item.itemId)
                 {
                     return i;
                 }

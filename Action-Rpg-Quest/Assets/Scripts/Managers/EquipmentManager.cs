@@ -21,6 +21,8 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
+        public SpriteRenderer weaponSpriteRenderer;
+        //Add more spriteRenderer for player Here;
 
         public Equipment[] currentEquipment;
         public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
@@ -66,6 +68,31 @@ namespace Advent.Manager
             }
 
             currentEquipment[slotIndex] = newItem;
+
+            switch (newItem.slots)
+            {
+                case EquipSlots.WEAPON:
+                    weaponSpriteRenderer.sprite = newItem.icon;
+                    break;
+                case EquipSlots.HEAD:
+                    break;
+                case EquipSlots.BODY:
+                    break;
+                case EquipSlots.LEGS:
+                    break;
+                case EquipSlots.FOOT:
+                    break;
+                case EquipSlots.ARMS:
+                    break;
+                case EquipSlots.NECKLACE:
+                    break;
+                case EquipSlots.RING1:
+                    break;
+                case EquipSlots.RING2:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void SwapEquip(int slotIndex)

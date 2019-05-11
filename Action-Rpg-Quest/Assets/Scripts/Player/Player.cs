@@ -4,6 +4,7 @@ using UnityEngine;
 using Advent.Controller;
 using Advent.Interfaces;
 using Advent.Utilities;
+using Advent.Manager;
 
 namespace Advent.Entities
 {
@@ -24,6 +25,9 @@ namespace Advent.Entities
         [SerializeField]
         private float rollDistance = 0.1f;
         [Space]
+        [Header("Audio")]
+        public AudioClip[] swordSwings;
+        [Space]
         [SerializeField]
         private CircleCollider2D myCollider = null;
         [SerializeField]
@@ -37,6 +41,7 @@ namespace Advent.Entities
         private GameObject collidedObject; //saves the data for the collided object;
         private bool isFacingRight;
         private float timeBetweenAttack;
+        private CameraController cam;
 
         public GameObject weapon;
         public TrailRenderer weaponTrail;
@@ -59,6 +64,7 @@ namespace Advent.Entities
         {
             base.Start();
             rb2d = GetComponent<Rigidbody2D>();
+            cam = FindObjectOfType<CameraController>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
 
@@ -135,7 +141,6 @@ namespace Advent.Entities
         {
             if (states != PlayerStates.ATTACKING)
             {
-                //SetDirectionAnimations();
                 if (playerDir.x != 0 || playerDir.y != 0)
                 {
                     states = PlayerStates.MOVING;
@@ -164,27 +169,6 @@ namespace Advent.Entities
         {
             anim.SetTrigger("attack1");
         }
-        //private void SetDirectionAnimations()
-        //{
-        //    if(playerDir != Vector3.zero)
-        //    {
-        //        if((playerDir.x > 0 || playerDir.x < 0) && playerDir.y == 0)
-        //        {
-        //            anim.SetFloat("xMove", playerDir.x);
-        //            anim.SetFloat("yMove", 0);
-        //        }
-        //        if ((playerDir.y > 0 || playerDir.y < 0) && playerDir.x == 0)
-        //        {
-        //            anim.SetFloat("yMove", playerDir.y);
-        //            anim.SetFloat("xMove", 0);
-        //        }
-        //        anim.SetBool("isMoving", true);
-        //    }
-        //    else
-        //    {
-        //        anim.SetBool("isMoving", false);    
-        //    }
-        //}
         private void Aim()
         {
             //The Weapon should be facing up or vector2.up for it to work properly
@@ -206,8 +190,10 @@ namespace Advent.Entities
                 if (playerControls.GetAttackKey)
                 {
                     states = PlayerStates.ATTACKING;
+                    SoundManager.instance.RandomizeSfx(swordSwings);
                     StartCoroutine(AttackCoroutine(playerLastDir));
                     timeBetweenAttack = startTimeBetweenAttack;
+                    cam.ShakeCamera(0.1f, 0.05f); //TODO MAGIC NUMBER
                 }
             }
             else

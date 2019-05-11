@@ -12,6 +12,8 @@ namespace Advent.Items
         public EquipSlots slots;
         public StatRange attack;
         public StatRange defense;
+
+
         public override void Use()
         {
             base.Use();
@@ -31,7 +33,14 @@ namespace Advent.Items
     }
     public enum EquipSlots
     {
-        ARM,
-        WEAPON
+        WEAPON,
+        HEAD,
+        BODY,
+        LEGS,
+        FOOT,
+        ARMS,
+        NECKLACE,
+        RING1,
+        RING2
     }
 }
