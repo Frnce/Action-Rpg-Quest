@@ -17,11 +17,13 @@ namespace Advent.UI
 
         private bool inventoryPanelActive = false;
         // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
             inventory = InventoryManager.instance;
             inventory.onItemChangedCallback += UpdateInventoryUI;
-
+        }
+        void Start()
+        {
             SetInventorySpace(inventory.GetMaxBagSpace);
             SetPocketSpace(inventory.GetPocketItemSpace);
             itemSlot = inventoryParent.GetComponentsInChildren<InventorySlot>(); 

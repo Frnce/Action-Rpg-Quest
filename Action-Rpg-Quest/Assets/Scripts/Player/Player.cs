@@ -48,7 +48,7 @@ namespace Advent.Entities
         public float startTimeBetweenAttack;
         private void Awake()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 instance = this;
             }
@@ -75,13 +75,12 @@ namespace Advent.Entities
         // Update is called once per frame
         void Update()
         {
-            if(states != PlayerStates.INMENU)
+            if (states != PlayerStates.INMENU)
             {
                 playerDir = playerControls.GetMovement;
                 hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
                 if (states != PlayerStates.ROLLING)
                 {
-                    PlayerAttack();
                     PlayerDodge();
                 }
                 InteractObject();
@@ -94,7 +93,7 @@ namespace Advent.Entities
         }
         private void FixedUpdate()
         {
-            if(states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
+            if (states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
             {
                 Movement();
             }
@@ -151,7 +150,7 @@ namespace Advent.Entities
                     states = PlayerStates.IDLE;
                     anim.SetBool("isMoving", false);
                 }
-                if(hit.collider == null)
+                if (hit.collider == null)
                 {
                     rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
                 }
@@ -183,24 +182,16 @@ namespace Advent.Entities
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             weapon.transform.rotation = quat;
         }
-        private void PlayerAttack()
+        public void PlayerAttack()
         {
-            if (timeBetweenAttack <= 0)
+            if (states != PlayerStates.ROLLING)
             {
-                if (playerControls.GetAttackKey)
-                {
-                    states = PlayerStates.ATTACKING;
-                    SoundManager.instance.RandomizeSfx(swordSwings);
-                    StartCoroutine(AttackCoroutine(playerLastDir));
-                    timeBetweenAttack = startTimeBetweenAttack;
-                    cam.ShakeCamera(0.1f, 0.05f); //TODO MAGIC NUMBER
-                }
+                states = PlayerStates.ATTACKING;
+                SoundManager.instance.RandomizeSfx(swordSwings);
+                StartCoroutine(AttackCoroutine(playerLastDir));
+                timeBetweenAttack = startTimeBetweenAttack;
+                cam.ShakeCamera(0.1f, 0.05f); //TODO MAGIC NUMBER
             }
-            else
-            {
-                timeBetweenAttack -= Time.deltaTime;
-            }
-
         }
         private IEnumerator AttackCoroutine(Vector3 direction)
         {
@@ -215,7 +206,7 @@ namespace Advent.Entities
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision != null)
+            if (collision != null)
             {
                 Debug.Log(collision.name);
                 isNearInteractable = true;
@@ -239,6 +230,15 @@ namespace Advent.Entities
                 statList = value;
             }
         }
+        public int GetCurrentHP()
+        {
+            return currentHP;
+        }
+        public int GetMaxHP()
+        {
+            return maxHP;
+        }
+
         public void SetPlayerStates(PlayerStates states)
         {
             this.states = states;
@@ -248,8 +248,8 @@ namespace Advent.Entities
             //take damage
             // Invincible for 0.5f
             //animate damage
-            health -= damage;
-            Debug.Log(gameObject.name + "| HP : " + health + " | DAmage : " + damage);
+            currentHP -= damage;
+            Debug.Log(gameObject.name + "| HP : " + currentHP + " | DAmage : " + damage);
         }
     }
 }

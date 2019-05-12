@@ -48,5 +48,9 @@ namespace Advent.Controller
                 return new Vector2(xMove, yMove);
             }
         }
+        public bool onButtonPressedController(string buttonName)
+        {
+            return Input.GetButtonDown(buttonName);
+        }
     }
 }

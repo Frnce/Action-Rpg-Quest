@@ -17,12 +17,14 @@ namespace Advent.UI
         private EquipmentSlot[] equipmentSlot;
 
         private bool equipmentPanelActive = false;
-        private void Start()
+        private void Awake()
         {
             equipmentManager = EquipmentManager.instance;
             equipmentManager.onEquipmentChangedCallback += UpdateEquipmentUI;
+        }
+        private void Start()
+        {
 
-            equipmentSlot = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
         }
         private void Update()
         {
@@ -41,6 +43,10 @@ namespace Advent.UI
 
         private void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
         {
+            if(equipmentSlot == null)
+            {
+                equipmentSlot = equipmentParent.GetComponentsInChildren<EquipmentSlot>();
+            }
             if (newItem != null)
             {
                 int slotIndex = (int)newItem.GetSlots;

@@ -1,4 +1,5 @@
 ﻿using Advent.Entities;
+using Advent.Entities.Abilities;
 using Advent.Items;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +10,19 @@ namespace Advent.Manager
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
+
+        public SpriteRenderer weaponSpriteRenderer;
+        //Add more spriteRenderer for player Here;
+        public Equipment[] defaultEquipments;
+        public Equipment[] currentEquipment;
+        public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+        public OnEquipmentChanged onEquipmentChangedCallback;
+        Player player;
+        InventoryManager inventory;
+
         private void Awake()
         {
-            if(instance != null)
+            if (instance != null)
             {
                 Destroy(gameObject);
             }
@@ -20,15 +31,10 @@ namespace Advent.Manager
                 instance = this;
             }
             DontDestroyOnLoad(gameObject);
-        }
-        public SpriteRenderer weaponSpriteRenderer;
-        //Add more spriteRenderer for player Here;
 
-        public Equipment[] currentEquipment;
-        public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-        public OnEquipmentChanged onEquipmentChangedCallback;
-        Player player;
-        InventoryManager inventory;
+
+            onEquipmentChangedCallback += OnEquipmentChange;
+        }
 
         void Start()
         {
@@ -37,7 +43,13 @@ namespace Advent.Manager
             int numOfSlots = System.Enum.GetNames(typeof(EquipSlots)).Length;
             currentEquipment = new Equipment[numOfSlots];
 
-            onEquipmentChangedCallback += OnEquipmentChange;
+            if(defaultEquipments.Length >= 0)
+            {
+                for (int i = 0; i < defaultEquipments.Length; i++)
+                {
+                    Equip(defaultEquipments[i]);
+                }
+            }
         }
         public void OnEquipmentChange(Equipment newItem, Equipment oldItem)
         {

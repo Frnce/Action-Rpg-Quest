@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Advent.Utilities;
 using Advent.Interfaces;
+using Advent.Manager;
 
 namespace Advent.Entities
 {
@@ -24,33 +25,36 @@ namespace Advent.Entities
         protected float movementSpeed = 10f;
         protected Rigidbody2D rb2d;
         protected Animator anim;
+        [Space]
+        [SerializeField]
+        protected int currentLevel = 0;
+        [SerializeField]
+        protected Stats statList = null;
+        [Space]
+        protected int currentHP = 0;
+        protected int maxHP = 0;
 
         [SerializeField]
-        protected Stats statList;
+        protected int hpMultiplier = 0;
 
-        protected int health;
+        private StatsManager statManager;
+
+        public virtual void Start()
+        {
+            statManager = StatsManager.instance;
+            rb2d = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
+
+            InitStats();
+        }
 
         private void InitStats()
         {
-            statList.strength.AddStat(entityStats.strength);
-            statList.agility.AddStat(entityStats.agility);
-            statList.vitality.AddStat(entityStats.vitality);
-            statList.intelligence.AddStat(entityStats.intelligence);
+            statManager.InitStats(statList, entityStats);
 
-            statList.attack = new StatRange();
-            statList.defense = new StatRange();
+            maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
 
-            SetHP();
-        }
-        private void SetHP()
-        {
-            health = (statList.vitality.GetValue() * 2 * 100);
-        }
-        public virtual void Start()
-        {
-            InitStats();
-            rb2d = GetComponent<Rigidbody2D>();
-            anim = GetComponent<Animator>();
+            currentHP = maxHP;
         }
         public virtual void Die()
         {

@@ -31,8 +31,6 @@ namespace Advent.Entities
             SetRandomPosition();
 
             anim.SetBool("isMoving", true);
-            //anim.SetFloat("xMove", (randomPosition - transform.position).x);
-            //anim.SetFloat("yMove", (randomPosition - transform.position).y);
 
             target = Player.instance.gameObject;
             myCollider = GetComponent<CircleCollider2D>();
@@ -72,7 +70,7 @@ namespace Advent.Entities
         }
         public override void Die()
         {
-            if (health <= 0)
+            if (currentHP <= 0)
             {
                 if(GetComponent<LootScript>() != null)
                 {
@@ -86,8 +84,8 @@ namespace Advent.Entities
         {
             //take damage
             //small knockback or stagger . not moving for 0.3f
-            health -= damage;
-            Debug.Log("HP : " + health + " | DAmaged : " + damage);
+            currentHP -= damage;
+            Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());
             Die();
         }

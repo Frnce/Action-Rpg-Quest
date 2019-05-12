@@ -27,18 +27,7 @@ namespace Advent.Manager
     public class InventoryManager : MonoBehaviour
     {
         public static InventoryManager instance;
-        private void Awake()
-        {
-            if (instance != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-            DontDestroyOnLoad(gameObject);
-        }
+
         [SerializeField]
         private int maxPocketSpace = 5;
         [SerializeField]
@@ -56,6 +45,19 @@ namespace Advent.Manager
 
         public delegate void OnItemChanged();
         public OnItemChanged onItemChangedCallback;
+
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(gameObject);
+        }
 
         public bool AddItem(Item item)
         {

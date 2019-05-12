@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Advent.Entities;
+using Advent.Utilities;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,16 +21,24 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
-        // Start is called before the first frame update
-        void Start()
+        public void InitStats(Stats stats, EntityStats entityStats)
         {
+            stats.strength.AddStat(entityStats.strength);
+            stats.agility.AddStat(entityStats.agility);
+            stats.vitality.AddStat(entityStats.vitality);
+            stats.intelligence.AddStat(entityStats.intelligence);
 
+            stats.attack = new StatRange();
+            stats.defense = new StatRange();
         }
 
-        // Update is called once per frame
-        void Update()
+        public int InitMaxHP(int vitality, int level, int multiplier)
         {
-
+            return (vitality + level) * multiplier;
+        }
+        public int InitMaxMP(int intelligence, int level, int multiplier)
+        {
+            return (intelligence + level) * multiplier;
         }
     }
 }

@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c6d584b7701364f9789074c0644c82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpriteRenderer: {fileID: 0}
+  defaultEquipments:
+  - {fileID: 11400000, guid: 2b312a5ad4b2f5344a08e38fe97b41be, type: 2}
   currentEquipment: []

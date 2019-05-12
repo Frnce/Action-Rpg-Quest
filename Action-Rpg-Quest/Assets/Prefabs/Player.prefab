@@ -312,7 +312,7 @@ SpriteRenderer:
   m_SortingLayerID: 1885101685
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300018, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -320,7 +320,7 @@ SpriteRenderer:
   m_Size: {x: 0.625, y: 1.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &943348927212724920
@@ -499,10 +499,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8444309749630793506}
   - component: {fileID: 8444309749630793532}
-  - component: {fileID: 8444309749630793534}
   - component: {fileID: 2289828491745036555}
-  - component: {fileID: 8444309749630793533}
   - component: {fileID: 374985367}
+  - component: {fileID: 8444309749630793534}
+  - component: {fileID: 8444309749630793533}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -549,19 +549,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8444309749630793534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8444309749630793505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c82f86232d6e84f98953c7c28f9b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canPlayerMove: 1
 --- !u!58 &2289828491745036555
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -578,46 +565,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.25}
   serializedVersion: 2
   m_Radius: 0.3
---- !u!114 &8444309749630793533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8444309749630793505}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99141124074a71b42b6b18eccad0a51d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityStats: {fileID: 11400000, guid: 85df9664eec890a42bef73ce3ac05933, type: 2}
-  movementSpeed: 3.5
-  statList:
-    strength:
-      baseValue: 0
-    agility:
-      baseValue: 0
-    vitality:
-      baseValue: 0
-    intelligence:
-      baseValue: 0
-    attack:
-      baseValue:
-        m_Min: 0
-        m_Max: 0
-    defense:
-      baseValue:
-        m_Min: 0
-        m_Max: 0
-  rollSpeed: 10
-  rollDistance: 0.3
-  myCollider: {fileID: 1660553039}
-  blockingLayer:
-    serializedVersion: 2
-    m_Bits: 32768
-  weapon: {fileID: 1903015725}
-  weaponTrail: {fileID: 31600237}
-  startTimeBetweenAttack: 0.3
 --- !u!95 &374985367
 Animator:
   serializedVersion: 3
@@ -637,6 +584,66 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8444309749630793534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444309749630793505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c82f86232d6e84f98953c7c28f9b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlayerMove: 1
+--- !u!114 &8444309749630793533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444309749630793505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99141124074a71b42b6b18eccad0a51d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityStats: {fileID: 11400000, guid: 85df9664eec890a42bef73ce3ac05933, type: 2}
+  movementSpeed: 3.5
+  currentLevel: 0
+  statList:
+    strength:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    vitality:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    attack:
+      baseValue:
+        m_Min: 0
+        m_Max: 0
+    defense:
+      baseValue:
+        m_Min: 0
+        m_Max: 0
+  hpMultiplier: 2
+  rollSpeed: 10
+  rollDistance: 0.3
+  swordSwings:
+  - {fileID: 8300000, guid: 9fa7067532a01e9439241a3a13798981, type: 3}
+  - {fileID: 8300000, guid: cbdbf23fc5ab9d94890a045728100fca, type: 3}
+  - {fileID: 8300000, guid: 8fa0f8c3b115bc54fa9fdb214f0e6f7e, type: 3}
+  - {fileID: 8300000, guid: 7e8a7970b473f5843a6b9342fb764fc0, type: 3}
+  myCollider: {fileID: 1660553039}
+  blockingLayer:
+    serializedVersion: 2
+    m_Bits: 32768
+  weapon: {fileID: 1903015725}
+  weaponTrail: {fileID: 31600237}
+  startTimeBetweenAttack: 0.3
 --- !u!1 &8444309750708076006
 GameObject:
   m_ObjectHideFlags: 0

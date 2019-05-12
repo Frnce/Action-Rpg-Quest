@@ -10,9 +10,9 @@ namespace Advent.Items
     public class Equipment : Item
     {
         public EquipSlots slots;
+        public AttackType attackType;
         public StatRange attack;
         public StatRange defense;
-
 
         public override void Use()
         {
@@ -42,5 +42,11 @@ namespace Advent.Items
         NECKLACE,
         RING1,
         RING2
+    }
+    public enum AttackType
+    {
+        SLASH,
+        SHOOT,
+        NONE
     }
 }
