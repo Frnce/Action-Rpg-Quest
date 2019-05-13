@@ -86,6 +86,7 @@ namespace Advent.Entities
             //take damage
             //small knockback or stagger . not moving for 0.3f
             GameManager.instance.Freeze();
+            GameManager.instance.ShakeCamera();
             currentHP -= damage;
             Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EZCameraShake;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,10 +39,21 @@ namespace Advent.Manager
         }
         public List<Level> levels = new List<Level>();
         [Header("Hit Stop FX")]
+        [SerializeField]
         [Range(0f,1.5f)]
-        public float duration = 1f;
+        private float duration = 1f;
         private bool isFrozen = false;
         private float pendingFreezeDuration = 0f;
+        [Header("ScreenShake")]
+        [SerializeField]
+        private float shakeMagnitude = 0f;
+        [SerializeField]
+        private float shakeRough = 0f;
+        [SerializeField]
+        private float shakeFadeIn = 0f;
+        [SerializeField]
+        private float shakeFadeOut = 0f;
+
         private void Start()
         {
             
@@ -56,6 +68,10 @@ namespace Advent.Manager
             {
                 StartCoroutine(DoFreeze());
             }
+        }
+        public void ShakeCamera()
+        {
+            CameraShaker.Instance.ShakeOnce(shakeMagnitude, shakeRough, shakeFadeIn, shakeFadeOut);
         }
         private IEnumerator DoFreeze()
         {

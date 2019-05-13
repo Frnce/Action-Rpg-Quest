@@ -191,7 +191,6 @@ namespace Advent.Entities
                 SoundManager.instance.RandomizeSfx(swordSwings);
                 StartCoroutine(AttackCoroutine(playerLastDir));
                 timeBetweenAttack = startTimeBetweenAttack;
-                cam.ShakeCamera(0.1f, 0.05f); //TODO MAGIC NUMBER
             }
         }
         private IEnumerator AttackCoroutine(Vector3 direction)

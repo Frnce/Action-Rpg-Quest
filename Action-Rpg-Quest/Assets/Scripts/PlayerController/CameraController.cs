@@ -15,12 +15,6 @@ namespace Advent.Controller
         private float smoothTime = 0.2f;
         private float zstart;
 
-        //To be used Later for screenshake
-        public float shakeTimer;
-        public float shakeAmount;
-
-        bool shaking;
-        // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
@@ -34,15 +28,6 @@ namespace Advent.Controller
             mousePos = CaptureMousePos();
             target = UpdateTargetPos();
             UpdateCameraPosition();
-
-            if(shakeTimer >= 0)
-            {
-                Vector2 shakePos = Random.insideUnitCircle * shakeAmount;
-
-                transform.position = new Vector3(transform.position.x + shakePos.x, transform.position.y + shakePos.y, transform.position.z);
-
-                shakeTimer -= Time.deltaTime;
-            }
         }
         private void UpdateCameraPosition()
         {
@@ -70,12 +55,6 @@ namespace Advent.Controller
                 ret = ret.normalized;
             }
             return ret;
-        }
-
-        public void ShakeCamera(float shakePower, float shakeDuration)
-        {
-            shakeAmount = shakePower;
-            shakeTimer = shakeDuration;
         }
     }
 }
