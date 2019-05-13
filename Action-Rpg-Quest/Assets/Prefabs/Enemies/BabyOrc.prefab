@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityStats: {fileID: 11400000, guid: e177c2c6f96bfe045a93e65777a8dca2, type: 2}
-  movementSpeed: 3
+  movementSpeed: 4.5
+  currentLevel: 0
   statList:
     strength:
       baseValue: 0
@@ -251,12 +252,16 @@ MonoBehaviour:
       baseValue:
         m_Min: 0
         m_Max: 0
+  hpMultiplier: 0
+  mpMultiplier: 0
   knockbackDistance: 8
   radius: 5
   sprite: {fileID: 4340669227281479843}
   blockingLayer:
     serializedVersion: 2
     m_Bits: 32768
+  deathParticleEffect: {fileID: 6147412667627854483, guid: b146a3b97b0006c4d89257f9d296ac70,
+    type: 3}
 --- !u!114 &1155938925
 MonoBehaviour:
   m_ObjectHideFlags: 0

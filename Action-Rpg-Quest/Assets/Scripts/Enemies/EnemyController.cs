@@ -24,6 +24,9 @@ namespace Advent.Entities
         [SerializeField]
         private LayerMask blockingLayer = 0;
         private CircleCollider2D myCollider;
+        [Space]
+        [SerializeField]
+        private GameObject deathParticleEffect;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -73,12 +76,14 @@ namespace Advent.Entities
         {
             if (currentHP <= 0)
             {
+                GameObject GO = Instantiate(deathParticleEffect, transform);
+                Destroy(GO, 0.5f);
                 if(GetComponent<LootScript>() != null)
                 {
                     GetComponent<LootScript>().DropLoot();
                 }
                 base.Die();
-                gameObject.SetActive(false);
+                //gameObject.SetActive(false);
             }
         }
         public void TakeDamage(int damage)
