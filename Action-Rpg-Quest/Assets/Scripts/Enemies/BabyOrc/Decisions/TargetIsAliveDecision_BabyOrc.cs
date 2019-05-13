@@ -17,5 +17,4 @@ namespace Advent.AI.Enemy
             return chaseTargetIsActive;
         }
     }
-
 }

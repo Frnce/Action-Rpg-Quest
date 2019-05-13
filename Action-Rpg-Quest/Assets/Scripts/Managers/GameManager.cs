@@ -37,6 +37,11 @@ namespace Advent.Manager
             GetAllLevels();
         }
         public List<Level> levels = new List<Level>();
+        [Header("Hit Stop FX")]
+        [Range(0f,1.5f)]
+        public float duration = 1f;
+        private bool isFrozen = false;
+        private float pendingFreezeDuration = 0f;
         private void Start()
         {
             
@@ -47,6 +52,26 @@ namespace Advent.Manager
             //{
             //    ScreenCapture.CaptureScreenshot("SomeLevel.png");
             //}
+            if(pendingFreezeDuration > 0 && !isFrozen)
+            {
+                StartCoroutine(DoFreeze());
+            }
+        }
+        private IEnumerator DoFreeze()
+        {
+            isFrozen = true;
+            var original = Time.timeScale;
+            Time.timeScale = 0;
+
+            yield return new WaitForSecondsRealtime(duration);
+
+            Time.timeScale = original;
+            pendingFreezeDuration = 0;
+            isFrozen = false;
+        }
+        public void Freeze()
+        {
+            pendingFreezeDuration = duration;
         }
 
         private void GetAllLevels()

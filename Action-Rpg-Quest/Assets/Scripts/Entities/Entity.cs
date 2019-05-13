@@ -31,11 +31,15 @@ namespace Advent.Entities
         [SerializeField]
         protected Stats statList = null;
         [Space]
-        protected int currentHP = 0;
-        protected int maxHP = 0;
+        protected float currentHP = 0;
+        protected float maxHP = 0;
+        protected float currentMP = 0;
+        protected float maxMP = 0;
 
         [SerializeField]
-        protected int hpMultiplier = 0;
+        protected float hpMultiplier = 0;
+        [SerializeField]
+        protected float mpMultiplier = 0;
 
         private StatsManager statManager;
 
@@ -53,8 +57,10 @@ namespace Advent.Entities
             statManager.InitStats(statList, entityStats);
 
             maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
+            maxMP = statManager.InitMaxMP(statList.intelligence.GetValue(), currentLevel, mpMultiplier);
 
             currentHP = maxHP;
+            currentMP = maxMP;
         }
         public virtual void Die()
         {

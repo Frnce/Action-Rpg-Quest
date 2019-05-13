@@ -32,11 +32,11 @@ namespace Advent.Manager
             stats.defense = new StatRange();
         }
 
-        public int InitMaxHP(int vitality, int level, int multiplier)
+        public float InitMaxHP(float vitality, float level, float multiplier)
         {
             return (vitality + level) * multiplier;
         }
-        public int InitMaxMP(int intelligence, int level, int multiplier)
+        public float InitMaxMP(float intelligence, float level, float multiplier)
         {
             return (intelligence + level) * multiplier;
         }

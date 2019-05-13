@@ -27,6 +27,7 @@ namespace Advent.Entities
         [Space]
         [Header("Audio")]
         public AudioClip[] swordSwings;
+        public AudioClip walkSound;
         [Space]
         [SerializeField]
         private CircleCollider2D myCollider = null;
@@ -87,9 +88,9 @@ namespace Advent.Entities
             }
             if (states != PlayerStates.ATTACKING)
             {
+                FlipCharacter();
                 Aim();
             }
-            FlipCharacter();
         }
         private void FixedUpdate()
         {
@@ -198,7 +199,7 @@ namespace Advent.Entities
             SetAttackAnimations();
             weaponTrail.emitting = true;
             rb2d.velocity = Vector3.zero;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
             weaponTrail.emitting = false;
@@ -230,15 +231,22 @@ namespace Advent.Entities
                 statList = value;
             }
         }
-        public int GetCurrentHP()
+        public float GetCurrentHP()
         {
-            return currentHP;
+            return Mathf.Round(currentHP);
         }
-        public int GetMaxHP()
+        public float GetCurrentMP()
         {
-            return maxHP;
+            return Mathf.Round(currentMP);
         }
-
+        public float GetMaxHP()
+        {
+            return Mathf.Round(maxHP);
+        }
+        public float GetMaxMP()
+        {
+            return Mathf.Round(maxMP);
+        }
         public void SetPlayerStates(PlayerStates states)
         {
             this.states = states;

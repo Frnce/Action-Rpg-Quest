@@ -5244,7 +5244,7 @@ GameObject:
   - component: {fileID: 1540769320930037963}
   - component: {fileID: 5397767001917684109}
   - component: {fileID: 1295639166754574427}
-  - component: {fileID: 2828100935293485397}
+  - component: {fileID: 615770091}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   levelSelectHolder: {fileID: 1180161477}
   levelSelectButton: {fileID: 5344761029294027343, guid: b61f53cf609f4b648a9e776f262192e9,
     type: 3}
---- !u!114 &2828100935293485397
+--- !u!114 &615770091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5355,6 +5355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 435dc8e1e9894694c8398bf9d6944854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHP: {fileID: 1772715314}
+  maxHP: {fileID: 406243436}
+  hpBar: {fileID: 1601625120}
 --- !u!1 &2546948700921454413
 GameObject:
   m_ObjectHideFlags: 0
@@ -9591,11 +9594,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 607082199}
     m_Modifications:
-    - target: {fileID: 8173283988539689261, guid: 20dfcb6a129b6614b9a25bbaf6f1992a,
-        type: 3}
-      propertyPath: m_Name
-      value: Skill Slot
-      objectReference: {fileID: 0}
     - target: {fileID: 8173283988539689234, guid: 20dfcb6a129b6614b9a25bbaf6f1992a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9700,6 +9698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173283988539689261, guid: 20dfcb6a129b6614b9a25bbaf6f1992a,
+        type: 3}
+      propertyPath: m_Name
+      value: Skill Slot
       objectReference: {fileID: 0}
     - target: {fileID: 5158343315936507952, guid: 20dfcb6a129b6614b9a25bbaf6f1992a,
         type: 3}

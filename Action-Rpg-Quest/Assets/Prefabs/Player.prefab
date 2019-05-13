@@ -630,6 +630,7 @@ MonoBehaviour:
         m_Min: 0
         m_Max: 0
   hpMultiplier: 2
+  mpMultiplier: 1.5
   rollSpeed: 10
   rollDistance: 0.3
   swordSwings:
@@ -637,6 +638,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cbdbf23fc5ab9d94890a045728100fca, type: 3}
   - {fileID: 8300000, guid: 8fa0f8c3b115bc54fa9fdb214f0e6f7e, type: 3}
   - {fileID: 8300000, guid: 7e8a7970b473f5843a6b9342fb764fc0, type: 3}
+  walkSound: {fileID: 8300000, guid: 93e229e237d005a46b7962b1db9a30ad, type: 3}
   myCollider: {fileID: 1660553039}
   blockingLayer:
     serializedVersion: 2

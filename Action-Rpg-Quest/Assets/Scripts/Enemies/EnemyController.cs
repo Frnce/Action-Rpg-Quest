@@ -5,6 +5,7 @@ using Advent.Utilities;
 using Advent.Interfaces;
 using Advent.AI;
 using Advent.Items;
+using Advent.Manager;
 
 namespace Advent.Entities
 {
@@ -84,6 +85,7 @@ namespace Advent.Entities
         {
             //take damage
             //small knockback or stagger . not moving for 0.3f
+            GameManager.instance.Freeze();
             currentHP -= damage;
             Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());
