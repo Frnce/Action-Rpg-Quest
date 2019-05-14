@@ -46,6 +46,7 @@ namespace Advent.Entities
 
         public GameObject weapon;
         public TrailRenderer weaponTrail;
+        public ParticleSystem dustWalkingEffect = null;
         public float startTimeBetweenAttack;
         private void Awake()
         {
@@ -90,6 +91,14 @@ namespace Advent.Entities
             {
                 FlipCharacter();
                 Aim();
+            }
+            Debug.Log(states);
+            if(states == PlayerStates.MOVING)
+            {
+                if (!dustWalkingEffect.isPlaying)
+                {
+                    dustWalkingEffect.Play();
+                }
             }
         }
         private void FixedUpdate()
@@ -144,7 +153,7 @@ namespace Advent.Entities
                 if (playerDir.x != 0 || playerDir.y != 0)
                 {
                     states = PlayerStates.MOVING;
-                    anim.SetBool("isMoving", true);
+                    anim.SetBool("isMoving", true); 
                 }
                 else
                 {
