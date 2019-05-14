@@ -207,10 +207,10 @@ namespace Advent.Entities
             SetAttackAnimations();
             weaponTrail.emitting = true;
             rb2d.velocity = Vector3.zero;
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.2f);
+            weaponTrail.emitting = false;
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
-            weaponTrail.emitting = false;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
