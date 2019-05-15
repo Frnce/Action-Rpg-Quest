@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Advent.Entities;
 using UnityEngine.UI;
+using Advent.Manager;
 
 namespace Advent.UI
 {
@@ -44,7 +45,6 @@ namespace Advent.UI
             MpUpdateUI();
             ExpUpdateUI();
         }
-
         private void HpUpdateUI()
         {
             hpPercent = (100f / player.GetMaxHP()) * player.GetCurrentHP();
@@ -55,7 +55,7 @@ namespace Advent.UI
         }
         private void MpUpdateUI()
         {
-            mpPercent = (100f / player.GetMaxMP()) * player.GetCurrentMP();
+            mpPercent = (100f / player.GetMaxHP()) * player.GetCurrentMP();
             mpBar.fillAmount = mpPercent / 100f;
             currentMP.text = player.GetCurrentMP().ToString();
             maxMP.text = player.GetMaxMP().ToString();

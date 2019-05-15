@@ -27,6 +27,9 @@ namespace Advent.Entities
         [Space]
         [SerializeField]
         private GameObject deathParticleEffect;
+        [Space]
+        [SerializeField]
+        private GameObject hitPointsBar;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -38,6 +41,8 @@ namespace Advent.Entities
 
             target = Player.instance.gameObject;
             myCollider = GetComponent<CircleCollider2D>();
+
+            hitPointsBar.SetActive(false);
         }
         public void Movement(Vector3 direction)
         {
@@ -90,6 +95,10 @@ namespace Advent.Entities
         {
             //take damage
             //small knockback or stagger . not moving for 0.3f
+            if (!hitPointsBar.activeSelf)
+            {
+                hitPointsBar.SetActive(true);
+            }
             GameManager.instance.Freeze();
             GameManager.instance.ShakeCamera();
             currentHP -= damage;

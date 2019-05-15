@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Baby orc
   strength: 1
   agility: 10
-  vitality: 5
+  vitality: 99
   intelligence: 1

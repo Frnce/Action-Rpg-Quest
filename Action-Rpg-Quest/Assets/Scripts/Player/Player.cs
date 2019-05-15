@@ -43,6 +43,7 @@ namespace Advent.Entities
         private bool isFacingRight;
         private float timeBetweenAttack;
         private CameraController cam;
+        private Vector2 mouse;
 
         public GameObject weapon;
         public TrailRenderer weaponTrail;
@@ -181,7 +182,7 @@ namespace Advent.Entities
         private void Aim()
         {
             //The Weapon should be facing up or vector2.up for it to work properly
-            Vector2 mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
+            mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
             Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.transform.position);        //Object position on screen
             Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
             Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
@@ -207,12 +208,21 @@ namespace Advent.Entities
             SetAttackAnimations();
             weaponTrail.emitting = true;
             rb2d.velocity = Vector3.zero;
+            rb2d.velocity += MicrosteponAttack();
             yield return new WaitForSeconds(0.2f);
             weaponTrail.emitting = false;
             states = PlayerStates.IDLE;
             anim.ResetTrigger("attack1");
         }
-
+        //TODO problem : the farther the mouse position on the screen , the longer the player step
+        private Vector2 MicrosteponAttack()
+        {
+            Vector3 stepDirection;
+            stepDirection = Input.mousePosition;
+            stepDirection.z = 0.0f;
+            stepDirection = Camera.main.ScreenToWorldPoint(stepDirection);
+            return (stepDirection - transform.position).normalized;
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != null)
@@ -238,22 +248,6 @@ namespace Advent.Entities
             {
                 statList = value;
             }
-        }
-        public float GetCurrentHP()
-        {
-            return Mathf.Round(currentHP);
-        }
-        public float GetCurrentMP()
-        {
-            return Mathf.Round(currentMP);
-        }
-        public float GetMaxHP()
-        {
-            return Mathf.Round(maxHP);
-        }
-        public float GetMaxMP()
-        {
-            return Mathf.Round(maxMP);
         }
         public void SetPlayerStates(PlayerStates states)
         {

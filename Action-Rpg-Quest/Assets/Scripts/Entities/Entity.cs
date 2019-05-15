@@ -62,6 +62,22 @@ namespace Advent.Entities
             currentHP = maxHP;
             currentMP = maxMP;
         }
+        public float GetCurrentHP()
+        {
+            return Mathf.Round(currentHP);
+        }
+        public float GetCurrentMP()
+        {
+            return Mathf.Round(currentMP);
+        }
+        public float GetMaxHP()
+        {
+            return Mathf.Round(maxHP);
+        }
+        public float GetMaxMP()
+        {
+            return Mathf.Round(maxMP);
+        }
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
