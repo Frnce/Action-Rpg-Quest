@@ -81,8 +81,6 @@ namespace Advent.Entities
         {
             if (currentHP <= 0)
             {
-                GameObject GO = Instantiate(deathParticleEffect, transform);
-                Destroy(GO, 0.5f);
                 if(GetComponent<LootScript>() != null)
                 {
                     GetComponent<LootScript>().DropLoot();
@@ -93,14 +91,16 @@ namespace Advent.Entities
         }
         public void TakeDamage(int damage)
         {
-            //take damage
-            //small knockback or stagger . not moving for 0.3f
+            //Show HP bar when hit
             if (!hitPointsBar.activeSelf)
             {
                 hitPointsBar.SetActive(true);
             }
-            GameManager.instance.Freeze();
-            GameManager.instance.ShakeCamera();
+            //Show a small particle effect when Hit
+            GameObject GO = Instantiate(deathParticleEffect, transform);
+            Destroy(GO, 0.5f); // Destroy the particle
+            GameManager.instance.Freeze(); // Freezes game for a millisecond to show effects
+            GameManager.instance.ShakeCamera(); 
             currentHP -= damage;
             Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());

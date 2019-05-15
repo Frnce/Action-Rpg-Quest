@@ -55,7 +55,7 @@ namespace Advent.UI
         }
         private void MpUpdateUI()
         {
-            mpPercent = (100f / player.GetMaxHP()) * player.GetCurrentMP();
+            mpPercent = (100f / player.GetMaxMP()) * player.GetCurrentMP();
             mpBar.fillAmount = mpPercent / 100f;
             currentMP.text = player.GetCurrentMP().ToString();
             maxMP.text = player.GetMaxMP().ToString();
