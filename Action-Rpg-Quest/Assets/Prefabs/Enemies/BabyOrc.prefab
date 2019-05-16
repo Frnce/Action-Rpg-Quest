@@ -516,17 +516,20 @@ MonoBehaviour:
       baseValue:
         m_Min: 0
         m_Max: 0
-  hpMultiplier: 0
-  mpMultiplier: 0
+  hpMultiplier: 5
+  mpMultiplier: 2
   knockbackDistance: 13
   radius: 5
   sprite: {fileID: 4340669227281479843}
   blockingLayer:
     serializedVersion: 2
     m_Bits: 32768
+  hurtBox: {fileID: 4340669228407834353}
+  customCollider: {fileID: 4340669227280654144}
   deathParticleEffect: {fileID: 6147412667627854483, guid: b146a3b97b0006c4d89257f9d296ac70,
     type: 3}
   hitPointsBar: {fileID: 257213171}
+  deadSprite: {fileID: 21300000, guid: 10e4eb02fa250c247a3df4d8d00e9c0a, type: 3}
 --- !u!114 &1155938925
 MonoBehaviour:
   m_ObjectHideFlags: 0

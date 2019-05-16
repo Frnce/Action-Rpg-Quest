@@ -23,6 +23,10 @@ namespace Advent.Entities
 
         [SerializeField]
         private LayerMask blockingLayer = 0;
+        [SerializeField]
+        private GameObject hurtBox = null;
+        [SerializeField]
+        private GameObject customCollider = null;
         private CircleCollider2D myCollider;
         [Space]
         [SerializeField]
@@ -81,12 +85,19 @@ namespace Advent.Entities
         {
             if (currentHP <= 0)
             {
-                if(GetComponent<LootScript>() != null)
+                if (GetComponent<LootScript>() != null)
                 {
                     GetComponent<LootScript>().DropLoot();
                 }
-                base.Die();
-                //gameObject.SetActive(false);
+                myCollider.enabled = false;
+                customCollider.SetActive(false);
+                hurtBox.SetActive(false);
+                hitPointsBar.SetActive(false);
+                anim.SetBool("isDead", true);
+                //leave it there after a timer
+                //Destroy or setactive to false
+                //respawn
+                //base.Die();
             }
         }
         public void TakeDamage(int damage)
@@ -115,7 +126,10 @@ namespace Advent.Entities
             rb2d.velocity = Vector2.zero;
             sprite.color = Color.white;
             yield return new WaitForSeconds(0.3f);
-            GetComponent<StateController>().isAiActive = true;
+            if(currentHP > 0)
+            {
+                GetComponent<StateController>().isAiActive = true;
+            }
         }
     }
 
