@@ -9,42 +9,37 @@ namespace Advent.Entities
     {
         [SerializeField]
         private List<GameObject> enemyList = new List<GameObject>();
-        private List<GameObject> currentEnemySpawned = new List<GameObject>();
         [SerializeField]
-        private int enemySpawnCount = 0;
+        private int maxEnemySpawns = 0;
         [SerializeField]
         private float spawnRadius = 0;
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
+        [SerializeField]
+        private float timeBetweenSpawn = 0;
+        [SerializeField]
+        private float respawnTime = 30f;
         // Update is called once per frame
         void Update()
         {
-            if(currentEnemySpawned.Count <= 0)
-            {
-                SpawnEnemies();
-            }
-            else
+            if(transform.childCount >= maxEnemySpawns)
             {
                 return;
             }
+            SpawnEnemies();
         }
-
         private void SpawnEnemies()
         {
-            for (int i = 0; i < enemySpawnCount; i++)
-            {
-                StartCoroutine(SpawnEnemyCoroutine());
-            }
+            StartCoroutine(SpawnEnemyCoroutine());
+        }
+        private IEnumerator RespanwRoutine()
+        {
+            yield return new WaitForSeconds(respawnTime);
+            SpawnEnemies();
         }
         private IEnumerator SpawnEnemyCoroutine()
         {
             int randomEnemy = Random.Range(0, enemyList.Count);
             Instantiate(enemyList[randomEnemy], GetRandomPosition(), Quaternion.identity, transform);
-            currentEnemySpawned.Add(enemyList[randomEnemy]);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(timeBetweenSpawn);
         }
         private Vector2 GetRandomPosition()
         {
@@ -53,10 +48,6 @@ namespace Advent.Entities
         private void OnDrawGizmos()
         {
             Gizmos.DrawWireSphere(transform.position, spawnRadius);
-        }
-        public void RemoveFromEnemyList(GameObject obj)
-        {
-            currentEnemySpawned.Remove(obj);
         }
     }
 }

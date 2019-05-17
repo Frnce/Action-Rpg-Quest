@@ -22,12 +22,13 @@ namespace Advent.Manager
 
         public AudioSource playerAudioSource;
         public AudioSource musicAudioSource;
+        public AudioSource enemyHitAudioSource;
         public float lowPitchRange = .95f;
         public float highPitchRange = 1.05f;
 
 
         //Used to play single sound clips.
-        public void PlaySingle(AudioClip clip)
+        public void PlayerAttackSingle(AudioClip clip)
         {
             //Set the clip of our efxSource audio source to the clip passed in as a parameter.
             playerAudioSource.clip = clip;
@@ -37,7 +38,7 @@ namespace Advent.Manager
         }
 
         //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
-        public void RandomizeSfx(params AudioClip[] clips)
+        public void PlayerAttackRandomizeSfx(params AudioClip[] clips)
         {
             //Generate a random number between 0 and the length of our array of clips passed in.
             int randomIndex = Random.Range(0, clips.Length);
@@ -50,6 +51,22 @@ namespace Advent.Manager
 
             //Set the clip to the clip at our randomly chosen index.
             playerAudioSource.clip = clips[randomIndex];
+
+            //Play the clip.
+            playerAudioSource.Play();
+        }
+
+        //RandomizeSfx chooses randomly between various audio clips and slightly changes their pitch.
+        public void EnemyHitSingleSfx(AudioClip clips)
+        {
+            //Choose a random pitch to play back our clip at between our high and low pitch ranges.
+            float randomPitch = Random.Range(lowPitchRange, highPitchRange);
+
+            //Set the pitch of the audio source to the randomly chosen pitch.
+            playerAudioSource.pitch = randomPitch;
+
+            //Set the clip to the clip at our randomly chosen index.
+            playerAudioSource.clip = clips;
 
             //Play the clip.
             playerAudioSource.Play();

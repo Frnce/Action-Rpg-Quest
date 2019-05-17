@@ -198,7 +198,7 @@ namespace Advent.Entities
             if (states != PlayerStates.ROLLING)
             {
                 states = PlayerStates.ATTACKING;
-                SoundManager.instance.RandomizeSfx(swordSwings);
+                SoundManager.instance.PlayerAttackRandomizeSfx(swordSwings);
                 StartCoroutine(AttackCoroutine(playerLastDir));
                 timeBetweenAttack = startTimeBetweenAttack;
             }

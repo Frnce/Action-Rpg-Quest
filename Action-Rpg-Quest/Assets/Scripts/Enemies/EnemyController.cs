@@ -31,9 +31,14 @@ namespace Advent.Entities
         [Space]
         [SerializeField]
         private GameObject deathParticleEffect;
+        [SerializeField]
+        private AudioClip hurtAudio;
         [Space]
         [SerializeField]
         private GameObject hitPointsBar;
+        [Space]
+        [SerializeField]
+        private float maxDeathTime;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -94,8 +99,7 @@ namespace Advent.Entities
                 hurtBox.SetActive(false);
                 hitPointsBar.SetActive(false);
                 anim.SetBool("isDead", true);
-                //leave it there after a timer
-                //Destroy or setactive to false
+                StartCoroutine(DeathRoutine());
                 //respawn
                 //base.Die();
             }
@@ -117,8 +121,9 @@ namespace Advent.Entities
             StartCoroutine(TakeDamageCour());
             Die();
         }
-        IEnumerator TakeDamageCour()
+        private IEnumerator TakeDamageCour()
         {
+            SoundManager.instance.EnemyHitSingleSfx(hurtAudio);
             sprite.color = Color.red;
             GetComponent<StateController>().isAiActive = false;
             rb2d.velocity = new Vector2(targetDirection.x * -knockbackDistance, targetDirection.y * -knockbackDistance); //knockback
@@ -130,6 +135,13 @@ namespace Advent.Entities
             {
                 GetComponent<StateController>().isAiActive = true;
             }
+        }
+        private IEnumerator DeathRoutine()
+        {
+            yield return new WaitForSeconds(maxDeathTime);
+            anim.SetTrigger("deathFade");
+            yield return new WaitForSeconds(3f);
+            Destroy(gameObject);
         }
     }
 
