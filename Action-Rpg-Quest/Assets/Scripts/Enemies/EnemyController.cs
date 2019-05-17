@@ -6,6 +6,7 @@ using Advent.Interfaces;
 using Advent.AI;
 using Advent.Items;
 using Advent.Manager;
+using TMPro;
 
 namespace Advent.Entities
 {
@@ -39,6 +40,9 @@ namespace Advent.Entities
         [Space]
         [SerializeField]
         private float maxDeathTime;
+        [Space]
+        [SerializeField]
+        private GameObject floatingDamageText;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -115,8 +119,13 @@ namespace Advent.Entities
             GameObject GO = Instantiate(deathParticleEffect, transform);
             Destroy(GO, 0.5f); // Destroy the particle
             GameManager.instance.Freeze(); // Freezes game for a millisecond to show effects
-            GameManager.instance.ShakeCamera(); 
+            GameManager.instance.ShakeCamera();
+
             currentHP -= damage;
+            if (floatingDamageText != null)
+            {
+                ShowFloatingDamageText(damage);
+            }
             Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageCour());
             Die();
@@ -142,6 +151,11 @@ namespace Advent.Entities
             anim.SetTrigger("deathFade");
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
+        }
+        private void ShowFloatingDamageText(float damageAmount)
+        {
+            GameObject obj = Instantiate(floatingDamageText, transform.position, Quaternion.identity, transform);
+            obj.GetComponentInChildren<TMP_Text>().text = "- " + damageAmount;
         }
     }
 

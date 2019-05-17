@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 4340669228093786876}
   - component: {fileID: 4340669228093786879}
   - component: {fileID: 1155938925}
+  - component: {fileID: 7704525781381525544}
   m_Layer: 8
   m_Name: BabyOrc
   m_TagString: Enemy
@@ -531,6 +532,8 @@ MonoBehaviour:
   hurtAudio: {fileID: 8300000, guid: b0577d67935cf644eaec8e3ce57b4144, type: 3}
   hitPointsBar: {fileID: 257213171}
   maxDeathTime: 15
+  floatingDamageText: {fileID: 2140769908499613541, guid: 5769d3b5c30fecb42a3b9f2f15f1affa,
+    type: 3}
 --- !u!114 &1155938925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +550,20 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: d73a08f6e61710c4c87cfb44367fe3e8, type: 2}
   remainState: {fileID: 11400000, guid: 5f8f148b0452f86449579760c5900880, type: 2}
   stateTimeElapsed: 0
+--- !u!114 &7704525781381525544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340669228093786878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78024ea260181334896b4b12c43939bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTable: {fileID: 11400000, guid: 6d444faf5dd81b44b885278d1ef2f29f, type: 2}
+  dropChance: 100
 --- !u!1 &4340669228407834353
 GameObject:
   m_ObjectHideFlags: 0

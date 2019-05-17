@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Loot 1
   m_EditorClassIdentifier: 
   items:
-  - item: {fileID: 8685415760671146099, guid: dffd022e683c34f4e80ff83b10875030, type: 3}
-    dropChance: 5
   - item: {fileID: 5437731887373519427, guid: 9d386ff7764a2314da1dd772c9ec7150, type: 3}
     dropChance: 100
-  maxDrop: 10
+  maxDrop: 15
