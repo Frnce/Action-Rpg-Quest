@@ -222,6 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1903015726}
+  - component: {fileID: 92939447}
   m_Layer: 12
   m_Name: Weapon
   m_TagString: Untagged
@@ -244,6 +245,27 @@ Transform:
   m_Father: {fileID: 8444309749630793506}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &92939447
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903015725}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &2122602749
 GameObject:
   m_ObjectHideFlags: 0
@@ -5010,7 +5032,7 @@ SpriteRenderer:
   m_SortingLayerID: 1885101685
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300018, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
+  m_Sprite: {fileID: 21300036, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5106,7 +5128,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007053113706704204}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -5274,7 +5296,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &2289828491745036555
 CircleCollider2D:
@@ -5358,6 +5380,11 @@ MonoBehaviour:
         m_Max: 0
   hpMultiplier: 2
   mpMultiplier: 1.5
+  floatingDamageText: {fileID: 2140769908499613541, guid: 5769d3b5c30fecb42a3b9f2f15f1affa,
+    type: 3}
+  knockbackDistance: 15
+  hurtBox: {fileID: 7293899023184075300}
+  sprite: {fileID: 8444309750708076000}
   rollSpeed: 10
   rollDistance: 0.3
   swordSwings:

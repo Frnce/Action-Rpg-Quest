@@ -6,6 +6,8 @@ namespace Advent.Interfaces
 {
     public interface IDamageable
     {
-        void TakeDamage(int damage);
+        //targetPoint = Where is the damage came from
+        //If targetpoint is not in use , put vector3.zero instead
+        void TakeDamage(int damage,Vector3 targetPoint);
     }
 }

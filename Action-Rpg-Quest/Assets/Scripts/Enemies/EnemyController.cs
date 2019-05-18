@@ -13,10 +13,8 @@ namespace Advent.Entities
     [RequireComponent(typeof(Rigidbody2D),typeof(Animator))]
     public class EnemyController : Entity , IDamageable
     {
-        public float knockbackDistance;
         public float radius = 5f;
         private Vector2 startingPosition; //Change to Spawn Position
-        public SpriteRenderer sprite;
 
         private GameObject target;
         private Vector3 randomPosition;
@@ -25,24 +23,19 @@ namespace Advent.Entities
         [SerializeField]
         private LayerMask blockingLayer = 0;
         [SerializeField]
-        private GameObject hurtBox = null;
-        [SerializeField]
         private GameObject customCollider = null;
         private CircleCollider2D myCollider;
         [Space]
         [SerializeField]
-        private GameObject deathParticleEffect;
+        private GameObject deathParticleEffect = null;
         [SerializeField]
-        private AudioClip hurtAudio;
+        private AudioClip hurtAudio = null;
         [Space]
         [SerializeField]
-        private GameObject hitPointsBar;
+        private GameObject hitPointsBar = null;
         [Space]
         [SerializeField]
-        private float maxDeathTime;
-        [Space]
-        [SerializeField]
-        private GameObject floatingDamageText;
+        private float maxDeathTime = 0;
         // Start is called before the first frame update
         public override void Start()
         {
@@ -108,7 +101,7 @@ namespace Advent.Entities
                 //base.Die();
             }
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage,Vector3 targetPoint)
         {
             //Show HP bar when hit
             if (!hitPointsBar.activeSelf)
@@ -127,10 +120,10 @@ namespace Advent.Entities
                 ShowFloatingDamageText(damage);
             }
             Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
-            StartCoroutine(TakeDamageCour());
+            StartCoroutine(TakeDamageRoutine());
             Die();
         }
-        private IEnumerator TakeDamageCour()
+        private IEnumerator TakeDamageRoutine()
         {
             SoundManager.instance.EnemyHitSingleSfx(hurtAudio);
             sprite.color = Color.red;
@@ -138,9 +131,9 @@ namespace Advent.Entities
             rb2d.velocity = new Vector2(targetDirection.x * -knockbackDistance, targetDirection.y * -knockbackDistance); //knockback
             yield return new WaitForSeconds(0.05f);
             rb2d.velocity = Vector2.zero;
-            sprite.color = Color.white;
             yield return new WaitForSeconds(0.3f);
-            if(currentHP > 0)
+            sprite.color = Color.white;
+            if (currentHP > 0)
             {
                 GetComponent<StateController>().isAiActive = true;
             }
@@ -151,11 +144,6 @@ namespace Advent.Entities
             anim.SetTrigger("deathFade");
             yield return new WaitForSeconds(3f);
             Destroy(gameObject);
-        }
-        private void ShowFloatingDamageText(float damageAmount)
-        {
-            GameObject obj = Instantiate(floatingDamageText, transform.position, Quaternion.identity, transform);
-            obj.GetComponentInChildren<TMP_Text>().text = "- " + damageAmount;
         }
     }
 

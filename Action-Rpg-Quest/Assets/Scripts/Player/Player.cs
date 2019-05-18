@@ -45,6 +45,8 @@ namespace Advent.Entities
         private CameraController cam;
         private Vector2 mouse;
 
+        private bool canBeHit = true;
+
         public GameObject weapon;
         public TrailRenderer weaponTrail;
         public ParticleSystem dustWalkingEffect = null;
@@ -106,7 +108,10 @@ namespace Advent.Entities
         {
             if (states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
             {
-                Movement();
+                if (canBeHit)
+                {
+                    Movement();
+                }
             }
         }
         private void FlipCharacter()
@@ -253,13 +258,35 @@ namespace Advent.Entities
         {
             this.states = states;
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage,Vector3 targetPoint)
         {
-            //take damage
-            // Invincible for 0.5f
-            //animate damage
-            currentHP -= damage;
-            Debug.Log(gameObject.name + "| HP : " + currentHP + " | DAmage : " + damage);
+            if (canBeHit)
+            {
+                //take damage
+                // Invincible for 0.5f
+                //animate damage
+                currentHP -= damage;
+                if (floatingDamageText != null)
+                {
+                    ShowFloatingDamageText(damage);
+                }
+                Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
+
+                Vector3 knockbackDirection = targetPoint - transform.position;
+                StartCoroutine(TakeDamageRoutine(knockbackDirection));
+            }
+        }
+        private IEnumerator TakeDamageRoutine(Vector3 targetPoint)
+        {
+            canBeHit = false;
+            //SoundManager.instance.EnemyHitSingleSfx(hurtAudio);
+            sprite.color = Color.red;
+            rb2d.velocity = Vector3.zero;
+            rb2d.velocity = new Vector2(targetPoint.x * -knockbackDistance, targetPoint.y * -knockbackDistance);
+            yield return new WaitForSeconds(0.05f);
+            rb2d.velocity = Vector2.zero;
+            canBeHit = true;
+            sprite.color = Color.white;
         }
     }
 }

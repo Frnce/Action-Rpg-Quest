@@ -19,7 +19,7 @@ namespace Advent.Items
         [SerializeField]
         private float toFollowRadius = 5f;
         [SerializeField]
-        private LayerMask playerLayer;
+        private LayerMask playerLayer = 0;
 
         private Vector3 _velocity = Vector3.zero;
         private bool isFollowing = false;

@@ -4,19 +4,10 @@ using UnityEngine;
 using Advent.Utilities;
 using Advent.Interfaces;
 using Advent.Manager;
+using TMPro;
 
 namespace Advent.Entities
 {
-    [System.Serializable]
-    public class Stats
-    {
-        public Stat strength;
-        public Stat agility;
-        public Stat vitality;
-        public Stat intelligence;
-        public StatRange attack;
-        public StatRange defense;
-    }
     public class Entity : MonoBehaviour
     {
         [SerializeField]
@@ -40,6 +31,15 @@ namespace Advent.Entities
         protected float hpMultiplier = 0;
         [SerializeField]
         protected float mpMultiplier = 0;
+        [Space]
+        [SerializeField]
+        protected GameObject floatingDamageText;
+        [SerializeField]
+        protected float knockbackDistance;
+        [SerializeField]
+        protected GameObject hurtBox = null;
+        [SerializeField]
+        protected SpriteRenderer sprite;
 
         private StatsManager statManager;
 
@@ -81,6 +81,11 @@ namespace Advent.Entities
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
+        }
+        protected void ShowFloatingDamageText(float damageAmount)
+        {
+            GameObject obj = Instantiate(floatingDamageText, transform.position, Quaternion.identity, transform);
+            obj.GetComponentInChildren<TMP_Text>().text = "- " + damageAmount;
         }
     }
 }
