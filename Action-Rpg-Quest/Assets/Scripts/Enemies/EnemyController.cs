@@ -140,6 +140,7 @@ namespace Advent.Entities
         }
         private IEnumerator DeathRoutine()
         {
+            PlayerLevelManager.instance.GainExp(entityStats.expGiven);
             yield return new WaitForSeconds(maxDeathTime);
             anim.SetTrigger("deathFade");
             yield return new WaitForSeconds(3f);

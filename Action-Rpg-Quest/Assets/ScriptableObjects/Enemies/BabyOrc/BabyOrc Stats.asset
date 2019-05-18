@@ -17,3 +17,5 @@ MonoBehaviour:
   agility: 10
   vitality: 99
   intelligence: 1
+  enemyLevel: 1
+  expGiven: 14

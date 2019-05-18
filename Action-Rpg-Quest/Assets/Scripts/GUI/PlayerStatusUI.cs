@@ -24,6 +24,9 @@ namespace Advent.UI
         private Image hpBar = null;
         [SerializeField]
         private Image mpBar = null;
+        [Space]
+        [SerializeField]
+        private TMP_Text levelText = null;
         [SerializeField]
         private Image expBar = null;
 
@@ -32,10 +35,12 @@ namespace Advent.UI
         private float expPercent = 0;
 
         private Player player;
+        private PlayerLevelManager playerLevel;
         // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
+            playerLevel = PlayerLevelManager.instance;
         }
 
         // Update is called once per frame
@@ -47,22 +52,26 @@ namespace Advent.UI
         }
         private void HpUpdateUI()
         {
-            hpPercent = (100f / player.GetMaxHP()) * player.GetCurrentHP();
+            hpPercent = (100f / player.GetMaxHP) * player.GetCurrentHP;
 
             hpBar.fillAmount = hpPercent / 100f;
-            currentHP.text = player.GetCurrentHP().ToString();
-            maxHP.text = player.GetMaxHP().ToString();
+            currentHP.text = player.GetCurrentHP.ToString();
+            maxHP.text = player.GetMaxHP.ToString();
         }
         private void MpUpdateUI()
         {
-            mpPercent = (100f / player.GetMaxMP()) * player.GetCurrentMP();
+            mpPercent = (100f / player.GetMaxMP) * player.GetCurrentMP;
             mpBar.fillAmount = mpPercent / 100f;
-            currentMP.text = player.GetCurrentMP().ToString();
-            maxMP.text = player.GetMaxMP().ToString();
+            currentMP.text = player.GetCurrentMP.ToString();
+            maxMP.text = player.GetMaxMP.ToString();
         }
         private void ExpUpdateUI()
         {
             //TODO EXP BAR
+            levelText.text = playerLevel.GetCurrentLevel.ToString();
+
+            expPercent = (100f / playerLevel.GetExpNeeded) * playerLevel.GetCurrentExp;
+            expBar.fillAmount = expPercent / 100f;
         }
     }
 }

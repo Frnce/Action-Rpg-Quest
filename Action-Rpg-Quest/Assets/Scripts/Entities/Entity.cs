@@ -14,19 +14,8 @@ namespace Advent.Entities
         protected EntityStats entityStats = null;
         [SerializeField]
         protected float movementSpeed = 10f;
-        protected Rigidbody2D rb2d;
-        protected Animator anim;
-        [Space]
-        [SerializeField]
-        protected int currentLevel = 0;
         [SerializeField]
         protected Stats statList = null;
-        [Space]
-        protected float currentHP = 0;
-        protected float maxHP = 0;
-        protected float currentMP = 0;
-        protected float maxMP = 0;
-
         [SerializeField]
         protected float hpMultiplier = 0;
         [SerializeField]
@@ -40,6 +29,15 @@ namespace Advent.Entities
         protected GameObject hurtBox = null;
         [SerializeField]
         protected SpriteRenderer sprite;
+
+        protected int currentLevel = 0;
+        protected float currentHP = 0;
+        protected float maxHP = 0;
+        protected float currentMP = 0;
+        protected float maxMP = 0;
+
+        protected Rigidbody2D rb2d;
+        protected Animator anim;
 
         private StatsManager statManager;
 
@@ -56,27 +54,44 @@ namespace Advent.Entities
         {
             statManager.InitStats(statList, entityStats);
 
+            if (entityStats.enemyLevel <= 0)
+            {
+                currentLevel = entityStats.enemyLevel;
+            }
+
             maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
             maxMP = statManager.InitMaxMP(statList.intelligence.GetValue(), currentLevel, mpMultiplier);
 
             currentHP = maxHP;
             currentMP = maxMP;
         }
-        public float GetCurrentHP()
+        public float GetCurrentHP
         {
-            return Mathf.Round(currentHP);
+            get
+            {
+                return Mathf.Round(currentHP);
+            }
         }
-        public float GetCurrentMP()
+        public float GetCurrentMP
         {
-            return Mathf.Round(currentMP);
+            get
+            {
+                return Mathf.Round(currentMP);
+            }
         }
-        public float GetMaxHP()
+        public float GetMaxHP
         {
-            return Mathf.Round(maxHP);
+            get
+            {
+                return Mathf.Round(maxHP);
+            }
         }
-        public float GetMaxMP()
+        public float GetMaxMP
         {
-            return Mathf.Round(maxMP);
+            get
+            {
+                return Mathf.Round(maxMP);
+            }
         }
         public virtual void Die()
         {
