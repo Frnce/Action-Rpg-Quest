@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Advent.Utilities;
+using Advent.Items;
 
 namespace Advent.Entities
 {
@@ -17,5 +18,8 @@ namespace Advent.Entities
         [Header("For Enemies")]
         public int enemyLevel;
         public int expGiven;
+        public LootTable loot;
+        [Range(0,100)]
+        public int dropChance;
     }
 }

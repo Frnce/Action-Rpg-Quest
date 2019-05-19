@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4344894106200977995}
   - component: {fileID: 3019379090193485925}
+  - component: {fileID: 2849121102455033082}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -41,5 +42,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dcd384d8dc2fb0469c063ec44222d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels: []
+  duration: 0
+  shakeMagnitude: 2.2
+  shakeRough: 74
+  shakeFadeIn: 0.1
+  shakeFadeOut: 0.1
+--- !u!114 &2849121102455033082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4344894106200977988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78024ea260181334896b4b12c43939bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

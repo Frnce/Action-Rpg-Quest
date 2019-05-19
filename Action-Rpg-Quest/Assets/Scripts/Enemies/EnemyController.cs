@@ -87,9 +87,9 @@ namespace Advent.Entities
         {
             if (currentHP <= 0)
             {
-                if (GetComponent<LootScript>() != null)
+                if (entityStats.loot != null)
                 {
-                    GetComponent<LootScript>().DropLoot();
+                    FindObjectOfType<LootScript>().DropLoot(entityStats.loot,entityStats.dropChance,transform.position);
                 }
                 myCollider.enabled = false;
                 customCollider.SetActive(false);

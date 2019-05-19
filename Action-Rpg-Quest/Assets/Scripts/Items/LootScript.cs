@@ -6,18 +6,14 @@ namespace Advent.Items
 {
     public class LootScript : MonoBehaviour
     {
-        [SerializeField]
-        private LootTable lootTable = null;
-        [SerializeField]
-        private int dropChance = 0;
-        public void DropLoot()
+        public void DropLoot(LootTable lootTable,int dropChance,Vector3 dropPosition)
         {
             for (int i = 0; i < lootTable.GetMaxDrop; i++)
             {
-                CalculateDropLoot();
+                CalculateDropLoot(lootTable,dropChance,dropPosition);
             }
         }
-        private void CalculateDropLoot()
+        private void CalculateDropLoot(LootTable lootTable,int dropChance,Vector3 dropPosition)
         {
             int calculateDropChance = Random.Range(0, 101);
 
@@ -32,7 +28,7 @@ namespace Advent.Items
 
                 for (int i = 0; i < lootTable.GetItems.Count; i++)
                 {
-                    itemWeight += lootTable.GetItems[i].dropChance;
+                    itemWeight += lootTable.GetItems[i].dropRate;
                 }
                 Debug.Log("Item Weight : " + itemWeight);
 
@@ -40,13 +36,13 @@ namespace Advent.Items
 
                 for (int i = 0; i < lootTable.GetItems.Count; i++)
                 {
-                    if(randomValue <= lootTable.GetItems[i].dropChance)
+                    if(randomValue <= lootTable.GetItems[i].dropRate)
                     {
-                        Vector2 itemPosition = (Random.insideUnitCircle * 2) + (Vector2)transform.position;
+                        Vector2 itemPosition = (Random.insideUnitCircle * 2) + (Vector2)dropPosition;
                         Instantiate(lootTable.GetItems[i].item, itemPosition, Quaternion.identity);
                         return;
                     }
-                    randomValue -= lootTable.GetItems[i].dropChance;
+                    randomValue -= lootTable.GetItems[i].dropRate;
                 }
             }
         }

@@ -95,7 +95,7 @@ namespace Advent.Entities
                 FlipCharacter();
                 Aim();
             }
-            Debug.Log(states);
+            //TODO fix Trail Effect
             if(states == PlayerStates.MOVING)
             {
                 if (!dustWalkingEffect.isPlaying)

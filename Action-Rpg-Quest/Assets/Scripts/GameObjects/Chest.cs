@@ -21,18 +21,24 @@ namespace Advent.GameObjects
         protected ChestType chestType;
         [Space]
         [SerializeField]
+        private LootTable lootTable = null;
+        [SerializeField]
+        [Range(0, 100)]
+        private int lootDropChance = 0;
+        [Space]
+        [SerializeField]
         private Sprite openSprite = null;
         private LootScript loot;
         private void Start()
         {
             isOpen = false;
-            loot = GetComponent<LootScript>();
+            loot = FindObjectOfType<LootScript>();
         }
         public void OpenChest()
         {
             if (!isOpen)
             {
-                loot.DropLoot();
+                loot.DropLoot(lootTable,lootDropChance,transform.position);
                 isOpen = true;
                 GetComponentInChildren<SpriteRenderer>().sprite = openSprite;
                 GetComponent<BoxCollider2D>().enabled = false;

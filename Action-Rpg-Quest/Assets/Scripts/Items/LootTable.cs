@@ -9,7 +9,7 @@ namespace Advent.Items
     {
         public GameObject item;
         [Range(0,100)]
-        public float dropChance;
+        public float dropRate;
     }
     [CreateAssetMenu(fileName = "New Loot Table", menuName = "Loot Table")]
     public class LootTable : ScriptableObject
