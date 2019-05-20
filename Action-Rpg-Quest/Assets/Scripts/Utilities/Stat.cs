@@ -10,7 +10,7 @@ namespace Advent.Utilities
         [SerializeField]
         private int baseValue = 0;
         private List<int> modifiers = new List<int>();
-        public void AddStat(int stat)
+        public void AddStat(int stat) 
         {
             baseValue += stat;
         }

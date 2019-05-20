@@ -55,13 +55,13 @@ namespace Advent.Manager
         {
             if (newItem != null)
             {
-                player.GetStats.defense.AddModifier(newItem.defense.GetRealValue());
-                player.GetStats.attack.AddModifier(newItem.attack.GetRealValue());
+                player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
+                player.GetStats.physicalAttack.AddModifier(newItem.attack.GetRealValue());
             }
             if (oldItem != null)
             {
-                player.GetStats.defense.RemoveModifier(oldItem.defense.GetRealValue());
-                player.GetStats.attack.RemoveModifier(oldItem.attack.GetRealValue());
+                player.GetStats.physicalDefense.RemoveModifier(oldItem.defense.GetValue());
+                player.GetStats.physicalAttack.RemoveModifier(oldItem.attack.GetRealValue());
             }
         }
         public void Equip(Equipment newItem)

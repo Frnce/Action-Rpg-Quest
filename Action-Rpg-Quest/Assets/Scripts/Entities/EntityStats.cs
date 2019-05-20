@@ -10,8 +10,10 @@ namespace Advent.Entities
     public class EntityStats : ScriptableObject
     {
         new public string name;
+
+        [Header("Attributes")]
         public int strength;
-        public int agility;
+        public int dexterity;
         public int vitality;
         public int intelligence;
         [Space]

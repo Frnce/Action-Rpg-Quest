@@ -24,12 +24,9 @@ namespace Advent.Manager
         public void InitStats(Stats stats, EntityStats entityStats)
         {
             stats.strength.AddStat(entityStats.strength);
-            stats.agility.AddStat(entityStats.agility);
+            stats.dexterity.AddStat(entityStats.dexterity);
             stats.vitality.AddStat(entityStats.vitality);
             stats.intelligence.AddStat(entityStats.intelligence);
-
-            stats.attack = new StatRange();
-            stats.defense = new StatRange();
         }
 
         public float InitMaxHP(float vitality, float level, float multiplier)
