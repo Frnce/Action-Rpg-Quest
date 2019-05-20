@@ -81,7 +81,7 @@ namespace Advent.Entities
         }
         public float GetMovementSpeed()
         {
-            return movementSpeed;
+            return entityStats.movementSpeed;
         }
         public override void Die()
         {

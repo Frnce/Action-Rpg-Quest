@@ -6,35 +6,35 @@ namespace Advent.Utilities
     public class Stats
     {
         //Base Attribute
-        public Stat strength;
-        public Stat dexterity;
-        public Stat vitality;
-        public Stat intelligence;
+        public EntityStat strength;
+        public EntityStat dexterity;
+        public EntityStat vitality;
+        public EntityStat intelligence;
 
-        public Stat maxHitPoints;
-        public Stat maxManaPoints;
+        public EntityStat maxHitPoints;
+        public EntityStat maxManaPoints;
 
-        public StatRange physicalAttack;    
-        public StatRange magicalAttack;
+        public EntityStat physicalAttack;    
+        public EntityStat magicalAttack;
 
-        public Stat physicalDefense;
-        public Stat magicalDefense;
+        public EntityStat physicalDefense;
+        public EntityStat magicalDefense;
 
-        public Stat movementSpeed;
+        public EntityStat movementSpeed;
 
-        public Stat criticalHitChance;
-        public Stat criticalHitDamage;
+        public EntityStat criticalHitChance;
+        public EntityStat criticalHitDamage;
 
-        public Stat ignorePhysicalDefense;
-        public Stat ignoreMagicalDefense;
+        public EntityStat ignorePhysicalDefense;
+        public EntityStat ignoreMagicalDefense;
         //public Stat ignorePhysicalDefenseChance;
         //public Stat ignoreMagicalDefenseChance;
 
-        public Stat healthRegen; // x per second
-        public Stat manaRegen; // x per second
+        public EntityStat healthRegen; // x per second
+        public EntityStat manaRegen; // x per second
 
         //Modifier
-        public Stat lifeStealPercent;
-        public Stat abilityCooldownReduction;
+        public EntityStat lifeStealPercent;
+        public EntityStat abilityCooldownReduction;
     }
 }

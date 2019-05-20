@@ -23,19 +23,27 @@ namespace Advent.Manager
         }
         public void InitStats(Stats stats, EntityStats entityStats)
         {
-            stats.strength.AddStat(entityStats.strength);
-            stats.dexterity.AddStat(entityStats.dexterity);
-            stats.vitality.AddStat(entityStats.vitality);
-            stats.intelligence.AddStat(entityStats.intelligence);
+            //Basic Attribute
+            stats.strength = new EntityStat(entityStats.strength);
+            stats.dexterity = new EntityStat(entityStats.dexterity);
+            stats.vitality = new EntityStat(entityStats.vitality);
+            stats.intelligence = new EntityStat(entityStats.intelligence);
+
+            //Movement Speed
+            stats.movementSpeed = new EntityStat(entityStats.movementSpeed);
+
+            //HP MP
+            stats.maxHitPoints = new EntityStat(InitMaxHP(stats.vitality.getValue,3));
+            stats.maxManaPoints = new EntityStat(InitMaxMP(stats.intelligence.getValue,2));
         }
 
-        public float InitMaxHP(float vitality, float level, float multiplier)
+        public float InitMaxHP(float vitality, float multiplier)
         {
-            return (vitality + level) * multiplier;
+            return (vitality) * multiplier; //TODO Add entity level to the equation HP
         }
-        public float InitMaxMP(float intelligence, float level, float multiplier)
+        public float InitMaxMP(float intelligence, float multiplier)
         {
-            return (intelligence + level) * multiplier;
+            return (intelligence) * multiplier; //TODO Add entity level to the equation MP
         }
     }
 }

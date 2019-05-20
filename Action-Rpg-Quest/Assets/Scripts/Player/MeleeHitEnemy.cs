@@ -18,7 +18,7 @@ namespace Advent.Entities
             //TODO Make layermask modular . using a variable
             if (collision.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
             {
-                collision.GetComponentInParent<IDamageable>().TakeDamage(stats.strength.GetValue(),Vector3.zero);
+                collision.GetComponentInParent<IDamageable>().TakeDamage(0,Vector3.zero);//TODO GET DAMAGE FROM THE ATTACK ATTRIBUTES
             }
         }
     }

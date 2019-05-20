@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Warrior mo muka mo
   strength: 99
-  agility: 99
+  dexterity: 99
   vitality: 99
   intelligence: 99
+  movementSpeed: 6
+  enemyLevel: 0
+  expGiven: 0
+  loot: {fileID: 0}
+  dropChance: 0

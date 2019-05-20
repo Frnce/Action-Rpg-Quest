@@ -168,7 +168,7 @@ namespace Advent.Entities
                 }
                 if (hit.collider == null)
                 {
-                    rb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
+                    rb2d.MovePosition(transform.position + playerDir * entityStats.movementSpeed * Time.deltaTime);
                 }
             }
         }

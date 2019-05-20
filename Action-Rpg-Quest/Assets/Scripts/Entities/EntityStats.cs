@@ -17,6 +17,8 @@ namespace Advent.Entities
         public int vitality;
         public int intelligence;
         [Space]
+        public float movementSpeed;
+        [Space]
         [Header("For Enemies")]
         public int enemyLevel;
         public int expGiven;

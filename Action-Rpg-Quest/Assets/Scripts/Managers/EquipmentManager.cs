@@ -53,16 +53,17 @@ namespace Advent.Manager
         }
         public void OnEquipmentChange(Equipment newItem, Equipment oldItem)
         {
-            if (newItem != null)
-            {
-                player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
-                player.GetStats.physicalAttack.AddModifier(newItem.attack.GetRealValue());
-            }
-            if (oldItem != null)
-            {
-                player.GetStats.physicalDefense.RemoveModifier(oldItem.defense.GetValue());
-                player.GetStats.physicalAttack.RemoveModifier(oldItem.attack.GetRealValue());
-            }
+            //Add New Stats on EquipmentChange
+            //if (newItem != null)
+            //{
+            //    player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
+            //    player.GetStats.physicalAttack.AddModifier(newItem.attack.GetRealValue());
+            //}
+            //if (oldItem != null)
+            //{
+            //    player.GetStats.physicalDefense.RemoveModifier(oldItem.defense.GetValue());
+            //    player.GetStats.physicalAttack.RemoveModifier(oldItem.attack.GetRealValue());
+            //}
         }
         public void Equip(Equipment newItem)
         {

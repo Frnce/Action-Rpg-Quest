@@ -11,8 +11,6 @@ namespace Advent.Items
     {
         public EquipSlots slots;
         public AttackType attackType;
-        public StatRange attack;
-        public Stat defense;
 
         public override void Use()
         {

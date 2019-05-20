@@ -13,8 +13,6 @@ namespace Advent.Entities
         [SerializeField]
         protected EntityStats entityStats = null;
         [SerializeField]
-        protected float movementSpeed = 10f;
-        [SerializeField]
         protected Stats statList = null;
         [SerializeField]
         protected float hpMultiplier = 0;
@@ -32,9 +30,7 @@ namespace Advent.Entities
 
         protected int currentLevel = 0;
         protected float currentHP = 0;
-        protected float maxHP = 0;
         protected float currentMP = 0;
-        protected float maxMP = 0;
 
         protected Rigidbody2D rb2d;
         protected Animator anim;
@@ -58,12 +54,12 @@ namespace Advent.Entities
             {
                 currentLevel = entityStats.enemyLevel;
             }
+            //TODO INIT MAXHP AND MAXMP
+            //maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
+            //maxMP = statManager.InitMaxMP(statList.intelligence.GetValue(), currentLevel, mpMultiplier);
 
-            maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
-            maxMP = statManager.InitMaxMP(statList.intelligence.GetValue(), currentLevel, mpMultiplier);
-
-            currentHP = maxHP;
-            currentMP = maxMP;
+            currentHP = statList.maxHitPoints.getValue;
+            currentMP = statList.maxManaPoints.getValue;
         }
         public float GetCurrentHP
         {
@@ -83,14 +79,14 @@ namespace Advent.Entities
         {
             get
             {
-                return Mathf.Round(maxHP);
+                return Mathf.Round(statList.maxHitPoints.getValue);
             }
         }
         public float GetMaxMP
         {
             get
             {
-                return Mathf.Round(maxMP);
+                return Mathf.Round(statList.maxManaPoints.getValue);
             }
         }
         public virtual void Die()

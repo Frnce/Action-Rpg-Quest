@@ -32,7 +32,7 @@ namespace Advent.Entities
             baseValue = _baseValue;
         }
 
-        public float Value
+        public float getValue
         {
             get
             {
