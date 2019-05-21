@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: statList.physicalAttack.baseValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444309749630793533, guid: 763c882a4a9238a42a70b81901666b4b,
+        type: 3}
+      propertyPath: statList.AttackDamage.minDamage.baseValue
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
 --- !u!114 &242901164 stripped

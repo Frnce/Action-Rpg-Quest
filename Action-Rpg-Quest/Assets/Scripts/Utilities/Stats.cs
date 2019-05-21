@@ -3,6 +3,12 @@
 namespace Advent.Utilities
 {
     [System.Serializable]
+    public class AttackDamageRange
+    {
+        public EntityStat minDamage;
+        public EntityStat maxDamage;
+    }
+    [System.Serializable]
     public class Stats
     {
         //Base Attribute
@@ -14,14 +20,16 @@ namespace Advent.Utilities
         public EntityStat maxHitPoints;
         public EntityStat maxManaPoints;
 
-        public EntityStat physicalAttack;    
-        public EntityStat magicalAttack;
+        public AttackDamageRange weaponDamage;
+        public IntRange baseAttack;
+        public AttackDamageRange magicalAttack;
 
         public EntityStat physicalDefense;
         public EntityStat magicalDefense;
 
         public EntityStat movementSpeed;
 
+        //Modifiers
         public EntityStat criticalHitChance;
         public EntityStat criticalHitDamage;
 

@@ -12,6 +12,8 @@ namespace Advent.Items
         public EquipSlots slots;
         public AttackType attackType;
 
+        public IntRange damage = new IntRange(5, 13);
+
         public override void Use()
         {
             base.Use();

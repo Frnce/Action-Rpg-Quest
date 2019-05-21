@@ -21,29 +21,39 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
-        public void InitStats(Stats stats, EntityStats entityStats)
+        public void InitStats(Stats stats)
         {
             //Basic Attribute
-            stats.strength = new EntityStat(entityStats.strength);
-            stats.dexterity = new EntityStat(entityStats.dexterity);
-            stats.vitality = new EntityStat(entityStats.vitality);
-            stats.intelligence = new EntityStat(entityStats.intelligence);
-
-            //Movement Speed
-            stats.movementSpeed = new EntityStat(entityStats.movementSpeed);
+            stats.strength = new EntityStat();
+            stats.dexterity = new EntityStat();
+            stats.vitality = new EntityStat();
+            stats.intelligence = new EntityStat();
 
             //HP MP
-            stats.maxHitPoints = new EntityStat(InitMaxHP(stats.vitality.getValue,3));
-            stats.maxManaPoints = new EntityStat(InitMaxMP(stats.intelligence.getValue,2));
-        }
+            stats.maxHitPoints = new EntityStat();
+            stats.maxManaPoints = new EntityStat();
 
-        public float InitMaxHP(float vitality, float multiplier)
-        {
-            return (vitality) * multiplier; //TODO Add entity level to the equation HP
-        }
-        public float InitMaxMP(float intelligence, float multiplier)
-        {
-            return (intelligence) * multiplier; //TODO Add entity level to the equation MP
+            stats.weaponDamage.minDamage = new EntityStat();
+            stats.weaponDamage.maxDamage = new EntityStat();
+            stats.baseAttack = new IntRange(0, 0);
+
+            stats.physicalDefense = new EntityStat();
+            stats.magicalDefense = new EntityStat();
+
+            //Movement Speed
+            stats.movementSpeed = new EntityStat();
+
+            stats.criticalHitChance = new EntityStat();
+            stats.criticalHitDamage = new EntityStat();
+
+            stats.ignorePhysicalDefense = new EntityStat();
+            stats.ignoreMagicalDefense = new EntityStat();
+
+            stats.healthRegen = new EntityStat();
+            stats.manaRegen = new EntityStat();
+
+            stats.lifeStealPercent = new EntityStat();
+            stats.abilityCooldownReduction = new EntityStat();
         }
     }
 }

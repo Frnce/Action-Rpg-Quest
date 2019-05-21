@@ -36,6 +36,7 @@ namespace Advent.Entities
         protected Animator anim;
 
         private StatsManager statManager;
+        private StatFormulas statFormula = new StatFormulas();
 
         public virtual void Start()
         {
@@ -43,20 +44,34 @@ namespace Advent.Entities
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
-            InitStats();
-        }
-
-        private void InitStats()
-        {
-            statManager.InitStats(statList, entityStats);
-
             if (entityStats.enemyLevel <= 0)
             {
                 currentLevel = entityStats.enemyLevel;
             }
-            //TODO INIT MAXHP AND MAXMP
-            //maxHP = statManager.InitMaxHP(statList.vitality.GetValue(), currentLevel, hpMultiplier);
-            //maxMP = statManager.InitMaxMP(statList.intelligence.GetValue(), currentLevel, mpMultiplier);
+            else
+            {
+                currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
+            }
+
+            InitStats();
+        }
+
+        public void InitStats()
+        {
+            statManager.InitStats(statList);
+
+            statList.strength.baseValue = entityStats.strength;
+            statList.dexterity.baseValue = entityStats.dexterity;
+            statList.intelligence.baseValue = entityStats.intelligence;
+            statList.vitality.baseValue = entityStats.vitality;
+
+            statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(statList.vitality.getValue, currentLevel, 3);
+            statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(statList.intelligence.getValue, currentLevel, 2);
+
+            statList.movementSpeed.baseValue = entityStats.movementSpeed;
+
+            IntRange baseAttackResult = statFormula.ComputeBaseAttack(statList.strength.getValue, currentLevel, statList.weaponDamage.minDamage.getValue, statList.weaponDamage.maxDamage.getValue);
+            statList.baseAttack = baseAttackResult;
 
             currentHP = statList.maxHitPoints.getValue;
             currentMP = statList.maxManaPoints.getValue;

@@ -17,7 +17,7 @@ MonoBehaviour:
   dexterity: 99
   vitality: 99
   intelligence: 99
-  movementSpeed: 6
+  movementSpeed: 5
   enemyLevel: 0
   expGiven: 0
   loot: {fileID: 0}

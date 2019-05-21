@@ -67,7 +67,6 @@ namespace Advent.UI
         }
         private void ExpUpdateUI()
         {
-            //TODO EXP BAR
             levelText.text = playerLevel.GetCurrentLevel.ToString();
 
             expPercent = (100f / playerLevel.GetExpNeeded) * playerLevel.GetCurrentExp;
