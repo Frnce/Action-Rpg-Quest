@@ -14,10 +14,6 @@ namespace Advent.Entities
         protected EntityStats entityStats = null;
         [SerializeField]
         protected Stats statList = null;
-        [SerializeField]
-        protected float hpMultiplier = 0;
-        [SerializeField]
-        protected float mpMultiplier = 0;
         [Space]
         [SerializeField]
         protected GameObject floatingDamageText;
@@ -60,18 +56,15 @@ namespace Advent.Entities
         {
             statManager.InitStats(statList);
 
-            statList.strength.baseValue = entityStats.strength;
-            statList.dexterity.baseValue = entityStats.dexterity;
-            statList.intelligence.baseValue = entityStats.intelligence;
-            statList.vitality.baseValue = entityStats.vitality;
-
-            statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(statList.vitality.getValue, currentLevel, 3);
-            statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(statList.intelligence.getValue, currentLevel, 2);
+            statList.baseSTR = entityStats.strength;
+            statList.baseDEX = entityStats.dexterity;
+            statList.baseINT = entityStats.intelligence;
+            statList.baseVIT = entityStats.vitality;
 
             statList.movementSpeed.baseValue = entityStats.movementSpeed;
 
-            IntRange baseAttackResult = statFormula.ComputeBaseAttack(statList.strength.getValue, currentLevel, statList.weaponDamage.minDamage.getValue, statList.weaponDamage.maxDamage.getValue);
-            statList.baseAttack = baseAttackResult;
+            statManager.InitMaxHP(statList, statFormula,currentLevel); //HP
+            statManager.InitMaxMP(statList, statFormula, currentLevel); // MP
 
             currentHP = statList.maxHitPoints.getValue;
             currentMP = statList.maxManaPoints.getValue;

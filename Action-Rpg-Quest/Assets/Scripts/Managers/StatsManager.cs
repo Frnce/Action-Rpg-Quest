@@ -24,10 +24,10 @@ namespace Advent.Manager
         public void InitStats(Stats stats)
         {
             //Basic Attribute
-            stats.strength = new EntityStat();
-            stats.dexterity = new EntityStat();
-            stats.vitality = new EntityStat();
-            stats.intelligence = new EntityStat();
+            stats.bonusSTR = new EntityStat();
+            stats.bonusDEX = new EntityStat();
+            stats.bonusINT = new EntityStat();
+            stats.bonusVIT = new EntityStat();
 
             //HP MP
             stats.maxHitPoints = new EntityStat();
@@ -54,6 +54,14 @@ namespace Advent.Manager
 
             stats.lifeStealPercent = new EntityStat();
             stats.abilityCooldownReduction = new EntityStat();
+        }
+        public void InitMaxHP(Stats statList,StatFormulas statFormula,float currentLevel = 1)
+        {
+            statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(statList.baseVIT,statList.bonusVIT.getValue,currentLevel);
+        }
+        public void InitMaxMP(Stats statList, StatFormulas statFormula, float currentLevel = 1)
+        {
+            statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(statList.baseINT, statList.bonusINT.getValue, currentLevel);
         }
     }
 }

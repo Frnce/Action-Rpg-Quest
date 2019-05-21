@@ -12,10 +12,15 @@ namespace Advent.Utilities
     public class Stats
     {
         //Base Attribute
-        public EntityStat strength;
-        public EntityStat dexterity;
-        public EntityStat vitality;
-        public EntityStat intelligence;
+        public float baseSTR;
+        public float baseDEX;
+        public float baseVIT;
+        public float baseINT;
+
+        public EntityStat bonusSTR;
+        public EntityStat bonusDEX;
+        public EntityStat bonusVIT;
+        public EntityStat bonusINT;
 
         public EntityStat maxHitPoints;
         public EntityStat maxManaPoints;
