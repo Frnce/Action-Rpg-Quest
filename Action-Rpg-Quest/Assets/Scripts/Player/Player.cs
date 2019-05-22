@@ -76,6 +76,8 @@ namespace Advent.Entities
             weaponTrail.emitting = false;
 
             timeBetweenAttack = startTimeBetweenAttack;
+
+            InitStats();
         }
         // Update is called once per frame
         void Update()

@@ -48,13 +48,9 @@ namespace Advent.Entities
             {
                 currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
             }
-
-            InitStats();
-
-            EquipmentManager.instance.EquipDefaults();
         }
 
-        public void InitStats()
+        protected void InitStats()
         {
             statManager.InitStats(statList);
 

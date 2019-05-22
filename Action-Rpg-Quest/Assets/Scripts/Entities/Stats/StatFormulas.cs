@@ -39,6 +39,7 @@ namespace Advent.Entities
             Debug.Log("min Weapon : " + weaponAttack.minDamage.getValue + "Max Weapon : " + weaponAttack.maxDamage.getValue);
 
             IntRange damage = new IntRange(Mathf.RoundToInt(minDamage), Mathf.RoundToInt(maxDamage));
+            Debug.Log("Min base dmg : " + damage.m_Min + " Max Base Dmg : " + damage.m_Max);
             float finalDamage = damage.Random - ((defense * 0.5f) + (targetLevel * 0.5f));
             return Mathf.RoundToInt(finalDamage);
         }

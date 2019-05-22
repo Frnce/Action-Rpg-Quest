@@ -51,6 +51,7 @@ namespace Advent.Manager
                 //player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
                 StatModifier dmgMinMod = new StatModifier(newItem.damage.m_Min,StatModType.FLAT);
                 StatModifier dmgMaxMod = new StatModifier(newItem.damage.m_Max,StatModType.FLAT);
+
                 player.GetStats.weaponDamage.minDamage.AddModifier(dmgMinMod);
                 player.GetStats.weaponDamage.maxDamage.AddModifier(dmgMaxMod);
             }
