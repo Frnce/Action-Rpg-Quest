@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warrior Stats
   m_EditorClassIdentifier: 
   name: Warrior mo muka mo
-  strength: 99
+  strength: 10
   dexterity: 99
   vitality: 99
   intelligence: 99

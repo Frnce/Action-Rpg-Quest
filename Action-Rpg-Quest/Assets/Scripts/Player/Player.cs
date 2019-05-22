@@ -242,18 +242,6 @@ namespace Advent.Entities
             isNearInteractable = false;
             collidedObject = null;
         }
-
-        public Stats GetStats
-        {
-            get
-            {
-                return statList;
-            }
-            set
-            {
-                statList = value;
-            }
-        }
         public void SetPlayerStates(PlayerStates states)
         {
             this.states = states;

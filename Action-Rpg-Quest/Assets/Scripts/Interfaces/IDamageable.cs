@@ -8,6 +8,6 @@ namespace Advent.Interfaces
     {
         //targetPoint = Where is the damage came from
         //If targetpoint is not in use , put vector3.zero instead
-        void TakeDamage(int damage,Vector3 targetPoint);
+        void TakeDamage(int damage, Vector3 targetPoint);
     }
 }

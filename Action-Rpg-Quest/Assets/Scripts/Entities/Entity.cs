@@ -36,10 +36,10 @@ namespace Advent.Entities
 
         public virtual void Start()
         {
-            statManager = StatsManager.instance;
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
 
+            statManager = StatsManager.instance;
             if (entityStats.enemyLevel <= 0)
             {
                 currentLevel = entityStats.enemyLevel;
@@ -50,6 +50,8 @@ namespace Advent.Entities
             }
 
             InitStats();
+
+            EquipmentManager.instance.EquipDefaults();
         }
 
         public void InitStats()
@@ -68,6 +70,11 @@ namespace Advent.Entities
 
             currentHP = statList.maxHitPoints.getValue;
             currentMP = statList.maxManaPoints.getValue;
+
+            EquipmentManager.instance.EquipDefaults();
+
+            statList.baseAttack = statFormula.ComputeBaseAttack(statList.baseSTR, statList.bonusSTR.getValue,currentLevel);
+            statList.baseDef = statFormula.ComputeMaxDefense(statList.baseSTR, statList.armorDefense.getValue);
         }
         public float GetCurrentHP
         {
@@ -97,9 +104,27 @@ namespace Advent.Entities
                 return Mathf.Round(statList.maxManaPoints.getValue);
             }
         }
+        public int GetCurrentLevel
+        {
+            get
+            {
+                return currentLevel;
+            }
+        }
+        public Stats GetStats
+        {
+            get
+            {
+                return statList;
+            }
+        }
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
+        }
+        public int GetDamage(IntRange baseAttack, AttackDamageRange weaponDamage)
+        {
+            return statFormula.ComputeDamage(baseAttack, weaponDamage, statList.baseDef, currentLevel);
         }
         protected void ShowFloatingDamageText(float damageAmount)
         {

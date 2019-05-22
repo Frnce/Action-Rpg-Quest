@@ -37,23 +37,23 @@ namespace Advent.Manager
             stats.weaponDamage.maxDamage = new EntityStat();
             stats.baseAttack = new IntRange(0, 0);
 
-            stats.physicalDefense = new EntityStat();
-            stats.magicalDefense = new EntityStat();
+            stats.armorDefense = new EntityStat();
+            //stats.magicalDefense = new EntityStat();
 
             //Movement Speed
             stats.movementSpeed = new EntityStat();
 
-            stats.criticalHitChance = new EntityStat();
-            stats.criticalHitDamage = new EntityStat();
+            //stats.criticalHitChance = new EntityStat();
+            //stats.criticalHitDamage = new EntityStat();
 
-            stats.ignorePhysicalDefense = new EntityStat();
-            stats.ignoreMagicalDefense = new EntityStat();
+            //stats.ignorePhysicalDefense = new EntityStat();
+            //stats.ignoreMagicalDefense = new EntityStat();
 
-            stats.healthRegen = new EntityStat();
-            stats.manaRegen = new EntityStat();
+            //stats.healthRegen = new EntityStat();
+            //stats.manaRegen = new EntityStat();
 
-            stats.lifeStealPercent = new EntityStat();
-            stats.abilityCooldownReduction = new EntityStat();
+            //stats.lifeStealPercent = new EntityStat();
+            //stats.abilityCooldownReduction = new EntityStat();
         }
         public void InitMaxHP(Stats statList,StatFormulas statFormula,float currentLevel = 1)
         {

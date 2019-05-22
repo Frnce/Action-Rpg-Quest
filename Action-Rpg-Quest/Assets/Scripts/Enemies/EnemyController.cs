@@ -113,7 +113,6 @@ namespace Advent.Entities
             Destroy(GO, 0.5f); // Destroy the particle
             GameManager.instance.Freeze(); // Freezes game for a millisecond to show effects
             GameManager.instance.ShakeCamera();
-
             currentHP -= damage;
             if (floatingDamageText != null)
             {

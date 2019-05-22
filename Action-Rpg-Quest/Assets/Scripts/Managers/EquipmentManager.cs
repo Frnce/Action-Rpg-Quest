@@ -42,14 +42,6 @@ namespace Advent.Manager
             inventory = InventoryManager.instance;
             int numOfSlots = System.Enum.GetNames(typeof(EquipSlots)).Length;
             currentEquipment = new Equipment[numOfSlots];
-
-            if(defaultEquipments.Length >= 0)
-            {
-                for (int i = 0; i < defaultEquipments.Length; i++)
-                {
-                    Equip(defaultEquipments[i]);
-                }
-            }
         }
         public void OnEquipmentChange(Equipment newItem, Equipment oldItem)
         {
@@ -64,8 +56,10 @@ namespace Advent.Manager
             }
             if (oldItem != null)
             {
-                //player.GetStats.physicalDefense.RemoveModifier(oldItem.defense.GetValue());
-                //player.GetStats.physicalAttack.RemoveModifier(oldItem.attack.GetRealValue());
+                StatModifier dmgMinMod = new StatModifier(oldItem.damage.m_Min, StatModType.FLAT);
+                StatModifier dmgMaxMod = new StatModifier(oldItem.damage.m_Max, StatModType.FLAT);
+                player.GetStats.weaponDamage.minDamage.RemoveModifier(dmgMinMod);
+                player.GetStats.weaponDamage.maxDamage.RemoveModifier(dmgMaxMod);
             }
         }
         public void Equip(Equipment newItem)
@@ -122,6 +116,17 @@ namespace Advent.Manager
                 if (onEquipmentChangedCallback != null)
                 {
                     onEquipmentChangedCallback.Invoke(null, oldItem);
+                }
+            }
+        }
+
+        public void EquipDefaults()
+        {
+            if (defaultEquipments.Length >= 0)
+            {
+                for (int i = 0; i < defaultEquipments.Length; i++)
+                {
+                    Equip(defaultEquipments[i]);
                 }
             }
         }

@@ -11,6 +11,7 @@ namespace Advent.Utilities
     [System.Serializable]
     public class Stats
     {
+        //TODO Some of the stats are still WIP
         //Base Attribute
         public float baseSTR;
         public float baseDEX;
@@ -27,27 +28,29 @@ namespace Advent.Utilities
 
         public AttackDamageRange weaponDamage;
         public IntRange baseAttack;
-        public AttackDamageRange magicalAttack;
+        //public AttackDamageRange magicalAttack; //TODO TBA magciAttack
 
-        public EntityStat physicalDefense;
-        public EntityStat magicalDefense;
+        public EntityStat armorDefense;
+        public int baseDef;
+        //public EntityStat magicalDefense; //TODO TBA Mdef
 
         public EntityStat movementSpeed;
 
-        //Modifiers
-        public EntityStat criticalHitChance;
-        public EntityStat criticalHitDamage;
+        //Modifiers 
+        //TODO TBA Mods
+        //public EntityStat criticalHitChance;
+        //public EntityStat criticalHitDamage;
 
-        public EntityStat ignorePhysicalDefense;
-        public EntityStat ignoreMagicalDefense;
+        //public EntityStat ignorePhysicalDefense;
+        //public EntityStat ignoreMagicalDefense;
         //public Stat ignorePhysicalDefenseChance;
         //public Stat ignoreMagicalDefenseChance;
 
-        public EntityStat healthRegen; // x per second
-        public EntityStat manaRegen; // x per second
+        //public EntityStat healthRegen; // x per second
+        //public EntityStat manaRegen; // x per second
 
-        //Modifier
-        public EntityStat lifeStealPercent;
-        public EntityStat abilityCooldownReduction;
+        ////Modifier
+        //public EntityStat lifeStealPercent;
+        //public EntityStat abilityCooldownReduction;
     }
 }

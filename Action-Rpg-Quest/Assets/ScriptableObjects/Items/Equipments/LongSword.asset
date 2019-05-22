@@ -15,17 +15,13 @@ MonoBehaviour:
   itemId: 3
   name: Long Sword
   icon: {fileID: 21300036, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
-  isDefaultItem: 0
+  isDefaultItem: 1
   gameobject: {fileID: 4515215143091963608, guid: 71696106f74584d4cb9540c032e1eb2a,
     type: 3}
   stackSize: -1
   dropRate: 0
   slots: 0
-  attack:
-    baseValue:
-      m_Min: 0
-      m_Max: 0
-  defense:
-    baseValue:
-      m_Min: 0
-      m_Max: 0
+  attackType: 0
+  damage:
+    m_Min: 5
+    m_Max: 13
