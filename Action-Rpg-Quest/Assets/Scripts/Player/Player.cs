@@ -5,6 +5,7 @@ using Advent.Controller;
 using Advent.Interfaces;
 using Advent.Utilities;
 using Advent.Manager;
+using Advent.Items;
 
 namespace Advent.Entities
 {
@@ -75,9 +76,16 @@ namespace Advent.Entities
 
             weaponTrail.emitting = false;
 
+            EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
+
             timeBetweenAttack = startTimeBetweenAttack;
 
-            InitStats();
+            EquipmentManager.instance.EquipDefaults();
+
+            InitAttributes();
+            InitMovementSpeed();
+
+            InitDamage();
         }
         // Update is called once per frame
         void Update()
@@ -229,6 +237,18 @@ namespace Advent.Entities
             stepDirection.z = 0.0f;
             stepDirection = Camera.main.ScreenToWorldPoint(stepDirection);
             return (stepDirection - transform.position).normalized;
+        }
+        private void InitDamage()
+        {
+            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue, currentLevel);
+        }
+        //Updates Stats When Changing Equipment;
+        private void onEquipmentChange(Equipment newItem,Equipment oldItem)
+        {
+            if(newItem != null || oldItem != null)
+            {
+                InitDamage();
+            }
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

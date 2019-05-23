@@ -48,29 +48,23 @@ namespace Advent.Entities
             {
                 currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
             }
+            statManager.InitStats(statList);
         }
 
-        protected void InitStats()
+        protected void InitAttributes()
         {
-            statManager.InitStats(statList);
-
             statList.baseSTR = entityStats.strength;
             statList.baseDEX = entityStats.dexterity;
             statList.baseINT = entityStats.intelligence;
             statList.baseVIT = entityStats.vitality;
-
+        }
+        protected void InitMovementSpeed()
+        {
             statList.movementSpeed.baseValue = entityStats.movementSpeed;
-
-            statManager.InitMaxHP(statList, statFormula,currentLevel); //HP
-            statManager.InitMaxMP(statList, statFormula, currentLevel); // MP
-
-            currentHP = statList.maxHitPoints.getValue;
-            currentMP = statList.maxManaPoints.getValue;
-
-            EquipmentManager.instance.EquipDefaults();
-
-            statList.baseAttack = statFormula.ComputeBaseAttack(statList.baseSTR, statList.bonusSTR.getValue,currentLevel);
-            statList.baseDef = statFormula.ComputeMaxDefense(statList.baseSTR, statList.armorDefense.getValue);
+        }
+        protected void InitBaseDamage(float baseStr,float bonusStr,int level)
+        {
+            statList.baseAttack = statFormula.ComputeBaseAttack(baseStr, bonusStr, level);
         }
         public float GetCurrentHP
         {
