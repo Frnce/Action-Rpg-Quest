@@ -86,6 +86,8 @@ namespace Advent.Entities
             InitMovementSpeed();
 
             InitDamage();
+
+            Debug.Log(statList.bonusSTR.getValue);
         }
         // Update is called once per frame
         void Update()

@@ -10,6 +10,10 @@ namespace Advent.UI
 {
     public class PlayerStatusUI : MonoBehaviour
     {
+        [Header("Player Stats Window")]
+        [SerializeField]
+        private GameObject statsWindow = null;
+        [Space]
         [SerializeField]
         private TMP_Text currentHP = null;
         [SerializeField]
@@ -30,25 +34,60 @@ namespace Advent.UI
         [SerializeField]
         private Image expBar = null;
 
+        [Header("Main Attributes - Base")]
+        [SerializeField]
+        private TMP_Text baseStrengthText = null;
+        [SerializeField]
+        private TMP_Text baseDexterityText = null;
+        [SerializeField]
+        private TMP_Text baseIntelligenceText = null;
+        [SerializeField]
+        private TMP_Text baseVitalityText = null;
+        [Header("Main Attributes - Bonus")]
+        [SerializeField]
+        private TMP_Text bonusStrengthText = null;
+        [SerializeField]
+        private TMP_Text bonusDexterityText = null;
+        [SerializeField]
+        private TMP_Text bonusIntelligenceText = null;
+        [SerializeField]
+        private TMP_Text bonusVitalityText = null;
+
         private float hpPercent = 100;
         private float mpPercent = 100;
         private float expPercent = 0;
 
         private Player player;
         private PlayerLevelManager playerLevel;
+
+        private bool isStatsWindowActive = false;
         // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
             playerLevel = PlayerLevelManager.instance;
+
+            statsWindow.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
+            //HP MP EXP
             HpUpdateUI();
             MpUpdateUI();
             ExpUpdateUI();
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                isStatsWindowActive = !isStatsWindowActive;
+            }
+
+            statsWindow.SetActive(isStatsWindowActive);
+            //ATTRIBUTES
+            if (statsWindow.activeSelf)
+            {
+                GetMainAttributes();
+            }
         }
         private void HpUpdateUI()
         {
@@ -71,6 +110,18 @@ namespace Advent.UI
 
             expPercent = (100f / playerLevel.GetExpNeeded) * playerLevel.GetCurrentExp;
             expBar.fillAmount = expPercent / 100f;
+        }
+        private void GetMainAttributes()
+        {
+            baseStrengthText.text = player.GetStats.baseSTR.ToString();
+            baseDexterityText.text = player.GetStats.baseDEX.ToString();
+            baseIntelligenceText.text = player.GetStats.baseINT.ToString();
+            baseVitalityText.text = player.GetStats.baseVIT.ToString();
+
+            bonusStrengthText.text = player.GetStats.bonusSTR.getValue.ToString();
+            bonusDexterityText.text = player.GetStats.bonusDEX.getValue.ToString();
+            bonusIntelligenceText.text = player.GetStats.bonusINT.getValue.ToString();
+            bonusVitalityText.text = player.GetStats.bonusVIT.getValue.ToString();
         }
     }
 }
