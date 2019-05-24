@@ -27,7 +27,6 @@ namespace Advent.UI
             icon.sprite = null;
             icon.enabled = false;
         }
-
         public void UseItem()
         {
             if (item != null)

@@ -49,6 +49,11 @@ namespace Advent.Entities
             myCollider = GetComponent<CircleCollider2D>();
 
             hitPointsBar.SetActive(false);
+
+            InitAttributes();
+            InitMovementSpeed();
+
+            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue, currentLevel);
         }
         public void Movement(Vector3 direction)
         {

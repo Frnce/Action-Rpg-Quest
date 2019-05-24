@@ -26,20 +26,20 @@ namespace Advent.UI
         {
 
         }
-        private void Update()
-        {
-            if (PlayerController.instance.GetOpenMenuKey)
-            {
-                equipmentPanelActive = !equipmentPanelActive;
-            }
+        //private void Update()
+        //{
+        //    if (PlayerController.instance.GetOpenMenuKey)
+        //    {
+        //        equipmentPanelActive = !equipmentPanelActive;
+        //    }
 
-            equipmentParent.gameObject.SetActive(equipmentPanelActive);
+        //    equipmentParent.gameObject.SetActive(equipmentPanelActive);
 
-            if (equipmentParent.gameObject.activeSelf)
-            {
-                Player.instance.SetPlayerStates(PlayerStates.INMENU);
-            }
-        }
+        //    if (equipmentParent.gameObject.activeSelf)
+        //    {
+        //        Player.instance.SetPlayerStates(PlayerStates.INMENU);
+        //    }
+        //}
 
         private void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
         {

@@ -33,15 +33,14 @@ namespace Advent.Items
     }
     public enum EquipSlots
     {
-        WEAPON,
-        HEAD,
-        BODY,
-        LEGS,
-        FOOT,
-        ARMS,
-        NECKLACE,
-        RING1,
-        RING2
+        HEAD, //0
+        BODY, //1
+        WEAPON, //2
+        ARMS, //3 
+        LEGS, //4
+        FOOT, //5
+        ACCESORRY1, //6
+        ACCESORRY2, //7
     }
     public enum AttackType
     {

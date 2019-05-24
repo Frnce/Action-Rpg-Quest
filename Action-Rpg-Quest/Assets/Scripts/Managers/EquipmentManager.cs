@@ -95,11 +95,9 @@ namespace Advent.Manager
                     break;
                 case EquipSlots.ARMS:
                     break;
-                case EquipSlots.NECKLACE:
+                case EquipSlots.ACCESORRY1:
                     break;
-                case EquipSlots.RING1:
-                    break;
-                case EquipSlots.RING2:
+                case EquipSlots.ACCESORRY2:
                     break;
                 default:
                     break;

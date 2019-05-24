@@ -6,10 +6,19 @@ using UnityEngine;
 
 namespace Advent.Items
 {
+    public enum ItemTypes
+    {
+        ITEMS,
+        EQUIPMENTS,
+        MATERIALS,
+        ENCHANTS,
+        ETC
+    }
     public class Item : ScriptableObject
     {
         public int itemId = 0;
         new public string name = "New Item";
+        public ItemTypes itemType;
         [Space]
         public Sprite icon = null;
         [Space]

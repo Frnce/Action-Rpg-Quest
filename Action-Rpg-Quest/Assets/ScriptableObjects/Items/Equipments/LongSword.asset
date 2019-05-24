@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 3
   name: Long Sword
+  itemType: 1
   icon: {fileID: 21300036, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
   isDefaultItem: 1
   gameobject: {fileID: 4515215143091963608, guid: 71696106f74584d4cb9540c032e1eb2a,

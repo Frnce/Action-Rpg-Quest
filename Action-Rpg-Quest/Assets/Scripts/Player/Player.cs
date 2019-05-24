@@ -247,7 +247,7 @@ namespace Advent.Entities
         {
             if(newItem != null || oldItem != null)
             {
-                InitDamage();
+                InitDamage();   
             }
         }
         private void OnTriggerEnter2D(Collider2D collision)

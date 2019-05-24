@@ -1,5 +1,6 @@
 ﻿using Advent.Controller;
 using Advent.Entities;
+using Advent.Items;
 using Advent.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,10 +11,24 @@ namespace Advent.UI
     public class ShowInventory : MonoBehaviour
     {
         [SerializeField]
-        private Transform inventoryParent = null;
+        private Transform itemsPane = null;
+        [SerializeField]
+        private Transform equipmentsPane = null;
+        [SerializeField]
+        private Transform materialsPane = null;
+        [SerializeField]
+        private Transform enchantsPane = null;
+        [SerializeField]
+        private Transform etcPane = null;
 
         private InventoryManager inventory;
         private InventorySlot[] itemSlot;
+        private InventorySlot[] equipmentSlot;
+        private InventorySlot[] materialsSlot;
+        private InventorySlot[] enchantSlot;
+        private InventorySlot[] etcSlot;
+
+        public GameObject inventoryParent;
 
         private bool inventoryPanelActive = false;
         // Start is called before the first frame update
@@ -24,9 +39,18 @@ namespace Advent.UI
         }
         void Start()
         {
-            SetInventorySpace(inventory.GetMaxBagSpace);
-            SetPocketSpace(inventory.GetPocketItemSpace);
-            itemSlot = inventoryParent.GetComponentsInChildren<InventorySlot>(); 
+            //Set Slots here
+            SetItemSpace(inventory.ItemSpaceCount);
+            SetEquipmentSpace(inventory.EquipmentSpaceCount);
+            SetMaterialSpace(inventory.MaterialSpaceCount);
+            SetEnchantSpace(inventory.EnchantSpaceCount);
+            SetEtcSpace(inventory.EtcSpaceCount);
+
+            itemSlot = itemsPane.GetComponentsInChildren<InventorySlot>();
+            equipmentSlot = equipmentsPane.GetComponentsInChildren<InventorySlot>();
+            materialsSlot = materialsPane.GetComponentsInChildren<InventorySlot>();
+            enchantSlot = enchantsPane.GetComponentsInChildren<InventorySlot>();
+            etcSlot = etcPane.GetComponentsInChildren<InventorySlot>();
         }
         //TEMPORARY
         private void Update()
@@ -43,32 +67,76 @@ namespace Advent.UI
                 Player.instance.SetPlayerStates(PlayerStates.INMENU);
             }
         }
-        public void UpdateInventoryUI()
+        private void AddToInventory(InventorySlot[] slot,List<ItemsSpace> listItem)
         {
-            for (int i = 0; i < itemSlot.Length; i++)
+            for (int i = 0; i < slot.Length; i++)
             {
-                if (i < inventory.GetItems.Count)
+                if (i < listItem.Count)
                 {
-                    itemSlot[i].AddItem(inventory.GetItems[i].item);
+                    slot[i].AddItem(listItem[i].item);
                 }
                 else
                 {
-                    itemSlot[i].ClearSlot();
+                    slot[i].ClearSlot();
                 }
             }
         }
-        public void SetInventorySpace(int maxSpace)
+        public void UpdateInventoryUI(ItemTypes itemType)
         {
-            for (int i = 0; i < maxSpace; i++)
+            switch (itemType)
             {
-                Instantiate(inventory.GetInventorySlotObject, inventoryParent);
+                case ItemTypes.ITEMS:
+                    AddToInventory(itemSlot, inventory.GetItems);
+                    break;
+                case ItemTypes.EQUIPMENTS:
+                    AddToInventory(equipmentSlot,inventory.GetEquipments);
+                    break;
+                case ItemTypes.MATERIALS:
+                    AddToInventory(materialsSlot,inventory.GetMaterials);
+                    break;
+                case ItemTypes.ENCHANTS:
+                    AddToInventory(enchantSlot,inventory.GetMaterials);
+                    break;
+                case ItemTypes.ETC:
+                    AddToInventory(etcSlot,inventory.GetEtc);
+                    break;
+                default:
+                    break;
             }
         }
-        public void SetPocketSpace(int maxSpace)
+        public void SetItemSpace(int maxSpace)
         {
             for (int i = 0; i < maxSpace; i++)
             {
-                //TODO Fix This
+               var asd =  Instantiate(inventory.GetInventorySlotObject, itemsPane);
+            }
+        }
+        public void SetEquipmentSpace(int maxSpace)
+        {
+            for (int i = 0; i < maxSpace; i++)
+            {
+                Instantiate(inventory.GetInventorySlotObject, equipmentsPane);
+            }
+        }
+        public void SetMaterialSpace(int maxSpace)
+        {
+            for (int i = 0; i < maxSpace; i++)
+            {
+                Instantiate(inventory.GetInventorySlotObject, materialsPane);
+            }
+        }
+        public void SetEnchantSpace(int maxSpace)
+        {
+            for (int i = 0; i < maxSpace; i++)
+            {
+                Instantiate(inventory.GetInventorySlotObject, enchantsPane);
+            }
+        }
+        public void SetEtcSpace(int maxspace)
+        {
+            for (int i = 0; i < maxspace; i++)
+            {
+                Instantiate(inventory.GetInventorySlotObject, etcPane);
             }
         }
     }

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   name: Sword of startingAlley
+  itemType: 1
   icon: {fileID: 21300000, guid: 66bc67d1d3a360148b282386b28ad8a1, type: 3}
-  isDefaultItem: 1
+  isDefaultItem: 0
   gameobject: {fileID: 8685415760671146099, guid: dffd022e683c34f4e80ff83b10875030,
     type: 3}
   stackSize: -1
