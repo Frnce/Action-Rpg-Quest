@@ -27,38 +27,20 @@ namespace Advent.Items
         public int stackSize;         //stacksize -1 = not stackable
         public int dropRate;
 
-        private List<ItemsSpace> GetItemList()
-        {
-            switch (itemType)
-            {
-                case ItemTypes.ITEMS:
-                    return InventoryManager.instance.GetItems;
-                case ItemTypes.EQUIPMENTS:
-                    return InventoryManager.instance.GetEquipments;
-                case ItemTypes.MATERIALS:
-                    return InventoryManager.instance.GetMaterials;
-                case ItemTypes.ENCHANTS:
-                    return InventoryManager.instance.GetEnchants;
-                case ItemTypes.ETC:
-                    return InventoryManager.instance.GetEtc;
-                default:
-                    return null;
-            }
-        }
-
         public virtual void Use()
         {
             Debug.Log("Using " + name);
-            for (int i = 0; i < GetItemList().Count; i++)
+            InventoryManager inventory = InventoryManager.instance;
+            for (int i = 0; i < inventory.GetItems.Count; i++)
             {
-                if(GetItemList()[i].id == itemId)
+                if(inventory.GetItems[i].id == itemId)
                 {
-                    if(GetItemList()[i].stack <= 1)
+                    if(inventory.GetItems[i].stack <= 1)
                     {
                         RemoveFromInventory();
                         break;
                     }
-                    GetItemList()[i].stack--;
+                    inventory.GetItems[i].stack--;
                     break;
                 }
             }

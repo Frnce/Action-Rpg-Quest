@@ -174,19 +174,19 @@ namespace Advent.Manager
                     break;
                 case ItemTypes.EQUIPMENTS:
                     itemIndex = GetSameItemIndex(item,equipmentList);
-                    equipmentList.Remove(equipmentList[itemIndex]);
+                    itemList.Remove(itemList[itemIndex]);
                     break;
                 case ItemTypes.MATERIALS:
                     itemIndex = GetSameItemIndex(item,materialList);
-                    materialList.Remove(materialList[itemIndex]);
+                    itemList.Remove(itemList[itemIndex]);
                     break;
                 case ItemTypes.ENCHANTS:
                     itemIndex = GetSameItemIndex(item,enchantList);
-                    enchantList.Remove(enchantList[itemIndex]);
+                    itemList.Remove(itemList[itemIndex]);
                     break;
                 case ItemTypes.ETC:
                     itemIndex = GetSameItemIndex(item,etcList);
-                    etcList.Remove(etcList[itemIndex]);
+                    itemList.Remove(itemList[itemIndex]);
                     break;
                 default:
                     break;
