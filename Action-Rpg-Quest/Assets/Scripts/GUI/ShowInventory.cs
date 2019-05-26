@@ -85,7 +85,7 @@ namespace Advent.UI
         {
             switch (itemType)
             {
-                case ItemTypes.ITEMS:
+                case ItemTypes.CONSUMABLE:
                     AddToInventory(itemSlot, inventory.GetItems);
                     break;
                 case ItemTypes.EQUIPMENTS:

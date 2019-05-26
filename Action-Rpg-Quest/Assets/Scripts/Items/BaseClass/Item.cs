@@ -8,7 +8,7 @@ namespace Advent.Items
 {
     public enum ItemTypes
     {
-        ITEMS,
+        CONSUMABLE,
         EQUIPMENTS,
         MATERIALS,
         ENCHANTS,
@@ -16,14 +16,14 @@ namespace Advent.Items
     }
     public class Item : ScriptableObject
     {
+        [Header("Item Data")]
         public int itemId = 0;
         new public string name = "New Item";
         public ItemTypes itemType;
         [Space]
         public Sprite icon = null;
-        [Space]
-        public bool isDefaultItem = false;
         public GameObject gameobject;
+        [Space]
         public int stackSize;         //stacksize -1 = not stackable
         public int dropRate;
 
@@ -31,7 +31,7 @@ namespace Advent.Items
         {
             switch (itemType)
             {
-                case ItemTypes.ITEMS:
+                case ItemTypes.CONSUMABLE:
                     return InventoryManager.instance.GetItems;
                 case ItemTypes.EQUIPMENTS:
                     return InventoryManager.instance.GetEquipments;
@@ -45,7 +45,6 @@ namespace Advent.Items
                     return null;
             }
         }
-
         public virtual void Use()
         {
             Debug.Log("Using " + name);

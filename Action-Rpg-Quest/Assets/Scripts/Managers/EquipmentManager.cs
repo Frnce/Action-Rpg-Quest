@@ -48,19 +48,19 @@ namespace Advent.Manager
             //Add New Stats on EquipmentChange
             if (newItem != null)
             {
-                //player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
-                StatModifier dmgMinMod = new StatModifier(newItem.damage.m_Min,StatModType.FLAT);
-                StatModifier dmgMaxMod = new StatModifier(newItem.damage.m_Max,StatModType.FLAT);
+                ////player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
+                //StatModifier dmgMinMod = new StatModifier(newItem.GetStats().rangedValue.m_Min, StatModType.FLAT);
+                //StatModifier dmgMaxMod = new StatModifier(newItem.GetDamage().m_Max, StatModType.FLAT);
 
-                player.GetStats.weaponDamage.minDamage.AddModifier(dmgMinMod);
-                player.GetStats.weaponDamage.maxDamage.AddModifier(dmgMaxMod);
+                //player.GetStats.weaponDamage.minDamage.AddModifier(dmgMinMod);
+                //player.GetStats.weaponDamage.maxDamage.AddModifier(dmgMaxMod);
             }
             if (oldItem != null)
             {
-                StatModifier dmgMinMod = new StatModifier(oldItem.damage.m_Min, StatModType.FLAT);
-                StatModifier dmgMaxMod = new StatModifier(oldItem.damage.m_Max, StatModType.FLAT);
-                player.GetStats.weaponDamage.minDamage.RemoveModifier(dmgMinMod);
-                player.GetStats.weaponDamage.maxDamage.RemoveModifier(dmgMaxMod);
+                //StatModifier dmgMinMod = new StatModifier(oldItem.GetDamage().m_Min, StatModType.FLAT);
+                //StatModifier dmgMaxMod = new StatModifier(oldItem.GetDamage().m_Max, StatModType.FLAT);
+                //player.GetStats.weaponDamage.minDamage.RemoveModifier(dmgMinMod);
+                //player.GetStats.weaponDamage.maxDamage.RemoveModifier(dmgMaxMod);
             }
         }
         public void Equip(Equipment newItem)
@@ -95,9 +95,7 @@ namespace Advent.Manager
                     break;
                 case EquipSlots.ARMS:
                     break;
-                case EquipSlots.ACCESORRY1:
-                    break;
-                case EquipSlots.ACCESORRY2:
+                case EquipSlots.ACCESORY:
                     break;
                 default:
                     break;

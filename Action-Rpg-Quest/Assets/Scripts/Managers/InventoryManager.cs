@@ -103,63 +103,60 @@ namespace Advent.Manager
         }
         public bool AddItem(Item item)
         {
-            if (!item.isDefaultItem)
+            switch (item.itemType)
             {
-                switch (item.itemType)
-                {
-                    case ItemTypes.ITEMS:
-                        if (!CheckIfInventoryHasSpace(itemList, maxItemSpace))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AddItemToPane(item, itemList);
-                        }
-                        break;
-                    case ItemTypes.EQUIPMENTS:
-                        if (!CheckIfInventoryHasSpace(equipmentList, maxEquipmentSpace))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AddItemToPane(item, equipmentList);
-                        }
-                        break;
-                    case ItemTypes.MATERIALS:
-                        if (!CheckIfInventoryHasSpace(materialList, maxMaterialSpace))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AddItemToPane(item, materialList);
-                        }
-                        break;
-                    case ItemTypes.ENCHANTS:
-                        if (!CheckIfInventoryHasSpace(enchantList, maxEnchantSpace))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AddItemToPane(item, enchantList);
-                        }
-                        break;
-                    case ItemTypes.ETC:
-                        if (!CheckIfInventoryHasSpace(etcList, maxEtcSpace))
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AddItemToPane(item, etcList);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                case ItemTypes.CONSUMABLE:
+                    if (!CheckIfInventoryHasSpace(itemList, maxItemSpace))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        AddItemToPane(item, itemList);
+                    }
+                    break;
+                case ItemTypes.EQUIPMENTS:
+                    if (!CheckIfInventoryHasSpace(equipmentList, maxEquipmentSpace))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        AddItemToPane(item, equipmentList);
+                    }
+                    break;
+                case ItemTypes.MATERIALS:
+                    if (!CheckIfInventoryHasSpace(materialList, maxMaterialSpace))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        AddItemToPane(item, materialList);
+                    }
+                    break;
+                case ItemTypes.ENCHANTS:
+                    if (!CheckIfInventoryHasSpace(enchantList, maxEnchantSpace))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        AddItemToPane(item, enchantList);
+                    }
+                    break;
+                case ItemTypes.ETC:
+                    if (!CheckIfInventoryHasSpace(etcList, maxEtcSpace))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        AddItemToPane(item, etcList);
+                    }
+                    break;
+                default:
+                    break;
             }
             return true;
         }
@@ -168,7 +165,7 @@ namespace Advent.Manager
             int itemIndex = 0;
             switch (item.itemType)
             {
-                case ItemTypes.ITEMS:
+                case ItemTypes.CONSUMABLE:
                     itemIndex = GetSameItemIndex(item,itemList);
                     itemList.Remove(itemList[itemIndex]);
                     break;
