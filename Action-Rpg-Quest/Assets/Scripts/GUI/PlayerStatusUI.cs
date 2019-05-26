@@ -52,6 +52,14 @@ namespace Advent.UI
         private TMP_Text bonusIntelligenceText = null;
         [SerializeField]
         private TMP_Text bonusVitalityText = null;
+        [Header("Attack")]
+        [SerializeField]
+        private TMP_Text baseMinAttackText = null;
+        [SerializeField]
+        private TMP_Text baseMaxAttackText = null;
+        [Header("Defense")]
+        [SerializeField]
+        private TMP_Text basePhysicalDefenseText = null;
 
         private float hpPercent = 100;
         private float mpPercent = 100;
@@ -87,6 +95,8 @@ namespace Advent.UI
             if (statsWindow.activeSelf)
             {
                 GetMainAttributes();
+                GetBaseAttack();
+                GetBaseDefense();
             }
         }
         private void HpUpdateUI()
@@ -122,6 +132,15 @@ namespace Advent.UI
             bonusDexterityText.text = player.GetStats.bonusDEX.getValue.ToString();
             bonusIntelligenceText.text = player.GetStats.bonusINT.getValue.ToString();
             bonusVitalityText.text = player.GetStats.bonusVIT.getValue.ToString();
+        }
+        private void GetBaseAttack()
+        {
+            baseMinAttackText.text = player.GetStats.baseAttack.m_Min.ToString();
+            baseMaxAttackText.text = player.GetStats.baseAttack.m_Max.ToString();
+        }
+        private void GetBaseDefense()
+        {
+            basePhysicalDefenseText.text = player.GetStats.baseDef.ToString();
         }
     }
 }

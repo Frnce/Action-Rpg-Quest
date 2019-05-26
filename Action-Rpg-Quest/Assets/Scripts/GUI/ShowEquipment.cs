@@ -16,31 +16,11 @@ namespace Advent.UI
         private EquipmentManager equipmentManager;
         private EquipmentSlot[] equipmentSlot;
 
-        private bool equipmentPanelActive = false;
         private void Awake()
         {
             equipmentManager = EquipmentManager.instance;
             equipmentManager.onEquipmentChangedCallback += UpdateEquipmentUI;
         }
-        private void Start()
-        {
-
-        }
-        //private void Update()
-        //{
-        //    if (PlayerController.instance.GetOpenMenuKey)
-        //    {
-        //        equipmentPanelActive = !equipmentPanelActive;
-        //    }
-
-        //    equipmentParent.gameObject.SetActive(equipmentPanelActive);
-
-        //    if (equipmentParent.gameObject.activeSelf)
-        //    {
-        //        Player.instance.SetPlayerStates(PlayerStates.INMENU);
-        //    }
-        //}
-
         private void UpdateEquipmentUI(Equipment newItem, Equipment oldItem)
         {
             if(equipmentSlot == null)

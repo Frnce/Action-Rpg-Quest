@@ -86,8 +86,7 @@ namespace Advent.Entities
             InitMovementSpeed();
 
             InitDamage();
-
-            Debug.Log(statList.bonusSTR.getValue);
+            InitPhysicalDefense();
         }
         // Update is called once per frame
         void Update()
@@ -242,14 +241,19 @@ namespace Advent.Entities
         }
         private void InitDamage()
         {
-            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue, currentLevel);
+            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
+        }
+        private void InitPhysicalDefense()
+        {
+            InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
         }
         //Updates Stats When Changing Equipment;
         private void onEquipmentChange(Equipment newItem,Equipment oldItem)
         {
             if(newItem != null || oldItem != null)
             {
-                InitDamage();   
+                InitDamage();
+                InitPhysicalDefense();
             }
         }
         private void OnTriggerEnter2D(Collider2D collision)

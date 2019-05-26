@@ -17,12 +17,12 @@ namespace Advent.Entities
             float result = ((baseInt * 150) + (bonusInt * 50) + (level * 0.5f)) / 2;
             return Mathf.RoundToInt(result);
         }
-        public IntRange ComputeBaseAttack(float baseStr,float bonusStr,float lvl)
+        public IntRange ComputeBaseAttack(float baseStr,float bonusStr,AttackDamageRange baseWeaponDamage,float lvl)
         {
             IntRange result = new IntRange(0,0);
             float damageUp = ((baseStr * 6f) + (bonusStr * 4f) + (lvl * 0.5f)) / 2;
-            result.m_Min = Mathf.RoundToInt(damageUp);
-            result.m_Max = Mathf.RoundToInt(damageUp);
+            result.m_Min = Mathf.RoundToInt(damageUp + baseWeaponDamage.minDamage.getValue);
+            result.m_Max = Mathf.RoundToInt(damageUp + baseWeaponDamage.maxDamage.getValue);
             return result;
         }
         public int ComputeMaxDefense(float baseStr, float armorDefense)

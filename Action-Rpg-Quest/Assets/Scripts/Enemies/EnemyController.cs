@@ -53,7 +53,7 @@ namespace Advent.Entities
             InitAttributes();
             InitMovementSpeed();
 
-            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue, currentLevel);
+            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
         }
         public void Movement(Vector3 direction)
         {

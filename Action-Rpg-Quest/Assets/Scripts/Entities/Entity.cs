@@ -62,9 +62,13 @@ namespace Advent.Entities
         {
             statList.movementSpeed.baseValue = entityStats.movementSpeed;
         }
-        protected void InitBaseDamage(float baseStr,float bonusStr,int level)
+        protected void InitBaseDamage(float baseStr,float bonusStr,AttackDamageRange weaponDamage,int level)
         {
-            statList.baseAttack = statFormula.ComputeBaseAttack(baseStr, bonusStr, level);
+            statList.baseAttack = statFormula.ComputeBaseAttack(baseStr, bonusStr,weaponDamage, level);
+        }
+        protected void InitPhysicalDefense(float baseStr, float baseArmor)
+        {
+            statList.baseDef = statFormula.ComputeMaxDefense(baseStr, baseArmor);
         }
         public float GetCurrentHP
         {
