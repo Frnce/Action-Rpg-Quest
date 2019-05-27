@@ -43,24 +43,24 @@ namespace Advent.Manager
             int numOfSlots = System.Enum.GetNames(typeof(EquipSlots)).Length;
             currentEquipment = new Equipment[numOfSlots];
         }
+        private void AddStatsOnEquip(Equipment item)
+        {
+            item.AddStatsFromItem(player.GetStats);
+        }
+        private void RemoveStatsOnEquip(Equipment item)
+        {
+            item.RemoveStatsFromItem(player.GetStats);
+        }
         public void OnEquipmentChange(Equipment newItem, Equipment oldItem)
         {
             //Add New Stats on EquipmentChange
             if (newItem != null)
             {
-                ////player.GetStats.physicalDefense.AddModifier(newItem.defense.GetValue());
-                //StatModifier dmgMinMod = new StatModifier(newItem.GetStats().rangedValue.m_Min, StatModType.FLAT);
-                //StatModifier dmgMaxMod = new StatModifier(newItem.GetDamage().m_Max, StatModType.FLAT);
-
-                //player.GetStats.weaponDamage.minDamage.AddModifier(dmgMinMod);
-                //player.GetStats.weaponDamage.maxDamage.AddModifier(dmgMaxMod);
+                AddStatsOnEquip(newItem);
             }
             if (oldItem != null)
             {
-                //StatModifier dmgMinMod = new StatModifier(oldItem.GetDamage().m_Min, StatModType.FLAT);
-                //StatModifier dmgMaxMod = new StatModifier(oldItem.GetDamage().m_Max, StatModType.FLAT);
-                //player.GetStats.weaponDamage.minDamage.RemoveModifier(dmgMinMod);
-                //player.GetStats.weaponDamage.maxDamage.RemoveModifier(dmgMaxMod);
+                RemoveStatsOnEquip(oldItem);
             }
         }
         public void Equip(Equipment newItem)

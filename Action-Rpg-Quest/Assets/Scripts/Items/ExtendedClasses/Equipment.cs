@@ -1,4 +1,5 @@
-﻿using Advent.Manager;
+﻿using Advent.Entities;
+using Advent.Manager;
 using Advent.Utilities;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,10 +11,9 @@ namespace Advent.Items
     {
         [Header("Equipment Data")]
         public EquipSlots slots;
-        public AttackType attackType;
 
         public Equipment()
-        {
+        { 
             itemType = ItemTypes.EQUIPMENTS;
             stackSize = -1;
         }
@@ -34,10 +34,20 @@ namespace Advent.Items
                 return slots;
             }
         }
-
-        public virtual EquipmentStats GetStats()
+        public virtual AttackType GetAttackType
         {
-            return new EquipmentStats();
+            get
+            {
+                return AttackType.NONE;
+            }
+        }
+        public virtual void AddStatsFromItem(Stats stats)
+        {
+            Debug.Log("Add Stats to "+ stats);
+        }
+        public virtual void RemoveStatsFromItem(Stats stats)
+        {
+            Debug.Log("Removing  Stats to "+ stats);
         }
     }
     public enum EquipSlots
@@ -56,29 +66,15 @@ namespace Advent.Items
         SHOOT,
         NONE
     }
-    [System.Serializable]
-    public class EquipmentStats
+    public class StatModRange
     {
-        public StatType statType;
-        [Space]
-        public int fixedValue;
-        public IntRange rangedValue = new IntRange(0, 0);
-
-        public EquipmentStats(){}
-        public EquipmentStats(StatType _statType,int _value)
+        public StatModifier statMin;
+        public StatModifier statMax;
+        
+        public StatModRange(StatModifier _min, StatModifier _max)
         {
-            statType = _statType;
-            fixedValue = _value;
+            statMin = _min;
+            statMax = _max;
         }
-        public EquipmentStats(StatType _statType,IntRange _value)
-        {
-            statType = _statType;
-            rangedValue = _value;
-        }
-    }
-    public enum StatType
-    {
-        ATTACK,
-        DEFENSE
     }
 }

@@ -9,20 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742ec34a122c4c14895dd08839969433, type: 3}
-  m_Name: Short Sword
+  m_Script: {fileID: 11500000, guid: a91b1c139d507734cb3b8a30df1c3dcb, type: 3}
+  m_Name: Shoes
   m_EditorClassIdentifier: 
-  itemId: 1233
-  name: Short Sword
+  itemId: 4
+  name: Shoes
   description: New Description
   itemType: 1
-  icon: {fileID: 21300018, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
-  gameobject: {fileID: 6989931783266622188, guid: e7658828634c2714e98138440f1b104c,
+  icon: {fileID: 21300104, guid: 66bc67d1d3a360148b282386b28ad8a1, type: 3}
+  gameobject: {fileID: 7698347820384273636, guid: 1bcacd7bbc95cf844a49e4b7983d25ed,
     type: 3}
   stackSize: -1
   dropRate: 0
-  slots: 2
-  attackType: 0
-  baseDamage:
-    m_Min: 5
-    m_Max: 9
+  slots: 5
+  baseArmor: 4

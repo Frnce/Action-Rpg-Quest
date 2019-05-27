@@ -19,6 +19,8 @@ namespace Advent.Items
         [Header("Item Data")]
         public int itemId = 0;
         new public string name = "New Item";
+        [Multiline()]
+        public string description = "New Description";
         public ItemTypes itemType;
         [Space]
         public Sprite icon = null;

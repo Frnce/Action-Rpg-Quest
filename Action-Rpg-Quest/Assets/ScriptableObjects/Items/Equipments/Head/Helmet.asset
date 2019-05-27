@@ -9,20 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742ec34a122c4c14895dd08839969433, type: 3}
-  m_Name: Short Sword
+  m_Script: {fileID: 11500000, guid: 1dd3569692b9a204b9fac11d104cdbe1, type: 3}
+  m_Name: Helmet
   m_EditorClassIdentifier: 
-  itemId: 1233
-  name: Short Sword
+  itemId: 5
+  name: Helmet
   description: New Description
   itemType: 1
-  icon: {fileID: 21300018, guid: 166728a7121eb9a4ebbb52262919b3ec, type: 3}
-  gameobject: {fileID: 6989931783266622188, guid: e7658828634c2714e98138440f1b104c,
+  icon: {fileID: 21300092, guid: 66bc67d1d3a360148b282386b28ad8a1, type: 3}
+  gameobject: {fileID: 2343086406933402641, guid: a35be86f01ca907449b2bc4b8e06c986,
     type: 3}
   stackSize: -1
   dropRate: 0
-  slots: 2
-  attackType: 0
-  baseDamage:
-    m_Min: 5
-    m_Max: 9
+  slots: 0
+  baseArmor: 4

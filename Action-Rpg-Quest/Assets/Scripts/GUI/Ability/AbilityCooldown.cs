@@ -66,7 +66,7 @@ namespace Advent.UI
         {
             if (newItem != null)
             {
-                if (newItem.attackType == AttackType.SLASH)
+                if (newItem.GetAttackType == AttackType.SLASH)
                 {
                     Initialize(ability); // INitialize method will be initialized on player class select
                 }
