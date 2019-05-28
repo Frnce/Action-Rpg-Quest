@@ -1,4 +1,5 @@
-﻿using Advent.Items;
+﻿using Advent.Enums;
+using Advent.Items;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -115,16 +116,16 @@ namespace Advent.Manager
                         AddItemToPane(item, itemList);
                     }
                     break;
-                case ItemTypes.EQUIPMENTS:
-                    if (!CheckIfInventoryHasSpace(equipmentList, maxEquipmentSpace))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        AddItemToPane(item, equipmentList);
-                    }
-                    break;
+                //case ItemTypes.EQUIPMENTS:
+                //    if (!CheckIfInventoryHasSpace(equipmentList, maxEquipmentSpace))
+                //    {
+                //        return false;
+                //    }
+                //    else
+                //    {
+                //        AddItemToPane(item, equipmentList);
+                //    }
+                //    break;
                 case ItemTypes.MATERIALS:
                     if (!CheckIfInventoryHasSpace(materialList, maxMaterialSpace))
                     {
@@ -145,16 +146,16 @@ namespace Advent.Manager
                         AddItemToPane(item, enchantList);
                     }
                     break;
-                case ItemTypes.ETC:
-                    if (!CheckIfInventoryHasSpace(etcList, maxEtcSpace))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        AddItemToPane(item, etcList);
-                    }
-                    break;
+                //case ItemTypes.ETC:
+                //    if (!CheckIfInventoryHasSpace(etcList, maxEtcSpace))
+                //    {
+                //        return false;
+                //    }
+                //    else
+                //    {
+                //        AddItemToPane(item, etcList);
+                //    }
+                //    break;
                 default:
                     break;
             }
@@ -165,26 +166,26 @@ namespace Advent.Manager
             int itemIndex = 0;
             switch (item.itemType)
             {
-                case ItemTypes.CONSUMABLE:
-                    itemIndex = GetSameItemIndex(item,itemList);
-                    itemList.Remove(itemList[itemIndex]);
-                    break;
-                case ItemTypes.EQUIPMENTS:
-                    itemIndex = GetSameItemIndex(item,equipmentList);
-                    equipmentList.Remove(equipmentList[itemIndex]);
-                    break;
-                case ItemTypes.MATERIALS:
-                    itemIndex = GetSameItemIndex(item,materialList);
-                    materialList.Remove(materialList[itemIndex]);
-                    break;
-                case ItemTypes.ENCHANTS:
-                    itemIndex = GetSameItemIndex(item,enchantList);
-                    enchantList.Remove(enchantList[itemIndex]);
-                    break;
-                case ItemTypes.ETC:
-                    itemIndex = GetSameItemIndex(item,etcList);
-                    etcList.Remove(etcList[itemIndex]);
-                    break;
+                //case ItemTypes.CONSUMABLE:
+                //    itemIndex = GetSameItemIndex(item,itemList);
+                //    itemList.Remove(itemList[itemIndex]);
+                //    break;
+                //case ItemTypes.EQUIPMENTS:
+                //    itemIndex = GetSameItemIndex(item,equipmentList);
+                //    equipmentList.Remove(equipmentList[itemIndex]);
+                //    break;
+                //case ItemTypes.MATERIALS:
+                //    itemIndex = GetSameItemIndex(item,materialList);
+                //    materialList.Remove(materialList[itemIndex]);
+                //    break;
+                //case ItemTypes.ENCHANTS:
+                //    itemIndex = GetSameItemIndex(item,enchantList);
+                //    enchantList.Remove(enchantList[itemIndex]);
+                //    break;
+                //case ItemTypes.ETC:
+                //    itemIndex = GetSameItemIndex(item,etcList);
+                //    etcList.Remove(etcList[itemIndex]);
+                //    break;
                 default:
                     break;
             }

@@ -1,4 +1,5 @@
 ﻿using Advent.Entities;
+using Advent.Enums;
 using Advent.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +7,6 @@ using UnityEngine;
 
 namespace Advent.Items
 {
-    public enum ItemTypes
-    {
-        CONSUMABLE,
-        EQUIPMENTS,
-        MATERIALS,
-        ENCHANTS,
-        ETC
-    }
     public class Item : ScriptableObject
     {
         [Header("Item Data")]
@@ -33,16 +26,16 @@ namespace Advent.Items
         {
             switch (itemType)
             {
-                case ItemTypes.CONSUMABLE:
-                    return InventoryManager.instance.GetItems;
-                case ItemTypes.EQUIPMENTS:
-                    return InventoryManager.instance.GetEquipments;
-                case ItemTypes.MATERIALS:
-                    return InventoryManager.instance.GetMaterials;
-                case ItemTypes.ENCHANTS:
-                    return InventoryManager.instance.GetEnchants;
-                case ItemTypes.ETC:
-                    return InventoryManager.instance.GetEtc;
+                //case ItemTypes.CONSUMABLE:
+                //    return InventoryManager.instance.GetItems;
+                //case ItemTypes.EQUIPMENTS:
+                //    return InventoryManager.instance.GetEquipments;
+                //case ItemTypes.MATERIALS:
+                //    return InventoryManager.instance.GetMaterials;
+                //case ItemTypes.ENCHANTS:
+                //    return InventoryManager.instance.GetEnchants;
+                //case ItemTypes.ETC:
+                //    return InventoryManager.instance.GetEtc;
                 default:
                     return null;
             }

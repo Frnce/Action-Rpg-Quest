@@ -1,5 +1,6 @@
 ﻿using Advent.Controller;
 using Advent.Entities;
+using Advent.Enums;
 using Advent.Items;
 using Advent.Manager;
 using System.Collections;
@@ -85,21 +86,21 @@ namespace Advent.UI
         {
             switch (itemType)
             {
-                case ItemTypes.CONSUMABLE:
-                    AddToInventory(itemSlot, inventory.GetItems);
-                    break;
-                case ItemTypes.EQUIPMENTS:
-                    AddToInventory(equipmentSlot,inventory.GetEquipments);
-                    break;
-                case ItemTypes.MATERIALS:
-                    AddToInventory(materialsSlot,inventory.GetMaterials);
-                    break;
-                case ItemTypes.ENCHANTS:
-                    AddToInventory(enchantSlot,inventory.GetMaterials);
-                    break;
-                case ItemTypes.ETC:
-                    AddToInventory(etcSlot,inventory.GetEtc);
-                    break;
+                //case ItemTypes.CONSUMABLE:
+                //    AddToInventory(itemSlot, inventory.GetItems);
+                //    break;
+                //case ItemTypes.EQUIPMENTS:
+                //    AddToInventory(equipmentSlot,inventory.GetEquipments);
+                //    break;
+                //case ItemTypes.MATERIALS:
+                //    AddToInventory(materialsSlot,inventory.GetMaterials);
+                //    break;
+                //case ItemTypes.ENCHANTS:
+                //    AddToInventory(enchantSlot,inventory.GetMaterials);
+                //    break;
+                //case ItemTypes.ETC:
+                //    AddToInventory(etcSlot,inventory.GetEtc);
+                //    break;
                 default:
                     break;
             }

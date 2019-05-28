@@ -1,4 +1,5 @@
 ﻿using Advent.Entities;
+using Advent.Enums;
 using Advent.Manager;
 using Advent.Utilities;
 using System.Collections;
@@ -14,7 +15,6 @@ namespace Advent.Items
 
         public Equipment()
         { 
-            itemType = ItemTypes.EQUIPMENTS;
             stackSize = -1;
         }
 

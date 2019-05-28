@@ -1,0 +1,17 @@
+[
+    {
+        "ObjectSlug": "Short Sword",
+        "ItemName": "Short Sword",
+        "actionName": "Equip",
+        "Stats": [
+            {
+                "BaseValue": 5,
+                "StatName": "AttackMin"
+            },
+            {
+                "BaseValue": 8,
+                "StatName": "AttackMax"
+            }
+        ]
+    }
+]
