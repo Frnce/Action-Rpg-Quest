@@ -122,6 +122,16 @@ namespace Advent.Manager
             //}
         }
 
+        public void EquipItem(Item itemToEquip)
+        {
+            //playerWeaponController.EquipWeapon(itemToEquip);
+        }
+
+        public void ConsumeItem(Item itemToConsume)
+        {
+            //consumableController.ConsumeItem(itemToConsume);
+        }
+
         public List<ItemsSpace> GetItems
         {
             get

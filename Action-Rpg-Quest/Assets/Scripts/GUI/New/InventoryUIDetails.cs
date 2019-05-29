@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Advent.Entities;
+using Advent.Enums;
+using Advent.Manager;
 
 namespace Advent.UI
 {
@@ -44,18 +46,18 @@ namespace Advent.UI
         }
         public void OnItemInteract()
         {
-            //if (item.ItemType == Item.ItemTypes.Consumable)
-            //{
-            //    InventoryController.Instance.ConsumeItem(item);
-            //    Destroy(selectedItemButton.gameObject);
-            //}
-            //else if (item.ItemType == Item.ItemTypes.Weapon)
-            //{
-            //    InventoryController.Instance.EquipItem(item);
-            //    Destroy(selectedItemButton.gameObject);
-            //}
-            //item = null;
-            //gameObject.SetActive(false);
+            if (item.ItemType == ItemTypes.CONSUMABLE)
+            {
+                InventoryManager.instance.ConsumeItem(item);
+                Destroy(selectedItemButton.gameObject);
+            }
+            else if (item.ItemType == ItemTypes.WEAPON)
+            {
+                InventoryManager.instance.EquipItem(item);
+                Destroy(selectedItemButton.gameObject);
+            }
+            item = null;
+            gameObject.SetActive(false);
         }
     }
 }
