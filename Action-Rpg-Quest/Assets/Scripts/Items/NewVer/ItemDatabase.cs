@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Advent.Items.New
+namespace Advent.Items
 {
     public class ItemDatabase : MonoBehaviour
     {
@@ -20,6 +20,7 @@ namespace Advent.Items.New
             {
                 Instance = this;
             }
+            DontDestroyOnLoad(gameObject);
             BuildDatabase();
         }
         private void BuildDatabase()

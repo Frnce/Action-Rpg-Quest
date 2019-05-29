@@ -42,10 +42,6 @@ namespace Advent.UI
         {
             //Set Slots here
             SetItemSpace(inventory.ItemSpaceCount);
-            SetEquipmentSpace(inventory.EquipmentSpaceCount);
-            SetMaterialSpace(inventory.MaterialSpaceCount);
-            SetEnchantSpace(inventory.EnchantSpaceCount);
-            SetEtcSpace(inventory.EtcSpaceCount);
 
             itemSlot = itemsPane.GetComponentsInChildren<InventorySlot>();
             equipmentSlot = equipmentsPane.GetComponentsInChildren<InventorySlot>();
@@ -70,17 +66,17 @@ namespace Advent.UI
         }
         private void AddToInventory(InventorySlot[] slot,List<ItemsSpace> listItem)
         {
-            for (int i = 0; i < slot.Length; i++)
-            {
-                if (i < listItem.Count)
-                {
-                    slot[i].AddItem(listItem[i].item);
-                }
-                else
-                {
-                    slot[i].ClearSlot();
-                }
-            }
+            //for (int i = 0; i < slot.Length; i++)
+            //{
+            //    if (i < listItem.Count)
+            //    {
+            //        slot[i].AddItem(listItem[i].item);
+            //    }
+            //    else
+            //    {
+            //        slot[i].ClearSlot();
+            //    }
+            //}
         }
         public void UpdateInventoryUI(ItemTypes itemType)
         {

@@ -1,17 +1,23 @@
 [
-    {
-        "ObjectSlug": "Short Sword",
-        "ItemName": "Short Sword",
-        "actionName": "Equip",
-        "Stats": [
-            {
-                "BaseValue": 5,
-                "StatName": "AttackMin"
-            },
-            {
-                "BaseValue": 8,
-                "StatName": "AttackMax"
-            }
-        ]
-    }
+  {
+    "ItemId": 1,
+    "ObjectSlug": "Wpn_Short-Sword",
+    "ItemName": "Short Sword",
+    "Description": "A Short, sharp blade.",
+    "actionName": "Equip",
+    "ItemType": "Weapon",
+    "ItemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATTACKMIN",
+        "BaseValue": 5,
+        "StatName": "AttackMin"
+      },
+      {
+        "StatType": "ATTACKMAX",
+        "BaseValue": 8,
+        "StatName": "AttackMax"
+      }
+    ]
+  }
 ]

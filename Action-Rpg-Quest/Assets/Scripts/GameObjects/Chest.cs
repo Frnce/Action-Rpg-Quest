@@ -28,27 +28,41 @@ namespace Advent.GameObjects
         [Space]
         [SerializeField]
         private Sprite openSprite = null;
-        private LootScript loot;
+        public LootDropTable DropTable { get; set; }
+        public ItemPickup pickupItem;
         private void Start()
         {
             isOpen = false;
-            loot = FindObjectOfType<LootScript>();
+            DropTable = new LootDropTable();
+            DropTable.loots = new List<LootDrop>
+            {
+                new LootDrop("Wpn_Short-Sword", 100)
+            };
         }
         public void OpenChest()
         {
             if (!isOpen)
             {
-                loot.DropLoot(lootTable,lootDropChance,transform.position);
+                DropLoot();
                 isOpen = true;
                 GetComponentInChildren<SpriteRenderer>().sprite = openSprite;
                 GetComponent<BoxCollider2D>().enabled = false;
+                Destroy(gameObject);
             }
             else
-            {
+            {   
                 Debug.Log("already Opened");
             }
         }
-
+        void DropLoot()
+        {
+            Item item = DropTable.GetDrop();
+            if (item != null)
+            {
+                ItemPickup instance = Instantiate(pickupItem, transform.position, Quaternion.identity);
+                instance.ItemDrop = item;
+            }
+        }
         public void Interact()
         {
             OpenChest();

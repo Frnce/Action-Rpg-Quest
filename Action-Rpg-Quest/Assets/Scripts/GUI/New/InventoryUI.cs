@@ -1,0 +1,39 @@
+﻿using Advent.Items;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Advent.UI
+{
+    public class InventoryUI : MonoBehaviour
+    {
+        public RectTransform inventoryPanel;
+        public RectTransform scrollViewContent;
+
+        InventoryUIItem itemContainer { get; set; }
+        List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();
+        bool menuIsActive { get; set; }
+        Item currentSelectedItem { get; set; }
+        // Start is called before the first frame update
+        void Start()
+        {
+            UIEventHandlers.OnItemAddedToInventory += ItemAdded;
+            itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
+            inventoryPanel.gameObject.SetActive(false);
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void ItemAdded(Item item)
+        {
+            InventoryUIItem emptyItem = Instantiate(itemContainer);
+            emptyItem.SetItem(item);
+            itemUIList.Add(emptyItem);
+            emptyItem.transform.SetParent(scrollViewContent);
+        }
+    }
+}

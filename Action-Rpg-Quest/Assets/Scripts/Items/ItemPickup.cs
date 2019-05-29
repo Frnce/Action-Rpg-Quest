@@ -9,12 +9,10 @@ namespace Advent.Items
 {
     public class ItemPickup : MonoBehaviour,IInteractable
     {
-        public Item item;
-
+        public Item ItemDrop { get; set; }
         private void Pickup()
         {
-            //QuestManager.instance.AddQuestItem("TakeSword", 1);
-            bool isPickedUp = InventoryManager.instance.AddItem(item);
+            bool isPickedUp = InventoryManager.instance.GiveItem(ItemDrop);
 
             if (isPickedUp)
             {

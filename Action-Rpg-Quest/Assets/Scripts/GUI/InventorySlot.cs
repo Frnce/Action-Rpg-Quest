@@ -18,7 +18,7 @@ namespace Advent.UI
         {
             item = newItem;
 
-            icon.sprite = item.icon;
+            icon.sprite.name = item.itemIcon;
             icon.enabled = true;
         }
         public void ClearSlot()
@@ -29,17 +29,17 @@ namespace Advent.UI
         }
         public void UseItem()
         {
-            if (item != null)
-            {
-                item.Use();
-            }
+            //if (item != null)
+            //{
+            //    item.Use();
+            //}
         }
         public void DropItem()
         {
-            if (item != null)
-            {
-                item.DropFromInventory();
-            }
+            //if (item != null)
+            //{
+            //    item.DropFromInventory();
+            //}
         }
 
         public void OnPointerClick(PointerEventData eventData)

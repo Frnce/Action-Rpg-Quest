@@ -76,17 +76,20 @@ namespace Advent.Entities
 
             weaponTrail.emitting = false;
 
-            EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
+            //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
 
             timeBetweenAttack = startTimeBetweenAttack;
 
-            EquipmentManager.instance.EquipDefaults();
+            //EquipmentManager.instance.EquipDefaults();
 
             InitAttributes();
             InitMovementSpeed();
 
             InitDamage();
             InitPhysicalDefense();
+
+
+            InventoryManager.instance.GiveItem("Wpn_Short-Sword");
         }
         // Update is called once per frame
         void Update()
@@ -248,14 +251,14 @@ namespace Advent.Entities
             InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
         }
         //Updates Stats When Changing Equipment;
-        private void onEquipmentChange(Equipment newItem,Equipment oldItem)
-        {
-            if(newItem != null || oldItem != null)
-            {
-                InitDamage();
-                InitPhysicalDefense();
-            }
-        }
+        //private void onEquipmentChange(Equipment newItem,Equipment oldItem)
+        //{
+        //    if(newItem != null || oldItem != null)
+        //    {
+        //        InitDamage();
+        //        InitPhysicalDefense();
+        //    }
+        //}
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != null)

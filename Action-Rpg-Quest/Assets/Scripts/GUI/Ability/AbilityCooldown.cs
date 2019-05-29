@@ -29,7 +29,7 @@ namespace Advent.UI
         private void Awake()
         {
             equipmentManager = EquipmentManager.instance;
-            equipmentManager.onEquipmentChangedCallback += UpdateAbility;
+            //equipmentManager.onEquipmentChangedCallback += UpdateAbility;
         }
         void Start()
         {
@@ -62,14 +62,11 @@ namespace Advent.UI
                 Cooldown();
             }
         }
-        private void UpdateAbility(Equipment newItem, Equipment oldItem)
+        private void UpdateAbility(Item newItem, Item oldItem)
         {
             if (newItem != null)
             {
-                if (newItem.GetAttackType == AttackType.SLASH)
-                {
-                    Initialize(ability); // INitialize method will be initialized on player class select
-                }
+                Initialize(ability); // INitialize method will be initialized on player class select
             }
         }
         private void AbilityReady()

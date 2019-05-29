@@ -94,7 +94,7 @@ namespace Advent.Entities
             {
                 if (entityStats.loot != null)
                 {
-                    FindObjectOfType<LootScript>().DropLoot(entityStats.loot,entityStats.dropChance,transform.position);
+                    //FindObjectOfType<LootScript>().DropLoot(entityStats.loot,entityStats.dropChance,transform.position);
                 }
                 myCollider.enabled = false;
                 customCollider.SetActive(false);

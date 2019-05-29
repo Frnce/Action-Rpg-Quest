@@ -6,9 +6,18 @@ using UnityEngine;
 
 namespace Advent.Entities
 {
+    [System.Serializable]
     public class BaseStat
     {
-        public enum BaseStatType {STRENGTH,DEXTERITY,INTELLIGENCE,VITALITY}
+        public enum BaseStatType
+        {
+            STRENGTH,
+            DEXTERITY,
+            INTELLIGENCE,
+            VITALITY,
+            ATTACKMIN,
+            ATTACKMAX
+        }
 
         public List<StatBonus> baseAdditives { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
