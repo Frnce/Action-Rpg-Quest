@@ -36,7 +36,7 @@ namespace Advent.UI
         private void Awake()
         {
             inventory = InventoryManager.instance;
-            inventory.onItemChangedCallback += UpdateInventoryUI;
+            //inventory.onItemChangedCallback += UpdateInventoryUI;
         }
         void Start()
         {

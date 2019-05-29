@@ -4,6 +4,7 @@ using Advent.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Advent.Manager
 {
@@ -34,8 +35,10 @@ namespace Advent.Manager
         [SerializeField]
         private GameObject inventorySlot = null;
 
-        public delegate void OnItemChanged(ItemTypes itemType);
-        public OnItemChanged onItemChangedCallback;
+        //public delegate void OnItemChanged(ItemTypes itemType);
+        //public OnItemChanged onItemChangedCallback;
+
+        public InventoryUIDetails inventoryDetailsPanel;
 
         private void Awake()
         {
@@ -122,6 +125,10 @@ namespace Advent.Manager
             //}
         }
 
+        public void SetItemDetails(Item item, Button selectedButton)
+        {
+            inventoryDetailsPanel.SetItem(item, selectedButton);
+        }
         public void EquipItem(Item itemToEquip)
         {
             //playerWeaponController.EquipWeapon(itemToEquip);

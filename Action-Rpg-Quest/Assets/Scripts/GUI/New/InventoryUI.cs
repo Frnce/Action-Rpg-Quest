@@ -18,14 +18,17 @@ namespace Advent.UI
         void Start()
         {
             UIEventHandlers.OnItemAddedToInventory += ItemAdded;
-            itemContainer = Resources.Load<InventoryUIItem>("UI/Item_Container");
+            itemContainer = Resources.Load<InventoryUIItem>("GUI/Item_Container");
             inventoryPanel.gameObject.SetActive(false);
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+            {
+                inventoryPanel.gameObject.SetActive(true);
+            }
         }
 
         public void ItemAdded(Item item)

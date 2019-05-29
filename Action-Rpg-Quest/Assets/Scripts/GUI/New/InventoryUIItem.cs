@@ -26,7 +26,7 @@ namespace Advent.UI
         }
         public void OnSelectItemButton()
         {
-            //InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
+            InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
         }
     }
 }
