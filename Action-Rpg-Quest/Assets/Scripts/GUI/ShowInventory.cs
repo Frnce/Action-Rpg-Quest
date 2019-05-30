@@ -41,7 +41,7 @@ namespace Advent.UI
         void Start()
         {
             //Set Slots here
-            SetItemSpace(inventory.ItemSpaceCount);
+            //SetItemSpace(inventory.ItemSpaceCount);
 
             itemSlot = itemsPane.GetComponentsInChildren<InventorySlot>();
             equipmentSlot = equipmentsPane.GetComponentsInChildren<InventorySlot>();
@@ -101,40 +101,40 @@ namespace Advent.UI
                     break;
             }
         }
-        public void SetItemSpace(int maxSpace)
-        {
-            for (int i = 0; i < maxSpace; i++)
-            {
-               var asd =  Instantiate(inventory.GetInventorySlotObject, itemsPane);
-            }
-        }
-        public void SetEquipmentSpace(int maxSpace)
-        {
-            for (int i = 0; i < maxSpace; i++)
-            {
-                Instantiate(inventory.GetInventorySlotObject, equipmentsPane);
-            }
-        }
-        public void SetMaterialSpace(int maxSpace)
-        {
-            for (int i = 0; i < maxSpace; i++)
-            {
-                Instantiate(inventory.GetInventorySlotObject, materialsPane);
-            }
-        }
-        public void SetEnchantSpace(int maxSpace)
-        {
-            for (int i = 0; i < maxSpace; i++)
-            {
-                Instantiate(inventory.GetInventorySlotObject, enchantsPane);
-            }
-        }
-        public void SetEtcSpace(int maxspace)
-        {
-            for (int i = 0; i < maxspace; i++)
-            {
-                Instantiate(inventory.GetInventorySlotObject, etcPane);
-            }
-        }
+        //public void SetItemSpace(int maxSpace)
+        //{
+        //    for (int i = 0; i < maxSpace; i++)
+        //    {
+        //       var asd =  Instantiate(inventory.GetInventorySlotObject, itemsPane);
+        //    }
+        //}
+        //public void SetEquipmentSpace(int maxSpace)
+        //{
+        //    for (int i = 0; i < maxSpace; i++)
+        //    {
+        //        Instantiate(inventory.GetInventorySlotObject, equipmentsPane);
+        //    }
+        //}
+        //public void SetMaterialSpace(int maxSpace)
+        //{
+        //    for (int i = 0; i < maxSpace; i++)
+        //    {
+        //        Instantiate(inventory.GetInventorySlotObject, materialsPane);
+        //    }
+        //}
+        //public void SetEnchantSpace(int maxSpace)
+        //{
+        //    for (int i = 0; i < maxSpace; i++)
+        //    {
+        //        Instantiate(inventory.GetInventorySlotObject, enchantsPane);
+        //    }
+        //}
+        //public void SetEtcSpace(int maxspace)
+        //{
+        //    for (int i = 0; i < maxspace; i++)
+        //    {
+        //        Instantiate(inventory.GetInventorySlotObject, etcPane);
+        //    }
+        //}
     }
 }

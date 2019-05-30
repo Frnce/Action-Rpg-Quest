@@ -61,19 +61,12 @@ namespace Advent.Manager
             }
             return true;
         }
-        private void AddItemToPane(Item item,List<ItemsSpace> listItems)
-        {
-            //if (onItemChangedCallback != null)
-            //{
-            //    onItemChangedCallback.Invoke(item.itemType);
-            //}
-        }
         public bool GiveItem(string itemSlug)
         {
             if (CheckIfInventoryHasSpace(itemsList, ItemSpaceCount))
             {
                 Item item = ItemDatabase.Instance.GetItem(itemSlug);
-                int itemindex = GetSameItemIndex(item, itemsList);
+                int itemindex = GetSameItemIndex(item, itemsList);  
                 if(item.isStackable && itemindex != -1 && itemsList[itemindex].stackCount < maxStack)
                 {
                     itemsList[itemindex].stackCount++;
@@ -157,13 +150,13 @@ namespace Advent.Manager
                 return maxItemSpace;
             }
         }
-        public GameObject GetInventorySlotObject
-        {
-            get
-            {
-                return inventorySlot;
-            }
-        }
+        //public GameObject GetInventorySlotObject
+        //{
+        //    get
+        //    {
+        //        return inventorySlot;
+        //    }
+        //}
 
         public int GetMoneyAcquired
         {

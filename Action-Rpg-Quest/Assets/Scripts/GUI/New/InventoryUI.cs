@@ -17,9 +17,10 @@ namespace Advent.UI
         // Start is called before the first frame update
         void Start()
         {
-            UIEventHandlers.OnItemAddedToInventory += ItemAdded;
             itemContainer = Resources.Load<InventoryUIItem>("GUI/Item_Container");
             inventoryPanel.gameObject.SetActive(false);
+
+            UIEventHandlers.OnItemAddedToInventory += ItemAdded;
         }
 
         // Update is called once per frame

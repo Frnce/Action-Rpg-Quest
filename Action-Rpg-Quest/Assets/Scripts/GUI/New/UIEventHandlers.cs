@@ -22,9 +22,9 @@ namespace Advent.UI
 
         public static void ItemAddedToInventory(Item item)
         {
-            if (OnItemAddedToInventory != null)
+            if(OnItemAddedToInventory != null)
             {
-                OnItemAddedToInventory(item);
+                OnItemAddedToInventory.Invoke(item);
             }
         }
         public static void ItemAddedToInventory(List<Item> items)

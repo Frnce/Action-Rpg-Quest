@@ -87,9 +87,6 @@ namespace Advent.Entities
 
             InitDamage();
             InitPhysicalDefense();
-
-
-            InventoryManager.instance.GiveItem("Wpn_Short-Sword");
         }
         // Update is called once per frame
         void Update()
@@ -116,6 +113,11 @@ namespace Advent.Entities
                 {
                     dustWalkingEffect.Play();
                 }
+            }
+            //Give item Testing
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                InventoryManager.instance.GiveItem("Wpn_Short-Sword");
             }
         }
         private void FixedUpdate()

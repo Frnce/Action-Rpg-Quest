@@ -138,7 +138,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4186841694887304736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1509810726727842205}
+        m_MethodName: OnSelectItemButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1509810726727842205
@@ -153,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c7787cb7d416e439e95fb984ffb6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemText: {fileID: 0}
-  itemImage: {fileID: 0}
+  itemText: {fileID: 26343318928115949}
+  itemImage: {fileID: 7332403645111092278}
 --- !u!1 &4772280380581796048
 GameObject:
   m_ObjectHideFlags: 0
