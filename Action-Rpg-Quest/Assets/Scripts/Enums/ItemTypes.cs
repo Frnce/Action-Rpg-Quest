@@ -8,7 +8,7 @@
         HEAD,
         LEGS,
         FOOT,
-        ACCESORY,
+        TOTEM,
         ENCHANTS,
         MATERIALS,
         MISC
