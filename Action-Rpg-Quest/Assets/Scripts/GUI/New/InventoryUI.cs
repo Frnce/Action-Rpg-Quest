@@ -1,4 +1,5 @@
 ﻿using Advent.Items;
+using Advent.Manager;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,11 @@ namespace Advent.UI
     {
         public RectTransform inventoryPanel;
         public RectTransform scrollViewContent;
+        [Space]
+        public RectTransform consumableContent;
+        public RectTransform equipmentTransform;
+        public RectTransform enchantsTransform;
+        public RectTransform materialsTransform;
 
         InventoryUIItem itemContainer { get; set; }
         List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();

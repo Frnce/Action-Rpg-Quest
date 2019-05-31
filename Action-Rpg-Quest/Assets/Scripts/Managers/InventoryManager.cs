@@ -23,7 +23,7 @@ namespace Advent.Manager
     {
         public static InventoryManager instance;
         [SerializeField]
-        private int maxItemSpace = 20;
+        private int maxItemSpace = 50;
         [SerializeField]
         private int maxStack = 9;
         [SerializeField]
