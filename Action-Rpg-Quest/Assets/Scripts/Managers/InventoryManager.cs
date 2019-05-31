@@ -27,18 +27,16 @@ namespace Advent.Manager
         [SerializeField]
         private int maxStack = 9;
         [SerializeField]
-        private List<ItemsSpace> itemsList = new List<ItemsSpace>();
+        private List<ItemsSpace> consumableList = new List<ItemsSpace>();
+        [SerializeField]
+        private List<ItemsSpace> equipmentList = new List<ItemsSpace>();
+        [SerializeField]
+        private List<ItemsSpace> enchantList = new List<ItemsSpace>();
+        [SerializeField]
+        private List<ItemsSpace> materialList = new List<ItemsSpace>();
         [Space]
         [SerializeField]
         private int moneyAcquired = 0;
-        [Space]
-        [SerializeField]
-        private GameObject inventorySlot = null;
-
-        //public delegate void OnItemChanged(ItemTypes itemType);
-        //public OnItemChanged onItemChangedCallback;
-
-        public InventoryUIDetails inventoryDetailsPanel;
 
         private void Awake()
         {
@@ -61,41 +59,84 @@ namespace Advent.Manager
             }
             return true;
         }
-        public bool GiveItem(string itemSlug)
+        private void ConfirmedGivingItem(Item item,List<ItemsSpace> itemList)
         {
-            if (CheckIfInventoryHasSpace(itemsList, ItemSpaceCount))
+            int itemindex = GetSameItemIndex(item, itemList);
+            if (item.isStackable && itemindex != -1 && itemList[itemindex].stackCount < maxStack)
             {
-                Item item = ItemDatabase.Instance.GetItem(itemSlug);
-                int itemindex = GetSameItemIndex(item, itemsList);  
-                if(item.isStackable && itemindex != -1 && itemsList[itemindex].stackCount < maxStack)
-                {
-                    itemsList[itemindex].stackCount++;
-                }
-                else
-                {
-                    itemsList.Add(new ItemsSpace(item));
-                    UIEventHandlers.ItemAddedToInventory(item);
-                }
-                return true;
+                itemList[itemindex].stackCount++;
             }
             else
             {
-                Debug.LogWarning("Unable to get item : full Inventory");
-                return false;
+                itemList.Add(new ItemsSpace(item));
+                UIEventHandlers.ItemAddedToInventory(item);
             }
         }
-        public bool GiveItem(Item item)
+        public bool GiveItem(string itemSlug)
         {
-            if (CheckIfInventoryHasSpace(itemsList, ItemSpaceCount))
+            Item item = ItemDatabase.Instance.GetItem(itemSlug);
+            if (item.ItemType == ItemTypes.CONSUMABLE) //CHeck if itemtype is consumable
             {
-                int itemindex = GetSameItemIndex(item, itemsList);
-                if (item.isStackable && itemindex != -1 && itemsList[itemindex].stackCount < maxStack)
+                if (CheckIfInventoryHasSpace(consumableList, maxItemSpace)) // check if consumable panel has empty slots
                 {
-                    itemsList[itemindex].stackCount++;
+                    ConfirmedGivingItem(item, consumableList); //give item (show on inventory)
                 }
                 else
                 {
-                    itemsList.Add(new ItemsSpace(item));
+                    Debug.LogWarning("Unable to get item : full Inventory");
+                    return false;
+                }
+            }
+            else if(item.ItemType == ItemTypes.ENCHANTS)  //CHeck if itemtype is enchant
+            {
+                if (CheckIfInventoryHasSpace(enchantList, maxItemSpace))// check if enchant panel has empty slots
+                {
+                    ConfirmedGivingItem(item, enchantList);
+                }
+                else
+                {
+                    Debug.LogWarning("Unable to get item : full Inventory");
+                    return false;
+                }
+            }
+            else if(item.ItemType == ItemTypes.MATERIALS) //CHeck if itemtype is material
+            {
+                if (CheckIfInventoryHasSpace(materialList, maxItemSpace)) // check if material panel has empty slots
+                {
+                    ConfirmedGivingItem(item, materialList);
+                }
+                else
+                {
+                    Debug.LogWarning("Unable to get item : full Inventory");
+                    return false;
+                }
+            }
+            else   //Eqquipments itemtype
+            {
+                if (CheckIfInventoryHasSpace(equipmentList, maxItemSpace)) // check if equipment panel has empty slots
+                {
+                    ConfirmedGivingItem(item, equipmentList);
+                }
+                else
+                {
+                    Debug.LogWarning("Unable to get item : full Inventory");
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool GiveItem(Item item)
+        {
+            if (CheckIfInventoryHasSpace(consumableList, ItemSpaceCount))
+            {
+                int itemindex = GetSameItemIndex(item, consumableList);
+                if (item.isStackable && itemindex != -1 && consumableList[itemindex].stackCount < maxStack)
+                {
+                    consumableList[itemindex].stackCount++;
+                }
+                else
+                {
+                    consumableList.Add(new ItemsSpace(item));
                     UIEventHandlers.ItemAddedToInventory(item);
                 }
                 return true;
@@ -109,18 +150,13 @@ namespace Advent.Manager
         public void RemoveItem(Item item)
         {
             int itemIndex = 0;
-            itemIndex = GetSameItemIndex(item, itemsList);
-            itemsList.Remove(itemsList[itemIndex]);
+            itemIndex = GetSameItemIndex(item, consumableList);
+            consumableList.Remove(consumableList[itemIndex]);
 
             //if (onItemChangedCallback != null)
             //{
             //    onItemChangedCallback.Invoke(item.itemType);
             //}
-        }
-
-        public void SetItemDetails(Item item, Button selectedButton)
-        {
-            inventoryDetailsPanel.SetItem(item, selectedButton);
         }
         public void EquipItem(Item itemToEquip)
         {
@@ -136,11 +172,11 @@ namespace Advent.Manager
         {
             get
             {
-                return itemsList;
+                return consumableList;
             }
             set
             {
-                itemsList = value;
+                consumableList = value;
             }
         }
         public int ItemSpaceCount

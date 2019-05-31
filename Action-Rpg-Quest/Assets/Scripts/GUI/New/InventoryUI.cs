@@ -9,12 +9,11 @@ namespace Advent.UI
     public class InventoryUI : MonoBehaviour
     {
         public RectTransform inventoryPanel;
-        public RectTransform scrollViewContent;
         [Space]
         public RectTransform consumableContent;
-        public RectTransform equipmentTransform;
-        public RectTransform enchantsTransform;
-        public RectTransform materialsTransform;
+        public RectTransform equipmentContent;
+        public RectTransform enchantsContent;
+        public RectTransform materialsContent;
 
         InventoryUIItem itemContainer { get; set; }
         List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();
@@ -43,7 +42,22 @@ namespace Advent.UI
             InventoryUIItem emptyItem = Instantiate(itemContainer);
             emptyItem.SetItem(item);
             itemUIList.Add(emptyItem);
-            emptyItem.transform.SetParent(scrollViewContent);
+            if(item.ItemType == Enums.ItemTypes.CONSUMABLE)
+            {
+                emptyItem.transform.SetParent(consumableContent);
+            }
+            else if (item.ItemType == Enums.ItemTypes.MATERIALS)
+            {
+                emptyItem.transform.SetParent(materialsContent);
+            }
+            else if(item.ItemType == Enums.ItemTypes.ENCHANTS)
+            {
+                emptyItem.transform.SetParent(enchantsContent);
+            }
+            else //Equipments
+            {
+                emptyItem.transform.SetParent(equipmentContent);
+            }
         }
     }
 }

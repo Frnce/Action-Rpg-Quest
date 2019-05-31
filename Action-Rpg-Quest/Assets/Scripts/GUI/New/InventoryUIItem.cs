@@ -10,7 +10,6 @@ namespace Advent.UI
     public class InventoryUIItem : MonoBehaviour
     {
         public Item item;
-        public TMPro.TextMeshProUGUI itemText;
         public Image itemImage;
 
         public void SetItem(Item item)
@@ -21,12 +20,19 @@ namespace Advent.UI
 
         private void SetupItemValues()
         {
-            itemText.text = item.ItemName;
-            itemImage.sprite = Resources.Load<Sprite>("UI/Icons/Item/" + item.ObjectSlug);
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Assets/MainTileset");
+            for (int i = 0; i < sprites.Length; i++)
+            {
+                if(sprites[i].name == item.ObjectSlug)
+                {
+                    itemImage.sprite = sprites[i];
+                    break;
+                }
+            }
         }
         public void OnSelectItemButton()
         {
-            InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
+            //InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
         }
     }
 }

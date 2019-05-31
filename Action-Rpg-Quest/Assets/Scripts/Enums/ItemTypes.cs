@@ -10,7 +10,6 @@
         FOOT,
         TOTEM,
         ENCHANTS,
-        MATERIALS,
-        MISC
+        MATERIALS
     }
 }

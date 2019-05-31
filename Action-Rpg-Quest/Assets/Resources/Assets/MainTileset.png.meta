@@ -11,7 +11,7 @@ TextureImporter:
     21300012: Dungeon-Knight-Run-2
     21300014: Dungeon-Knight-Run-3
     21300016: Dungeon-Knight-Run-4
-    21300018: weapon_1
+    21300018: Wpn_Short-Sword
     21300020: Dungeon-BabyOrc-Idle-1
     21300022: Dungeon-BabyOrc-Idle-2
     21300024: Dungeon-BabyOrc-Idle-3
@@ -295,7 +295,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapon_1
+      name: Wpn_Short-Sword
       rect:
         serializedVersion: 2
         x: 307
