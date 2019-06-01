@@ -21,6 +21,9 @@ namespace Advent.Controller
         public bool GetOpenMenuKey { get; private set; }
         public bool GetInteractKey { get; private set; }
 
+        public bool GetShowInventoryKey { get; set; }
+        public bool GetShowStatsKey { get; set; }
+
         private void Start()
         {
             Keys();
