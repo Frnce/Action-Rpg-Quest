@@ -1,4 +1,6 @@
-﻿using Advent.Items;
+﻿using Advent.Controller;
+using Advent.Entities;
+using Advent.Items;
 using Advent.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,13 +19,14 @@ namespace Advent.UI
 
         InventoryUIItem itemContainer { get; set; }
         List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();
-        bool menuIsActive { get; set; }
+        bool MenuIsActive { get; set; }
         Item currentSelectedItem { get; set; }
         // Start is called before the first frame update
         void Start()
         {
             itemContainer = Resources.Load<InventoryUIItem>("GUI/Item_Container");
             inventoryPanel.gameObject.SetActive(false);
+            MenuIsActive = false;
 
             UIEventHandlers.OnItemAddedToInventory += ItemAdded;
         }
@@ -31,12 +34,23 @@ namespace Advent.UI
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha5))
+            if (PlayerController.instance.GetShowInventoryKey)
             {
-                inventoryPanel.gameObject.SetActive(true);
+                MenuIsActive = !MenuIsActive;
             }
-        }
 
+            if (MenuIsActive)
+            {
+                Player.instance.SetPlayerStates(PlayerStates.INMENU);
+                CameraController.instance.EnableDisableCameraControls(false);
+            }
+            else
+            {
+                Player.instance.SetPlayerStates(PlayerStates.IDLE);
+                CameraController.instance.EnableDisableCameraControls(true);
+            }
+            inventoryPanel.gameObject.SetActive(MenuIsActive);
+        }
         public void ItemAdded(Item item)
         {
             InventoryUIItem emptyItem = Instantiate(itemContainer);

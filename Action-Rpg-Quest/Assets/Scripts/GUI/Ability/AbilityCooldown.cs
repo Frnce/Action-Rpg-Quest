@@ -81,7 +81,6 @@ namespace Advent.UI
 
             darkMask.fillAmount = (cooldownTimeLeft / cooldownDuration);
         }
-
         private void ButtonTriggered()
         {
             nextReadyTime = cooldownDuration + Time.time;

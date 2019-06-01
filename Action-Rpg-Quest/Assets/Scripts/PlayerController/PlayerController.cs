@@ -43,6 +43,8 @@ namespace Advent.Controller
             GetDodgeKey = Input.GetButtonDown("Fire2");
             GetOpenMenuKey = Input.GetButtonDown("OpenMenu");
             GetInteractKey = Input.GetButtonDown("Interact");
+
+            GetShowInventoryKey = Input.GetButtonDown("OpenInventory");
         }
         public Vector2 GetMovement
         {

@@ -7,6 +7,7 @@ namespace Advent.Controller
 {
     public class CameraController : MonoBehaviour
     {
+        public static CameraController instance;
         private Player player;
         private Vector3 target, mousePos, refvel;
         [SerializeField]
@@ -15,6 +16,12 @@ namespace Advent.Controller
         private float smoothTime = 0.2f;
         private float zstart;
 
+        public bool isCameraControlsEnabled = true;
+
+        private void Awake()
+        {
+            instance = this;
+        }
         void Start()
         {
             player = Player.instance;
@@ -24,6 +31,15 @@ namespace Advent.Controller
 
         // Update is called once per frame
         void Update()
+        {
+            if (isCameraControlsEnabled)
+            {
+                mousePos = CaptureMousePos();
+                target = UpdateTargetPos();
+                UpdateCameraPosition();
+            }
+        }
+        private void CameraStuff()
         {
             mousePos = CaptureMousePos();
             target = UpdateTargetPos();
@@ -55,6 +71,11 @@ namespace Advent.Controller
                 ret = ret.normalized;
             }
             return ret;
+        }
+        
+        public void EnableDisableCameraControls(bool choice)
+        {
+            isCameraControlsEnabled = choice;
         }
     }
 }

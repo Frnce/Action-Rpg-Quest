@@ -100,11 +100,12 @@ namespace Advent.Entities
                     PlayerDodge();
                 }
                 InteractObject();
-            }
-            if (states != PlayerStates.ATTACKING)
-            {
-                FlipCharacter();
-                Aim();
+
+                if (states != PlayerStates.ATTACKING)
+                {
+                    FlipCharacter();
+                    Aim();
+                }
             }
             //TODO fix Trail Effect
             if(states == PlayerStates.MOVING)
@@ -216,7 +217,7 @@ namespace Advent.Entities
         }
         public void PlayerAttack()
         {
-            if (states != PlayerStates.ROLLING)
+            if (states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
             {
                 states = PlayerStates.ATTACKING;
                 SoundManager.instance.PlayerAttackRandomizeSfx(swordSwings);
@@ -278,6 +279,13 @@ namespace Advent.Entities
         public void SetPlayerStates(PlayerStates states)
         {
             this.states = states;
+        }
+        public PlayerStates GetPlayerStates
+        {
+            get
+            {
+                return states;
+            }
         }
         public void TakeDamage(int damage,Vector3 targetPoint)
         {
