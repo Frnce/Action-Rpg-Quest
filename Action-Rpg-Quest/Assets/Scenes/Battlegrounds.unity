@@ -8376,6 +8376,23 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1565952642, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532095955904520198, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCanvass
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225558488, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_Name
+      value: Default Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225558488, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
 --- !u!224 &458280361 stripped

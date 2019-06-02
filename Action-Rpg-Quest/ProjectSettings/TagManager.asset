@@ -11,6 +11,7 @@ TagManager:
   - AcceptQuestButton
   - GiveUpQuestButton
   - CompleteQuestButton
+  - MainCanvass
   layers:
   - Default
   - TransparentFX

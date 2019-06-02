@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 595330016404863138}
   - component: {fileID: 8679125318828550954}
-  - component: {fileID: 4991976401341404532}
+  - component: {fileID: 1822422266568729786}
+  - component: {fileID: 5772950764772466055}
+  - component: {fileID: 2498739127870139408}
   m_Layer: 5
   m_Name: Item_Icon
   m_TagString: Untagged
@@ -45,7 +47,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396712982784144972}
   m_CullTransparentMesh: 0
---- !u!114 &4991976401341404532
+--- !u!225 &1822422266568729786
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396712982784144972}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5772950764772466055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,6 +67,18 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4396712982784144972}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e576a278ca4046944b2e28355f603db9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2498739127870139408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396712982784144972}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -65,15 +91,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 1
+  m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 1
+  m_UseSpriteMesh: 0
 --- !u!1 &5954797307557873578
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,4 +263,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c7787cb7d416e439e95fb984ffb6cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 4991976401341404532}
+  itemImage: {fileID: 2498739127870139408}

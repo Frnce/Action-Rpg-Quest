@@ -17,16 +17,21 @@ namespace Advent.UI
         public RectTransform enchantsContent;
         public RectTransform materialsContent;
 
-        InventoryUIItem itemContainer { get; set; }
-        List<InventoryUIItem> itemUIList = new List<InventoryUIItem>();
+        private InventoryManager inventoryManager;
+
+        InventoryUISlot itemContainer { get; set; }
+        List<InventoryUISlot> inventorySlotList = new List<InventoryUISlot>();
         bool MenuIsActive { get; set; }
         Item currentSelectedItem { get; set; }
         // Start is called before the first frame update
         void Start()
         {
-            itemContainer = Resources.Load<InventoryUIItem>("GUI/Item_Container");
+            itemContainer = Resources.Load<InventoryUISlot>("GUI/Item_Container");
             inventoryPanel.gameObject.SetActive(false);
             MenuIsActive = false;
+            inventoryManager = InventoryManager.instance;
+
+            InitItemSlots();
 
             UIEventHandlers.OnItemAddedToInventory += ItemAdded;
         }
@@ -51,26 +56,37 @@ namespace Advent.UI
             }
             inventoryPanel.gameObject.SetActive(MenuIsActive);
         }
-        public void ItemAdded(Item item)
+        public void ItemAdded(Item item,int index)
         {
-            InventoryUIItem emptyItem = Instantiate(itemContainer);
-            emptyItem.SetItem(item);
-            itemUIList.Add(emptyItem);
-            if(item.ItemType == Enums.ItemTypes.CONSUMABLE)
+            inventorySlotList[index].SetItem(item);
+            //InventoryUISlot emptyItem = Instantiate(itemContainer);
+            //emptyItem.SetItem(item);
+            //itemUIList.Add(emptyItem);
+            //if(item.ItemType == Enums.ItemTypes.CONSUMABLE)
+            //{
+            //    emptyItem.transform.SetParent(consumableContent);
+            //}
+            //else if (item.ItemType == Enums.ItemTypes.MATERIALS)
+            //{
+            //    emptyItem.transform.SetParent(materialsContent);
+            //}
+            //else if(item.ItemType == Enums.ItemTypes.ENCHANTS)
+            //{
+            //    emptyItem.transform.SetParent(enchantsContent);
+            //}
+            //else //Equipments
+            //{
+            //    emptyItem.transform.SetParent(equipmentContent);
+            //}
+        }
+        public void InitItemSlots()
+        {
+            for (int i = 0; i < inventoryManager.GetEquipmentList.Length; i++)
             {
-                emptyItem.transform.SetParent(consumableContent);
-            }
-            else if (item.ItemType == Enums.ItemTypes.MATERIALS)
-            {
-                emptyItem.transform.SetParent(materialsContent);
-            }
-            else if(item.ItemType == Enums.ItemTypes.ENCHANTS)
-            {
-                emptyItem.transform.SetParent(enchantsContent);
-            }
-            else //Equipments
-            {
+                InventoryUISlot emptyItem = Instantiate(itemContainer);
                 emptyItem.transform.SetParent(equipmentContent);
+                emptyItem.Index = i;
+                inventorySlotList.Add(emptyItem);
             }
         }
     }

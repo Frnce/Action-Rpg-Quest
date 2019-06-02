@@ -18,6 +18,7 @@ namespace Advent.Manager
         {
             item = _item;
         }
+        public ItemsSpace() { }
     }
     public class InventoryManager : MonoBehaviour
     {
@@ -26,14 +27,14 @@ namespace Advent.Manager
         private int maxItemSpace = 50;
         [SerializeField]
         private int maxStack = 9;
+        //[SerializeField]
+        //private ItemsSpace[] consumableList;
         [SerializeField]
-        private List<ItemsSpace> consumableList = new List<ItemsSpace>();
-        [SerializeField]
-        private List<ItemsSpace> equipmentList = new List<ItemsSpace>();
-        [SerializeField]
-        private List<ItemsSpace> enchantList = new List<ItemsSpace>();
-        [SerializeField]
-        private List<ItemsSpace> materialList = new List<ItemsSpace>();
+        private ItemsSpace[] equipmentList;
+        //[SerializeField]
+        //private List<ItemsSpace> enchantList = new List<ItemsSpace>();
+        //[SerializeField]
+        //private List<ItemsSpace> materialList = new List<ItemsSpace>();
         [Space]
         [SerializeField]
         private int moneyAcquired = 0;
@@ -50,108 +51,58 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
-        private bool CheckIfInventoryHasSpace(List<ItemsSpace> selectedList,int maxSpace)
+        private void Start()
         {
-            if (selectedList.Count >= maxSpace)
+            equipmentList = new ItemsSpace[maxItemSpace];
+            //Init item Slots
+            for (int i = 0; i < equipmentList.Length; i++)
             {
-                Debug.Log("Not Enough Room");
-                return false;
+                equipmentList[i] = new ItemsSpace();
             }
-            return true;
         }
-        private void ConfirmedGivingItem(Item item,List<ItemsSpace> itemList)
+        public bool AddToFirstEmptySlot(Item item)
         {
-            int itemindex = GetSameItemIndex(item, itemList);
-            if (item.isStackable && itemindex != -1 && itemList[itemindex].stackCount < maxStack)
+            for (int i = 0; i < equipmentList.Length; i++)
             {
-                itemList[itemindex].stackCount++;
+                if (equipmentList[i].item == null)
+                {
+                    equipmentList[i].item = item;
+                    UIEventHandlers.ItemAddedToInventory(item,i);
+                    return true;
+                }
             }
-            else
-            {
-                itemList.Add(new ItemsSpace(item));
-                UIEventHandlers.ItemAddedToInventory(item);
-            }
+            return false;
         }
         public bool GiveItem(string itemSlug)
         {
             Item item = ItemDatabase.Instance.GetItem(itemSlug);
-            if (item.ItemType == ItemTypes.CONSUMABLE) //CHeck if itemtype is consumable
+            if (AddToFirstEmptySlot(item))
             {
-                if (CheckIfInventoryHasSpace(consumableList, maxItemSpace)) // check if consumable panel has empty slots
-                {
-                    ConfirmedGivingItem(item, consumableList); //give item (show on inventory)
-                }
-                else
-                {
-                    Debug.LogWarning("Unable to get item : full Inventory");
-                    return false;
-                }
-            }
-            else if(item.ItemType == ItemTypes.ENCHANTS)  //CHeck if itemtype is enchant
-            {
-                if (CheckIfInventoryHasSpace(enchantList, maxItemSpace))// check if enchant panel has empty slots
-                {
-                    ConfirmedGivingItem(item, enchantList);
-                }
-                else
-                {
-                    Debug.LogWarning("Unable to get item : full Inventory");
-                    return false;
-                }
-            }
-            else if(item.ItemType == ItemTypes.MATERIALS) //CHeck if itemtype is material
-            {
-                if (CheckIfInventoryHasSpace(materialList, maxItemSpace)) // check if material panel has empty slots
-                {
-                    ConfirmedGivingItem(item, materialList);
-                }
-                else
-                {
-                    Debug.LogWarning("Unable to get item : full Inventory");
-                    return false;
-                }
-            }
-            else   //Eqquipments itemtype
-            {
-                if (CheckIfInventoryHasSpace(equipmentList, maxItemSpace)) // check if equipment panel has empty slots
-                {
-                    ConfirmedGivingItem(item, equipmentList);
-                }
-                else
-                {
-                    Debug.LogWarning("Unable to get item : full Inventory");
-                    return false;
-                }
-            }
-            return true;
-        }
-        public bool GiveItem(Item item)
-        {
-            if (CheckIfInventoryHasSpace(consumableList, ItemSpaceCount))
-            {
-                int itemindex = GetSameItemIndex(item, consumableList);
-                if (item.isStackable && itemindex != -1 && consumableList[itemindex].stackCount < maxStack)
-                {
-                    consumableList[itemindex].stackCount++;
-                }
-                else
-                {
-                    consumableList.Add(new ItemsSpace(item));
-                    UIEventHandlers.ItemAddedToInventory(item);
-                }
                 return true;
             }
             else
             {
-                Debug.LogWarning("Unable to get item : full Inventory");
+                Debug.Log("Inventory Full");
+                return false;
+            }
+        }
+        public bool GiveItem(Item item)
+        {
+            if (AddToFirstEmptySlot(item))
+            {
+                return true;
+            }
+            else
+            {
+                Debug.Log("Inventory Full");
                 return false;
             }
         }
         public void RemoveItem(Item item)
         {
-            int itemIndex = 0;
-            itemIndex = GetSameItemIndex(item, consumableList);
-            consumableList.Remove(consumableList[itemIndex]);
+            //int itemIndex = 0;
+            //itemIndex = GetSameItemIndex(item, consumableList);
+            //consumableList.Remove(consumableList[itemIndex]);
 
             //if (onItemChangedCallback != null)
             //{
@@ -168,15 +119,22 @@ namespace Advent.Manager
             //consumableController.ConsumeItem(itemToConsume);
         }
 
-        public List<ItemsSpace> GetItems
+        //public List<ItemsSpace> GetItems
+        //{
+        //    get
+        //    {
+        //        return consumableList;
+        //    }
+        //    set
+        //    {
+        //        consumableList = value;
+        //    }
+        //}
+        public ItemsSpace[] GetEquipmentList
         {
             get
             {
-                return consumableList;
-            }
-            set
-            {
-                consumableList = value;
+                return equipmentList;
             }
         }
         public int ItemSpaceCount
@@ -186,14 +144,6 @@ namespace Advent.Manager
                 return maxItemSpace;
             }
         }
-        //public GameObject GetInventorySlotObject
-        //{
-        //    get
-        //    {
-        //        return inventorySlot;
-        //    }
-        //}
-
         public int GetMoneyAcquired
         {
             get

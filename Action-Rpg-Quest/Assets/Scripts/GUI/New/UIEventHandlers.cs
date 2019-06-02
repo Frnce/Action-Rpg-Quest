@@ -7,7 +7,7 @@ namespace Advent.UI
 {
     public class UIEventHandlers : MonoBehaviour
     {
-        public delegate void ItemEvenhandler(Item item);
+        public delegate void ItemEvenhandler(Item item,int slotIndex);
         public static event ItemEvenhandler OnItemAddedToInventory;
         public static event ItemEvenhandler OnItemEquipped;
 
@@ -20,27 +20,17 @@ namespace Advent.UI
         public delegate void PlayerLevelEventHandler();
         public static event PlayerLevelEventHandler OnPlayerLevelChange;
 
-        public static void ItemAddedToInventory(Item item)
+        public static void ItemAddedToInventory(Item item,int slotIndex)
         {
             if(OnItemAddedToInventory != null)
             {
-                OnItemAddedToInventory.Invoke(item);
+                OnItemAddedToInventory.Invoke(item,slotIndex);
             }
         }
-        public static void ItemAddedToInventory(List<Item> items)
-        {
-            if (OnItemAddedToInventory != null)
-            {
-                foreach (Item item in items)
-                {
-                    OnItemAddedToInventory(item);
-                }
-            }
-        }
-        public static void ItemEquipped(Item item)
+        public static void ItemEquipped(Item item,int slotIndex)
         {
             if (OnItemEquipped != null)
-                OnItemEquipped(item);
+                OnItemEquipped(item,slotIndex);
         }
         public static void HealthChanged(int currentHealth, int maxHealth)
         {

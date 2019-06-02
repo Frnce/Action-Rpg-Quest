@@ -1,38 +1,48 @@
-﻿using Advent.Items;
-using Advent.Manager;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace Advent.UI
 {
-    public class InventoryUIItem : MonoBehaviour
+    public class InventoryUIItem : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
     {
-        public Item item;
-        public Image itemImage;
+        private Vector3 startPosition;
+        private Transform originalParent;
 
-        public void SetItem(Item item)
+        private Canvas parentCanvas;
+        private InventoryUISlot parentSlot;
+
+        private void Awake()
         {
-            this.item = item;
-            SetupItemValues();
+            parentCanvas = GameObject.FindGameObjectWithTag("MainCanvass").GetComponent<Canvas>();
+            parentSlot = GetComponentInParent<InventoryUISlot>();
+        }
+        public InventoryUISlot ParentSlot { get { return parentSlot; } }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            startPosition = transform.position;
+            originalParent = transform.parent;
+            transform.SetParent(parentCanvas.transform);
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
 
-        private void SetupItemValues()
+        public void OnDrag(PointerEventData eventData)
         {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Assets/MainTileset");
-            for (int i = 0; i < sprites.Length; i++)
+            transform.position = eventData.position;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            transform.position = startPosition;
+            transform.SetParent(originalParent);
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+
+            if (!EventSystem.current.IsPointerOverGameObject())
             {
-                if(sprites[i].name == item.ObjectSlug)
-                {
-                    itemImage.sprite = sprites[i];
-                    break;
-                }
+                //discard item
             }
-        }
-        public void OnSelectItemButton()
-        {
-            //InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
         }
     }
 }
