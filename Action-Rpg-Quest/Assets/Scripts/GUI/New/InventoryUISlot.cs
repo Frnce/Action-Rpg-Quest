@@ -51,8 +51,14 @@ namespace Advent.UI
             var item = eventData.pointerDrag.GetComponent<InventoryUIItem>();
             if (item.ParentSlot.Index == Index) return;
 
-            //Send Item to another Slot
-            //Swap Item to another slot and the lather slot will be changed
+            var sendingItem = InventoryManager.instance.PopItemFromSlot(item.ParentSlot.Index);
+            var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
+            InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.ParentSlot.Index);
+        }
+
+        public void DiscardItem()
+        {
+            InventoryManager.instance.RemoveItem(item);
         }
     }
 }

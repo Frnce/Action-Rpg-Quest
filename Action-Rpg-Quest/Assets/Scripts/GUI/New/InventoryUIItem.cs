@@ -15,7 +15,7 @@ namespace Advent.UI
 
         private void Awake()
         {
-            parentCanvas = GameObject.FindGameObjectWithTag("MainCanvass").GetComponent<Canvas>();
+            parentCanvas = GameObject.FindGameObjectWithTag("InventoryCanvas").GetComponent<Canvas>();
             parentSlot = GetComponentInParent<InventoryUISlot>();
         }
         public InventoryUISlot ParentSlot { get { return parentSlot; } }
@@ -38,10 +38,9 @@ namespace Advent.UI
             transform.position = startPosition;
             transform.SetParent(originalParent);
             GetComponent<CanvasGroup>().blocksRaycasts = true;
-
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                //discard item
+                parentSlot.DiscardItem();
             }
         }
     }

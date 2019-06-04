@@ -73,6 +73,18 @@ namespace Advent.Manager
             }
             return false;
         }
+        public Item ReplaceItemInSlot(Item item,int slot)
+        {
+            var oldItem = equipmentList[slot].item;
+            equipmentList[slot].item = item;
+            return oldItem;
+        }
+        public Item PopItemFromSlot(int slot)
+        {
+            var item = equipmentList[slot].item;
+            equipmentList[slot].item = null;
+            return item;
+        }
         public bool GiveItem(string itemSlug)
         {
             Item item = ItemDatabase.Instance.GetItem(itemSlug);
@@ -108,6 +120,7 @@ namespace Advent.Manager
             //{
             //    onItemChangedCallback.Invoke(item.itemType);
             //}
+            Debug.Log("Dropped " + item.ItemName);
         }
         public void EquipItem(Item itemToEquip)
         {
