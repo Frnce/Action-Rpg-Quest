@@ -20,7 +20,7 @@ TextureImporter:
     21300030: Dungeon-BabyOrc-Walk-2
     21300032: Dungeon-BabyOrc-Walk-3
     21300034: Dungeon-BabyOrc-Walk-4
-    21300036: weapon_2
+    21300036: Wpn_Long-Sword
     21300038: weapon_3
   externalObjects: {}
   serializedVersion: 9
@@ -475,7 +475,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapon_2
+      name: Wpn_Long-Sword
       rect:
         serializedVersion: 2
         x: 293

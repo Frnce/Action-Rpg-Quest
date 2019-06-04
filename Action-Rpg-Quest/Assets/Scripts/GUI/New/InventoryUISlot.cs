@@ -10,55 +10,56 @@ namespace Advent.UI
 {
     public class InventoryUISlot : MonoBehaviour,IDropHandler
     {
-        public Item item;
+        public Item _item;
         public Image itemImage;
 
         public int Index { get; set; }
 
-        private Transform originalParent;
-
-        private void Start()
+        public Item Item
         {
-            originalParent = transform.parent;
+            get => _item;
+            set
+            {
+                SetItem(value);
+            }
         }
-
         public void SetItem(Item item)
         {
-            this.item = item;
-            SetupItemValues();
-            itemImage.enabled = true;
-        }
-
-        private void SetupItemValues()
-        {
-            Sprite[] sprites = Resources.LoadAll<Sprite>("Assets/MainTileset");
-            for (int i = 0; i < sprites.Length; i++)
+            _item = item;
+            if(item == null)
             {
-                if(sprites[i].name == item.ObjectSlug)
+                itemImage.enabled = false;
+            }
+            else
+            {
+                itemImage.enabled = true;
+
+                Sprite[] sprites = Resources.LoadAll<Sprite>("Assets/MainTileset");
+                for (int i = 0; i < sprites.Length; i++)
                 {
-                    itemImage.sprite = sprites[i];
-                    break;
+                    if (sprites[i].name == Item.ObjectSlug)
+                    {
+                        itemImage.sprite = sprites[i];
+                        break;
+                    }
                 }
             }
         }
-        public void OnSelectItemButton()
-        {
-            //InventoryManager.instance.SetItemDetails(item, GetComponent<Button>());
-        }
-
         public void OnDrop(PointerEventData eventData)
         {
             var item = eventData.pointerDrag.GetComponent<InventoryUIItem>();
-            if (item.ParentSlot.Index == Index) return;
+            if(item != null)
+            {
+                if (item.ParentSlot.Index == Index) return;
 
-            var sendingItem = InventoryManager.instance.PopItemFromSlot(item.ParentSlot.Index);
-            var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
-            InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.ParentSlot.Index);
+                var sendingItem = InventoryManager.instance.PopItemFromSlot(item.ParentSlot.Index);
+                var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
+                InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.ParentSlot.Index);
+            }
         }
-
         public void DiscardItem()
         {
-            InventoryManager.instance.RemoveItem(item);
+            InventoryManager.instance.RemoveItem(Item);
         }
     }
 }

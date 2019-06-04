@@ -19,5 +19,26 @@
         "StatName": "AttackMax"
       }
     ]
+  },
+  {
+    "ItemId": 2,
+    "ObjectSlug": "Wpn_Long-Sword",
+    "ItemName": "Long Sword",
+    "Description": "A Long, sharp blade.",
+    "actionName": "Equip",
+    "ItemType": "Weapon",
+    "ItemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATTACKMIN",
+        "BaseValue": 10,
+        "StatName": "AttackMin"
+      },
+      {
+        "StatType": "ATTACKMAX",
+        "BaseValue": 15,
+        "StatName": "AttackMax"
+      }
+    ]
   }
 ]

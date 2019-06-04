@@ -295,6 +295,29 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2849121102455033082, guid: 810a4f23f9b66d442b7ea30239b98f6f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 810a4f23f9b66d442b7ea30239b98f6f, type: 3}
+--- !u!1 &393792591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6307182463473644006, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 441333063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &393792596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393792591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e9598baf44e9d4f9328947c61886b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryPanel: {fileID: 458280361}
+  consumableContent: {fileID: 1069582264}
+  equipmentContent: {fileID: 1677283651}
+  enchantsContent: {fileID: 1292057251}
+  materialsContent: {fileID: 1460531224}
 --- !u!1001 &441333063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8443,7 +8466,7 @@ PrefabInstance:
     - target: {fileID: 2532095955904520198, guid: c727387e56fb1bc40a4de1a4342a6fc6,
         type: 3}
       propertyPath: m_TagString
-      value: MainCanvass
+      value: MainCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1225558488, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
       propertyPath: m_Name
@@ -8504,7 +8527,29 @@ PrefabInstance:
       propertyPath: m_ReferencePixelsPerUnit
       value: 16
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6307182463473644006, guid: c727387e56fb1bc40a4de1a4342a6fc6,
+        type: 3}
+      propertyPath: m_TagString
+      value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 334952889, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -446.65002
+      objectReference: {fileID: 0}
+    - target: {fileID: 334952889, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -893.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 334952889, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 334952889, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1276.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 441333066, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c727387e56fb1bc40a4de1a4342a6fc6, type: 3}
 --- !u!224 &458280361 stripped
 RectTransform:

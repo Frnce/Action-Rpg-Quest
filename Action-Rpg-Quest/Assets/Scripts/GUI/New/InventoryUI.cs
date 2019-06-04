@@ -31,9 +31,8 @@ namespace Advent.UI
             MenuIsActive = false;
             inventoryManager = InventoryManager.instance;
 
-            InitItemSlots();
-
-            UIEventHandlers.OnItemAddedToInventory += ItemAdded;
+            UIEventHandlers.OnInventoryUpdate += Redraw;
+            Redraw();
         }
 
         // Update is called once per frame
@@ -59,34 +58,21 @@ namespace Advent.UI
         public void ItemAdded(Item item,int index)
         {
             inventorySlotList[index].SetItem(item);
-            //InventoryUISlot emptyItem = Instantiate(itemContainer);
-            //emptyItem.SetItem(item);
-            //itemUIList.Add(emptyItem);
-            //if(item.ItemType == Enums.ItemTypes.CONSUMABLE)
-            //{
-            //    emptyItem.transform.SetParent(consumableContent);
-            //}
-            //else if (item.ItemType == Enums.ItemTypes.MATERIALS)
-            //{
-            //    emptyItem.transform.SetParent(materialsContent);
-            //}
-            //else if(item.ItemType == Enums.ItemTypes.ENCHANTS)
-            //{
-            //    emptyItem.transform.SetParent(enchantsContent);
-            //}
-            //else //Equipments
-            //{
-            //    emptyItem.transform.SetParent(equipmentContent);
-            //}
         }
-        public void InitItemSlots()
+        private void Redraw()
         {
+            foreach (Transform child in equipmentContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
             for (int i = 0; i < inventoryManager.GetEquipmentList.Length; i++)
             {
                 InventoryUISlot emptyItem = Instantiate(itemContainer);
                 emptyItem.transform.SetParent(equipmentContent);
                 emptyItem.Index = i;
                 inventorySlotList.Add(emptyItem);
+
+                emptyItem.SetItem(inventoryManager.GetEquipmentList[i].item);
             }
         }
     }

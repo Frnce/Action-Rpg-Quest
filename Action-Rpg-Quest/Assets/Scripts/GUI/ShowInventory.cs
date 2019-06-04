@@ -64,7 +64,7 @@ namespace Advent.UI
                 Player.instance.SetPlayerStates(PlayerStates.INMENU);
             }
         }
-        private void AddToInventory(InventorySlot[] slot,List<ItemsSpace> listItem)
+        private void AddToInventory(InventorySlot[] slot,List<InventorySlot> listItem)
         {
             //for (int i = 0; i < slot.Length; i++)
             //{

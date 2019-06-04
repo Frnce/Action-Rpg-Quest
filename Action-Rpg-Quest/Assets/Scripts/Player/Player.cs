@@ -115,11 +115,6 @@ namespace Advent.Entities
                     dustWalkingEffect.Play();
                 }
             }
-            //Give item Testing
-            if (Input.GetKeyDown(KeyCode.B))
-            {
-                InventoryManager.instance.GiveItem("Wpn_Short-Sword");
-            }
         }
         private void FixedUpdate()
         {

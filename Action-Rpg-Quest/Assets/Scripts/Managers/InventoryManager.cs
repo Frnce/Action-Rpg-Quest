@@ -8,17 +8,10 @@ using UnityEngine.UI;
 
 namespace Advent.Manager
 {
-    [System.Serializable]
-    public class ItemsSpace
+    public struct InventorySlot
     {
         public Item item;
-        public int stackCount = 1;
-
-        public ItemsSpace(Item _item)
-        {
-            item = _item;
-        }
-        public ItemsSpace() { }
+        public int stackCount;
     }
     public class InventoryManager : MonoBehaviour
     {
@@ -30,7 +23,7 @@ namespace Advent.Manager
         //[SerializeField]
         //private ItemsSpace[] consumableList;
         [SerializeField]
-        private ItemsSpace[] equipmentList;
+        private InventorySlot[] equipmentList;
         //[SerializeField]
         //private List<ItemsSpace> enchantList = new List<ItemsSpace>();
         //[SerializeField]
@@ -50,15 +43,11 @@ namespace Advent.Manager
                 instance = this;
             }
             DontDestroyOnLoad(gameObject);
-        }
-        private void Start()
-        {
-            equipmentList = new ItemsSpace[maxItemSpace];
-            //Init item Slots
-            for (int i = 0; i < equipmentList.Length; i++)
-            {
-                equipmentList[i] = new ItemsSpace();
-            }
+
+            equipmentList = new InventorySlot[maxItemSpace];
+            //Add SetItem to equip default item Here
+            GiveItem("Wpn_Short-Sword");
+            GiveItem("Wpn_Long-Sword");
         }
         public bool AddToFirstEmptySlot(Item item)
         {
@@ -67,7 +56,7 @@ namespace Advent.Manager
                 if (equipmentList[i].item == null)
                 {
                     equipmentList[i].item = item;
-                    UIEventHandlers.ItemAddedToInventory(item,i);
+                    UIEventHandlers.InventoryUpdate();
                     return true;
                 }
             }
@@ -77,12 +66,14 @@ namespace Advent.Manager
         {
             var oldItem = equipmentList[slot].item;
             equipmentList[slot].item = item;
+            UIEventHandlers.InventoryUpdate();
             return oldItem;
         }
         public Item PopItemFromSlot(int slot)
         {
             var item = equipmentList[slot].item;
             equipmentList[slot].item = null;
+            UIEventHandlers.InventoryUpdate();
             return item;
         }
         public bool GiveItem(string itemSlug)
@@ -143,7 +134,7 @@ namespace Advent.Manager
         //        consumableList = value;
         //    }
         //}
-        public ItemsSpace[] GetEquipmentList
+        public InventorySlot[] GetEquipmentList
         {
             get
             {
@@ -185,7 +176,7 @@ namespace Advent.Manager
             return true;
         }
 
-        private int GetSameItemIndex(Item item,List<ItemsSpace> list)
+        private int GetSameItemIndex(Item item,List<InventorySlot> list)
         {
             for (int i = 0; i < list.Count; i++)
             {
