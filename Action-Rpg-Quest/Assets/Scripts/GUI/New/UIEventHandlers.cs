@@ -14,6 +14,9 @@ namespace Advent.UI
         public delegate void ItemEventHandler();
         public static event ItemEventHandler OnInventoryUpdate;
 
+        public delegate void EquipEventHandler();
+        public static event EquipEventHandler OnEquipUpdate;
+
         public delegate void PlayerHealthEventHandler(int currentHealth, int maxHealth);
         public static event PlayerHealthEventHandler OnPlayerHealthChanged;
 
@@ -35,6 +38,13 @@ namespace Advent.UI
             if(OnInventoryUpdate != null)
             {
                 OnInventoryUpdate.Invoke();
+            }
+        }
+        public static void EquipUpdate()
+        {
+            if(OnEquipUpdate != null)
+            {
+                OnEquipUpdate.Invoke();
             }
         }
         public static void ItemEquipped(Item item,int slotIndex)

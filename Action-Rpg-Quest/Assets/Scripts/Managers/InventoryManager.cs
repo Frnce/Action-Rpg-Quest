@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Advent.Manager
 {
+    [System.Serializable]
     public struct InventorySlot
     {
         public Item item;
@@ -111,6 +112,7 @@ namespace Advent.Manager
             //{
             //    onItemChangedCallback.Invoke(item.itemType);
             //}
+            //TODO Spawn Item to world
             Debug.Log("Dropped " + item.ItemName);
         }
         public void EquipItem(Item itemToEquip)

@@ -22,7 +22,6 @@ namespace Advent.UI
         InventoryUISlot itemContainer { get; set; }
         List<InventoryUISlot> inventorySlotList = new List<InventoryUISlot>();
         bool MenuIsActive { get; set; }
-        Item currentSelectedItem { get; set; }
         // Start is called before the first frame update
         void Start()
         {
@@ -69,6 +68,7 @@ namespace Advent.UI
             {
                 InventoryUISlot emptyItem = Instantiate(itemContainer);
                 emptyItem.transform.SetParent(equipmentContent);
+                emptyItem.SlotType = SlotType.INVENTORY_EQUIPMENT;
                 emptyItem.Index = i;
                 inventorySlotList.Add(emptyItem);
 

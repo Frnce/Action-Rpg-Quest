@@ -14,6 +14,7 @@ namespace Advent.Items
         public string Description { get; set; }
         [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
         public ItemTypes ItemType { get; set; }
+        public EquipTypes EquipType { get; set; }
         public ItemRarity ItemRarity { get; set; }
         public int ItemId { get; set; }
         public string ActionName { get; set; }
@@ -28,13 +29,14 @@ namespace Advent.Items
         }
 
         [JsonConstructor]
-        public Item(List<BaseStat> _Stats, string _ObjectSlug, string _itemIcon, string _Description, ItemTypes _ItemType,int _itemId, string _ActionName, string _ItemName,bool _isStackable, bool _ItemModifier)
+        public Item(List<BaseStat> _Stats, string _ObjectSlug, string _itemIcon, string _Description, ItemTypes _ItemType,EquipTypes _EquipType, int _itemId, string _ActionName, string _ItemName,bool _isStackable, bool _ItemModifier)
         {
             StatType = _Stats;
             ObjectSlug = _ObjectSlug;
             itemIcon = _itemIcon;
             Description = _Description;
             ItemType = _ItemType;
+            EquipType = _EquipType;
             ItemId = _itemId;
             ActionName = _ActionName;
             ItemName = _ItemName;

@@ -1,4 +1,5 @@
-﻿using Advent.Items;
+﻿using Advent.Enums;
+using Advent.Items;
 using Advent.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,18 +9,13 @@ using UnityEngine.UI;
 
 namespace Advent.UI
 {
-    public enum SlotType
-    {
-        EQUIPMENT,
-        INVENTORY_EQUIPMENT
-    }
-    public class InventoryUISlot : MonoBehaviour,IDropHandler
+    public class EquipmentUISlot : MonoBehaviour,IDropHandler
     {
         public Item _item;
         public Image itemImage;
 
-        public int Index { get; set; }
         public SlotType SlotType { get; set; }
+        public EquipTypes EquipType { get; set; }
 
         public Item Item
         {
@@ -29,10 +25,11 @@ namespace Advent.UI
                 SetItem(value);
             }
         }
+
         public void SetItem(Item item)
         {
             _item = item;
-            if(item == null)
+            if (item == null)
             {
                 itemImage.enabled = false;
             }
@@ -57,22 +54,26 @@ namespace Advent.UI
             itemImage.enabled = false;
             itemImage.sprite = null;
         }
+        public void DiscardItem()
+        {
+            //InventoryManager.instance.RemoveItem(Item);
+            UnSetItem();
+        }
+
         public void OnDrop(PointerEventData eventData)
         {
             var item = eventData.pointerDrag.GetComponent<InventoryUIItem>();
-            if(item != null)
-            {
-                if (item.ParentSlot.Index == Index && item.ParentSlot.SlotType == SlotType) return;
 
-                var sendingItem = InventoryManager.instance.PopItemFromSlot(item.ParentSlot.Index);
-                var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
-                InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.ParentSlot.Index);
+            if (item != null)
+            {
+                if (item.ParentSlot.Item.EquipType != EquipType)
+                {
+                    return;
+                }
+                EquipmentManager.instance.EquipItem(item.ParentSlot.Item);
+                item.ParentSlot.UnSetItem();
+                //Replace Equips
             }
-        }
-        public void DiscardItem()
-        {
-            InventoryManager.instance.RemoveItem(Item);
-            UnSetItem();
         }
     }
 }

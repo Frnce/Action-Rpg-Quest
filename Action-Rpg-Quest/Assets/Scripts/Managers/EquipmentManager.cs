@@ -1,15 +1,27 @@
 ﻿using Advent.Entities;
 using Advent.Entities.Abilities;
+using Advent.Enums;
 using Advent.Items;
+using Advent.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Advent.Manager
 {
+    [System.Serializable]
+    public struct EquipmentSlot
+    {
+        public Item item;
+        public ItemTypes itemtype;
+    }
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
+
+        [SerializeField]
+        private EquipmentSlot[] equipsList;
+        
 
         //public SpriteRenderer weaponSpriteRenderer;
         ////Add more spriteRenderer for player Here;
@@ -20,21 +32,41 @@ namespace Advent.Manager
         //Player player;
         //InventoryManager inventory;
 
-        //private void Awake()
-        //{
-        //    if (instance != null)
-        //    {
-        //        Destroy(gameObject);
-        //    }
-        //    else
-        //    {
-        //        instance = this;
-        //    }
-        //    DontDestroyOnLoad(gameObject);
+        private void Awake()
+        {
+            if (instance != null)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+            DontDestroyOnLoad(gameObject);
 
+            equipsList = new EquipmentSlot[6]; //6 number of equipmentSlots
+        }
 
-        //    onEquipmentChangedCallback += OnEquipmentChange;
-        //}
+        public bool EquipItem(Item item)
+        {
+            int equipSlotIndex = (int)item.EquipType;
+            if(equipSlotIndex <= equipsList.Length)
+            {
+                equipsList[equipSlotIndex].item = item;
+                UIEventHandlers.EquipUpdate();
+                //Stat Changes Here
+                return true;
+            }
+            return false;
+        }
+
+        public EquipmentSlot[] GetEquipsList
+        {
+            get
+            {
+                return equipsList;
+            }
+        }
 
         //void Start()
         //{

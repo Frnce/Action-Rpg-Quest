@@ -5,7 +5,8 @@
     "ItemName": "Short Sword",
     "Description": "A Short, sharp blade.",
     "actionName": "Equip",
-    "ItemType": "Weapon",
+    "ItemType": "Equipments",
+	"EquipType": "Weapon",
     "ItemModifier": 0,
     "Stats": [
       {
@@ -26,7 +27,8 @@
     "ItemName": "Long Sword",
     "Description": "A Long, sharp blade.",
     "actionName": "Equip",
-    "ItemType": "Weapon",
+    "ItemType": "Equipments",
+	"EquipType": "Totem",
     "ItemModifier": 0,
     "Stats": [
       {

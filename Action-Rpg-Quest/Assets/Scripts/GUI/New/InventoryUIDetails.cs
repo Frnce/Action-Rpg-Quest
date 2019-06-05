@@ -51,11 +51,6 @@ namespace Advent.UI
                 InventoryManager.instance.ConsumeItem(item);
                 Destroy(selectedItemButton.gameObject);
             }
-            else if (item.ItemType == ItemTypes.WEAPON)
-            {
-                InventoryManager.instance.EquipItem(item);
-                Destroy(selectedItemButton.gameObject);
-            }
             item = null;
             gameObject.SetActive(false);
         }

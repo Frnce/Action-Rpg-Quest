@@ -3,13 +3,18 @@
     public enum ItemTypes
     {
         CONSUMABLE,
+        EQUIPMENTS,
+        ENCHANTS,
+        MATERIALS
+    }
+    public enum EquipTypes
+    {
         WEAPON,
         BODY,
         HEAD,
         LEGS,
         FOOT,
         TOTEM,
-        ENCHANTS,
-        MATERIALS
+        NONE,
     }
 }
