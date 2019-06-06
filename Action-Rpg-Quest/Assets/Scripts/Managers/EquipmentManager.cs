@@ -73,6 +73,11 @@ namespace Advent.Manager
             }
             return false;
         }
+        public void SwapItem(Item newItem,Item oldItem)
+        {
+            UnequipItem(oldItem);
+            EquipItem(newItem);
+        }
 
         public EquipmentSlot[] GetEquipsList
         {

@@ -54,6 +54,7 @@ namespace Advent.UI
             itemImage.enabled = false;
             itemImage.sprite = null;
         }
+
         public void DiscardItem()
         {
             //InventoryManager.instance.RemoveItem(Item);
@@ -70,8 +71,17 @@ namespace Advent.UI
                 {
                     return;
                 }
-
-                EquipmentManager.instance.EquipItem(item.InventoryParentSlot.Item);
+                if(_item != null) // When The Equipment slot is not empty - Proceed to Swap it
+                {
+                    //Swap the selected Equipment slot from the equipment Manager;
+                    EquipmentManager.instance.SwapItem(item.InventoryParentSlot.Item, Item);
+                    //return the old item to inventory;
+                    InventoryManager.instance.AddToFirstEmptySlot(Item);
+                }
+                else
+                {
+                    EquipmentManager.instance.EquipItem(item.InventoryParentSlot.Item);
+                }
                 item.InventoryParentSlot.UnSetItem();
                 //Replace Equips
             }
