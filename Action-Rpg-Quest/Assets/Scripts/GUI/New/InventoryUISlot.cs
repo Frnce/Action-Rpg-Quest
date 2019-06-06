@@ -62,11 +62,31 @@ namespace Advent.UI
             var item = eventData.pointerDrag.GetComponent<InventoryUIItem>();
             if(item != null)
             {
-                if (item.ParentSlot.Index == Index && item.ParentSlot.SlotType == SlotType) return;
+                if(item.InventoryParentSlot != null)
+                {
+                    if (item.InventoryParentSlot.Index == Index && item.InventoryParentSlot.SlotType == SlotType) return;
 
-                var sendingItem = InventoryManager.instance.PopItemFromSlot(item.ParentSlot.Index);
-                var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
-                InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.ParentSlot.Index);
+                    if (item.InventoryParentSlot.SlotType == SlotType.EQUIPMENT)
+                    {
+
+                    }
+                    else if (item.InventoryParentSlot.SlotType == SlotType.INVENTORY_EQUIPMENT)
+                    {
+                        var sendingItem = InventoryManager.instance.PopItemFromSlot(item.InventoryParentSlot.Index);
+                        var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
+                        InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.InventoryParentSlot.Index);
+                    }
+                }
+                if(item.EquipmentParentSlot != null)
+                {
+                    if (item.EquipmentParentSlot.SlotType == SlotType) return;
+                    //Unequip
+                    EquipmentManager.instance.UnequipItem(item.EquipmentParentSlot.Item);
+                    if (_item == null)
+                    {
+                        InventoryManager.instance.ReplaceItemInSlot(item.EquipmentParentSlot.Item, Index);
+                    }
+                }
             }
         }
         public void DiscardItem()

@@ -28,7 +28,7 @@
     "Description": "A Long, sharp blade.",
     "actionName": "Equip",
     "ItemType": "Equipments",
-	"EquipType": "Totem",
+	"EquipType": "Weapon",
     "ItemModifier": 0,
     "Stats": [
       {

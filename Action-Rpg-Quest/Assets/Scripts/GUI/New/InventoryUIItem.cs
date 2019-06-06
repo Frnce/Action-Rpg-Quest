@@ -11,14 +11,17 @@ namespace Advent.UI
         private Transform originalParent;
 
         private Canvas parentCanvas;
-        private InventoryUISlot parentSlot;
+        private InventoryUISlot inventoryParentSlot;
+        private EquipmentUISlot equipmentParentSlot;
 
         private void Awake()
         {
             parentCanvas = GameObject.FindGameObjectWithTag("InventoryCanvas").GetComponent<Canvas>();
-            parentSlot = GetComponentInParent<InventoryUISlot>();
+            inventoryParentSlot = GetComponentInParent<InventoryUISlot>();
+            equipmentParentSlot = GetComponentInParent<EquipmentUISlot>();
         }
-        public InventoryUISlot ParentSlot { get { return parentSlot; } }
+        public InventoryUISlot InventoryParentSlot { get { return inventoryParentSlot; } }
+        public EquipmentUISlot EquipmentParentSlot { get { return equipmentParentSlot; } }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -40,7 +43,7 @@ namespace Advent.UI
             GetComponent<CanvasGroup>().blocksRaycasts = true;
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                parentSlot.DiscardItem();
+                inventoryParentSlot.DiscardItem();
             }
         }
     }

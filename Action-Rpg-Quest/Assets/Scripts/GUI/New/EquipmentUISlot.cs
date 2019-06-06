@@ -66,12 +66,13 @@ namespace Advent.UI
 
             if (item != null)
             {
-                if (item.ParentSlot.Item.EquipType != EquipType)
+                if (item.InventoryParentSlot.Item.EquipType != EquipType)
                 {
                     return;
                 }
-                EquipmentManager.instance.EquipItem(item.ParentSlot.Item);
-                item.ParentSlot.UnSetItem();
+
+                EquipmentManager.instance.EquipItem(item.InventoryParentSlot.Item);
+                item.InventoryParentSlot.UnSetItem();
                 //Replace Equips
             }
         }

@@ -104,20 +104,14 @@ namespace Advent.Manager
         }
         public void RemoveItem(Item item)
         {
-            //int itemIndex = 0;
-            //itemIndex = GetSameItemIndex(item, consumableList);
-            //consumableList.Remove(consumableList[itemIndex]);
-
-            //if (onItemChangedCallback != null)
-            //{
-            //    onItemChangedCallback.Invoke(item.itemType);
-            //}
-            //TODO Spawn Item to world
-            Debug.Log("Dropped " + item.ItemName);
-        }
-        public void EquipItem(Item itemToEquip)
-        {
-            //playerWeaponController.EquipWeapon(itemToEquip);
+            for (int i = 0; i < equipmentList.Length; i++)
+            {
+                if(equipmentList[i].item == item)
+                {
+                    equipmentList[i].item = null;
+                    return;
+                }
+            }
         }
 
         public void ConsumeItem(Item itemToConsume)

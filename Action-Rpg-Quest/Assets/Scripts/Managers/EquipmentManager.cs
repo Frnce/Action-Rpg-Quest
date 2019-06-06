@@ -53,6 +53,20 @@ namespace Advent.Manager
             if(equipSlotIndex <= equipsList.Length)
             {
                 equipsList[equipSlotIndex].item = item;
+                InventoryManager.instance.RemoveItem(item);
+                UIEventHandlers.EquipUpdate();
+                //Stat Changes Here
+                return true;
+            }
+            return false;
+        }
+        public bool UnequipItem(Item item)
+        {
+            int equipSlotIndex = (int)item.EquipType;
+            if (equipSlotIndex <= equipsList.Length)
+            {
+                equipsList[equipSlotIndex].item = null;
+                InventoryManager.instance.RemoveItem(item);
                 UIEventHandlers.EquipUpdate();
                 //Stat Changes Here
                 return true;
