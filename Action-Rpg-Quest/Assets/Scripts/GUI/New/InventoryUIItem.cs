@@ -43,7 +43,14 @@ namespace Advent.UI
             GetComponent<CanvasGroup>().blocksRaycasts = true;
             if (!EventSystem.current.IsPointerOverGameObject())
             {
-                inventoryParentSlot.DiscardItem();
+                if(inventoryParentSlot != null)
+                {
+                    inventoryParentSlot.DiscardItem();
+                }
+                else
+                {
+                    equipmentParentSlot.DiscardItem();
+                }
             }
         }
     }
