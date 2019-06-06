@@ -17,4 +17,10 @@
         TOTEM,
         NONE,
     }
+    public enum WeaponTypes
+    {
+        DAGGER,
+        SHORTSWORD,
+        NONE
+    }
 }
