@@ -113,23 +113,10 @@ namespace Advent.Manager
                 }
             }
         }
-
         public void ConsumeItem(Item itemToConsume)
         {
             //consumableController.ConsumeItem(itemToConsume);
         }
-
-        //public List<ItemsSpace> GetItems
-        //{
-        //    get
-        //    {
-        //        return consumableList;
-        //    }
-        //    set
-        //    {
-        //        consumableList = value;
-        //    }
-        //}
         public InventorySlot[] GetEquipmentList
         {
             get

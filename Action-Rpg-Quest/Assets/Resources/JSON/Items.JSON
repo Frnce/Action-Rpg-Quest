@@ -1,36 +1,13 @@
 [
   {
-    "ItemId": 1,
-    "ObjectSlug": "Wpn_Short-Sword",
-    "ItemName": "Short Sword",
-    "Description": "A Short, sharp blade.",
-    "actionName": "Equip",
-    "ItemType": "Equipments",
-	"EquipType": "Weapon",
-	"WeaponType": "ShortSword",
-    "ItemModifier": 0,
-    "Stats": [
-      {
-        "StatType": "ATTACKMIN",
-        "BaseValue": 5,
-        "StatName": "AttackMin"
-      },
-      {
-        "StatType": "ATTACKMAX",
-        "BaseValue": 8,
-        "StatName": "AttackMax"
-      }
-    ]
-  },
-  {
     "ItemId": 2,
     "ObjectSlug": "Wpn_Long-Sword",
     "ItemName": "Long Sword",
     "Description": "A Long, sharp blade.",
     "actionName": "Equip",
     "ItemType": "Equipments",
-	"EquipType": "Weapon",
-	"WeaponType": "Dagger",
+    "EquipType": "Totem",
+    "WeaponType": "Dagger",
     "ItemModifier": 0,
     "Stats": [
       {
@@ -41,6 +18,29 @@
       {
         "StatType": "ATTACKMAX",
         "BaseValue": 15,
+        "StatName": "AttackMax"
+      }
+    ]
+  },
+  {
+    "ItemId": 1,
+    "ObjectSlug": "Wpn_Short-Sword",
+    "ItemName": "Short Sword",
+    "Description": "A Short, sharp blade.",
+    "actionName": "Equip",
+    "ItemType": "Equipments",
+    "EquipType": "Weapon",
+    "WeaponType": "ShortSword",
+    "ItemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATTACKMIN",
+        "BaseValue": 5,
+        "StatName": "AttackMin"
+      },
+      {
+        "StatType": "ATTACKMAX",
+        "BaseValue": 8,
         "StatName": "AttackMax"
       }
     ]

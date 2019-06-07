@@ -225,6 +225,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 763c882a4a9238a42a70b81901666b4b, type: 3}
+--- !u!1 &212952180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1903015725, guid: 763c882a4a9238a42a70b81901666b4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 92939445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &231861962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8444309749630793505, guid: 763c882a4a9238a42a70b81901666b4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 92939445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &231861969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231861962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdbb001866b96348a035bd27963a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 212952180}
+  BareHand: {fileID: 4786569909882016783, guid: 1340358b1e826254494d5e0f594c5511,
+    type: 3}
 --- !u!1001 &275593700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12444,6 +12471,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f18fada8afc093f43b8886066238c334,
         type: 2}
+    - target: {fileID: 6046819381581970459, guid: 151e77ed418443c45a87c859f4bd73ec,
+        type: 3}
+      propertyPath: playerEquipment
+      value: 
+      objectReference: {fileID: 231861969}
     - target: {fileID: 6046819381581970460, guid: 151e77ed418443c45a87c859f4bd73ec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12512,6 +12544,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TheWeapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151305011533641276, guid: b5d60b37cb99e01428961d89bda38d57,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5677865601830154412, guid: b5d60b37cb99e01428961d89bda38d57,
         type: 3}

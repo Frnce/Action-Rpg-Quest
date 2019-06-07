@@ -17,8 +17,6 @@ namespace Advent.UI
         public Image darkMask;
         public TMPro.TMP_Text cooldownTextDisplay;
 
-        private EquipmentManager equipmentManager;
-
         [SerializeField] private Ability ability;
 
         private float cooldownDuration;
@@ -28,8 +26,8 @@ namespace Advent.UI
 
         private void Awake()
         {
-            equipmentManager = EquipmentManager.instance;
             //equipmentManager.onEquipmentChangedCallback += UpdateAbility;
+            UIEventHandlers.OnEquipUpdate += UpdateAbility;
         }
         void Start()
         {
@@ -62,12 +60,9 @@ namespace Advent.UI
                 Cooldown();
             }
         }
-        private void UpdateAbility(Item newItem, Item oldItem)
+        private void UpdateAbility()
         {
-            if (newItem != null)
-            {
-                Initialize(ability); // INitialize method will be initialized on player class select
-            }
+            Initialize(ability); // INitialize method will be initialized on player class select
         }
         private void AbilityReady()
         {

@@ -41,7 +41,6 @@ namespace Advent.UI
             {
                 MenuIsActive = !MenuIsActive;
             }
-
             if (MenuIsActive)
             {
                 Player.instance.SetPlayerStates(PlayerStates.INMENU);

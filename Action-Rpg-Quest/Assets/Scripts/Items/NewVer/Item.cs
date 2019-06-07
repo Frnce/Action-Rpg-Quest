@@ -1,5 +1,6 @@
 ﻿using Advent.Entities;
 using Advent.Enums;
+using Advent.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -23,6 +24,7 @@ namespace Advent.Items
         public bool isStackable { get; set; }
         public bool ItemModifier { get; set; } //if true - it changes something in the stats 
 
+        public Item() { }
         public Item(List<BaseStat> _StatType, string _ObjectSlug)
         {
             StatType = _StatType;
@@ -45,5 +47,8 @@ namespace Advent.Items
             isStackable = _isStackable;
             ItemModifier = _ItemModifier;
         }
+
+        public virtual void OnEquip(){}
+        public virtual void OnConsume(){}
     }   
 }

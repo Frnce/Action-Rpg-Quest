@@ -18,7 +18,7 @@ namespace Advent.Manager
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
-
+        public PlayerEquipmentController playerEquipment;
         [SerializeField]
         private EquipmentSlot[] equipsList;
 
@@ -44,9 +44,8 @@ namespace Advent.Manager
             {
                 equipsList[equipSlotIndex].item = item;
                 InventoryManager.instance.RemoveItem(item);
+                playerEquipment.EquipWeapon(item);
                 UIEventHandlers.EquipUpdate();
-                AddAttackAction(item);
-                //Stat Changes Here
                 return true;
             }
             return false;
@@ -58,35 +57,18 @@ namespace Advent.Manager
             {
                 equipsList[equipSlotIndex].item = null;
                 InventoryManager.instance.RemoveItem(item);
+                playerEquipment.UseBareHands();
                 UIEventHandlers.EquipUpdate();
                 //Stat Changes Here
                 return true;
             }
             return false;
         }
-        public void SwapItem(Item newItem,Item oldItem)
+        public void SwapItem(Item newItem, Item oldItem)
         {
             UnequipItem(oldItem);
             EquipItem(newItem);
         }
-        public void AddAttackAction(Item item)
-        {
-            if (item.WeaponType != WeaponTypes.NONE)
-            {
-                switch (item.WeaponType)
-                {
-                    case WeaponTypes.DAGGER:
-                        Debug.Log("Equipped Dagger");
-                        break;
-                    case WeaponTypes.SHORTSWORD:
-                        Debug.Log("Equipped Short Sword");
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-
         public EquipmentSlot[] GetEquipsList
         {
             get
