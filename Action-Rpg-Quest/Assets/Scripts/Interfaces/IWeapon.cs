@@ -9,6 +9,8 @@ namespace Advent.Interfaces
     {
         List<BaseStat> Stats { get; set; }
         int CurrentDamage { get; set; }
+        AudioClip[] AudioClip { get; set; }
         void PerformAttack(int damage);
+        void ResetAttackTrigger();
     }
 }

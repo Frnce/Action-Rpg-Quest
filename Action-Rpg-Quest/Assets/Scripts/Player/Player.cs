@@ -26,8 +26,6 @@ namespace Advent.Entities
         [SerializeField]
         private float rollDistance = 0.1f;
         [Space]
-        [Header("Audio")]
-        public AudioClip[] swordSwings;
         public AudioClip walkSound;
         [Space]
         [SerializeField]
@@ -210,27 +208,6 @@ namespace Advent.Entities
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             weapon.transform.rotation = quat;
         }
-        public void PlayerAttack()
-        {
-            if (states != PlayerStates.ROLLING || states != PlayerStates.INMENU)
-            {
-                states = PlayerStates.ATTACKING;
-                SoundManager.instance.PlayerAttackRandomizeSfx(swordSwings);
-                StartCoroutine(AttackCoroutine(playerLastDir));
-                timeBetweenAttack = startTimeBetweenAttack;
-            }
-        }
-        private IEnumerator AttackCoroutine(Vector3 direction)
-        {
-            SetAttackAnimations();
-            weaponTrail.emitting = true;
-            rb2d.velocity = Vector3.zero;
-            rb2d.velocity += MicrosteponAttack();
-            yield return new WaitForSeconds(0.2f);
-            weaponTrail.emitting = false;
-            states = PlayerStates.IDLE;
-            anim.ResetTrigger("attack1");
-        }
         //TODO problem : the farther the mouse position on the screen , the longer the player step
         private Vector2 MicrosteponAttack()
         {
@@ -248,15 +225,6 @@ namespace Advent.Entities
         {
             InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
         }
-        //Updates Stats When Changing Equipment;
-        //private void onEquipmentChange(Equipment newItem,Equipment oldItem)
-        //{
-        //    if(newItem != null || oldItem != null)
-        //    {
-        //        InitDamage();
-        //        InitPhysicalDefense();
-        //    }
-        //}
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != null)
@@ -281,6 +249,11 @@ namespace Advent.Entities
             {
                 return states;
             }
+        }
+        public void MicroStepAction()
+        {
+            rb2d.velocity = Vector3.zero;
+            rb2d.velocity += MicrosteponAttack();
         }
         public void TakeDamage(int damage,Vector3 targetPoint)
         {

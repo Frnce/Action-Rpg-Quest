@@ -57,6 +57,7 @@ namespace Advent.Manager
             {
                 equipsList[equipSlotIndex].item = null;
                 InventoryManager.instance.RemoveItem(item);
+                playerEquipment.UnequipEquipment();
                 playerEquipment.UseBareHands();
                 UIEventHandlers.EquipUpdate();
                 //Stat Changes Here

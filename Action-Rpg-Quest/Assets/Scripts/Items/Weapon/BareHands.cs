@@ -11,10 +11,14 @@ namespace Advent.Items
         private Animator animator;
         public List<BaseStat> Stats { get; set; }
         public int CurrentDamage { get; set; }
+        [Header("AUdio")]
+        public AudioClip[] audioClip;
+        public AudioClip[] AudioClip { get; set; }
 
         void Start()
         {
             animator = GetComponent<Animator>();
+            AudioClip = audioClip;
         }
 
         public void PerformAttack(int damage)
@@ -22,6 +26,11 @@ namespace Advent.Items
             CurrentDamage = damage;
             //animator.SetTrigger("AttackSword");
             Debug.Log("Bare hands attack (No Animation Yet)");
+        }
+
+        public void ResetAttackTrigger()
+        {
+            //animator.resettrigger
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using Advent.Interfaces;
+﻿using Advent.Controller;
+using Advent.Interfaces;
 using Advent.Items;
+using Advent.Manager;
 using Advent.Utilities;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,19 +17,35 @@ namespace Advent.Entities
 
         Item currentlyEquippedItem;
         IWeapon equippedWeapon;
-        Stats playerStats;
+        Player player;
+        PlayerController playerController;
         // Start is called before the first frame update
         void Start()
         {
-            playerStats = Player.instance.GetStats;
+            player = Player.instance;
+            playerController = PlayerController.instance;
             UseBareHands();
         }
         private void Update()
         {
-            if (Input.GetButtonDown("Fire1"))
+            if(player.GetPlayerStates != PlayerStates.ROLLING && player.GetPlayerStates != PlayerStates.INMENU)
             {
-                EquippedWeapon.GetComponent<IWeapon>().PerformAttack(0);
+                if (playerController.GetAttackKey)
+                {
+                    SoundManager.instance.PlayerAttackRandomizeSfx(EquippedWeapon.GetComponent<IWeapon>().AudioClip);
+                    StartCoroutine(DefaultAttackRoutine());
+                    //timebetweeen attack . - implement the attack speed feature
+                }
             }
+        }
+        private IEnumerator DefaultAttackRoutine()
+        {
+            player.SetPlayerStates(PlayerStates.ATTACKING);
+            EquippedWeapon.GetComponent<IWeapon>().PerformAttack(0);
+            player.MicroStepAction();
+            yield return new WaitForSeconds(0.2f); //Change This later - when implementing the attack speed feature
+            player.SetPlayerStates(PlayerStates.IDLE);
+            EquippedWeapon.GetComponent<IWeapon>().ResetAttackTrigger();
         }
         public void EquipWeapon(Item itemToEquip)
         {
@@ -41,6 +59,11 @@ namespace Advent.Entities
                 EquippedWeapon = Instantiate(Resources.Load<GameObject>("Items/Weapons/" + itemToEquip.ObjectSlug), playerHand.transform);
                 equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
             }
+        }
+        public void UnequipEquipment()
+        {
+            //Removes weapon held on avatar
+            Destroy(EquippedWeapon);
         }
         public void UseBareHands() //No Weapon Equipped
         {

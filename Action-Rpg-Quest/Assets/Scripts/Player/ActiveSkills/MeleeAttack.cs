@@ -8,7 +8,7 @@ namespace Advent.Entities.Abilities
     {
         public void Attack()
         {
-            Player.instance.PlayerAttack();
+
         }
     }
 }

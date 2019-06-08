@@ -396,6 +396,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed984269dfc373468413d6ea5f885aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: 9fa7067532a01e9439241a3a13798981, type: 3}
+  - {fileID: 8300000, guid: cbdbf23fc5ab9d94890a045728100fca, type: 3}
+  - {fileID: 8300000, guid: 8fa0f8c3b115bc54fa9fdb214f0e6f7e, type: 3}
+  - {fileID: 8300000, guid: 7e8a7970b473f5843a6b9342fb764fc0, type: 3}
 --- !u!95 &798081625
 Animator:
   serializedVersion: 3

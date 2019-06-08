@@ -67,23 +67,25 @@ namespace Advent.UI
 
             if (item != null)
             {
-                if (item.InventoryParentSlot.Item.EquipType != EquipType)
+                if(item.InventoryParentSlot != null)
                 {
-                    return;
+                    if (item.InventoryParentSlot.Item.EquipType != EquipType)
+                    {
+                        return;
+                    }
+                    if (_item != null) // When The Equipment slot is not empty - Proceed to Swap it
+                    {
+                        //Swap the selected Equipment slot from the equipment Manager;
+                        EquipmentManager.instance.SwapItem(item.InventoryParentSlot.Item, Item);
+                        //return the old item to inventory;
+                        InventoryManager.instance.AddToFirstEmptySlot(Item);
+                    }
+                    else
+                    {
+                        EquipmentManager.instance.EquipItem(item.InventoryParentSlot.Item);
+                    }
+                    item.InventoryParentSlot.UnSetItem();
                 }
-                if(_item != null) // When The Equipment slot is not empty - Proceed to Swap it
-                {
-                    //Swap the selected Equipment slot from the equipment Manager;
-                    EquipmentManager.instance.SwapItem(item.InventoryParentSlot.Item, Item);
-                    //return the old item to inventory;
-                    InventoryManager.instance.AddToFirstEmptySlot(Item);
-                }
-                else
-                {
-                    EquipmentManager.instance.EquipItem(item.InventoryParentSlot.Item);
-                }
-                item.InventoryParentSlot.UnSetItem();
-                //Replace Equips
             }
         }
     }
