@@ -1,6 +1,6 @@
 [
   {
-    "ItemId": 2,
+    "ItemId": 1,
     "ObjectSlug": "Wpn_Long-Sword",
     "ItemName": "Long Sword",
     "Description": "A Long, sharp blade.",
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "ItemId": 1,
+    "ItemId": 2,
     "ObjectSlug": "Wpn_Short-Sword",
     "ItemName": "Short Sword",
     "Description": "A Short, sharp blade.",
@@ -41,6 +41,29 @@
       {
         "StatType": "ATTACKMAX",
         "BaseValue": 8,
+        "StatName": "AttackMax"
+      }
+    ]
+  },
+  {
+    "ItemId": 3,
+    "ObjectSlug": "Wpn_Great-Sword",
+    "ItemName": "Great Sword",
+    "Description": "A Giant, sharp blade.",
+    "actionName": "Equip",
+    "ItemType": "Equipments",
+    "EquipType": "Weapon",
+    "WeaponType": "GreatSword",
+    "ItemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATTACKMIN",
+        "BaseValue": 10,
+        "StatName": "AttackMin"
+      },
+      {
+        "StatType": "ATTACKMAX",
+        "BaseValue": 15,
         "StatName": "AttackMax"
       }
     ]

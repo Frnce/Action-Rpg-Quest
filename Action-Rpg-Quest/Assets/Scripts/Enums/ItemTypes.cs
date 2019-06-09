@@ -21,6 +21,7 @@
     {
         DAGGER,
         SHORTSWORD,
+        GREATSWORD,
         NONE
     }
 }

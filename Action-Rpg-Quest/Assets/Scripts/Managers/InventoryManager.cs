@@ -49,6 +49,7 @@ namespace Advent.Manager
             //Add SetItem to equip default item Here
             GiveItem("Wpn_Short-Sword");
             GiveItem("Wpn_Long-Sword");
+            GiveItem("Wpn_Great-Sword");
         }
         public bool AddToFirstEmptySlot(Item item)
         {
