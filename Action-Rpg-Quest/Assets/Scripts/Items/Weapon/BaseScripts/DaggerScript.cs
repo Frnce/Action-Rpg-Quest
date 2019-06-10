@@ -9,7 +9,7 @@ namespace Advent.Items
     public abstract class DaggerScript : MonoBehaviour, IWeapon
     {
         private Animator animator;
-        [Header("AUdio")]
+        [Header("Audio")]
         public AudioClip[] audioClip;
 
         public List<BaseStat> Stats { get; set; }
@@ -27,8 +27,7 @@ namespace Advent.Items
         }
         public virtual void PerformAttack()
         {
-            //animator.SetTrigger("AttackSword");
-            Debug.Log("Bare hands attack (No Animation Yet)");
+            animator.SetTrigger("Attack");
         }
 
         public virtual void ResetAttackTrigger()

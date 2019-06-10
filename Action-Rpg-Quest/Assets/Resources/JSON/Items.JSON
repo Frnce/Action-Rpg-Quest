@@ -67,5 +67,28 @@
         "StatName": "AttackMax"
       }
     ]
+  },
+  {
+    "ItemId": 3,
+    "ObjectSlug": "Wpn_Hunting-Dagger",
+    "ItemName": "Hunting Dagger",
+    "Description": "A sharp swift blade good for hunting preys.",
+    "actionName": "Equip",
+    "ItemType": "Equipments",
+    "EquipType": "Weapon",
+    "WeaponType": "Dagger",
+    "ItemModifier": 0,
+    "Stats": [
+      {
+        "StatType": "ATTACKMIN",
+        "BaseValue": 6,
+        "StatName": "AttackMin"
+      },
+      {
+        "StatType": "ATTACKMAX",
+        "BaseValue": 9,
+        "StatName": "AttackMax"
+      }
+    ]
   }
 ]

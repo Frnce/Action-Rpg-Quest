@@ -50,6 +50,7 @@ namespace Advent.Manager
             GiveItem("Wpn_Short-Sword");
             GiveItem("Wpn_Long-Sword");
             GiveItem("Wpn_Great-Sword");
+            GiveItem("Wpn_Hunting-Dagger");
         }
         public bool AddToFirstEmptySlot(Item item)
         {
