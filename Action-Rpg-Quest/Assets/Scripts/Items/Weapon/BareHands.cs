@@ -21,9 +21,8 @@ namespace Advent.Items
             AudioClip = audioClip;
         }
 
-        public void PerformAttack(int damage)
+        public void PerformAttack()
         {
-            CurrentDamage = damage;
             //animator.SetTrigger("AttackSword");
             Debug.Log("Bare hands attack (No Animation Yet)");
         }

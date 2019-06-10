@@ -41,7 +41,7 @@ namespace Advent.Entities
         private IEnumerator DefaultAttackRoutine()
         {
             player.SetPlayerStates(PlayerStates.ATTACKING);
-            EquippedWeapon.GetComponent<IWeapon>().PerformAttack(0);
+            EquippedWeapon.GetComponent<IWeapon>().PerformAttack();
             player.MicroStepAction();
             yield return new WaitForSeconds(0.2f); //Change This later - when implementing the attack speed feature
             player.SetPlayerStates(PlayerStates.IDLE);

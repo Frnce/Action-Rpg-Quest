@@ -6,29 +6,34 @@ using UnityEngine;
 
 namespace Advent.Items
 {
-    public class GreatSword : MonoBehaviour, IWeapon
+    public abstract class DaggerScript : MonoBehaviour, IWeapon
     {
         private Animator animator;
+        [Header("AUdio")]
+        public AudioClip[] audioClip;
+
         public List<BaseStat> Stats { get; set; }
         public int CurrentDamage { get; set; }
-        [Header("Audio")]
-        public AudioClip[] audioClip;
         public AudioClip[] AudioClip { get; set; }
 
-        void Start()
+        protected virtual void Start()
         {
             animator = GetComponent<Animator>();
             AudioClip = audioClip;
         }
-
-        public void PerformAttack()
+        protected virtual void Update()
         {
-            animator.SetTrigger("AttackSword");
+
+        }
+        public virtual void PerformAttack()
+        {
+            //animator.SetTrigger("AttackSword");
+            Debug.Log("Bare hands attack (No Animation Yet)");
         }
 
-        public void ResetAttackTrigger()
+        public virtual void ResetAttackTrigger()
         {
-            animator.ResetTrigger("AttackSword");
+            Debug.Log("Reset Attack Animator");
         }
     }
 }

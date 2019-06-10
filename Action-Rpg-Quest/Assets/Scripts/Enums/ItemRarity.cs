@@ -9,6 +9,7 @@
         LEGENDARY,
         GODLY,
         CURSED,
-        SET
+        SET,
+        UNIQUE
     }
 }

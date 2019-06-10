@@ -23,7 +23,7 @@ TextureImporter:
     21300036: Wpn_Long-Sword
     21300038: weapon_3
     21300040: Wpn_Great-Sword
-    21300042: Wpn_Dagger
+    21300042: Wpn_Hunting-Dagger
     21300044: Wpn_Rod
     21300046: Wpn_Staff
     21300048: Wpn_Mace
@@ -501,7 +501,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wpn_Dagger
+      name: Wpn_Hunting-Dagger
       rect:
         serializedVersion: 2
         x: 293
