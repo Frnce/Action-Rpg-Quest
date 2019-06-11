@@ -25,6 +25,8 @@ namespace Advent.Entities
         private float rollSpeed = 5.0f;
         [SerializeField]
         private float rollDistance = 0.1f;
+        [SerializeField]
+        private Transform avatarRenderer = null;
         [Space]
         public AudioClip walkSound;
         [Space]
@@ -42,7 +44,6 @@ namespace Advent.Entities
         private bool isFacingRight;
         private float timeBetweenAttack;
         private CameraController cam;
-        private Vector2 mouse;
 
         private bool canBeHit = true;
 
@@ -50,6 +51,9 @@ namespace Advent.Entities
         public TrailRenderer weaponTrail;
         public ParticleSystem dustWalkingEffect = null;
         public float startTimeBetweenAttack;
+
+        public bool IsAttacking{ get; set; }
+
         private void Awake()
         {
             if (instance == null)
@@ -72,7 +76,7 @@ namespace Advent.Entities
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
 
-            weaponTrail.emitting = false;
+            //weaponTrail.emitting = false;
 
             //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
 
@@ -98,11 +102,9 @@ namespace Advent.Entities
                     PlayerDodge();
                 }
                 InteractObject();
-
-                if (states != PlayerStates.ATTACKING)
+                if (!IsAttacking)
                 {
                     FlipCharacter();
-                    Aim();
                 }
             }
             //TODO fix Trail Effect
@@ -140,9 +142,9 @@ namespace Advent.Entities
         {
             isFacingRight = !isFacingRight;
 
-            Vector3 theScale = transform.localScale;
+            Vector3 theScale = avatarRenderer.localScale;
             theScale.x *= -1;
-            transform.localScale = theScale;
+            avatarRenderer.localScale = theScale;
         }
         private void PlayerDodge()
         {
@@ -194,20 +196,6 @@ namespace Advent.Entities
         {
             anim.SetTrigger("attack1");
         }
-        private void Aim()
-        {
-            //The Weapon should be facing up or vector2.up for it to work properly
-            mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
-            Vector3 objpos = Camera.main.WorldToViewportPoint(weapon.transform.position);        //Object position on screen
-            Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
-            Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
-            float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
-            if (relmousepos.x > 0)
-                angle = 360 - angle;
-            Quaternion quat = Quaternion.identity;
-            quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
-            weapon.transform.rotation = quat;
-        }
         //TODO problem : the farther the mouse position on the screen , the longer the player step
         private Vector2 MicrosteponAttack()
         {
@@ -242,6 +230,13 @@ namespace Advent.Entities
         public void SetPlayerStates(PlayerStates states)
         {
             this.states = states;
+        }
+        public SpriteRenderer PlayerSprite
+        {
+            get
+            {
+                return avatarRenderer.GetComponent<SpriteRenderer>();
+            }
         }
         public PlayerStates GetPlayerStates
         {

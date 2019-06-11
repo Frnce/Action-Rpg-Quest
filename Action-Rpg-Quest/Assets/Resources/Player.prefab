@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 1903015726}
   - component: {fileID: 92939447}
   m_Layer: 12
-  m_Name: Weapon
+  m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4868,6 +4868,7 @@ GameObject:
   - component: {fileID: 374985367}
   - component: {fileID: 8444309749630793534}
   - component: {fileID: 8444309749630793533}
+  - component: {fileID: 231861969}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -5013,11 +5014,7 @@ MonoBehaviour:
   sprite: {fileID: 8444309750708076000}
   rollSpeed: 10
   rollDistance: 0.3
-  swordSwings:
-  - {fileID: 8300000, guid: 9fa7067532a01e9439241a3a13798981, type: 3}
-  - {fileID: 8300000, guid: cbdbf23fc5ab9d94890a045728100fca, type: 3}
-  - {fileID: 8300000, guid: 8fa0f8c3b115bc54fa9fdb214f0e6f7e, type: 3}
-  - {fileID: 8300000, guid: 7e8a7970b473f5843a6b9342fb764fc0, type: 3}
+  avatarRenderer: {fileID: 8444309750708076007}
   walkSound: {fileID: 8300000, guid: 93e229e237d005a46b7962b1db9a30ad, type: 3}
   myCollider: {fileID: 1660553039}
   blockingLayer:
@@ -5027,6 +5024,21 @@ MonoBehaviour:
   weaponTrail: {fileID: 0}
   dustWalkingEffect: {fileID: 2122602752}
   startTimeBetweenAttack: 0.3
+--- !u!114 &231861969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444309749630793505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdbb001866b96348a035bd27963a113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 1903015725}
+  BareHand: {fileID: 4786569909882016783, guid: 1340358b1e826254494d5e0f594c5511,
+    type: 3}
 --- !u!1 &8444309750708076006
 GameObject:
   m_ObjectHideFlags: 0

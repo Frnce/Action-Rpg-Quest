@@ -14,38 +14,84 @@ namespace Advent.Entities
         public GameObject playerHand;
         public GameObject EquippedWeapon { get; set; }
         public GameObject BareHand; //Used when NoWeapon has been equipped
-
-        Item currentlyEquippedItem;
-        IWeapon equippedWeapon;
-        Player player;
-        PlayerController playerController;
+        private Item currentlyEquippedItem;
+        private IWeapon equippedWeapon;
+        private Player player;
+        private PlayerController playerController;
+        private Vector2 mouse;
+        private int playerSortingOrder;
         // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
             playerController = PlayerController.instance;
+            playerSortingOrder = player.PlayerSprite.sortingOrder;
             UseBareHands();
         }
         private void Update()
         {
-            if(player.GetPlayerStates != PlayerStates.ROLLING && player.GetPlayerStates != PlayerStates.INMENU)
+            CheckIfAttacking();
+            if (player.GetPlayerStates != PlayerStates.ROLLING && player.GetPlayerStates != PlayerStates.INMENU)
             {
-                if (playerController.GetAttackKey)
+                if (playerController.GetAttackKey && !player.IsAttacking)
                 {
                     SoundManager.instance.PlayerAttackRandomizeSfx(EquippedWeapon.GetComponent<IWeapon>().AudioClip);
                     StartCoroutine(DefaultAttackRoutine());
                     //timebetweeen attack . - implement the attack speed feature
                 }
             }
+            Aim();
+        }
+        private void Aim()
+        {
+            //Dont Aim when in a attacking state
+            if (player.GetPlayerStates != PlayerStates.ATTACKING)
+            {
+                //The Weapon should be facing up or vector2.up for it to work properly
+                mouse = Camera.main.ScreenToViewportPoint(Input.mousePosition);        //Mouse position
+                Vector3 objpos = Camera.main.WorldToViewportPoint(playerHand.transform.position);        //Object position on screen
+                Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
+                Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
+                float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
+                if (relmousepos.x > 0)
+                    angle = 360 - angle;
+                Quaternion quat = Quaternion.identity;
+                quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
+                playerHand.transform.rotation = quat;
+                if(angle > 60 && angle < 245)
+                {
+                    EquippedWeapon.GetComponent<SpriteRenderer>().sortingOrder = playerSortingOrder + 1;
+                }
+                else
+                {
+                    EquippedWeapon.GetComponent<SpriteRenderer>().sortingOrder = playerSortingOrder - 1;
+                }
+
+                if(angle >= 0 && angle <= 180)
+                {
+                    EquippedWeapon.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else
+                {
+                    EquippedWeapon.GetComponent<SpriteRenderer>().flipX = false;
+                }
+            }
+        }
+        private void CheckIfAttacking()
+        {
+            if (player.IsAttacking)
+            {
+                player.SetPlayerStates(PlayerStates.ATTACKING);
+            }
         }
         private IEnumerator DefaultAttackRoutine()
         {
-            player.SetPlayerStates(PlayerStates.ATTACKING);
+            player.IsAttacking = true;
             EquippedWeapon.GetComponent<IWeapon>().PerformAttack();
             player.MicroStepAction();
-            yield return new WaitForSeconds(0.2f); //Change This later - when implementing the attack speed feature
-            player.SetPlayerStates(PlayerStates.IDLE);
+            yield return new WaitForSeconds(0.5f); //Change This later - when implementing the attack speed feature
             EquippedWeapon.GetComponent<IWeapon>().ResetAttackTrigger();
+            player.IsAttacking = false;
         }
         public void EquipWeapon(Item itemToEquip)
         {
