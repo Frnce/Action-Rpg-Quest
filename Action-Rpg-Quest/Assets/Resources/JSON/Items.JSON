@@ -1,94 +1,246 @@
-[
-  {
-    "ItemId": 1,
-    "ObjectSlug": "Wpn_Long-Sword",
-    "ItemName": "Long Sword",
-    "Description": "A Long, sharp blade.",
-    "actionName": "Equip",
-    "ItemType": "Equipments",
-    "EquipType": "Totem",
-    "WeaponType": "Dagger",
+[{
+    "ItemID": 0,
+    "ItemName": "Hunting Knife",
+    "ObjectSlug": "Wpn_HuntingKnife",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
     "ItemModifier": 0,
-    "Stats": [
-      {
-        "StatType": "ATTACKMIN",
-        "BaseValue": 10,
-        "StatName": "AttackMin"
-      },
-      {
-        "StatType": "ATTACKMAX",
-        "BaseValue": 15,
-        "StatName": "AttackMax"
-      }
-    ]
-  },
-  {
-    "ItemId": 2,
-    "ObjectSlug": "Wpn_Short-Sword",
-    "ItemName": "Short Sword",
-    "Description": "A Short, sharp blade.",
-    "actionName": "Equip",
-    "ItemType": "Equipments",
     "EquipType": "Weapon",
-    "WeaponType": "ShortSword",
-    "ItemModifier": 0,
-    "Stats": [
-      {
-        "StatType": "ATTACKMIN",
-        "BaseValue": 5,
-        "StatName": "AttackMin"
+    "BaseStat": [{
+        "StatType": "Phy_Attack_Min",
+        "BaseValue": 3,
+        "StatName": "Phy_Attack_Min"
       },
       {
-        "StatType": "ATTACKMAX",
+        "StatType": "Phy_Attack_Max",
         "BaseValue": 8,
-        "StatName": "AttackMax"
+        "StatName": "Phy_Attack_Max"
       }
-    ]
+    ],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
   },
   {
-    "ItemId": 3,
-    "ObjectSlug": "Wpn_Great-Sword",
+    "ItemID": 1,
     "ItemName": "Great Sword",
-    "Description": "A Giant, sharp blade.",
-    "actionName": "Equip",
-    "ItemType": "Equipments",
-    "EquipType": "Weapon",
-    "WeaponType": "GreatSword",
+    "ObjectSlug": "Wpn_GreatSword",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
     "ItemModifier": 0,
-    "Stats": [
-      {
-        "StatType": "ATTACKMIN",
-        "BaseValue": 10,
-        "StatName": "AttackMin"
+    "EquipType": "Weapon",
+    "BaseStat": [{
+        "StatType": "Phy_Attack_Min",
+        "BaseValue": 5,
+        "StatName": "Phy_Attack_Min"
       },
       {
-        "StatType": "ATTACKMAX",
-        "BaseValue": 15,
-        "StatName": "AttackMax"
+        "StatType": "Phy_Attack_Max",
+        "BaseValue": 8,
+        "StatName": "Phy_Attack_Max"
       }
-    ]
+    ],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
   },
   {
-    "ItemId": 3,
-    "ObjectSlug": "Wpn_Hunting-Dagger",
-    "ItemName": "Hunting Dagger",
-    "Description": "A sharp swift blade good for hunting preys.",
-    "actionName": "Equip",
-    "ItemType": "Equipments",
-    "EquipType": "Weapon",
-    "WeaponType": "Dagger",
+    "ItemID": 2,
+    "ItemName": "Iron Tunic",
+    "ObjectSlug": "Amr_IronTunic",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
     "ItemModifier": 0,
-    "Stats": [
-      {
-        "StatType": "ATTACKMIN",
-        "BaseValue": 6,
-        "StatName": "AttackMin"
-      },
-      {
-        "StatType": "ATTACKMAX",
-        "BaseValue": 9,
-        "StatName": "AttackMax"
-      }
-    ]
+    "EquipType": "Body",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 3,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 3,
+    "ItemName": "Robe",
+    "ObjectSlug": "Bdy_Robe",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Body",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 4,
+    "ItemName": "Cap",
+    "ObjectSlug": "Hd_Cap",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Head",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 5,
+    "ItemName": "Helmet",
+    "ObjectSlug": "Hd_Helmet",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Head",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 6,
+    "ItemName": "Pants",
+    "ObjectSlug": "Lg_Pants",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Legs",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 7,
+    "ItemName": "Leggings",
+    "ObjectSlug": "Lg_Leggings",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Legs",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 8,
+    "ItemName": "Shoes",
+    "ObjectSlug": "Ft_Shoes",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Feet",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  }, {
+    "ItemID": 9,
+    "ItemName": "Sandals",
+    "ObjectSlug": "Ft_Sandals",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Feet",
+    "BaseStat": [{
+      "StatType": "Phy_Defense",
+      "BaseValue": 1,
+      "StatName": "Phy_Defense"
+    }],
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 10,
+    "ItemName": "Wood Totem",
+    "ObjectSlug": "Ttm_WoodTotem",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Totem",
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 11,
+    "ItemName": "Messiah's Totem",
+    "ObjectSlug": "Ttm_MessiahTotem",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ITemType": "Equipment",
+    "ItemModifier": 0,
+    "EquipType": "Totem",
+    "StatModifier": [{
+      "StatModID": 0
+    }]
+  },
+  {
+    "ItemID": 12,
+    "ItemName": "Health Potion",
+    "ObjectSlug": "Cons_HealthPotion",
+    "Description": "Description Here...",
+    "ActionName": "Consume",
+    "ITemType": "Consumable",
+    "ItemModifier": 0,
+    "BaseStat": [{
+      "StatType": "HitPoints",
+      "BaseValue": 50,
+      "StatName": "HitPoints"
+    }]
+  },
+  {
+    "ItemID": 13,
+    "ItemName": "Mana Potion",
+    "ObjectSlug": "Cons_ManaPotion",
+    "Description": "Description Here...",
+    "ActionName": "Consume",
+    "ITemType": "Consumable",
+    "ItemModifier": 0,
+    "BaseStat": [{
+      "StatType": "ManaPoints",
+      "BaseValue": 20,
+      "StatName": "ManaPoints"
+    }]
   }
 ]
