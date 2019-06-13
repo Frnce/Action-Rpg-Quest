@@ -4,7 +4,7 @@
     "ObjectSlug": "Wpn_HuntingKnife",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Weapon",
     "BaseStat": [{
@@ -28,7 +28,7 @@
     "ObjectSlug": "Wpn_GreatSword",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Weapon",
     "BaseStat": [{
@@ -49,10 +49,10 @@
   {
     "ItemID": 2,
     "ItemName": "Iron Tunic",
-    "ObjectSlug": "Amr_IronTunic",
+    "ObjectSlug": "Bdy_IronTunic",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Body",
     "BaseStat": [{
@@ -70,7 +70,7 @@
     "ObjectSlug": "Bdy_Robe",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Body",
     "BaseStat": [{
@@ -88,7 +88,7 @@
     "ObjectSlug": "Hd_Cap",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Head",
     "BaseStat": [{
@@ -106,7 +106,7 @@
     "ObjectSlug": "Hd_Helmet",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Head",
     "BaseStat": [{
@@ -124,7 +124,7 @@
     "ObjectSlug": "Lg_Pants",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Legs",
     "BaseStat": [{
@@ -142,7 +142,7 @@
     "ObjectSlug": "Lg_Leggings",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Legs",
     "BaseStat": [{
@@ -160,9 +160,9 @@
     "ObjectSlug": "Ft_Shoes",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
-    "EquipType": "Feet",
+    "EquipType": "Foot",
     "BaseStat": [{
       "StatType": "Phy_Defense",
       "BaseValue": 1,
@@ -177,9 +177,9 @@
     "ObjectSlug": "Ft_Sandals",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
-    "EquipType": "Feet",
+    "EquipType": "Foot",
     "BaseStat": [{
       "StatType": "Phy_Defense",
       "BaseValue": 1,
@@ -195,7 +195,7 @@
     "ObjectSlug": "Ttm_WoodTotem",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Totem",
     "StatModifier": [{
@@ -208,7 +208,7 @@
     "ObjectSlug": "Ttm_MessiahTotem",
     "Description": "Description Here...",
     "ActionName": "Equip",
-    "ITemType": "Equipment",
+    "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Totem",
     "StatModifier": [{

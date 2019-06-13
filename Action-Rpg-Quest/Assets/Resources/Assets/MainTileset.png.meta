@@ -22,8 +22,8 @@ TextureImporter:
     21300034: Dungeon-BabyOrc-Walk-4
     21300036: Wpn_Long-Sword
     21300038: weapon_3
-    21300040: Wpn_Great-Sword
-    21300042: Wpn_Hunting-Dagger
+    21300040: Wpn_GreatSword
+    21300042: Wpn_HuntingKnife
     21300044: Wpn_Rod
     21300046: Wpn_Staff
     21300048: Wpn_Mace
@@ -301,26 +301,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wpn_Short-Sword
-      rect:
-        serializedVersion: 2
-        x: 307
-        y: 399
-        width: 10
-        height: 27
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84a3d64003236db4988d4551da4db74b
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Dungeon-BabyOrc-Idle-1
       rect:
         serializedVersion: 2
@@ -481,7 +461,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wpn_Great-Sword
+      name: Wpn_GreatSword
       rect:
         serializedVersion: 2
         x: 322
@@ -501,7 +481,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wpn_Hunting-Dagger
+      name: Wpn_HuntingKnife
       rect:
         serializedVersion: 2
         x: 293
@@ -516,86 +496,6 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ad5af7e8b25ca1d4faa7de85b72cb2c2
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wpn_Rod
-      rect:
-        serializedVersion: 2
-        x: 324
-        y: 335
-        width: 8
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d75aefcadc1066d44b10368eac37c502
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wpn_Staff
-      rect:
-        serializedVersion: 2
-        x: 340
-        y: 335
-        width: 8
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c1d3c7a58712314a9397d829770f100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wpn_Mace
-      rect:
-        serializedVersion: 2
-        x: 339
-        y: 431
-        width: 10
-        height: 26
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77bd5c2292dcb7d4694cca97fb3ba7cf
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Wpn_Hammer
-      rect:
-        serializedVersion: 2
-        x: 307
-        y: 431
-        width: 10
-        height: 26
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 577a0fb132d1e3b45b1e47071b84bf0f
       vertices: []
       indices: 
       edges: []

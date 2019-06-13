@@ -37,7 +37,7 @@ namespace Advent.UI
                 emptyItem.EquipType = (Enums.EquipTypes)i;
                 equipmentSlotList.Add(emptyItem);
 
-                emptyItem.SetItem(equipmentManager.GetEquipsList[i].item);
+                emptyItem.SetItem(equipmentManager.GetEquipsList[i]);
             }
         }
     }

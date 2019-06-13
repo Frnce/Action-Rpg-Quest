@@ -9,18 +9,12 @@ using UnityEngine;
 
 namespace Advent.Manager
 {
-    [System.Serializable]
-    public struct EquipmentSlot
-    {
-        public Item item;
-        public ItemTypes itemtype;
-    }
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
         public PlayerEquipmentController playerEquipment;
         [SerializeField]
-        private EquipmentSlot[] equipsList;
+        private Item[] equipmentSlots;
 
         private void Awake()
         {
@@ -34,16 +28,17 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
 
-            equipsList = new EquipmentSlot[6]; //6 number of equipmentSlots
+            equipmentSlots = new Item[6]; //6 number of equipmentSlots
         }
 
         public bool EquipItem(Item item)
         {
             int equipSlotIndex = (int)item.EquipType;
-            if(equipSlotIndex <= equipsList.Length)
+            if(equipSlotIndex <= equipmentSlots.Length)
             {
-                equipsList[equipSlotIndex].item = item;
+                equipmentSlots[equipSlotIndex] = item;
                 InventoryManager.instance.RemoveItem(item);
+                playerEquipment.UnequipEquipment();
                 playerEquipment.EquipWeapon(item);
                 UIEventHandlers.EquipUpdate();
                 return true;
@@ -53,12 +48,12 @@ namespace Advent.Manager
         public bool UnequipItem(Item item)
         {
             int equipSlotIndex = (int)item.EquipType;
-            if (equipSlotIndex <= equipsList.Length)
+            if (equipSlotIndex <= equipmentSlots.Length)
             {
-                equipsList[equipSlotIndex].item = null;
+                equipmentSlots[equipSlotIndex] = null;
                 InventoryManager.instance.RemoveItem(item);
                 playerEquipment.UnequipEquipment();
-                playerEquipment.UseBareHands();
+                playerEquipment.EnableBareHands();
                 UIEventHandlers.EquipUpdate();
                 //Stat Changes Here
                 return true;
@@ -70,11 +65,11 @@ namespace Advent.Manager
             UnequipItem(oldItem);
             EquipItem(newItem);
         }
-        public EquipmentSlot[] GetEquipsList
+        public Item[] GetEquipsList
         {
             get
             {
-                return equipsList;
+                return equipmentSlots;
             }
         }
     }

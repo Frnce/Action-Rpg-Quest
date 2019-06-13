@@ -47,10 +47,18 @@ namespace Advent.Manager
 
             equipmentList = new InventorySlot[maxItemSpace];
             //Add SetItem to equip default item Here
-            GiveItem("Wpn_Short-Sword");
-            GiveItem("Wpn_Long-Sword");
-            GiveItem("Wpn_Great-Sword");
-            GiveItem("Wpn_Hunting-Dagger");
+            GiveItem("Wpn_HuntingKnife");
+            GiveItem("Wpn_GreatSword");
+            GiveItem("Bdy_IronTunic");
+            GiveItem("Bdy_Robe");
+            GiveItem("Hd_Cap");
+            GiveItem("Hd_Helmet");
+            GiveItem("Lg_Pants");
+            GiveItem("Lg_Leggings");
+        }
+        private void Start()
+        {
+            EquipmentManager.instance.EquipItem(ItemDatabase.Instance.GetItem("Wpn_HuntingKnife"));
         }
         public bool AddToFirstEmptySlot(Item item)
         {

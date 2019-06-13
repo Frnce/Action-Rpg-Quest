@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fd24dcc3a44e4498a1aa8f74d650fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLevel: 100
+  currentLevel: 1
+  experienceNeeded: 250
+  currentExperience: 0

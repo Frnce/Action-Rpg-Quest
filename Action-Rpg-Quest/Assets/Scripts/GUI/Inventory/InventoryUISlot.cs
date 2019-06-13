@@ -40,7 +40,7 @@ namespace Advent.UI
             {
                 itemImage.enabled = true;
 
-                Sprite[] sprites = Resources.LoadAll<Sprite>("Assets/MainTileset");
+                Sprite[] sprites = Resources.LoadAll<Sprite>("Assets");
                 for (int i = 0; i < sprites.Length; i++)
                 {
                     if (sprites[i].name == Item.ObjectSlug)

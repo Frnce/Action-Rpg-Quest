@@ -20,13 +20,17 @@ namespace Advent.Entities
         private PlayerController playerController;
         private Vector2 mouse;
         private int playerSortingOrder;
+
+        private void Awake()
+        {
+            EnableBareHands();
+        }
         // Start is called before the first frame update
         void Start()
         {
             player = Player.instance;
             playerController = PlayerController.instance;
             playerSortingOrder = player.PlayerSprite.sortingOrder;
-            UseBareHands();
         }
         private void Update()
         {
@@ -102,7 +106,7 @@ namespace Advent.Entities
                     //Unequip Weapon
                 }
 
-                EquippedWeapon = Instantiate(Resources.Load<GameObject>("Items/Weapons/" + itemToEquip.ObjectSlug), playerHand.transform);
+                EquippedWeapon = Instantiate(Resources.Load<GameObject>("Items/Item/Equipments/Weapons/" + itemToEquip.ObjectSlug), playerHand.transform);
                 equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
             }
         }
@@ -111,7 +115,7 @@ namespace Advent.Entities
             //Removes weapon held on avatar
             Destroy(EquippedWeapon);
         }
-        public void UseBareHands() //No Weapon Equipped
+        public void EnableBareHands() //No Weapon Equipped
         {
             EquippedWeapon = Instantiate(BareHand, playerHand.transform);
             equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();

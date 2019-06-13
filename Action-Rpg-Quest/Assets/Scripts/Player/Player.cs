@@ -87,6 +87,9 @@ namespace Advent.Entities
             InitAttributes();
             InitMovementSpeed();
 
+            InitHP();
+            InitMP();
+
             InitDamage();
             InitPhysicalDefense();
         }
@@ -212,6 +215,14 @@ namespace Advent.Entities
         private void InitPhysicalDefense()
         {
             InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
+        }
+        private void InitHP()
+        {
+            InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
+        }
+        private void InitMP()
+        {
+            InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

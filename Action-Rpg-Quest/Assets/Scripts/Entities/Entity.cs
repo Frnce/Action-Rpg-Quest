@@ -70,6 +70,16 @@ namespace Advent.Entities
         {
             statList.baseDef = statFormula.ComputeMaxDefense(baseStr, baseArmor);
         }
+        protected void InitHitpoints(float baseVit, float bonusvit,float level)
+        {
+            statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(baseVit, bonusvit, level);
+            currentHP = GetMaxHP;
+        }
+        protected void InitManaPoints(float baseInt,float bonusInt,float level)
+        {
+            statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(baseInt, bonusInt, level);
+            currentMP = GetMaxMP;
+        }
         public float GetCurrentHP
         {
             get
