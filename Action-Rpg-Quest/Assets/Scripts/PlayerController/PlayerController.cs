@@ -39,7 +39,7 @@ namespace Advent.Controller
         {
             xMove = (int)Input.GetAxisRaw("Horizontal");
             yMove = (int)Input.GetAxisRaw("Vertical");
-            GetAttackKey = Input.GetButtonDown("Fire1");
+            GetAttackKey = Input.GetButton("Fire1");
             GetDodgeKey = Input.GetButtonDown("Fire2");
             GetOpenMenuKey = Input.GetButtonDown("OpenMenu");
             GetInteractKey = Input.GetButtonDown("Interact");

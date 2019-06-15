@@ -12,7 +12,7 @@ namespace Advent.Manager
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
-        public PlayerEquipmentController playerEquipment;
+        public PlayerWeaponController playerEquipment;
         [SerializeField]
         private Item[] equipmentSlots;
 

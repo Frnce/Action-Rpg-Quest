@@ -18,6 +18,7 @@ namespace Advent.Items
         public EquipTypes EquipType { get; set; }
         public WeaponTypes WeaponType { get; set; }
         public ItemRarity ItemRarity { get; set; }
+        public float UseTime { get; set; } // attack rate
         public int ItemId { get; set; }
         public string ActionName { get; set; }
         public string ItemName { get; set; }
@@ -32,7 +33,7 @@ namespace Advent.Items
         }
 
         [JsonConstructor]
-        public Item(List<BaseStat> _Stats, string _ObjectSlug, string _itemIcon, string _Description, ItemTypes _ItemType, WeaponTypes _weaponType,EquipTypes _EquipType, int _itemId, string _ActionName, string _ItemName,bool _isStackable, bool _ItemModifier)
+        public Item(List<BaseStat> _Stats, string _ObjectSlug, string _itemIcon, string _Description, ItemTypes _ItemType, WeaponTypes _weaponType,EquipTypes _EquipType,ItemRarity _itemRarity,float _useTime, int _itemId, string _ActionName, string _ItemName,bool _isStackable, bool _ItemModifier)
         {
             StatType = _Stats;
             ObjectSlug = _ObjectSlug;
@@ -41,6 +42,8 @@ namespace Advent.Items
             ItemType = _ItemType;
             WeaponType = _weaponType;
             EquipType = _EquipType;
+            ItemRarity = _itemRarity;
+            UseTime = _useTime;
             ItemId = _itemId;
             ActionName = _ActionName;
             ItemName = _ItemName;

@@ -9,18 +9,24 @@ using UnityEngine;
 
 namespace Advent.Entities
 {
-    public class PlayerEquipmentController : MonoBehaviour
+    public class PlayerWeaponController : MonoBehaviour
     {
         public GameObject playerHand;
         public GameObject EquippedWeapon { get; set; }
         public GameObject BareHand; //Used when NoWeapon has been equipped
-        private Item currentlyEquippedItem;
+        [Space]
+        [Range(1,4)]
+        public float attackSpeed;
+        private Item currentlyEquippedWeapon;
         private IWeapon equippedWeapon;
         private Player player;
         private PlayerController playerController;
         private Vector2 mouse;
         private int playerSortingOrder;
 
+        //For Player Attack Setting
+        private float timeBetweenAttack;
+        float finalUseTime;
         private void Awake()
         {
             EnableBareHands();
@@ -31,20 +37,37 @@ namespace Advent.Entities
             player = Player.instance;
             playerController = PlayerController.instance;
             playerSortingOrder = player.PlayerSprite.sortingOrder;
+
+            timeBetweenAttack = currentlyEquippedWeapon.UseTime / 60;
+
+            //TODO Place it on the calculations tab
+            finalUseTime = Mathf.Floor(Mathf.Round(currentlyEquippedWeapon.UseTime * (1f - (100f / 100f)))); // 10f is attack speed modifier = 10%
+            Debug.Log(finalUseTime);
         }
         private void Update()
         {
             CheckIfAttacking();
-            if (player.GetPlayerStates != PlayerStates.ROLLING && player.GetPlayerStates != PlayerStates.INMENU)
+            PlayerAttack();
+            Aim();
+        }
+        private void PlayerAttack()
+        {
+            if (timeBetweenAttack <= 0)
             {
-                if (playerController.GetAttackKey && !player.IsAttacking)
+                if (player.GetPlayerStates != PlayerStates.ROLLING && player.GetPlayerStates != PlayerStates.INMENU)
                 {
-                    SoundManager.instance.PlayerAttackRandomizeSfx(EquippedWeapon.GetComponent<IWeapon>().AudioClip);
-                    StartCoroutine(DefaultAttackRoutine());
-                    //timebetweeen attack . - implement the attack speed feature
+                    if (playerController.GetAttackKey && !player.IsAttacking)
+                    {
+                        SoundManager.instance.PlayerAttackRandomizeSfx(EquippedWeapon.GetComponent<IWeapon>().AudioClip);
+                        StartCoroutine(DefaultAttackRoutine());
+                        timeBetweenAttack = finalUseTime / 60; // 60 fps
+                    }
                 }
             }
-            Aim();
+            else
+            {
+                timeBetweenAttack -= Time.deltaTime;
+            }
         }
         private void Aim()
         {
@@ -91,11 +114,12 @@ namespace Advent.Entities
         private IEnumerator DefaultAttackRoutine()
         {
             player.IsAttacking = true;
-            EquippedWeapon.GetComponent<IWeapon>().PerformAttack();
+            EquippedWeapon.GetComponent<IWeapon>().PerformAttack(1 + (300f / 100)); // 10f is attack modifier
             player.MicroStepAction();
-            yield return new WaitForSeconds(0.5f); //Change This later - when implementing the attack speed feature
+            yield return new WaitForSeconds(finalUseTime / 60); //Change This later - when implementing the attack speed feature
+            EquippedWeapon.GetComponent<Animator>().SetBool("isAttacking", false);
             EquippedWeapon.GetComponent<IWeapon>().ResetAttackTrigger();
-            player.IsAttacking = false;
+            player.IsAttacking = false; 
         }
         public void EquipWeapon(Item itemToEquip)
         {
@@ -105,9 +129,9 @@ namespace Advent.Entities
                 {
                     //Unequip Weapon
                 }
-
                 EquippedWeapon = Instantiate(Resources.Load<GameObject>("Items/Item/Equipments/Weapons/" + itemToEquip.ObjectSlug), playerHand.transform);
                 equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
+                currentlyEquippedWeapon = itemToEquip;
             }
         }
         public void UnequipEquipment()

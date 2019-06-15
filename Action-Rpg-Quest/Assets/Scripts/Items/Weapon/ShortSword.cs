@@ -21,7 +21,7 @@ namespace Advent.Items
             AudioClip = audioClip;
         }
 
-        public void PerformAttack()
+        public void PerformAttack(float attackSpeed)
         {
             animator.SetTrigger("AttackSword");
         }

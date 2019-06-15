@@ -25,9 +25,10 @@ namespace Advent.Items
         {
 
         }
-        public virtual void PerformAttack()
+        public virtual void PerformAttack(float attackSpeed)
         {
-            animator.SetTrigger("Attack");
+            animator.SetBool("isAttacking", true);
+            animator.SetFloat("multiplier", attackSpeed);
         }
 
         public virtual void ResetAttackTrigger()
