@@ -32,6 +32,7 @@
     "ITemType": "Equipments",
     "ItemModifier": 0,
     "EquipType": "Weapon",
+	"UseTime" : 32,
     "BaseStat": [{
         "StatType": "Phy_Attack_Min",
         "BaseValue": 5,

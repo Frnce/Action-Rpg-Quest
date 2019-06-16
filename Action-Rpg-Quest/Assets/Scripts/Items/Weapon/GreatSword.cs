@@ -23,12 +23,13 @@ namespace Advent.Items
 
         public void PerformAttack(float attackSpeed)
         {
-            animator.SetTrigger("AttackSword");
+            animator.SetBool("isAttacking", true);
+            animator.SetFloat("multiplier", attackSpeed);
         }
 
         public void ResetAttackTrigger()
         {
-            animator.ResetTrigger("AttackSword");
+            Debug.Log("reset attack");
         }
     }
 }

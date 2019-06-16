@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Baby orc
   strength: 1
-  agility: 10
-  vitality: 99
+  dexterity: 0
+  vitality: 99999
   intelligence: 1
+  movementSpeed: 0
   enemyLevel: 1
   expGiven: 14
   loot: {fileID: 11400000, guid: 6d444faf5dd81b44b885278d1ef2f29f, type: 2}

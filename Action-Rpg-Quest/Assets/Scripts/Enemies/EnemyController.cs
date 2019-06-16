@@ -53,7 +53,18 @@ namespace Advent.Entities
             InitAttributes();
             InitMovementSpeed();
 
+            InitHP();
+            InitMP();
+
             InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
+        }
+        private void InitHP()
+        {
+            InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
+        }
+        private void InitMP()
+        {
+            InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
         }
         public void Movement(Vector3 direction)
         {

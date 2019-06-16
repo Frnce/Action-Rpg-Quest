@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2989734119873728082}
   - component: {fileID: 4489374244762795219}
   m_Layer: 12
-  m_Name: Wpn_Hunting-Dagger
+  m_Name: Wpn_HuntingKnife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,8 +126,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4653746070688216485}
   - component: {fileID: 2177399078775180208}
-  - component: {fileID: 2177399079217435545}
   - component: {fileID: 2177399079217435558}
+  - component: {fileID: 5291876134698398221}
   m_Layer: 11
   m_Name: MeleeHitbox
   m_TagString: Untagged
@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427194224441645835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.56, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5913590613672956527}
@@ -161,7 +161,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64eaf4251bdbb9b45ad89dff814a0805, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &2177399079217435545
+--- !u!50 &2177399079217435558
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427194224441645835}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!60 &5291876134698398221
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,40 +207,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.21664351, y: 0.20934772}
-      - {x: 0.16154999, y: 0.35172606}
-      - {x: -0.02063042, y: 0.42067802}
-      - {x: -0.1823948, y: 0.39916027}
-      - {x: -0.24351877, y: 0.25014567}
-      - {x: -0.2758374, y: -0.7203985}
-      - {x: -0.31007108, y: -0.70550966}
-      - {x: -0.30901742, y: -0.98530436}
-      - {x: -0.24626146, y: -1.1066887}
-      - {x: 0.28967422, y: -1.0518243}
-      - {x: 0.29224616, y: -0.7756487}
-      - {x: 0.28234714, y: -0.8139986}
-      - {x: 0.2731897, y: -0.5767996}
---- !u!50 &2177399079217435558
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427194224441645835}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+    - - {x: 0.005959347, y: 1.0357561}
+      - {x: -0.16661623, y: 0.94764894}
+      - {x: -0.19261548, y: 0.24901134}
+      - {x: 0.1909441, y: 0.24466527}
+      - {x: 0.14571917, y: 0.937573}
 --- !u!1 &2177399080052267052
 GameObject:
   m_ObjectHideFlags: 0
