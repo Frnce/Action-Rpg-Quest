@@ -76,7 +76,14 @@ namespace Advent.Entities
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
 
-            entitiesStats = new EntitiesStats(entityStats.strength, entityStats.dexterity, entityStats.vitality, entityStats.intelligence);
+            entitiesStats = new EntitiesStats
+            {
+                base_Str = entityStats.strength,
+                base_Dex = entityStats.dexterity,
+                base_Vit = entityStats.vitality,
+                base_Int = entityStats.intelligence
+            };
+
             //weaponTrail.emitting = false;
 
             //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
@@ -88,8 +95,8 @@ namespace Advent.Entities
             //InitAttributes();
             //InitMovementSpeed();
 
-            //InitHP();
-            //InitMP();
+            InitHP();
+            InitMP();
 
             //InitDamage();
             //InitPhysicalDefense();
@@ -217,14 +224,14 @@ namespace Advent.Entities
         //{
         //    InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
         //}
-        //private void InitHP()
-        //{
-        //    InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
-        //}
-        //private void InitMP()
-        //{
-        //    InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
-        //}
+        private void InitHP()
+        {
+            InitHitpoints(entitiesStats, currentLevel);
+        }
+        private void InitMP()
+        {
+            InitManaPoints(entitiesStats,currentLevel);
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != null)

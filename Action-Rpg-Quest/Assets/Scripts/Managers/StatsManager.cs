@@ -57,13 +57,15 @@ namespace Advent.Manager
         //    //stats.lifeStealPercent = new EntityStat();
         //    //stats.abilityCooldownReduction = new EntityStat();
         //}
-        //public void InitMaxHP(Stats statList,StatFormulas statFormula,float currentLevel = 1)
-        //{
-        //    statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(statList.baseVIT,statList.bonusVIT.getValue,currentLevel);
-        //}
-        //public void InitMaxMP(Stats statList, StatFormulas statFormula, float currentLevel = 1)
-        //{
-        //    statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(statList.baseINT, statList.bonusINT.getValue, currentLevel);
-        //}
+        public int InitMaxHP(EntitiesStats stats, StatFormulas statFormula, float currentLevel = 1)
+        {
+            int value = statFormula.ComputeMaxHP(stats.base_Vit, stats.GetStat(BaseStat.BaseStatType.BONUS_VIT).GetCalculatedStatValue(), currentLevel);
+            return value;
+        }
+        public int InitMaxMP(EntitiesStats stats, StatFormulas statFormula, float currentLevel = 1)
+        {
+            int value = statFormula.ComputeMaxMP(stats.base_Int, stats.GetStat(BaseStat.BaseStatType.BONUS_INT).GetCalculatedStatValue(), currentLevel);
+            return value;
+        }
     }
 }

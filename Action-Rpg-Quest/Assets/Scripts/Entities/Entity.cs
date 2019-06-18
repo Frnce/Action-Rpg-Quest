@@ -26,6 +26,8 @@ namespace Advent.Entities
         protected int currentLevel = 0;
         protected float currentHP = 0;
         protected float currentMP = 0;
+        protected float maxHP = 0;
+        protected float maxMP = 0;
 
         protected Rigidbody2D rb2d;
         protected Animator anim;
@@ -47,6 +49,16 @@ namespace Advent.Entities
                 currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
             }
         }
+        public void InitHitpoints(EntitiesStats entitiesStats,int level)
+        {
+            maxHP = statManager.InitMaxHP(entitiesStats, statFormula, level);
+            currentHP = maxHP;
+        }
+        public void InitManaPoints(EntitiesStats entitiesStats,int level)
+        {
+            maxMP = statManager.InitMaxMP(entitiesStats,statFormula,level);
+            currentMP = maxMP;
+        }
         public float GetCurrentHP
         {
             get
@@ -59,6 +71,20 @@ namespace Advent.Entities
             get
             {
                 return Mathf.Round(currentMP);
+            }
+        }
+        public float GetMaxHP
+        {
+            get
+            {
+                return Mathf.Round(maxHP);
+            }
+        }
+        public float GetMaxMp
+        {
+            get
+            {
+                return Mathf.Round(maxMP);
             }
         }
         public int GetCurrentLevel

@@ -11,16 +11,9 @@ namespace Advent.Entities
     {
         public enum BaseStatType
         {
-            BASE_STR,
             BONUS_STR,
-
-            BASE_DEX,
             BONUS_DEX,
-
-            BASE_INT,
             BONUS_INT,
-
-            BASE_VIT,
             BONUS_VIT,
 
             P_ATK_MIN,
@@ -28,7 +21,10 @@ namespace Advent.Entities
 
             Phy_Defense,
 
-            P_ATK_MOD_PERCENT
+            CRIT_CHANCE,
+            CRIT_DMG_PERCENT,
+
+            P_DMG_INCREASE,
         }
 
         public List<StatBonus> BaseAdditives { get; set; }

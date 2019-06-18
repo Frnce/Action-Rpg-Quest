@@ -7,14 +7,14 @@ namespace Advent.Entities
 {
     public class StatFormulas
     {
-        public float ComputeMaxHP(float baseVit,float bonusVit, float level)
+        public int ComputeMaxHP(float baseVit,float bonusVit, float level)
         {
-            float result = ((baseVit * 300f) + (bonusVit * 125f) + (level * 0.5f)) / 2;
+            float result = Mathf.Floor(Mathf.Round(((baseVit * 300f) + (bonusVit * 125f) + (level * 0.5f)) / 2));
             return Mathf.RoundToInt(result);
         }
-        public float ComputeMaxMP(float baseInt, float bonusInt,float level)
+        public int ComputeMaxMP(float baseInt, float bonusInt,float level)
         {
-            float result = ((baseInt * 150) + (bonusInt * 50) + (level * 0.5f)) / 2;
+            float result = Mathf.Floor(Mathf.Round(((baseInt * 150) + (bonusInt * 50) + (level * 0.5f)) / 2));
             return Mathf.RoundToInt(result);
         }
         //public IntRange ComputeBaseAttack(float baseStr,float bonusStr,AttackDamageRange baseWeaponDamage,float lvl)

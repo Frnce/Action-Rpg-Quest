@@ -101,18 +101,18 @@ namespace Advent.UI
         }
         private void HpUpdateUI()
         {
-            //hpPercent = (100f / player.GetMaxHP) * player.GetCurrentHP;
+            hpPercent = (100f / player.GetMaxHP) * player.GetCurrentHP;
 
-            //hpBar.fillAmount = hpPercent / 100f;
-            //currentHP.text = player.GetCurrentHP.ToString();
-            //maxHP.text = player.GetMaxHP.ToString();
+            hpBar.fillAmount = hpPercent / 100f;
+            currentHP.text = player.GetCurrentHP.ToString();
+            maxHP.text = player.GetMaxHP.ToString();
         }
         private void MpUpdateUI()
         {
-            //mpPercent = (100f / player.GetMaxMP) * player.GetCurrentMP;
-            //mpBar.fillAmount = mpPercent / 100f;
-            //currentMP.text = player.GetCurrentMP.ToString();
-            //maxMP.text = player.GetMaxMP.ToString();
+            mpPercent = (100f / player.GetMaxMp) * player.GetCurrentMP;
+            mpBar.fillAmount = mpPercent / 100f;
+            currentMP.text = player.GetCurrentMP.ToString();
+            maxMP.text = player.GetMaxMp.ToString();
         }
         private void ExpUpdateUI()
         {
