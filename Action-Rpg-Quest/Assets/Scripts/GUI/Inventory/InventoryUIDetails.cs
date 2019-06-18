@@ -33,7 +33,7 @@ namespace Advent.UI
             {
                 foreach (BaseStat stat in item.StatType)
                 {
-                    statText.text += stat.statName + ": " + stat.baseValue + "\n";
+                    statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
                 }
             }
             itemInteractButton.onClick.RemoveAllListeners();

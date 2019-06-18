@@ -11,65 +11,75 @@ namespace Advent.Entities
     {
         public enum BaseStatType
         {
-            STRENGTH,
-            DEXTERITY,
-            INTELLIGENCE,
-            VITALITY,
-            ATTACKMIN,
-            ATTACKMAX
+            BASE_STR,
+            BONUS_STR,
+
+            BASE_DEX,
+            BONUS_DEX,
+
+            BASE_INT,
+            BONUS_INT,
+
+            BASE_VIT,
+            BONUS_VIT,
+
+            P_ATK_MIN,
+            P_ATK_MAX,
+
+            P_ATK_MOD_PERCENT
         }
 
-        public List<StatBonus> baseAdditives { get; set; }
+        public List<StatBonus> BaseAdditives { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
-        public BaseStatType statType { get; set; }
-        public int baseValue { get; set; }
-        public string statName { get; set; }
-        public string statDescription { get; set; }
-        public int finalValue { get; set; }
+        public BaseStatType StatType { get; set; }
+        public int BaseValue { get; set; }
+        public string StatName { get; set; }
+        public string StatDescription { get; set; }
+        public int FinalValue { get; set; }
 
         public BaseStat(int _baseValue, string _statName, string _statDescription)
         {
-            baseAdditives = new List<StatBonus>();
-            baseValue = _baseValue;
-            statName = _statName;
-            statDescription = _statDescription;
+            BaseAdditives = new List<StatBonus>();
+            BaseValue = _baseValue;
+            StatName = _statName;
+            StatDescription = _statDescription;
         }
 
         [JsonConstructor]
         public BaseStat(BaseStatType _statType, int _baseValue, string _statName)
         {
-            baseAdditives = new List<StatBonus>();
-            statType = _statType;
-            baseValue = _baseValue;
-            statName = _statName;
+            BaseAdditives = new List<StatBonus>();
+            StatType = _statType;
+            BaseValue = _baseValue;
+            StatName = _statName;
         }
 
         public void AddStatBonus(StatBonus statBonus)
         {
-            baseAdditives.Add(statBonus);
+            BaseAdditives.Add(statBonus);
         }
 
         public void RemoveStatBonus(StatBonus statBonus)
         {
-            baseAdditives.Remove(baseAdditives.Find(x => x.bonusValue == statBonus.bonusValue));
+            BaseAdditives.Remove(BaseAdditives.Find(x => x.BonusValue == statBonus.BonusValue));
         }
 
         public int GetCalculatedStatValue()
         {
-            finalValue = 0;
-            baseAdditives.ForEach(x => this.finalValue += x.bonusValue);
-            this.finalValue += baseValue;
-            return finalValue;
+            FinalValue = 0;
+            BaseAdditives.ForEach(x => this.FinalValue += x.BonusValue);
+            this.FinalValue += BaseValue;
+            return FinalValue;
         }
 
     }
     public class StatBonus
     {
-        public int bonusValue { get; set; }
+        public int BonusValue { get; set; }
 
         public StatBonus(int _bonusValue)
         {
-            this.bonusValue = _bonusValue;
+            this.BonusValue = _bonusValue;
         }
     }
 }

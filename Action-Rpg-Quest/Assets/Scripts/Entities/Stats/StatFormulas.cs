@@ -31,7 +31,7 @@ namespace Advent.Entities
 
             return result;
         }
-        public int ComputeDamage(IntRange baseAttack, AttackDamageRange weaponAttack, int defense,int targetLevel)
+        public int ComputeDamage(IntRange baseAttack, AttackDamageRange weaponAttack, int defense,int targetLevel, EntityStat mod)
         {
             float minDamage = baseAttack.m_Min + weaponAttack.minDamage.getValue;
             float maxDamage = baseAttack.m_Max + weaponAttack.maxDamage.getValue;
@@ -40,7 +40,7 @@ namespace Advent.Entities
 
             IntRange damage = new IntRange(Mathf.RoundToInt(minDamage), Mathf.RoundToInt(maxDamage));
             Debug.Log("Min base dmg : " + damage.m_Min + " Max Base Dmg : " + damage.m_Max);
-            float finalDamage = damage.Random - ((defense * 0.5f) + (targetLevel * 0.5f));
+            float finalDamage = Mathf.Floor((Mathf.Round(damage.Random * (1f + ( mod.getValue/ 100f)))- (Mathf.Round((defense * 0.5f) + (targetLevel * 0.5f)))));
             return Mathf.RoundToInt(finalDamage);
         }
     }

@@ -43,6 +43,8 @@ namespace Advent.Manager
             //Movement Speed
             stats.movementSpeed = new EntityStat();
 
+            stats.PdmgIncreaseMod = new EntityStat();
+
             //stats.criticalHitChance = new EntityStat();
             //stats.criticalHitDamage = new EntityStat();
 

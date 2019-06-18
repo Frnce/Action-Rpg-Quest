@@ -126,9 +126,9 @@ namespace Advent.Entities
         {
             Debug.Log(gameObject.name + " Died");
         }
-        public int GetDamage(IntRange baseAttack, AttackDamageRange weaponDamage)
+        public int GetDamage(IntRange baseAttack, AttackDamageRange weaponDamage, EntityStat mod)
         {
-            return statFormula.ComputeDamage(baseAttack, weaponDamage, statList.baseDef, currentLevel);
+            return statFormula.ComputeDamage(baseAttack, weaponDamage, statList.baseDef, currentLevel,mod);
         }
         protected void ShowFloatingDamageText(float damageAmount)
         {

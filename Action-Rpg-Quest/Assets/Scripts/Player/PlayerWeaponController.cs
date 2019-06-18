@@ -134,6 +134,10 @@ namespace Advent.Entities
                 currentlyEquippedWeapon = itemToEquip;
             }
         }
+        public void InitStats()
+        {
+            //player.GetStats.weaponDamage.minDamage, = currentlyEquippedWeapon.StatType[0]./*finalValue*/
+        }
         public void UnequipEquipment()
         {
             //Removes weapon held on avatar

@@ -37,6 +37,7 @@ namespace Advent.Utilities
         public EntityStat movementSpeed;
 
         //Modifiers 
+        public EntityStat PdmgIncreaseMod { get; set; }
         //TODO TBA Mods
         //public EntityStat criticalHitChance;
         //public EntityStat criticalHitDamage;
