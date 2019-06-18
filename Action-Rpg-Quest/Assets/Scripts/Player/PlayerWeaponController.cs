@@ -24,6 +24,8 @@ namespace Advent.Entities
         private Vector2 mouse;
         private int playerSortingOrder;
 
+        private EntitiesStats playerStats;
+
         //For Player Attack Setting
         private float timeBetweenAttack;
         float finalUseTime;
@@ -38,8 +40,11 @@ namespace Advent.Entities
             playerController = PlayerController.instance;
             playerSortingOrder = player.PlayerSprite.sortingOrder;
 
-            timeBetweenAttack = currentlyEquippedWeapon.UseTime / 60;
+            playerStats = player.GetPlayerStats();
 
+            EquipmentManager.instance.EquipItem(ItemDatabase.Instance.GetItem("Wpn_HuntingKnife"));
+
+            timeBetweenAttack = currentlyEquippedWeapon.UseTime / 60;
             //TODO Place it on the calculations tab
             finalUseTime = Mathf.Floor(Mathf.Round(currentlyEquippedWeapon.UseTime * (1f - (250f / 100f)))); // 10f is attack speed modifier = 10%
             Debug.Log(finalUseTime);
@@ -127,12 +132,22 @@ namespace Advent.Entities
             {
                 if (equippedWeapon != null)
                 {
-                    //Unequip Weapon
+                    UnequipWeapon();
                 }
                 EquippedWeapon = Instantiate(Resources.Load<GameObject>("Items/Item/Equipments/Weapons/" + itemToEquip.ObjectSlug), playerHand.transform);
                 equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
+                equippedWeapon.Stats = itemToEquip.Stats;
                 currentlyEquippedWeapon = itemToEquip;
+
+                playerStats.AddStatBonus(itemToEquip.Stats);
+                Debug.Log(playerStats.GetStat(BaseStat.BaseStatType.P_ATK_MIN).GetCalculatedStatValue());
+                //UIEventHandler.ItemEquipped(itemToEquip);
+                //UIEventHandler.StatsChanged();
             }
+        }
+        public void UnequipWeapon()
+        {
+            Destroy(EquippedWeapon.transform.gameObject);
         }
         public void InitStats()
         {

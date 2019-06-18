@@ -26,6 +26,8 @@ namespace Advent.Entities
             P_ATK_MIN,
             P_ATK_MAX,
 
+            Phy_Defense,
+
             P_ATK_MOD_PERCENT
         }
 

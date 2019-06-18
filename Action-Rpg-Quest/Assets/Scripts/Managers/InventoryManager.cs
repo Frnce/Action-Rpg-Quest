@@ -58,7 +58,6 @@ namespace Advent.Manager
         }
         private void Start()
         {
-            EquipmentManager.instance.EquipItem(ItemDatabase.Instance.GetItem("Wpn_HuntingKnife"));
         }
         public bool AddToFirstEmptySlot(Item item)
         {

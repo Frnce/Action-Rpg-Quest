@@ -76,6 +76,7 @@ namespace Advent.Entities
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
 
+            entitiesStats = new EntitiesStats(entityStats.strength, entityStats.dexterity, entityStats.vitality, entityStats.intelligence);
             //weaponTrail.emitting = false;
 
             //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
@@ -84,14 +85,14 @@ namespace Advent.Entities
 
             //EquipmentManager.instance.EquipDefaults();
 
-            InitAttributes();
-            InitMovementSpeed();
+            //InitAttributes();
+            //InitMovementSpeed();
 
-            InitHP();
-            InitMP();
+            //InitHP();
+            //InitMP();
 
-            InitDamage();
-            InitPhysicalDefense();
+            //InitDamage();
+            //InitPhysicalDefense();
         }
         // Update is called once per frame
         void Update()
@@ -208,22 +209,22 @@ namespace Advent.Entities
             stepDirection = Camera.main.ScreenToWorldPoint(stepDirection);
             return (stepDirection - transform.position).normalized;
         }
-        private void InitDamage()
-        {
-            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
-        }
-        private void InitPhysicalDefense()
-        {
-            InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
-        }
-        private void InitHP()
-        {
-            InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
-        }
-        private void InitMP()
-        {
-            InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
-        }
+        //private void InitDamage()
+        //{
+        //    InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
+        //}
+        //private void InitPhysicalDefense()
+        //{
+        //    InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
+        //}
+        //private void InitHP()
+        //{
+        //    InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
+        //}
+        //private void InitMP()
+        //{
+        //    InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
+        //}
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision != null)
@@ -248,6 +249,10 @@ namespace Advent.Entities
             {
                 return avatarRenderer.GetComponent<SpriteRenderer>();
             }
+        }
+        public EntitiesStats GetPlayerStats()
+        {
+            return entitiesStats;
         }
         public PlayerStates GetPlayerStates
         {

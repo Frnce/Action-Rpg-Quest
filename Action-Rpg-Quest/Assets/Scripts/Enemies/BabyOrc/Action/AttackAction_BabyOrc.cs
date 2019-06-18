@@ -27,7 +27,8 @@ namespace Advent.AI.Enemy
                 //enemy.GetAnimator().SetTrigger("attack");
 
                 //TODO Change this magic number to the stat of Enemy
-                int damage = target.GetComponent<Player>().GetDamage(enemy.GetStats.baseAttack, enemy.GetStats.weaponDamage,enemy.GetStats.PdmgIncreaseMod);
+                //int damage = target.GetComponent<Player>().GetDamage(enemy.GetStats.baseAttack, enemy.GetStats.weaponDamage,enemy.GetStats.PdmgIncreaseMod);
+                int damage = 0;
                 target.GetComponent<IDamageable>().TakeDamage(damage,controller.transform.position);
                 controller.stateTimeElapsed = 0;
             }

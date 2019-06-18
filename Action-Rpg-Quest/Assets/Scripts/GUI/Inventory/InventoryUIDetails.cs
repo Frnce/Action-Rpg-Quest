@@ -29,9 +29,9 @@ namespace Advent.UI
         {
             gameObject.SetActive(true);
             statText.text = "";
-            if(item.StatType != null)
+            if(item.Stats != null)
             {
-                foreach (BaseStat stat in item.StatType)
+                foreach (BaseStat stat in item.Stats)
                 {
                     statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
                 }

@@ -9,7 +9,7 @@ namespace Advent.Items
     [System.Serializable]
     public class Item
     {
-        public List<BaseStat> StatType { get; set; }
+        public List<BaseStat> Stats { get; set; }
         public string ObjectSlug { get; set; } // AKA Prefab name
         public string itemIcon { get; set; }
         public string Description { get; set; }
@@ -26,16 +26,16 @@ namespace Advent.Items
         public bool ItemModifier { get; set; } //if true - it changes something in the stats 
 
         public Item() { }
-        public Item(List<BaseStat> _StatType, string _ObjectSlug)
+        public Item(List<BaseStat> _Stats, string _ObjectSlug)
         {
-            StatType = _StatType;
+            Stats = _Stats;
             ObjectSlug = _ObjectSlug;
         }
 
         [JsonConstructor]
         public Item(List<BaseStat> _Stats, string _ObjectSlug, string _itemIcon, string _Description, ItemTypes _ItemType, WeaponTypes _weaponType,EquipTypes _EquipType,ItemRarity _itemRarity,float _useTime, int _itemId, string _ActionName, string _ItemName,bool _isStackable, bool _ItemModifier)
         {
-            StatType = _Stats;
+            Stats = _Stats;
             ObjectSlug = _ObjectSlug;
             itemIcon = _itemIcon;
             Description = _Description;

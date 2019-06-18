@@ -12,8 +12,7 @@ namespace Advent.Entities
     {
         [SerializeField]
         protected EntityStats entityStats = null;
-        [SerializeField]
-        protected Stats statList = null;
+        protected EntitiesStats entitiesStats = null;
         [Space]
         [SerializeField]
         protected GameObject floatingDamageText;
@@ -33,7 +32,6 @@ namespace Advent.Entities
 
         private StatsManager statManager;
         private StatFormulas statFormula = new StatFormulas();
-
         public virtual void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
@@ -48,37 +46,6 @@ namespace Advent.Entities
             {
                 currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
             }
-            statManager.InitStats(statList);
-        }
-
-        protected void InitAttributes()
-        {
-            statList.baseSTR = entityStats.strength;
-            statList.baseDEX = entityStats.dexterity;
-            statList.baseINT = entityStats.intelligence;
-            statList.baseVIT = entityStats.vitality;
-        }
-        protected void InitMovementSpeed()
-        {
-            statList.movementSpeed.baseValue = entityStats.movementSpeed;
-        }
-        protected void InitBaseDamage(float baseStr,float bonusStr,AttackDamageRange weaponDamage,int level)
-        {
-            statList.baseAttack = statFormula.ComputeBaseAttack(baseStr, bonusStr,weaponDamage, level);
-        }
-        protected void InitPhysicalDefense(float baseStr, float baseArmor)
-        {
-            statList.baseDef = statFormula.ComputeMaxDefense(baseStr, baseArmor);
-        }
-        protected void InitHitpoints(float baseVit, float bonusvit,float level)
-        {
-            statList.maxHitPoints.baseValue = statFormula.ComputeMaxHP(baseVit, bonusvit, level);
-            currentHP = GetMaxHP;
-        }
-        protected void InitManaPoints(float baseInt,float bonusInt,float level)
-        {
-            statList.maxManaPoints.baseValue = statFormula.ComputeMaxMP(baseInt, bonusInt, level);
-            currentMP = GetMaxMP;
         }
         public float GetCurrentHP
         {
@@ -94,20 +61,6 @@ namespace Advent.Entities
                 return Mathf.Round(currentMP);
             }
         }
-        public float GetMaxHP
-        {
-            get
-            {
-                return Mathf.Round(statList.maxHitPoints.getValue);
-            }
-        }
-        public float GetMaxMP
-        {
-            get
-            {
-                return Mathf.Round(statList.maxManaPoints.getValue);
-            }
-        }
         public int GetCurrentLevel
         {
             get
@@ -115,20 +68,9 @@ namespace Advent.Entities
                 return currentLevel;
             }
         }
-        public Stats GetStats
-        {
-            get
-            {
-                return statList;
-            }
-        }
         public virtual void Die()
         {
             Debug.Log(gameObject.name + " Died");
-        }
-        public int GetDamage(IntRange baseAttack, AttackDamageRange weaponDamage, EntityStat mod)
-        {
-            return statFormula.ComputeDamage(baseAttack, weaponDamage, statList.baseDef, currentLevel,mod);
         }
         protected void ShowFloatingDamageText(float damageAmount)
         {

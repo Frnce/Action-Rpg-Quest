@@ -16,7 +16,7 @@ namespace Advent.UI
         public EnemyController enemyBase;
         private void Update()
         {
-            hpPercent = (100f / enemyBase.GetMaxHP) * enemyBase.GetCurrentHP;
+            hpPercent = (100f / /*enemyBase.GetMaxHP*/ 100f) * enemyBase.GetCurrentHP;
 
             hitPointsBar.fillAmount = hpPercent / 100f;
         }

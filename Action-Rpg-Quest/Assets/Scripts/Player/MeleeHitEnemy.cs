@@ -8,17 +8,18 @@ namespace Advent.Entities
 {
     public class MeleeHitEnemy : MonoBehaviour
     {
-        private Stats stats;
+        //private Stats stats;
         private void Start()
         {
-            stats = Player.instance.GetStats;
+            //stats = Player.instance.GetStats;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //TODO Make layermask modular . using a variable
             if (collision.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
             {
-                int damage = collision.GetComponentInParent<EnemyController>().GetDamage(stats.baseAttack, stats.weaponDamage,stats.PdmgIncreaseMod);
+                int damage = 0;
+                //int damage = collision.GetComponentInParent<EnemyController>().GetDamage(stats.baseAttack, stats.weaponDamage,stats.PdmgIncreaseMod);
                 collision.GetComponentInParent<IDamageable>().TakeDamage(damage,Vector3.zero);//TODO GET DAMAGE FROM THE ATTACK ATTRIBUTES
             }
         }
