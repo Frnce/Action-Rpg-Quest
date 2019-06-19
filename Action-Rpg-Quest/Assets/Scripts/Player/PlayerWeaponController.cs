@@ -43,7 +43,6 @@ namespace Advent.Entities
             playerStats = player.GetPlayerStats();
 
             EquipmentManager.instance.EquipItem(ItemDatabase.Instance.GetItem("Wpn_HuntingKnife"));
-
             timeBetweenAttack = currentlyEquippedWeapon.UseTime / 60;
             //TODO Place it on the calculations tab
             finalUseTime = Mathf.Floor(Mathf.Round(currentlyEquippedWeapon.UseTime * (1f - (250f / 100f)))); // 10f is attack speed modifier = 10%
@@ -140,7 +139,7 @@ namespace Advent.Entities
                 currentlyEquippedWeapon = itemToEquip;
 
                 playerStats.AddStatBonus(itemToEquip.Stats);
-                Debug.Log(playerStats.GetStat(BaseStat.BaseStatType.P_ATK_MIN).GetCalculatedStatValue());
+                player.InitDamage();
                 //UIEventHandler.ItemEquipped(itemToEquip);
                 //UIEventHandler.StatsChanged();
             }

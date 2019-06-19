@@ -67,5 +67,21 @@ namespace Advent.Manager
             int value = statFormula.ComputeMaxMP(stats.base_Int, stats.GetStat(BaseStat.BaseStatType.BONUS_INT).GetCalculatedStatValue(), currentLevel);
             return value;
         }
+        public IntRange InitDamage(EntitiesStats stats, StatFormulas statFormula,float currentLevel = 1)
+        {
+            IntRange value = statFormula.ComputeBaseAttack(stats, currentLevel);
+            return value;
+        }
+        public int InitPDef(EntitiesStats stats, StatFormulas statFormulas)
+        {
+            int value = statFormulas.ComputeMaxDefense(stats);
+            return value;
+        }
+
+        public int GetCalculatedDamage(IntRange baseAttack,EntitiesStats stats,int targetDef,StatFormulas statFormulas)
+        {
+            int value = statFormulas.ComputeDamage(baseAttack, stats, targetDef);
+            return value;
+        }
     }
 }

@@ -98,8 +98,7 @@ namespace Advent.Entities
             InitHP();
             InitMP();
 
-            //InitDamage();
-            //InitPhysicalDefense();
+            InitPDef();
         }
         // Update is called once per frame
         void Update()
@@ -216,14 +215,14 @@ namespace Advent.Entities
             stepDirection = Camera.main.ScreenToWorldPoint(stepDirection);
             return (stepDirection - transform.position).normalized;
         }
-        //private void InitDamage()
-        //{
-        //    InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
-        //}
-        //private void InitPhysicalDefense()
-        //{
-        //    InitPhysicalDefense(statList.baseSTR, statList.armorDefense.getValue);
-        //}
+        public void InitDamage()
+        {
+            InitBaseDamage(entitiesStats, currentLevel);
+        }
+        private void InitPDef()
+        {
+            InitPhysicalDefense(entitiesStats);
+        }
         private void InitHP()
         {
             InitHitpoints(entitiesStats, currentLevel);
@@ -260,6 +259,10 @@ namespace Advent.Entities
         public EntitiesStats GetPlayerStats()
         {
             return entitiesStats;
+        }
+        public IntRange GetBaseAttack()
+        {
+            return baseAttack;
         }
         public PlayerStates GetPlayerStates
         {

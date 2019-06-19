@@ -21,7 +21,7 @@ namespace Advent.Entities
                 new BaseStat(BaseStat.BaseStatType.BONUS_DEX,0,"Bonus_Dex"),
                 new BaseStat(BaseStat.BaseStatType.BONUS_VIT,0,"Bonus_Vit"),
                 new BaseStat(BaseStat.BaseStatType.BONUS_INT,0,"Bonus_Int"),
-
+                //Weapon Damage
                 new BaseStat(BaseStat.BaseStatType.P_ATK_MIN,0,"P_Atk_Min"),
                 new BaseStat(BaseStat.BaseStatType.P_ATK_MAX,0,"P_Atk_Max"),
 

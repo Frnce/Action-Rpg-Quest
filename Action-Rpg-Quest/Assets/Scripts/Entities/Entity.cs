@@ -28,6 +28,8 @@ namespace Advent.Entities
         protected float currentMP = 0;
         protected float maxHP = 0;
         protected float maxMP = 0;
+        protected IntRange baseAttack = new IntRange(0, 0);
+        protected float currentPDef = 0;
 
         protected Rigidbody2D rb2d;
         protected Animator anim;
@@ -58,6 +60,21 @@ namespace Advent.Entities
         {
             maxMP = statManager.InitMaxMP(entitiesStats,statFormula,level);
             currentMP = maxMP;
+        }
+        public void InitBaseDamage(EntitiesStats entitiesStats,int level)
+        {
+            baseAttack = statManager.InitDamage(entitiesStats, statFormula, level);
+            Debug.Log("Min Damage : " + baseAttack.m_Min + " Max Damage : " + baseAttack.m_Max);
+        }
+        public void InitPhysicalDefense(EntitiesStats entitiesStats)
+        {
+            currentPDef = statManager.InitPDef(entitiesStats, statFormula);
+            Debug.Log(currentPDef);
+        }
+        public int GetCalculatedDamage(IntRange _baseAttack,EntitiesStats entitiesStats,int targetDef)
+        {
+            int value = statManager.GetCalculatedDamage(_baseAttack, entitiesStats, targetDef, statFormula);
+            return value;
         }
         public float GetCurrentHP
         {

@@ -19,7 +19,8 @@ namespace Advent.Entities
             if (collision.CompareTag("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Hurtbox"))
             {
                 int damage = 0;
-                //int damage = collision.GetComponentInParent<EnemyController>().GetDamage(stats.baseAttack, stats.weaponDamage,stats.PdmgIncreaseMod);
+                EnemyController target = collision.GetComponentInParent<EnemyController>();
+                damage = target.GetCalculatedDamage(Player.instance.GetBaseAttack(), Player.instance.GetPlayerStats(),0); // TODO Apply target Damage;
                 collision.GetComponentInParent<IDamageable>().TakeDamage(damage,Vector3.zero);//TODO GET DAMAGE FROM THE ATTACK ATTRIBUTES
             }
         }
