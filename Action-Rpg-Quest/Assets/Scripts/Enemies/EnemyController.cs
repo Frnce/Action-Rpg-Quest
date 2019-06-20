@@ -48,15 +48,28 @@ namespace Advent.Entities
             target = Player.instance.gameObject;
             myCollider = GetComponent<CircleCollider2D>();
 
+
+            entitiesStats = new EntitiesStats
+            {
+                base_Str = entityStats.strength,
+                base_Dex = entityStats.dexterity,
+                base_Vit = entityStats.vitality,
+                base_Int = entityStats.intelligence
+            };
+
             hitPointsBar.SetActive(false);
 
             //InitAttributes();
             //InitMovementSpeed();
 
-            //InitHP();
+            InitHP();
             //InitMP();
 
             //InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
+        }
+        private void InitHP()
+        {
+            InitHitpoints(entitiesStats, currentLevel);
         }
         //private void InitHP()
         //{
