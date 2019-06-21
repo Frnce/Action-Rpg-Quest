@@ -21,7 +21,7 @@ namespace Advent.Entities
 
             BONUS_ASPD,
 
-            P_Def,
+            P_ARMOR,
 
             CRIT_CHANCE,
             CRIT_DMG_PERCENT,

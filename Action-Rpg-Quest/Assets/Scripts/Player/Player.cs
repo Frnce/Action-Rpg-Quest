@@ -65,6 +65,14 @@ namespace Advent.Entities
                 Debug.LogWarning("two or more instance of " + instance.gameObject.name + " detected.");
             }
             DontDestroyOnLoad(gameObject);
+
+            entitiesStats = new EntitiesStats
+            {
+                base_Str = entityStats.strength,
+                base_Dex = entityStats.dexterity,
+                base_Vit = entityStats.vitality,
+                base_Int = entityStats.intelligence
+            };
         }
 
         // Start is called before the first frame update
@@ -75,15 +83,6 @@ namespace Advent.Entities
             cam = FindObjectOfType<CameraController>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
-
-            entitiesStats = new EntitiesStats
-            {
-                base_Str = entityStats.strength,
-                base_Dex = entityStats.dexterity,
-                base_Vit = entityStats.vitality,
-                base_Int = entityStats.intelligence
-            };
-
             //weaponTrail.emitting = false;
 
             //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;

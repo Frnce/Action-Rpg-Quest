@@ -28,7 +28,7 @@ namespace Advent.Entities
                 new BaseStat(BaseStat.BaseStatType.BONUS_ASPD,0,"Bonus_Aspd"),
 
 
-                new BaseStat(BaseStat.BaseStatType.P_Def,0,"P_Def"),
+                new BaseStat(BaseStat.BaseStatType.P_ARMOR,0,"P_Def"),
 
                 new BaseStat(BaseStat.BaseStatType.CRIT_CHANCE,10,"Crit_Chance"),
                 new BaseStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT,35,"Crit_Dmg_Percent"),

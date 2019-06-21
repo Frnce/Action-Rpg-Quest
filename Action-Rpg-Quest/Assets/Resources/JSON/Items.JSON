@@ -66,9 +66,9 @@
     "EquipType": "Body",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 3,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -88,9 +88,9 @@
     "EquipType": "Body",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -110,9 +110,9 @@
     "EquipType": "Head",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -132,9 +132,9 @@
     "EquipType": "Head",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -154,9 +154,9 @@
     "EquipType": "Legs",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -176,9 +176,9 @@
     "EquipType": "Legs",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -198,9 +198,9 @@
     "EquipType": "Foot",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [
@@ -220,9 +220,9 @@
     "EquipType": "Foot",
     "Stats": [
       {
-        "StatType": "Phy_Defense",
+        "StatType": "P_Armor",
         "BaseValue": 1,
-        "StatName": "Phy_Defense"
+        "StatName": "P_Armor"
       }
     ],
     "StatModifier": [

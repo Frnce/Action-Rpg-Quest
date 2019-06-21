@@ -61,7 +61,9 @@ namespace Advent.UI
         public static void StatsChanged()
         {
             if (OnStatsChanged != null)
-                OnStatsChanged();
+            {
+                OnStatsChanged.Invoke();
+            }
         }
 
         public static void PlayerLevelChanged()
