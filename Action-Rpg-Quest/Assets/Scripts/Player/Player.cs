@@ -264,6 +264,13 @@ namespace Advent.Entities
         {
             return baseAttack;
         }
+        public float GetAspd
+        {
+            get
+            {
+                return attackSpeed;
+            }
+        }
         public PlayerStates GetPlayerStates
         {
             get

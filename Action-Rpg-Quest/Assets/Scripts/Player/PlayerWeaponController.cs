@@ -45,7 +45,7 @@ namespace Advent.Entities
             EquipmentManager.instance.EquipItem(ItemDatabase.Instance.GetItem("Wpn_HuntingKnife"));
             timeBetweenAttack = currentlyEquippedWeapon.UseTime / 60;
             //TODO Place it on the calculations tab
-            finalUseTime = Mathf.Floor(Mathf.Round(currentlyEquippedWeapon.UseTime * (1f - (250f / 100f)))); // 10f is attack speed modifier = 10%
+            finalUseTime = Mathf.Floor(Mathf.Round(currentlyEquippedWeapon.UseTime * (1f - (player.GetAspd / 100f)))); // 10f is attack speed modifier = 10%
             Debug.Log(finalUseTime);
         }
         private void Update()
@@ -118,7 +118,7 @@ namespace Advent.Entities
         private IEnumerator DefaultAttackRoutine()
         {
             player.IsAttacking = true;
-            EquippedWeapon.GetComponent<IWeapon>().PerformAttack(1 + (250f / 100)); // 10f is attack modifier
+            EquippedWeapon.GetComponent<IWeapon>().PerformAttack(1 + (player.GetAspd / 100)); // 10f is attack modifier
             //player.MicroStepAction();
             yield return new WaitForSeconds(finalUseTime / 60); //Change This later - when implementing the attack speed feature
             EquippedWeapon.GetComponent<Animator>().SetBool("isAttacking", false);

@@ -19,7 +19,9 @@ namespace Advent.Entities
             P_ATK_MIN,
             P_ATK_MAX,
 
-            Phy_Defense,
+            BONUS_ASPD,
+
+            P_Def,
 
             CRIT_CHANCE,
             CRIT_DMG_PERCENT,

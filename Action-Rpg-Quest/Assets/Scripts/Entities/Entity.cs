@@ -30,6 +30,7 @@ namespace Advent.Entities
         protected float maxMP = 0;
         protected IntRange baseAttack = new IntRange(0, 0);
         protected float currentPDef = 0;
+        protected float attackSpeed = 0;
 
         protected Rigidbody2D rb2d;
         protected Animator anim;

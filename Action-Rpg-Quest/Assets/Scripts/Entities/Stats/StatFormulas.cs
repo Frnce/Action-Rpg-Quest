@@ -35,7 +35,7 @@ namespace Advent.Entities
         #region Max Defense Calculation
         public int ComputeMaxDefense(EntitiesStats entitiesStats)
         {
-            int result = Mathf.FloorToInt(Mathf.Round((entitiesStats.base_Str * 0.8f) + entitiesStats.GetStat(BaseStat.BaseStatType.Phy_Defense).GetCalculatedStatValue()));
+            int result = Mathf.FloorToInt(Mathf.Round((entitiesStats.base_Str * 0.8f) + entitiesStats.GetStat(BaseStat.BaseStatType.P_Def).GetCalculatedStatValue()));
 
             return result;
         }
