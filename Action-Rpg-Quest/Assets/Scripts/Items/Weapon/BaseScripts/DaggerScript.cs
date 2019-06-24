@@ -12,7 +12,7 @@ namespace Advent.Items
         [Header("Audio")]
         public AudioClip[] audioClip;
 
-        public List<BaseStat> Stats { get; set; }
+        public Dictionary<string, BaseStat>  Stats { get; set; }
         public int CurrentDamage { get; set; }
         public AudioClip[] AudioClip { get; set; }
 

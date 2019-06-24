@@ -16,6 +16,9 @@ namespace Advent.Manager
         [SerializeField]
         private Item[] equipmentSlots;
 
+        public delegate void EquipChangeEventHandler();
+        public static event EquipChangeEventHandler OnEquipChange;
+
         private void Awake()
         {
             if (instance != null)
@@ -64,6 +67,14 @@ namespace Advent.Manager
         {
             UnequipItem(oldItem);
             EquipItem(newItem);
+        }
+
+        public void EquipChanged() //Invocation for updating EquipmentStats
+        {
+            if(OnEquipChange != null)
+            {
+                OnEquipChange.Invoke();
+            }
         }
         public Item[] GetEquipsList
         {

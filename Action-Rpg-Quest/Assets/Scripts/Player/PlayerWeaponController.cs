@@ -139,7 +139,7 @@ namespace Advent.Entities
                 currentlyEquippedWeapon = itemToEquip;
 
                 playerStats.AddStatBonus(itemToEquip.Stats);
-                player.InitDamage();
+                EquipmentManager.instance.EquipChanged();
                 //UIEventHandler.ItemEquipped(itemToEquip);
                 //UIEventHandler.StatsChanged();
             }

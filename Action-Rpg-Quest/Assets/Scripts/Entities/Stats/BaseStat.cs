@@ -19,14 +19,27 @@ namespace Advent.Entities
             P_ATK_MIN,
             P_ATK_MAX,
 
-            BONUS_ASPD,
+            BONUS_ASPD, // in percentage
 
-            P_ARMOR,
+            P_DEF,
+            M_DEF,
+
+            BONUS_MS, //in percentage
 
             CRIT_CHANCE,
             CRIT_DMG_PERCENT,
 
             P_DMG_INCREASE,
+            M_DMG_INCREASE,
+            LIFESTEAL_PERCENT_AMOUNT,
+            LIFESTEAL_PERCENT_CHANCE,
+            HP_BONUS_PERCENT,
+            HP_REGEN_PERCENT,
+            MP_BONUS_PERCENT,
+            MP_REGEN_PERCENT,
+            BLOCK_CHANCE_SECOND,
+            CAST_TIME_REDUC,
+            COOLDOWN_REDUC,
         }
 
         public List<StatBonus> BaseAdditives { get; set; }
@@ -57,6 +70,7 @@ namespace Advent.Entities
         public void AddStatBonus(StatBonus statBonus)
         {
             BaseAdditives.Add(statBonus);
+            Debug.Log("Bonus AddeD: " + statBonus.BonusValue);
         }
 
         public void RemoveStatBonus(StatBonus statBonus)

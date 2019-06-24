@@ -31,9 +31,9 @@ namespace Advent.UI
             statText.text = "";
             if(item.Stats != null)
             {
-                foreach (BaseStat stat in item.Stats)
+                foreach (KeyValuePair<string,BaseStat> entry in item.Stats)
                 {
-                    statText.text += stat.StatName + ": " + stat.BaseValue + "\n";
+                    statText.text += entry.Value.StatName + ": " + entry.Value.BaseValue + "\n";
                 }
             }
             itemInteractButton.onClick.RemoveAllListeners();

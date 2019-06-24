@@ -7,7 +7,7 @@ namespace Advent.Interfaces
 {
     public interface IWeapon
     {
-        List<BaseStat> Stats { get; set; }
+        Dictionary<string, BaseStat> Stats { get; set; }
         int CurrentDamage { get; set; }
         AudioClip[] AudioClip { get; set; }
         void PerformAttack(float attackSpeed);

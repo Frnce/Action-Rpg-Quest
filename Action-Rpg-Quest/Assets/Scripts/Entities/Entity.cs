@@ -23,6 +23,7 @@ namespace Advent.Entities
         [SerializeField]
         protected SpriteRenderer sprite;
 
+        //Stats
         protected int currentLevel = 0;
         protected float currentHP = 0;
         protected float currentMP = 0;
@@ -37,7 +38,7 @@ namespace Advent.Entities
 
         private StatsManager statManager;
         private StatFormulas statFormula = new StatFormulas();
-        public virtual void Start()
+        protected virtual void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
@@ -52,22 +53,26 @@ namespace Advent.Entities
                 currentLevel = PlayerLevelManager.instance.GetCurrentLevel;
             }
         }
-        public void InitHitpoints(EntitiesStats entitiesStats,int level)
+        protected virtual void InitStats()
+        {
+            Debug.Log("ReInitializing Stats");
+        }
+        protected void InitHitpoints(EntitiesStats entitiesStats,int level)
         {
             maxHP = statManager.InitMaxHP(entitiesStats, statFormula, level);
             currentHP = maxHP;
         }
-        public void InitManaPoints(EntitiesStats entitiesStats,int level)
+        protected void InitManaPoints(EntitiesStats entitiesStats,int level)
         {
             maxMP = statManager.InitMaxMP(entitiesStats,statFormula,level);
             currentMP = maxMP;
         }
-        public void InitBaseDamage(EntitiesStats entitiesStats,int level)
+        protected void InitBaseDamage(EntitiesStats entitiesStats,int level)
         {
             baseAttack = statManager.InitDamage(entitiesStats, statFormula, level);
             Debug.Log("Min Damage : " + baseAttack.m_Min + " Max Damage : " + baseAttack.m_Max);
         }
-        public void InitPhysicalDefense(EntitiesStats entitiesStats)
+        protected void InitPhysicalDefense(EntitiesStats entitiesStats)
         {
             currentPDef = statManager.InitPDef(entitiesStats, statFormula);
             Debug.Log(currentPDef);

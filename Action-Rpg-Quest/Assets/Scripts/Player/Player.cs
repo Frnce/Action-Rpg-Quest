@@ -73,19 +73,18 @@ namespace Advent.Entities
                 base_Vit = entityStats.vitality,
                 base_Int = entityStats.intelligence
             };
+
+            EquipmentManager.OnEquipChange += InitStats;
         }
 
         // Start is called before the first frame update
-        public override void Start()
+        protected override void Start()
         {
             base.Start();
             rb2d = GetComponent<Rigidbody2D>();
             cam = FindObjectOfType<CameraController>();
             playerControls = PlayerController.instance;
             states = PlayerStates.IDLE;
-            //weaponTrail.emitting = false;
-
-            //EquipmentManager.instance.onEquipmentChangedCallback += onEquipmentChange;
 
             timeBetweenAttack = startTimeBetweenAttack;
 
@@ -93,11 +92,7 @@ namespace Advent.Entities
 
             //InitAttributes();
             //InitMovementSpeed();
-
-            InitHP();
-            InitMP();
-
-            InitPDef();
+            InitStats();
         }
         // Update is called once per frame
         void Update()
@@ -214,21 +209,12 @@ namespace Advent.Entities
             stepDirection = Camera.main.ScreenToWorldPoint(stepDirection);
             return (stepDirection - transform.position).normalized;
         }
-        public void InitDamage()
-        {
-            InitBaseDamage(entitiesStats, currentLevel);
-        }
-        private void InitPDef()
-        {
-            InitPhysicalDefense(entitiesStats);
-        }
-        private void InitHP()
+        protected override void InitStats()
         {
             InitHitpoints(entitiesStats, currentLevel);
-        }
-        private void InitMP()
-        {
-            InitManaPoints(entitiesStats,currentLevel);
+            InitManaPoints(entitiesStats, currentLevel);
+            InitPhysicalDefense(entitiesStats);
+            InitBaseDamage(entitiesStats, currentLevel);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

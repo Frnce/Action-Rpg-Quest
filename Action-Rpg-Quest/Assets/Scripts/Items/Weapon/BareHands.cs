@@ -9,7 +9,7 @@ namespace Advent.Items
     public class BareHands : MonoBehaviour, IWeapon
     {
         private Animator animator;
-        public List<BaseStat> Stats { get; set; }
+        public Dictionary<string, BaseStat> Stats { get; set; }
         public int CurrentDamage { get; set; }
         [Header("AUdio")]
         public AudioClip[] audioClip;

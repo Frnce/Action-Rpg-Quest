@@ -9,288 +9,288 @@
     "ItemModifier": 0,
     "EquipType": "Weapon",
     "UseTime": 12,
-    "Stats": [
-      {
+    "Stats": {
+      "P_Atk_Min": {
         "StatType": "P_Atk_Min",
         "BaseValue": 3,
         "StatName": "P_Atk_Min"
       },
-      {
+      "P_Atk_Max": {
         "StatType": "P_Atk_Max",
         "BaseValue": 8,
         "StatName": "P_Atk_Max"
       }
-    ],
+    },
     "StatModifier": [
       {
         "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 1,
-    "ItemName": "Great Sword",
-    "ObjectSlug": "Wpn_GreatSword",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Weapon",
-    "UseTime": 32,
-    "Stats": [
-      {
-        "StatType": "P_Atk_Min",
-        "BaseValue": 5,
-        "StatName": "P_Atk_Min"
-      },
-      {
-        "StatType": "P_Atk_Max",
-        "BaseValue": 8,
-        "StatName": "P_Atk_Max"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 2,
-    "ItemName": "Iron Tunic",
-    "ObjectSlug": "Bdy_IronTunic",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Body",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 3,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 3,
-    "ItemName": "Robe",
-    "ObjectSlug": "Bdy_Robe",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Body",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 4,
-    "ItemName": "Cap",
-    "ObjectSlug": "Hd_Cap",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Head",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 5,
-    "ItemName": "Helmet",
-    "ObjectSlug": "Hd_Helmet",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Head",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 6,
-    "ItemName": "Pants",
-    "ObjectSlug": "Lg_Pants",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Legs",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 7,
-    "ItemName": "Leggings",
-    "ObjectSlug": "Lg_Leggings",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Legs",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 8,
-    "ItemName": "Shoes",
-    "ObjectSlug": "Ft_Shoes",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Foot",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 9,
-    "ItemName": "Sandals",
-    "ObjectSlug": "Ft_Sandals",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Foot",
-    "Stats": [
-      {
-        "StatType": "P_Armor",
-        "BaseValue": 1,
-        "StatName": "P_Armor"
-      }
-    ],
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 10,
-    "ItemName": "Wood Totem",
-    "ObjectSlug": "Ttm_WoodTotem",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Totem",
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 11,
-    "ItemName": "Messiah's Totem",
-    "ObjectSlug": "Ttm_MessiahTotem",
-    "Description": "Description Here...",
-    "ActionName": "Equip",
-    "ITemType": "Equipments",
-    "ItemModifier": 0,
-    "EquipType": "Totem",
-    "StatModifier": [
-      {
-        "StatModID": 0
-      }
-    ]
-  },
-  {
-    "ItemID": 12,
-    "ItemName": "Health Potion",
-    "ObjectSlug": "Cons_HealthPotion",
-    "Description": "Description Here...",
-    "ActionName": "Consume",
-    "ITemType": "Consumable",
-    "ItemModifier": 0,
-    "BaseStat": [
-      {
-        "StatType": "HitPoints",
-        "BaseValue": 50,
-        "StatName": "HitPoints"
-      }
-    ]
-  },
-  {
-    "ItemID": 13,
-    "ItemName": "Mana Potion",
-    "ObjectSlug": "Cons_ManaPotion",
-    "Description": "Description Here...",
-    "ActionName": "Consume",
-    "ITemType": "Consumable",
-    "ItemModifier": 0,
-    "BaseStat": [
-      {
-        "StatType": "ManaPoints",
-        "BaseValue": 20,
-        "StatName": "ManaPoints"
       }
     ]
   }
+  //{
+  //  "ItemID": 1,
+  //  "ItemName": "Great Sword",
+  //  "ObjectSlug": "Wpn_GreatSword",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Weapon",
+  //  "UseTime": 32,
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Atk_Min",
+  //      "BaseValue": 5,
+  //      "StatName": "P_Atk_Min"
+  //    },
+  //    {
+  //      "StatType": "P_Atk_Max",
+  //      "BaseValue": 8,
+  //      "StatName": "P_Atk_Max"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 2,
+  //  "ItemName": "Iron Tunic",
+  //  "ObjectSlug": "Bdy_IronTunic",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Body",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 3,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 3,
+  //  "ItemName": "Robe",
+  //  "ObjectSlug": "Bdy_Robe",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Body",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 4,
+  //  "ItemName": "Cap",
+  //  "ObjectSlug": "Hd_Cap",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Head",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 5,
+  //  "ItemName": "Helmet",
+  //  "ObjectSlug": "Hd_Helmet",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Head",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 6,
+  //  "ItemName": "Pants",
+  //  "ObjectSlug": "Lg_Pants",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Legs",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 7,
+  //  "ItemName": "Leggings",
+  //  "ObjectSlug": "Lg_Leggings",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Legs",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 8,
+  //  "ItemName": "Shoes",
+  //  "ObjectSlug": "Ft_Shoes",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Foot",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 9,
+  //  "ItemName": "Sandals",
+  //  "ObjectSlug": "Ft_Sandals",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Foot",
+  //  "Stats": [
+  //    {
+  //      "StatType": "P_Def",
+  //      "BaseValue": 1,
+  //      "StatName": "P_Def`"
+  //    }
+  //  ],
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 10,
+  //  "ItemName": "Wood Totem",
+  //  "ObjectSlug": "Ttm_WoodTotem",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Totem",
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 11,
+  //  "ItemName": "Messiah's Totem",
+  //  "ObjectSlug": "Ttm_MessiahTotem",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Equip",
+  //  "ITemType": "Equipments",
+  //  "ItemModifier": 0,
+  //  "EquipType": "Totem",
+  //  "StatModifier": [
+  //    {
+  //      "StatModID": 0
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 12,
+  //  "ItemName": "Health Potion",
+  //  "ObjectSlug": "Cons_HealthPotion",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Consume",
+  //  "ITemType": "Consumable",
+  //  "ItemModifier": 0,
+  //  "BaseStat": [
+  //    {
+  //      "StatType": "HitPoints",
+  //      "BaseValue": 50,
+  //      "StatName": "HitPoints"
+  //    }
+  //  ]
+  //},
+  //{
+  //  "ItemID": 13,
+  //  "ItemName": "Mana Potion",
+  //  "ObjectSlug": "Cons_ManaPotion",
+  //  "Description": "Description Here...",
+  //  "ActionName": "Consume",
+  //  "ITemType": "Consumable",
+  //  "ItemModifier": 0,
+  //  "BaseStat": [
+  //    {
+  //      "StatType": "ManaPoints",
+  //      "BaseValue": 20,
+  //      "StatName": "ManaPoints"
+  //    }
+  //  ]
+  //}
 ]
