@@ -211,6 +211,8 @@ namespace Advent.Entities
         }
         protected override void InitStats()
         {
+            base.InitStats();
+
             InitHitpoints(entitiesStats, currentLevel);
             InitManaPoints(entitiesStats, currentLevel);
             InitPhysicalDefense(entitiesStats);

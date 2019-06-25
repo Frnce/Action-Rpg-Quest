@@ -21,67 +21,72 @@ namespace Advent.Manager
             }
             DontDestroyOnLoad(gameObject);
         }
-        //public void InitStats(Stats stats)
-        //{
-        //    //Basic Attribute
-        //    stats.bonusSTR = new EntityStat();
-        //    stats.bonusDEX = new EntityStat();
-        //    stats.bonusINT = new EntityStat();
-        //    stats.bonusVIT = new EntityStat();
-
-        //    //HP MP
-        //    stats.maxHitPoints = new EntityStat();
-        //    stats.maxManaPoints = new EntityStat();
-
-        //    stats.weaponDamage.minDamage = new EntityStat();
-        //    stats.weaponDamage.maxDamage = new EntityStat();
-        //    stats.baseAttack = new IntRange(0, 0);
-
-        //    stats.armorDefense = new EntityStat();
-        //    //stats.magicalDefense = new EntityStat();
-
-        //    //Movement Speed
-        //    stats.movementSpeed = new EntityStat();
-
-        //    stats.PdmgIncreaseMod = new EntityStat();
-
-        //    //stats.criticalHitChance = new EntityStat();
-        //    //stats.criticalHitDamage = new EntityStat();
-
-        //    //stats.ignorePhysicalDefense = new EntityStat();
-        //    //stats.ignoreMagicalDefense = new EntityStat();
-
-        //    //stats.healthRegen = new EntityStat();
-        //    //stats.manaRegen = new EntityStat();
-
-        //    //stats.lifeStealPercent = new EntityStat();
-        //    //stats.abilityCooldownReduction = new EntityStat();
-        //}
-        public int InitMaxHP(EntitiesStats stats, StatFormulas statFormula, float currentLevel = 1)
+        public int InitMaxHP(EntitiesStats stats, float currentLevel = 1)
         {
-            int value = statFormula.ComputeMaxHP(stats.base_Vit, stats.GetStat(BaseStat.BaseStatType.BONUS_VIT).GetCalculatedStatValue(), currentLevel);
+            int value = Mathf.FloorToInt(Mathf.Round(((stats.base_Vit * 300f) + (stats.GetStat(BaseStat.BaseStatType.BONUS_VIT).GetCalculatedStatValue() * 125f) + (currentLevel * 0.5f)) / 2));
             return value;
         }
-        public int InitMaxMP(EntitiesStats stats, StatFormulas statFormula, float currentLevel = 1)
+        public int InitMaxMP(EntitiesStats stats, float currentLevel = 1)
         {
-            int value = statFormula.ComputeMaxMP(stats.base_Int, stats.GetStat(BaseStat.BaseStatType.BONUS_INT).GetCalculatedStatValue(), currentLevel);
+            int value = Mathf.FloorToInt(Mathf.Round(((stats.base_Int * 150) + (stats.GetStat(BaseStat.BaseStatType.BONUS_INT).GetCalculatedStatValue() * 50) + (currentLevel * 0.5f)) / 2));
             return value;
         }
-        public IntRange InitDamage(EntitiesStats stats, StatFormulas statFormula,float currentLevel = 1)
+        public IntRange InitDamage(EntitiesStats stats,float currentLevel = 1)
         {
-            IntRange value = statFormula.ComputeBaseAttack(stats, currentLevel);
+            IntRange value = new IntRange(0, 0);
+            float damageUp = Mathf.Floor(Mathf.Round((stats.base_Str * 6f) + (stats.GetStat(BaseStat.BaseStatType.BONUS_STR).GetCalculatedStatValue() * 4f) + (currentLevel * 0.5f) / 2));
+            value.m_Min = Mathf.FloorToInt(Mathf.Round(damageUp + stats.GetStat(BaseStat.BaseStatType.P_ATK_MIN).GetCalculatedStatValue()));
+            value.m_Max = Mathf.FloorToInt(Mathf.RoundToInt(damageUp + stats.GetStat(BaseStat.BaseStatType.P_ATK_MAX).GetCalculatedStatValue()));
             return value;
         }
-        public int InitPDef(EntitiesStats stats, StatFormulas statFormulas)
+        public int InitPDef(EntitiesStats stats)
         {
-            int value = statFormulas.ComputeMaxDefense(stats);
+            int value = Mathf.FloorToInt(Mathf.Round((stats.base_Str * 0.8f) + stats.GetStat(BaseStat.BaseStatType.P_DEF).GetCalculatedStatValue()));
+            return value;
+        }
+        public int InitMDef(EntitiesStats stats)
+        {
+            int value = Mathf.FloorToInt(Mathf.Round((stats.base_Str * 0.5f) + stats.GetStat(BaseStat.BaseStatType.M_DEF).GetCalculatedStatValue()));
             return value;
         }
 
-        public int GetCalculatedDamage(IntRange baseAttack,EntitiesStats stats,int targetDef,StatFormulas statFormulas)
+        public int GetCalculatedDamage(IntRange baseAttack,EntitiesStats stats,int targetDef)
         {
-            int value = statFormulas.ComputeDamage(baseAttack, stats, targetDef);
-            return value;
+            int minDamage = 0;
+            int maxDamage = 0;
+            int finalDamage = 0;
+
+            minDamage = baseAttack.m_Min;
+            maxDamage = baseAttack.m_Max;
+
+            minDamage += CalculateCrit(minDamage, stats.GetStat(BaseStat.BaseStatType.CRIT_CHANCE).GetCalculatedStatValue(), stats.GetStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT).GetCalculatedStatValue());
+            maxDamage += CalculateCrit(minDamage, stats.GetStat(BaseStat.BaseStatType.CRIT_CHANCE).GetCalculatedStatValue(), stats.GetStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT).GetCalculatedStatValue());
+
+            IntRange damageResult = new IntRange(Mathf.FloorToInt(Mathf.Round(minDamage)), Mathf.FloorToInt(Mathf.Round(maxDamage)));
+            int baseDamage = damageResult.Random; //Get the very base of the damage from damage result;
+            finalDamage = Mathf.FloorToInt(Mathf.Round((baseDamage + CalculatePDmgIncrease(baseDamage, stats.GetStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT).GetCalculatedStatValue())) - targetDef));
+            Debug.Log(finalDamage);
+            return finalDamage;
+        }
+
+        private int CalculateCrit(int damage, int critRate, int critDmgMultiplier)
+        {
+            if (Random.value <= (critRate / 100f))
+            {
+                int critDamage = Mathf.FloorToInt(Mathf.Round(damage * (critDmgMultiplier / 100f)));
+                return critDamage;
+            }
+            return 0;
+        }
+        private float CalculatePDmgIncrease(int damage, int Dmg_Multiplier)
+        {
+            float multiplier = damage * (Dmg_Multiplier / 100f);
+            if (multiplier == 0)
+            {
+                return 0;
+            }
+            float result = damage + multiplier;
+            return result;
         }
     }
 }

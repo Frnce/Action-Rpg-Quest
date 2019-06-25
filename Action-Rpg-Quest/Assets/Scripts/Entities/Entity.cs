@@ -30,14 +30,38 @@ namespace Advent.Entities
         protected float maxHP = 0;
         protected float maxMP = 0;
         protected IntRange baseAttack = new IntRange(0, 0);
+
+        protected float bonusStr = 0;
+        protected float bonusDex = 0;
+        protected float bonusAgi = 0;
+        protected float bonusVit = 0;
+        protected float bonusInt = 0;
+
         protected float currentPDef = 0;
+        protected float currentMDef = 0;
+
+        protected float critChance = 0;
+        protected float critMultiplier = 0; //Damage
+
+        protected float movementSpeedBonus = 0;
         protected float attackSpeed = 0;
+
+        protected float pDmgIncrease = 0;
+        protected float mDmgIncrease = 0;
+        protected float lifeStealAmount = 0;
+        protected float lifeStealChance = 0;
+        protected float hpBonusPercent = 0;
+        protected float hpRegenPercent = 0;
+        protected float mpBonusPercent = 0;
+        protected float mpRegenPercent = 0;
+        protected float blockChanceSecond = 0;
+        protected float castTimeReduction = 0;
+        protected float cooldownReduction = 0;
 
         protected Rigidbody2D rb2d;
         protected Animator anim;
 
         private StatsManager statManager;
-        private StatFormulas statFormula = new StatFormulas();
         protected virtual void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
@@ -56,30 +80,63 @@ namespace Advent.Entities
         protected virtual void InitStats()
         {
             Debug.Log("ReInitializing Stats");
+
+            bonusStr = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_STR).GetCalculatedStatValue();
+            bonusDex = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_DEX).GetCalculatedStatValue();
+            //bonusAgi = entitiesStats.GetStat(BaseStat.BaseStatType.bonus)
+            bonusVit = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_VIT).GetCalculatedStatValue();
+            bonusInt = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_INT).GetCalculatedStatValue();
+
+            critChance = entitiesStats.GetStat(BaseStat.BaseStatType.CRIT_CHANCE).GetCalculatedStatValue();
+            critMultiplier = entitiesStats.GetStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT).GetCalculatedStatValue();
+
+            movementSpeedBonus = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_MS).GetCalculatedStatValue();
+            attackSpeed = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_ASPD).GetCalculatedStatValue();
+
+            pDmgIncrease = entitiesStats.GetStat(BaseStat.BaseStatType.P_DMG_INCREASE).GetCalculatedStatValue();
+            mDmgIncrease = entitiesStats.GetStat(BaseStat.BaseStatType.M_DMG_INCREASE).GetCalculatedStatValue();
+
+            lifeStealChance = entitiesStats.GetStat(BaseStat.BaseStatType.LIFESTEAL_PERCENT_CHANCE).GetCalculatedStatValue();
+            lifeStealAmount = entitiesStats.GetStat(BaseStat.BaseStatType.LIFESTEAL_PERCENT_AMOUNT).GetCalculatedStatValue();
+
+            hpBonusPercent = entitiesStats.GetStat(BaseStat.BaseStatType.HP_BONUS_PERCENT).GetCalculatedStatValue();
+            mpBonusPercent = entitiesStats.GetStat(BaseStat.BaseStatType.MP_BONUS_PERCENT).GetCalculatedStatValue();
+
+            hpRegenPercent = entitiesStats.GetStat(BaseStat.BaseStatType.HP_REGEN_PERCENT).GetCalculatedStatValue();
+            mpRegenPercent = entitiesStats.GetStat(BaseStat.BaseStatType.MP_REGEN_PERCENT).GetCalculatedStatValue();
+
+            blockChanceSecond = entitiesStats.GetStat(BaseStat.BaseStatType.BLOCK_CHANCE_SECOND).GetCalculatedStatValue();
+
+            castTimeReduction = entitiesStats.GetStat(BaseStat.BaseStatType.CAST_TIME_REDUC).GetCalculatedStatValue();
+            cooldownReduction = entitiesStats.GetStat(BaseStat.BaseStatType.COOLDOWN_REDUC).GetCalculatedStatValue();
         }
         protected void InitHitpoints(EntitiesStats entitiesStats,int level)
         {
-            maxHP = statManager.InitMaxHP(entitiesStats, statFormula, level);
+            maxHP = statManager.InitMaxHP(entitiesStats, level);
             currentHP = maxHP;
         }
         protected void InitManaPoints(EntitiesStats entitiesStats,int level)
         {
-            maxMP = statManager.InitMaxMP(entitiesStats,statFormula,level);
+            maxMP = statManager.InitMaxMP(entitiesStats,level);
             currentMP = maxMP;
         }
         protected void InitBaseDamage(EntitiesStats entitiesStats,int level)
         {
-            baseAttack = statManager.InitDamage(entitiesStats, statFormula, level);
+            baseAttack = statManager.InitDamage(entitiesStats, level);
             Debug.Log("Min Damage : " + baseAttack.m_Min + " Max Damage : " + baseAttack.m_Max);
         }
         protected void InitPhysicalDefense(EntitiesStats entitiesStats)
         {
-            currentPDef = statManager.InitPDef(entitiesStats, statFormula);
+            currentPDef = statManager.InitPDef(entitiesStats);
             Debug.Log(currentPDef);
+        }
+        protected void InitMagicDefense(EntitiesStats entitiesStats)
+        {
+            currentMDef = statManager.InitMDef(entitiesStats);
         }
         public int GetCalculatedDamage(IntRange _baseAttack,EntitiesStats entitiesStats,int targetDef)
         {
-            int value = statManager.GetCalculatedDamage(_baseAttack, entitiesStats, targetDef, statFormula);
+            int value = statManager.GetCalculatedDamage(_baseAttack, entitiesStats, targetDef);
             return value;
         }
         public float GetCurrentHP
