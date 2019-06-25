@@ -41,9 +41,14 @@ namespace Advent.Manager
             {
                 equipmentSlots[equipSlotIndex] = item;
                 InventoryManager.instance.RemoveItem(item);
-                playerEquipment.UnequipEquipment();
-                playerEquipment.EquipWeapon(item);
+                if(item.EquipType == EquipTypes.WEAPON)
+                {
+                    playerEquipment.UnequipEquipment();
+                    playerEquipment.EquipWeapon(item);
+                }
                 UIEventHandlers.EquipUpdate();
+                Player.instance.GetPlayerStats().AddStatBonus(item.Stats);
+                EquipChanged(); //invokes equipchange and stat changes;
                 return true;
             }
             return false;
@@ -55,10 +60,14 @@ namespace Advent.Manager
             {
                 equipmentSlots[equipSlotIndex] = null;
                 InventoryManager.instance.RemoveItem(item);
-                playerEquipment.UnequipEquipment();
-                playerEquipment.EnableBareHands();
+                if(item.EquipType == EquipTypes.WEAPON)
+                {
+                    playerEquipment.UnequipEquipment();
+                    playerEquipment.EnableBareHands();
+                }
+                Player.instance.GetPlayerStats().RemoveStatBonus(item.Stats);
                 UIEventHandlers.EquipUpdate();
-                //Stat Changes Here
+                EquipChanged();
                 return true;
             }
             return false;

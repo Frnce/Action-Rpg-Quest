@@ -137,9 +137,6 @@ namespace Advent.Entities
                 equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
                 equippedWeapon.Stats = itemToEquip.Stats;
                 currentlyEquippedWeapon = itemToEquip;
-
-                playerStats.AddStatBonus(itemToEquip.Stats);
-                EquipmentManager.instance.EquipChanged();
                 //UIEventHandler.ItemEquipped(itemToEquip);
                 //UIEventHandler.StatsChanged();
             }

@@ -64,11 +64,11 @@ namespace Advent.Entities
             }
         }
 
-        public void RemoveStatBonus(List<BaseStat> statBonuses)
+        public void RemoveStatBonus(Dictionary<string, BaseStat> statBonuses)
         {
-            foreach (BaseStat statBonus in statBonuses)
+            foreach (KeyValuePair<string, BaseStat> entry in statBonuses)
             {
-                GetStat(statBonus.StatType).RemoveStatBonus(new StatBonus(statBonus.BaseValue));
+                GetStat(entry.Value.StatType).RemoveStatBonus(new StatBonus(entry.Value.BaseValue));
             }
         }
     }
