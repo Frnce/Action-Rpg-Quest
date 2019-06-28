@@ -14,7 +14,6 @@ namespace Advent.UI
         [Space]
         public RectTransform consumableContent;
         public RectTransform equipmentContent;
-        public RectTransform enchantsContent;
         public RectTransform materialsContent;
 
         private InventoryManager inventoryManager;
@@ -63,6 +62,7 @@ namespace Advent.UI
             {
                 Destroy(child.gameObject);
             }
+            //Redraw Equipment Tab
             for (int i = 0; i < inventoryManager.GetEquipmentList.Length; i++)
             {
                 InventoryUISlot emptyItem = Instantiate(itemContainer);
@@ -72,6 +72,28 @@ namespace Advent.UI
                 inventorySlotList.Add(emptyItem);
 
                 emptyItem.SetItem(inventoryManager.GetEquipmentList[i].item);
+            }
+            //Redraw Consumable Tab
+            for (int i = 0; i < inventoryManager.GetConsumablesList.Length; i++)
+            {
+                InventoryUISlot emptyItem = Instantiate(itemContainer);
+                emptyItem.transform.SetParent(consumableContent);
+                emptyItem.SlotType = SlotType.INVENTORY_CONSUMABLES;
+                emptyItem.Index = i;
+                inventorySlotList.Add(emptyItem);
+
+                emptyItem.SetItem(inventoryManager.GetConsumablesList[i].item);
+            }
+            //Redraw Materials Tab
+            for (int i = 0; i < inventoryManager.GetMaterialsList.Length; i++)
+            {
+                InventoryUISlot emptyItem = Instantiate(itemContainer);
+                emptyItem.transform.SetParent(materialsContent);
+                emptyItem.SlotType = SlotType.INVENTORY_MATERIALS;
+                emptyItem.Index = i;
+                inventorySlotList.Add(emptyItem);
+
+                emptyItem.SetItem(inventoryManager.GetMaterialsList[i].item);
             }
         }
     }

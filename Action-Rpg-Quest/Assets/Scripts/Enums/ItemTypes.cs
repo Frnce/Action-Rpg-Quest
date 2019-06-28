@@ -4,8 +4,7 @@
     {
         CONSUMABLE,
         EQUIPMENTS,
-        ENCHANTS,
-        MATERIALS
+        MATERIALS,
     }
     public enum EquipTypes
     {
@@ -14,7 +13,9 @@
         HEAD,
         LEGS,
         FOOT,
-        TOTEM,
+        HANDS,
+        RING,
+        NECKLACE,
         NONE,
     }
     public enum WeaponTypes

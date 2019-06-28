@@ -11,7 +11,9 @@ namespace Advent.UI
     public enum SlotType
     {
         EQUIPMENT,
-        INVENTORY_EQUIPMENT
+        INVENTORY_EQUIPMENT,
+        INVENTORY_CONSUMABLES,
+        INVENTORY_MATERIALS,
     }
     public class InventoryUISlot : MonoBehaviour,IDropHandler
     {
@@ -70,11 +72,23 @@ namespace Advent.UI
                     {
 
                     }
+                    else if (item.InventoryParentSlot.SlotType == SlotType.INVENTORY_CONSUMABLES)
+                    {
+                        var sendingItem = InventoryManager.instance.PopItemFromnConsumablesSlot(item.InventoryParentSlot.Index);
+                        var swappedItem = InventoryManager.instance.ReplaceItemInConsumablesSlot(sendingItem, Index);
+                        InventoryManager.instance.ReplaceItemInConsumablesSlot(swappedItem, item.InventoryParentSlot.Index);
+                    }
                     else if (item.InventoryParentSlot.SlotType == SlotType.INVENTORY_EQUIPMENT)
                     {
-                        var sendingItem = InventoryManager.instance.PopItemFromSlot(item.InventoryParentSlot.Index);
-                        var swappedItem = InventoryManager.instance.ReplaceItemInSlot(sendingItem, Index);
-                        InventoryManager.instance.ReplaceItemInSlot(swappedItem, item.InventoryParentSlot.Index);
+                        var sendingItem = InventoryManager.instance.PopItemFromEquipmentSlot(item.InventoryParentSlot.Index);
+                        var swappedItem = InventoryManager.instance.ReplaceItemInEquipmentSlot(sendingItem, Index);
+                        InventoryManager.instance.ReplaceItemInEquipmentSlot(swappedItem, item.InventoryParentSlot.Index);
+                    }
+                    else if(item.InventoryParentSlot.SlotType == SlotType.INVENTORY_MATERIALS)
+                    {
+                        var sendingItem = InventoryManager.instance.PopItemFromMaterialsSlot(item.InventoryParentSlot.Index);
+                        var swappedItem = InventoryManager.instance.ReplaceItemInMaterialsSlot(sendingItem, Index);
+                        InventoryManager.instance.ReplaceItemInConsumablesSlot(swappedItem, item.InventoryParentSlot.Index);
                     }
                 }
                 if(item.EquipmentParentSlot != null)
@@ -84,7 +98,7 @@ namespace Advent.UI
                     EquipmentManager.instance.UnequipItem(item.EquipmentParentSlot.Item);
                     if (_item == null)
                     {
-                        InventoryManager.instance.ReplaceItemInSlot(item.EquipmentParentSlot.Item, Index);
+                        InventoryManager.instance.ReplaceItemInEquipmentSlot(item.EquipmentParentSlot.Item, Index);
                     }
                 }
             }
