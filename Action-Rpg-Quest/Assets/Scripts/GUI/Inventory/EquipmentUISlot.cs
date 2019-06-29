@@ -69,10 +69,15 @@ namespace Advent.UI
             {
                 if(item.InventoryParentSlot != null)
                 {
-                    if (item.InventoryParentSlot.Item.EquipType != EquipType)
+                    if(item.InventoryParentSlot.Item.ItemType != ItemTypes.EQUIPMENTS)
                     {
                         return;
                     }
+                    else if (item.InventoryParentSlot.Item.EquipType != EquipType)
+                    {
+                        return;
+                    }
+
                     if (_item != null) // When The Equipment slot is not empty - Proceed to Swap it
                     {
                         //Swap the selected Equipment slot from the equipment Manager;

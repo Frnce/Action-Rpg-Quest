@@ -21,8 +21,6 @@ namespace Advent.Manager
         private int maxItemSpace = 50;
         [SerializeField]
         private int maxStack = 9;
-        //[SerializeField]
-        //private ItemsSpace[] consumableList;
         [SerializeField]
         private InventorySlot[] equipmentList;
         [SerializeField]
@@ -53,14 +51,15 @@ namespace Advent.Manager
             consumableList = new InventorySlot[maxItemSpace];
             materialsList = new InventorySlot[maxItemSpace];
             //Add SetItem to equip default item Here
-            GiveItem("Wpn_HuntingKnife");
-            GiveItem("Wpn_GreatSword");
-            GiveItem("Bdy_IronTunic");
-            GiveItem("Bdy_Robe");
-            GiveItem("Hd_Cap");
-            GiveItem("Hd_Helmet");
-            GiveItem("Lg_Pants");
-            GiveItem("Lg_Leggings");
+            //GiveItem("Wpn_HuntingKnife");
+            GiveItem("Cons_Sm_RedPotion");
+            //GiveItem("Wpn_GreatSword");
+            //GiveItem("Bdy_IronTunic");
+            //GiveItem("Bdy_Robe");
+            //GiveItem("Hd_Cap");
+            //GiveItem("Hd_Helmet");
+            //GiveItem("Lg_Pants");
+            //GiveItem("Lg_Leggings");
         }
         private void Start()
         {

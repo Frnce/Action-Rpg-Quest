@@ -127,7 +127,7 @@ namespace Advent.Entities
         }
         public void EquipWeapon(Item itemToEquip)
         {
-            if(itemToEquip.EquipType == Enums.EquipTypes.WEAPON)
+            if(itemToEquip.EquipType == Enums.EquipTypes.WEAPON && itemToEquip.ItemType == Enums.ItemTypes.EQUIPMENTS)
             {
                 if (equippedWeapon != null)
                 {

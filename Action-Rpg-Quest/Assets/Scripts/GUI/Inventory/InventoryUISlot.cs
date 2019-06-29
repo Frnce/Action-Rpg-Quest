@@ -96,7 +96,7 @@ namespace Advent.UI
                     if (item.EquipmentParentSlot.SlotType == SlotType) return;
                     //Unequip
                     EquipmentManager.instance.UnequipItem(item.EquipmentParentSlot.Item);
-                    if (_item == null)
+                    if (_item == null || _item.ItemType != item.EquipmentParentSlot.Item.ItemType)
                     {
                         InventoryManager.instance.ReplaceItemInEquipmentSlot(item.EquipmentParentSlot.Item, Index);
                     }

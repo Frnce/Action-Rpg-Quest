@@ -31,7 +31,7 @@ TextureImporter:
     21300052: 16x16 item pack_25
     21300054: 16x16 item pack_26
     21300056: 16x16 item pack_27
-    21300058: Cons_HealthPotion
+    21300058: Cons_Sm_RedPotion
     21300060: 16x16 item pack_29
     21300062: 16x16 item pack_30
     21300064: 16x16 item pack_31
@@ -729,7 +729,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cons_HealthPotion
+      name: Cons_Sm_RedPotion
       rect:
         serializedVersion: 2
         x: 64
