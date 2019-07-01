@@ -56,23 +56,24 @@ namespace Advent.UI
         {
             inventorySlotList[index].SetItem(item);
         }
-        private void Redraw()
+        private void DestroyAllSlots()
         {
             foreach (Transform child in equipmentContent.transform)
             {
                 Destroy(child.gameObject);
             }
-            //Redraw Equipment Tab
-            for (int i = 0; i < inventoryManager.GetEquipmentList.Length; i++)
+            foreach (Transform child in consumableContent.transform)
             {
-                InventoryUISlot emptyItem = Instantiate(itemContainer);
-                emptyItem.transform.SetParent(equipmentContent);
-                emptyItem.SlotType = SlotType.INVENTORY_EQUIPMENT;
-                emptyItem.Index = i;
-                inventorySlotList.Add(emptyItem);
-
-                emptyItem.SetItem(inventoryManager.GetEquipmentList[i].item);
+                Destroy(child.gameObject);
             }
+            foreach (Transform child in materialsContent.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        private void Redraw()
+        {
+            DestroyAllSlots();
             //Redraw Consumable Tab
             for (int i = 0; i < inventoryManager.GetConsumablesList.Length; i++)
             {
@@ -94,6 +95,17 @@ namespace Advent.UI
                 inventorySlotList.Add(emptyItem);
 
                 emptyItem.SetItem(inventoryManager.GetMaterialsList[i].item);
+            }
+            //Redraw Equipment Tab
+            for (int i = 0; i < inventoryManager.GetEquipmentList.Length; i++)
+            {
+                InventoryUISlot emptyItem = Instantiate(itemContainer);
+                emptyItem.transform.SetParent(equipmentContent);
+                emptyItem.SlotType = SlotType.INVENTORY_EQUIPMENT;
+                emptyItem.Index = i;
+                inventorySlotList.Add(emptyItem);
+
+                emptyItem.SetItem(inventoryManager.GetEquipmentList[i].item);
             }
         }
     }

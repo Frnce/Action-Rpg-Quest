@@ -1,40 +1,40 @@
 [
   {
-	"ItemID": 0,
-	"ItemName": "Hunting Knife",
-	"ObjectSlug": "Wpn_HuntingKnife",
-	"Description": "Description Here...",
-	"ActionName": "Equip",
-	"ItemType": "Equipments",
-	"ItemModifier": 0,
-	"EquipType": "Weapon",
-	"UseTime": 12,
-	"Stats": {
-	  "P_Atk_Min": {
-		"StatType": "P_Atk_Min",
-		"BaseValue": 3,
-		"StatName": "P_Atk_Min"
-	  },
-	  "P_Atk_Max": {
-		"StatType": "P_Atk_Max",
-		"BaseValue": 8,
-		"StatName": "P_Atk_Max"
-	  }
-	},
-	"StatModifier": [
-	  {
-		"StatModID": 0
-	  }
-	]
+    "ItemID": 0,
+    "ItemName": "Hunting Knife",
+    "ObjectSlug": "Wpn_HuntingKnife",
+    "Description": "Description Here...",
+    "ActionName": "Equip",
+    "ItemType": "Equipments",
+    "ItemModifier": 0,
+    "EquipType": "Weapon",
+    "UseTime": 12,
+    "Stats": {
+      "P_Atk_Min": {
+        "StatType": "P_Atk_Min",
+        "BaseValue": 3,
+        "StatName": "P_Atk_Min"
+      },
+      "P_Atk_Max": {
+        "StatType": "P_Atk_Max",
+        "BaseValue": 8,
+        "StatName": "P_Atk_Max"
+      }
+    },
+    "StatModifier": [
+      {
+        "StatModID": 0
+      }
+    ]
   },
-	{
-	"ItemID": 1,
-	"ItemName": "Small Red Potion",
-	"ObjectSlug": "Cons_Sm_RedPotion",
-	"Description": "Description Here...",
-	"ActionName": "Consume",
-	"ItemType": "Consumable",
-	"ItemModifier": 0
+  {
+    "ItemID": 1,
+    "ItemName": "Small Red Potion",
+    "ObjectSlug": "Cons_Sm_RedPotion",
+    "Description": "Description Here...",
+    "ActionName": "Consume",
+    "ItemType": "Consumable",
+    "ItemModifier": 0
   }
   //{
   //  "ItemID": 1,
