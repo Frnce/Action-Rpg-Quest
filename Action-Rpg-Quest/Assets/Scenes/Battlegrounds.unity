@@ -11583,6 +11583,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8922759302126751062, guid: 0698a32e5f246844fa114cf73439c71b,
+        type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922759302126751062, guid: 0698a32e5f246844fa114cf73439c71b,
+        type: 3}
+      propertyPath: m_CropFrameX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922759302126751062, guid: 0698a32e5f246844fa114cf73439c71b,
+        type: 3}
+      propertyPath: m_CropFrameY
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0698a32e5f246844fa114cf73439c71b, type: 3}
 --- !u!1001 &6070138642842326447
