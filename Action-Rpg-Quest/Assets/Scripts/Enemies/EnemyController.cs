@@ -147,7 +147,7 @@ namespace Advent.Entities
             {
                 ShowFloatingDamageText(damage);
             }
-            Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
+            //Debug.Log("HP : " + currentHP + " | DAmaged : " + damage);
             StartCoroutine(TakeDamageRoutine());
             Die();
         }

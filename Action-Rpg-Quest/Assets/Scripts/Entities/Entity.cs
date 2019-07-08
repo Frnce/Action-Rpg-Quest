@@ -61,13 +61,10 @@ namespace Advent.Entities
         protected Rigidbody2D rb2d;
         protected Animator anim;
 
-        private StatsManager statManager;
         protected virtual void Start()
         {
             rb2d = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
-
-            statManager = StatsManager.instance;
             if (entityStats.enemyLevel <= 0)
             {
                 currentLevel = entityStats.enemyLevel;
@@ -79,7 +76,7 @@ namespace Advent.Entities
         }
         protected virtual void InitStats()
         {
-            Debug.Log("ReInitializing Stats");
+            //Debug.Log("ReInitializing Stats");
 
             bonusStr = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_STR).GetCalculatedStatValue();
             bonusDex = entitiesStats.GetStat(BaseStat.BaseStatType.BONUS_DEX).GetCalculatedStatValue();
@@ -112,31 +109,31 @@ namespace Advent.Entities
         }
         protected void InitHitpoints(EntitiesStats entitiesStats,int level)
         {
-            maxHP = statManager.InitMaxHP(entitiesStats, level);
+            maxHP = StatsManager.instance.InitMaxHP(entitiesStats, level);
             currentHP = maxHP;
         }
         protected void InitManaPoints(EntitiesStats entitiesStats,int level)
         {
-            maxMP = statManager.InitMaxMP(entitiesStats,level);
+            maxMP = StatsManager.instance.InitMaxMP(entitiesStats,level);
             currentMP = maxMP;
         }
         protected void InitBaseDamage(EntitiesStats entitiesStats,int level)
         {
-            baseAttack = statManager.InitDamage(entitiesStats, level);
+            baseAttack = StatsManager.instance.InitDamage(entitiesStats, level);
             Debug.Log("Min Damage : " + baseAttack.m_Min + " Max Damage : " + baseAttack.m_Max);
         }
         protected void InitPhysicalDefense(EntitiesStats entitiesStats)
         {
-            currentPDef = statManager.InitPDef(entitiesStats);
+            currentPDef = StatsManager.instance.InitPDef(entitiesStats);
             Debug.Log(currentPDef);
         }
         protected void InitMagicDefense(EntitiesStats entitiesStats)
         {
-            currentMDef = statManager.InitMDef(entitiesStats);
+            currentMDef = StatsManager.instance.InitMDef(entitiesStats);
         }
         public int GetCalculatedDamage(IntRange _baseAttack,EntitiesStats entitiesStats,int targetDef)
         {
-            int value = statManager.GetCalculatedDamage(_baseAttack, entitiesStats, targetDef);
+            int value = StatsManager.instance.GetCalculatedDamage(_baseAttack, entitiesStats, targetDef);
             return value;
         }
         public float GetCurrentHP

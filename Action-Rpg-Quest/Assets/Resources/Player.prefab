@@ -4977,36 +4977,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityStats: {fileID: 11400000, guid: 85df9664eec890a42bef73ce3ac05933, type: 2}
-  statList:
-    baseSTR: 0
-    baseDEX: 0
-    baseVIT: 0
-    baseINT: 0
-    bonusSTR:
-      baseValue: 0
-    bonusDEX:
-      baseValue: 0
-    bonusVIT:
-      baseValue: 0
-    bonusINT:
-      baseValue: 0
-    maxHitPoints:
-      baseValue: 0
-    maxManaPoints:
-      baseValue: 0
-    weaponDamage:
-      minDamage:
-        baseValue: 0
-      maxDamage:
-        baseValue: 0
-    baseAttack:
-      m_Min: 0
-      m_Max: 0
-    armorDefense:
-      baseValue: 0
-    baseDef: 0
-    movementSpeed:
-      baseValue: 0
   floatingDamageText: {fileID: 2140769908499613541, guid: 5769d3b5c30fecb42a3b9f2f15f1affa,
     type: 3}
   knockbackDistance: 15
@@ -5039,6 +5009,7 @@ MonoBehaviour:
   playerHand: {fileID: 1903015725}
   BareHand: {fileID: 4786569909882016783, guid: 1340358b1e826254494d5e0f594c5511,
     type: 3}
+  attackSpeed: 1
 --- !u!1 &8444309750708076006
 GameObject:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ namespace Advent.Entities
         public void AddStatBonus(StatBonus statBonus)
         {
             BaseAdditives.Add(statBonus);
-            Debug.Log("Bonus AddeD: " + statBonus.BonusValue);
+            //Debug.Log("Bonus AddeD: " + statBonus.BonusValue);
         }
 
         public void RemoveStatBonus(StatBonus statBonus)

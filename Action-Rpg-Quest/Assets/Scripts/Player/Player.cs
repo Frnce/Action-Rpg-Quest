@@ -97,6 +97,7 @@ namespace Advent.Entities
         // Update is called once per frame
         void Update()
         {
+            Debug.Log(states);
             if (states != PlayerStates.INMENU)
             {
                 playerDir = playerControls.GetMovement;

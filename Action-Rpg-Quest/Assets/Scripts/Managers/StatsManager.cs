@@ -65,7 +65,7 @@ namespace Advent.Manager
             IntRange damageResult = new IntRange(Mathf.FloorToInt(Mathf.Round(minDamage)), Mathf.FloorToInt(Mathf.Round(maxDamage)));
             int baseDamage = damageResult.Random; //Get the very base of the damage from damage result;
             finalDamage = Mathf.FloorToInt(Mathf.Round((baseDamage + CalculatePDmgIncrease(baseDamage, stats.GetStat(BaseStat.BaseStatType.CRIT_DMG_PERCENT).GetCalculatedStatValue())) - targetDef));
-            Debug.Log(finalDamage);
+            //Debug.Log(finalDamage);
             return finalDamage;
         }
 
