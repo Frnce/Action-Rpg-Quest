@@ -37,19 +37,14 @@ namespace Advent.Manager
 
         private void Awake()
         {
-            if (instance != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-            DontDestroyOnLoad(gameObject);
+            instance = this;
 
             equipmentList = new InventorySlot[maxItemSpace];
             consumableList = new InventorySlot[maxItemSpace];
             materialsList = new InventorySlot[maxItemSpace];
+        }
+        public void InitInventoryManager()
+        {
             //Add SetItem to equip default item Here
             //GiveItem("Wpn_HuntingKnife");
             //GiveItem("Cons_Sm_RedPotion");
@@ -61,10 +56,7 @@ namespace Advent.Manager
             //GiveItem("Lg_Pants");
             //GiveItem("Lg_Leggings");
         }
-        private void Start()
-        {
 
-        }
         public bool AddToFirstEmptySlot(Item item)
         {
             if(item != null)

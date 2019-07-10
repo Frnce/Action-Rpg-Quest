@@ -11,20 +11,11 @@ namespace Advent.Manager
         private List<GameObject> panelList = new List<GameObject>();
         private void Awake()
         {
-            if(instance != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-
-            DontDestroyOnLoad(gameObject);
+            instance = this;
 
             ShowUI(true);
         }
-        private void Start()
+        public void InitializeUIManager()
         {
             ShowUI(false);
         }

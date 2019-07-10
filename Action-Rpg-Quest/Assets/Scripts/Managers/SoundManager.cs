@@ -16,8 +16,7 @@ namespace Advent.Manager
             else if (instance != this)
             {
                 Destroy(gameObject);
-            }
-            DontDestroyOnLoad(gameObject);
+            }   
         }
 
         public AudioSource playerAudioSource;

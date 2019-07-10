@@ -5061,6 +5061,7 @@ MonoBehaviour:
   knockbackDistance: 15
   hurtBox: {fileID: 7574350674075970946}
   sprite: {fileID: 8724716784410626630}
+  playerWeaponController: {fileID: 874926803937696119}
   rollSpeed: 10
   rollDistance: 0.3
   avatarRenderer: {fileID: 8724716784410626625}

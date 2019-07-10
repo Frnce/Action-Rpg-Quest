@@ -10,7 +10,6 @@ namespace Advent.Manager
         private void Awake()
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         [SerializeField]
         private int maxLevel = 100;

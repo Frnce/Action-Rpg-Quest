@@ -19,7 +19,6 @@ namespace Advent.Manager
             {
                 instance = this;
             }
-            DontDestroyOnLoad(gameObject);
         }
         public int InitMaxHP(EntitiesStats stats, float currentLevel = 1)
         {

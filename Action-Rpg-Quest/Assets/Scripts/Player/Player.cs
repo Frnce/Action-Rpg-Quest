@@ -22,6 +22,8 @@ namespace Advent.Entities
         public static Player instance;
 
         [SerializeField]
+        private PlayerWeaponController playerWeaponController = null;
+        [SerializeField]
         private float rollSpeed = 5.0f;
         [SerializeField]
         private float rollDistance = 0.1f;
@@ -263,6 +265,13 @@ namespace Advent.Entities
             get
             {
                 return states;
+            }
+        }
+        public PlayerWeaponController GetPlayerWeaponController
+        {
+            get
+            {
+                return playerWeaponController;
             }
         }
         public void MicroStepAction()

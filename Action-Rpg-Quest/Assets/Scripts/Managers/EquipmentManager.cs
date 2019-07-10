@@ -12,7 +12,6 @@ namespace Advent.Manager
     public class EquipmentManager : MonoBehaviour
     {
         public static EquipmentManager instance;
-        public PlayerWeaponController playerEquipment;
         [SerializeField]
         private Item[] equipmentSlots;
 
@@ -21,21 +20,14 @@ namespace Advent.Manager
 
         private void Awake()
         {
-            if (instance != null)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-            DontDestroyOnLoad(gameObject);
+            instance = this;
 
             equipmentSlots = new Item[6]; //6 number of equipmentSlots
         }
-
         public bool EquipItem(Item item)
         {
+            PlayerWeaponController playerEquipment = Player.instance.GetPlayerWeaponController;
+
             int equipSlotIndex = (int)item.EquipType;
             if(equipSlotIndex <= equipmentSlots.Length)
             {
@@ -55,6 +47,8 @@ namespace Advent.Manager
         }
         public bool UnequipItem(Item item)
         {
+            PlayerWeaponController playerEquipment = Player.instance.GetPlayerWeaponController;
+
             int equipSlotIndex = (int)item.EquipType;
             if (equipSlotIndex <= equipmentSlots.Length)
             {

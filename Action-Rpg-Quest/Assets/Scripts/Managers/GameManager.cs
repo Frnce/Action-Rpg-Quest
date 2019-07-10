@@ -33,7 +33,6 @@ namespace Advent.Manager
             {
                 instance = this;
             }
-            DontDestroyOnLoad(gameObject);
 
             GetAllLevels();
         }

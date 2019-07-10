@@ -20,7 +20,6 @@ namespace Advent.Items
             {
                 Instance = this;
             }
-            DontDestroyOnLoad(gameObject);
             BuildDatabase();
         }
         private void BuildDatabase()
