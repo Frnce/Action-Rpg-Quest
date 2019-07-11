@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 704673595}
   - component: {fileID: 704673594}
   - component: {fileID: 704673593}
+  - component: {fileID: 704673596}
   m_Layer: 0
   m_Name: Stick Dude
   m_TagString: Player
@@ -262,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
+  playerSpriteRenderer: {fileID: 0}
 --- !u!114 &704673594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +298,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &704673596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704673591}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5906461644ad2b41929a50d12eb0ebf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1559895175
 GameObject:
   m_ObjectHideFlags: 0

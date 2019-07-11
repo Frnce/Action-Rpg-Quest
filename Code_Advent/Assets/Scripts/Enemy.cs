@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour,IDamageable
 {
     public int Health = 25;
     public float knockBackDistance = 2f;
+    public float stunTime = 1f;
 
     private Vector2 targetDirection;
 
