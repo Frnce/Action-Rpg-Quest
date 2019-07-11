@@ -53,7 +53,7 @@ namespace Advent.Player
             {
                 Flip();
             }
-            playerControls.GetRb2d.MovePosition(transform.position + playerDir * movementSpeed * Time.deltaTime);
+            playerControls.GetRb2d.MovePosition(Vector2.Lerp(transform.position, transform.position + playerDir * movementSpeed,Time.fixedDeltaTime));
         }
         private void Flip()
         {
