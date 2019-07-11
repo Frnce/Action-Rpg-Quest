@@ -11,7 +11,7 @@ namespace Advent.Player
 
         private Vector3 playerDir = Vector3.zero;
 
-        private bool isFacingRight;
+        private bool isFacingRight = true;
         private bool isMoving = false;
 
         private PlayerControlsScript playerControls;
