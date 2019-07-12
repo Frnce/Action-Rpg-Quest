@@ -17,6 +17,8 @@ namespace Advent.Player
 
         private Rigidbody2D rb2d;
         private Animator anim;
+        [SerializeField]
+        private Transform playerSpriteRenderer = null;
 
         public bool canPlayerMove = true;
 
@@ -88,6 +90,13 @@ namespace Advent.Player
             get
             {
                 return anim;
+            }
+        }
+        public Transform GetSpriteRenderer
+        {
+            get
+            {
+                return playerSpriteRenderer;
             }
         }
     }

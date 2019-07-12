@@ -17,6 +17,8 @@ namespace Advent.Player
         public GameObject playerHand;
 
         private Vector2 mouse;
+        float angle;
+        private bool isFacingRight = true;
         private void Start()
         {
             playerControls = PlayerControlsScript.instance;
@@ -35,12 +37,20 @@ namespace Advent.Player
             Vector3 objpos = Camera.main.WorldToViewportPoint(playerHand.transform.position);        //Object position on screen
             Vector2 relobjpos = new Vector2(objpos.x - 0.5f, objpos.y - 0.5f);            //Set coordinates relative to object
             Vector2 relmousepos = new Vector2(mouse.x - 0.5f, mouse.y - 0.5f) - relobjpos;
-            float angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
+            angle = Vector2.Angle(Vector2.up, relmousepos);    //Angle calculation
             if (relmousepos.x > 0)
                 angle = 360 - angle;
             Quaternion quat = Quaternion.identity;
             quat.eulerAngles = new Vector3(0, 0, angle); //Changing angle
             playerHand.transform.rotation = quat;
+        }
+        private void Flip()
+        {
+            isFacingRight = !isFacingRight;
+
+            Vector3 theScale = playerControls.GetSpriteRenderer.localScale;
+            theScale.x *= -1;
+            playerControls.GetSpriteRenderer.localScale = theScale;
         }
         private void PlayerAttack()
         {
@@ -48,8 +58,17 @@ namespace Advent.Player
             {
                 if (playerControls.GetAttackKey)
                 {
+                    if (angle > 60 && angle < 245)
+                    {
+                        playerControls.GetSpriteRenderer.GetComponent<SpriteRenderer>().flipX = true;
+                    }
+                    else
+                    {
+                        playerControls.GetSpriteRenderer.GetComponent<SpriteRenderer>().flipX = false;
+                    }
+
                     playerControls.GetAnim.SetTrigger("Attack");
-                    //StartCoroutine(AttackRoutine());
+                    StartCoroutine(AttackRoutine());
                     timeBetweenAttack = startTimeBetweenAttack;
                 }
             }
@@ -60,9 +79,11 @@ namespace Advent.Player
         }
         private IEnumerator AttackRoutine()
         {
+            playerControls.GetRb2d.velocity = Vector3.zero;
             playerControls.canPlayerMove = false;
-            yield return new WaitForSeconds(startTimeBetweenAttack);
+            yield return new WaitForSeconds(0.5f);
             playerControls.canPlayerMove = true;
+            playerControls.GetRb2d.velocity = Vector3.zero;
         }
     }
 }

@@ -16,8 +16,8 @@ TagManager:
   - 
   - HurtBox
   - HitBox
-  - 
-  - 
+  - CustomCollider
+  - Player
   - 
   - 
   - 

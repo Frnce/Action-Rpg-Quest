@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Update()
     {
+        CheckEnemyIsAlive();
         if (!isEnemyAlive)
         {
             if(spawnTime <= 0)

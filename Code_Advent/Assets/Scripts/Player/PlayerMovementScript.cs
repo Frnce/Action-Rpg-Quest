@@ -7,8 +7,11 @@ namespace Advent.Player
     public class PlayerMovementScript : MonoBehaviour
     {
         public float movementSpeed = 0f;
-        public Transform playerSpriteRenderer = null;
-
+        [SerializeField]
+        private CircleCollider2D myCollider = null;
+        [SerializeField]
+        private LayerMask blockingLayer = 0;
+        private RaycastHit2D hit;
         private Vector3 playerDir = Vector3.zero;
 
         private bool isFacingRight = true;
@@ -24,6 +27,8 @@ namespace Advent.Player
         void Update()
         {
             playerDir = playerControls.GetMovement;
+            hit = Physics2D.CircleCast(transform.TransformPoint(myCollider.offset), myCollider.radius, playerDir, myCollider.radius, blockingLayer);
+
 
             if (playerDir.x != 0 || playerDir.y != 0)
             {
@@ -53,15 +58,27 @@ namespace Advent.Player
             {
                 Flip();
             }
-            playerControls.GetRb2d.MovePosition(Vector2.Lerp(transform.position, transform.position + playerDir * movementSpeed,Time.fixedDeltaTime));
+            if(hit.collider != null)
+            {
+                Debug.Log(hit.collider.name);
+            }
+            if (hit.collider == null)
+            {
+                playerControls.GetRb2d.MovePosition(Vector2.Lerp(transform.position, transform.position + playerDir * movementSpeed, Time.fixedDeltaTime));
+            }
         }
         private void Flip()
         {
             isFacingRight = !isFacingRight;
 
-            Vector3 theScale = playerSpriteRenderer.localScale;
+            Vector3 theScale = playerControls.GetSpriteRenderer.localScale;
             theScale.x *= -1;
-            playerSpriteRenderer.localScale = theScale;
+            playerControls.GetSpriteRenderer.localScale = theScale;
+        }
+            
+        private void OnDrawGizmos()
+        {
+
         }
     }
 }
