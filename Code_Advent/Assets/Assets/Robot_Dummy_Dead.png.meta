@@ -1,8 +1,12 @@
 fileFormatVersion: 2
-guid: b8e4e1b33c3fc5f4599fd0abf83ea9a0
+guid: 7424014fdcfad634c83d6d9f954aae6a
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Robot_Dummy_0
+    21300000: Robot_Dummy_Dead_0
+    21300002: Robot_Dummy_Dead_1
+    21300004: Robot_Dummy_Dead_2
+    21300006: Robot_Dummy_Dead_3
+    21300008: Robot_Dummy_Dead_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -81,22 +85,11 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Robot_Dummy_0
+      name: Robot_Dummy_Dead_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,7 +103,87 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5c458ad4a08365409d28f5130a08ac4
+      spriteID: 526ff4d413d9287448d8b42f62f04de5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Dummy_Dead_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d9fa9cd8a85e60488648abb5e50ef9f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Dummy_Dead_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dbe9fac877476b4fb1917c7163fb295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Dummy_Dead_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc50eef4e06afd04ca76a825332b8674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Robot_Dummy_Dead_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d586ad7c81452b46b48d27aa9f10b78
       vertices: []
       indices: 
       edges: []
@@ -118,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: e142562d14e58df46998b8100e3437e0
+    spriteID: ed74a59c33df5ba4aa5df22d71087a08
     vertices: []
     indices: 
     edges: []

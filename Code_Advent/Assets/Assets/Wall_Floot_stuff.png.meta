@@ -6,6 +6,7 @@ TextureImporter:
     21300002: Wall_Floot_stuff_1
     21300004: Wall_Floot_stuff_2
     21300006: Wall_Floot_stuff_3
+    21300008: Wall_Floot_stuff_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -103,6 +104,26 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296713e625a98d243b95d3c496e375d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall_Floot_stuff_1
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -113,13 +134,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd16bc339a644f24097545477df44829
+      spriteID: c854c39ba7b9dba4dbd0750758c08770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall_Floot_stuff_1
+      name: Wall_Floot_stuff_2
       rect:
         serializedVersion: 2
         x: 0
@@ -133,13 +154,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3787d16bdc7d9184e82af74966d89b88
+      spriteID: e8845bb38ef052143979d193221d9cc8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall_Floot_stuff_2
+      name: Wall_Floot_stuff_3
       rect:
         serializedVersion: 2
         x: 0
@@ -153,13 +174,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9fd177a8b574a148a9d25678f99a244
+      spriteID: 54fda9fbb90fc394c8a9f2787b376411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall_Floot_stuff_3
+      name: Wall_Floot_stuff_4
       rect:
         serializedVersion: 2
         x: 0
@@ -173,7 +194,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 645997cc094736642b8259387eac2ee8
+      spriteID: 1f030417430bfe340b2444479a82a889
       vertices: []
       indices: 
       edges: []
