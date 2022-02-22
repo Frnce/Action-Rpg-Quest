@@ -101,18 +101,18 @@ namespace Advent.UI
         }
         private void HpUpdateUI()
         {
-            hpPercent = (100f / player.GetMaxHP) * player.GetCurrentHP;
+            //hpPercent = (100f / player.GetMaxHP) * player.GetCurrentHP;
 
-            hpBar.fillAmount = hpPercent / 100f;
-            currentHP.text = player.GetCurrentHP.ToString();
-            maxHP.text = player.GetMaxHP.ToString();
+            //hpBar.fillAmount = hpPercent / 100f;
+            //currentHP.text = player.GetCurrentHP.ToString();
+            //maxHP.text = player.GetMaxHP.ToString();
         }
         private void MpUpdateUI()
         {
-            mpPercent = (100f / player.GetMaxMP) * player.GetCurrentMP;
-            mpBar.fillAmount = mpPercent / 100f;
-            currentMP.text = player.GetCurrentMP.ToString();
-            maxMP.text = player.GetMaxMP.ToString();
+            //mpPercent = (100f / player.GetMaxMP) * player.GetCurrentMP;
+            //mpBar.fillAmount = mpPercent / 100f;
+            //currentMP.text = player.GetCurrentMP.ToString();
+            //maxMP.text = player.GetMaxMP.ToString();
         }
         private void ExpUpdateUI()
         {
@@ -123,24 +123,24 @@ namespace Advent.UI
         }
         private void GetMainAttributes()
         {
-            baseStrengthText.text = player.GetStats.baseSTR.ToString();
-            baseDexterityText.text = player.GetStats.baseDEX.ToString();
-            baseIntelligenceText.text = player.GetStats.baseINT.ToString();
-            baseVitalityText.text = player.GetStats.baseVIT.ToString();
+            //baseStrengthText.text = player.GetStats.baseSTR.ToString();
+            //baseDexterityText.text = player.GetStats.baseDEX.ToString();
+            //baseIntelligenceText.text = player.GetStats.baseINT.ToString();
+            //baseVitalityText.text = player.GetStats.baseVIT.ToString();
 
-            bonusStrengthText.text = player.GetStats.bonusSTR.getValue.ToString();
-            bonusDexterityText.text = player.GetStats.bonusDEX.getValue.ToString();
-            bonusIntelligenceText.text = player.GetStats.bonusINT.getValue.ToString();
-            bonusVitalityText.text = player.GetStats.bonusVIT.getValue.ToString();
+            //bonusStrengthText.text = player.GetStats.bonusSTR.getValue.ToString();
+            //bonusDexterityText.text = player.GetStats.bonusDEX.getValue.ToString();
+            //bonusIntelligenceText.text = player.GetStats.bonusINT.getValue.ToString();
+            //bonusVitalityText.text = player.GetStats.bonusVIT.getValue.ToString();
         }
         private void GetBaseAttack()
         {
-            baseMinAttackText.text = player.GetStats.baseAttack.m_Min.ToString();
-            baseMaxAttackText.text = player.GetStats.baseAttack.m_Max.ToString();
+            //baseMinAttackText.text = player.GetStats.baseAttack.m_Min.ToString();
+            //baseMaxAttackText.text = player.GetStats.baseAttack.m_Max.ToString();
         }
         private void GetBaseDefense()
         {
-            basePhysicalDefenseText.text = player.GetStats.baseDef.ToString();
+            //basePhysicalDefenseText.text = player.GetStats.baseDef.ToString();
         }
     }
 }

@@ -50,11 +50,22 @@ namespace Advent.Entities
 
             hitPointsBar.SetActive(false);
 
-            InitAttributes();
-            InitMovementSpeed();
+            //InitAttributes();
+            //InitMovementSpeed();
 
-            InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
+            //InitHP();
+            //InitMP();
+
+            //InitBaseDamage(statList.baseSTR, statList.bonusSTR.getValue,statList.weaponDamage, currentLevel);
         }
+        //private void InitHP()
+        //{
+        //    InitHitpoints(statList.baseVIT, statList.bonusVIT.getValue, currentLevel);
+        //}
+        //private void InitMP()
+        //{
+        //    InitManaPoints(statList.baseINT, statList.bonusINT.getValue, currentLevel);
+        //}
         public void Movement(Vector3 direction)
         {
             targetDirection = target.transform.position - transform.position;

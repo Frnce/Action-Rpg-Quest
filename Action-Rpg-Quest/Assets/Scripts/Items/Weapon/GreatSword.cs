@@ -21,14 +21,15 @@ namespace Advent.Items
             AudioClip = audioClip;
         }
 
-        public void PerformAttack()
+        public void PerformAttack(float attackSpeed)
         {
-            animator.SetTrigger("AttackSword");
+            animator.SetBool("isAttacking", true);
+            animator.SetFloat("multiplier", attackSpeed);
         }
 
         public void ResetAttackTrigger()
         {
-            animator.ResetTrigger("AttackSword");
+            Debug.Log("reset attack");
         }
     }
 }

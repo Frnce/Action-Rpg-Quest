@@ -2,12 +2,14 @@
 	{
 		"ModifierID" : 0,
 		"ItemLevel" : 0,
-		"Suffix" : "",
-		Modifiers : [
-			{
-				ModName : "",
-				ModValue : ""
-			},
-		]
+		"Suffix" : "Of Boris",
+    "Modifiers": [
+      {
+        "StatType": "PhysicalDamage",
+        "BaseValue": 10,
+        "StatName": "PhysicalDamage"
+      }
+    ],
+    "Description" :  "+10% Physical Damage"
 	}
 ]
